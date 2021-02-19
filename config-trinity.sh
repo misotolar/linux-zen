@@ -35,3 +35,6 @@ scripts/config --disable SECURITY_SELINUX --disable SECURITY_TOMOYO --disable SE
 
 # https://bugs.archlinux.org/task/69479
 scripts/config --disable CONFIG_XZ_DEC_POWERPC --disable CONFIG_XZ_DEC_IA64 --disable CONFIG_XZ_DEC_ARM --disable CONFIG_XZ_DEC_ARMTHUMB --disable CONFIG_XZ_DEC_SPARC
+
+# https://bugs.archlinux.org/task/67614
+scripts/config --disable CONFIG_ASHMEM --disable CONFIG_ANDROID
