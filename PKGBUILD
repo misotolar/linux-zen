@@ -1,8 +1,8 @@
 pkgbase=linux-zen
 pkgname=("$pkgbase" "$pkgbase-headers")
 pkgdesc='Linux ZEN'
-pkgver=5.11.15.zen2
-pkgrel=1
+pkgver=5.11.15.zen1
+pkgrel=2
 
 _srctag=v${pkgver%.*}-${pkgver##*.}
 _srcname=zen-kernel
