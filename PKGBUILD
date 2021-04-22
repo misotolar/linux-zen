@@ -1,8 +1,8 @@
 pkgbase=linux-zen
 pkgname=("$pkgbase" "$pkgbase-headers")
 pkgdesc='Linux ZEN'
-pkgver=5.11.15.zen1
-pkgrel=2
+pkgver=5.11.16.zen1
+pkgrel=1
 
 _srctag=v${pkgver%.*}-${pkgver##*.}
 _srcname=zen-kernel
@@ -18,7 +18,7 @@ source=("$_srcname::git+https://github.com/zen-kernel/zen-kernel?signed#tag=$_sr
         'config' 'config-trinity.sh')
 
 sha256sums=('SKIP'
-            'e8ca02688a36673e5771925762aa0f8d63feb0dc29d51424255d10f7d6a99b5c'
+            '24dcecbf44ec40b80f0c74ef28688cd27741dde4ac5410fb3a6fce83e777f689'
             'f4fd0d853a068f7c414e6a0cacff3d2991f46511cd33584367622fe032136bd2')
 
 validpgpkeys=('ABAF11C65A2970B130ABE3C479BE3E4300411886'
