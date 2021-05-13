@@ -29,6 +29,7 @@ scripts/config --disable AMD_IOMMU
 
 # Device Drivers - Graphic support
 scripts/config --disable VGA_SWITCHEROO
+scripts/config --disable FRAMEBUFFER_CONSOLE_DEFERRED_TAKEOVER
 
 # Security options
 scripts/config --disable SECURITY_SELINUX --disable SECURITY_TOMOYO --disable SECURITY_YAMA
