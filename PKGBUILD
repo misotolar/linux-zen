@@ -1,8 +1,8 @@
 pkgbase=linux-zen
 pkgname=("$pkgbase" "$pkgbase-headers")
 pkgdesc='Linux ZEN'
-pkgver=5.12.13.zen1
-pkgrel=2
+pkgver=5.12.14.zen1
+pkgrel=1
 
 _srctag=v${pkgver%.*}-${pkgver##*.}
 _srcname=zen-kernel
@@ -18,7 +18,7 @@ source=("$_srcname::git+https://github.com/zen-kernel/zen-kernel?signed#tag=$_sr
         'config' 'config-trinity.sh')
 
 sha256sums=('SKIP'
-            '13573a111c005aebfce4163bd0db7e0eb49103bdf9da843386f1b988b0cda11f'
+            'f8bbbc27a27cb87a3f69edefe61703f865903ffdd1aec7e9d81552cfbbe3a17a'
             '04600b3f87fc718c432579b7685cf3bbb6b98f4d448a102521e5bacf3481bee3')
 
 validpgpkeys=('ABAF11C65A2970B130ABE3C479BE3E4300411886'
@@ -136,13 +136,16 @@ _package-headers() {
     install -Dt "$builddir/drivers/md" -m644 drivers/md/*.h
     install -Dt "$builddir/net/mac80211" -m644 net/mac80211/*.h
 
-    # http://bugs.archlinux.org/task/13146
+    # https://bugs.archlinux.org/task/13146
     install -Dt "$builddir/drivers/media/i2c" -m644 drivers/media/i2c/msp3400-driver.h
 
-    # http://bugs.archlinux.org/task/20402
+    # https://bugs.archlinux.org/task/20402
     install -Dt "$builddir/drivers/media/usb/dvb-usb" -m644 drivers/media/usb/dvb-usb/*.h
     install -Dt "$builddir/drivers/media/dvb-frontends" -m644 drivers/media/dvb-frontends/*.h
     install -Dt "$builddir/drivers/media/tuners" -m644 drivers/media/tuners/*.h
+
+    # https://bugs.archlinux.org/task/71392
+    install -Dt "$builddir/drivers/iio/common/hid-sensors" -m644 drivers/iio/common/hid-sensors/*.h
 
     echo "Installing KConfig files..."
     find . -name 'Kconfig*' -exec install -Dm644 {} "$builddir/{}" \;
