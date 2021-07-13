@@ -19,7 +19,7 @@ source=("$_srcname::git+https://github.com/zen-kernel/zen-kernel?signed#tag=$_sr
 
 sha256sums=('SKIP'
             '56ad987122ef87666a4fd7f3cd972b7599fa09c53f5822fe9cf988d77c3f7d6c'
-            '7c82dacd46a317f026f04cfe6905c78de6fddcade66b3e83a4d16b82cb708421')
+            'e87f8d68b171993409bf3a8facb051ff41df975453a43e00af52361693df7d48')
 
 validpgpkeys=('ABAF11C65A2970B130ABE3C479BE3E4300411886'
               '647F28654894E3BD457199BE38DBBDC86092693E'

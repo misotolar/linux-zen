@@ -19,8 +19,7 @@ scripts/config --disable GART_IOMMU --disable X86_MCE_AMD --disable MICROCODE_AM
 scripts/config --disable NUMA
 
 # Enable loadable module support
-scripts/config --enable MODULE_SIG --disable MODULE_SIG_FORCE --disable MODULE_ALLOW_MISSING_NAMESPACE_IMPORTS
-# scripts/config --enable MODULE_SIG_FORCE --disable MODULE_ALLOW_MISSING_NAMESPACE_IMPORTS
+scripts/config --enable MODULE_SIG_FORCE --disable MODULE_ALLOW_MISSING_NAMESPACE_IMPORTS
 
 # Device Drivers
 scripts/config --disable WATCHDOG
