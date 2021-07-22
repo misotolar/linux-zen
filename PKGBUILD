@@ -1,7 +1,7 @@
 pkgbase=linux-zen
 pkgname=("$pkgbase" "$pkgbase-headers")
 pkgdesc='Linux ZEN'
-pkgver=5.13.4.zen1
+pkgver=5.13.4.zen2
 pkgrel=1
 
 _srctag=v${pkgver%.*}-${pkgver##*.}
