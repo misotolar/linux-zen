@@ -1,7 +1,7 @@
 pkgbase=linux-zen
 pkgname=("$pkgbase" "$pkgbase-headers")
 pkgdesc='Linux ZEN'
-pkgver=5.13.1.zen1
+pkgver=5.13.4.zen1
 pkgrel=1
 
 _srctag=v${pkgver%.*}-${pkgver##*.}
@@ -18,12 +18,13 @@ source=("$_srcname::git+https://github.com/zen-kernel/zen-kernel?signed#tag=$_sr
         'config' 'config-trinity.sh')
 
 sha256sums=('SKIP'
-            '56ad987122ef87666a4fd7f3cd972b7599fa09c53f5822fe9cf988d77c3f7d6c'
+            '7015258f0e7219709727bd454ecf89714c190b383a1698e3bb5f193350266e6b'
             'e87f8d68b171993409bf3a8facb051ff41df975453a43e00af52361693df7d48')
 
-validpgpkeys=('ABAF11C65A2970B130ABE3C479BE3E4300411886'
-              '647F28654894E3BD457199BE38DBBDC86092693E'
-              'A2FF3A36AAA56654109064AB19802F8B0D70FC30')
+validpgpkeys=('ABAF11C65A2970B130ABE3C479BE3E4300411886'   # Linus Torvalds
+              '647F28654894E3BD457199BE38DBBDC86092693E'   # Greg Kroah-Hartman
+              'A2FF3A36AAA56654109064AB19802F8B0D70FC30'   # Jan Alexander Steffens (heftig)
+              'C5ADB4F3FEBBCE27A3E54D7D9AE4078033F8024D')  # Steven Barrett <steven@liquorix.net>
 
 export KBUILD_BUILD_HOST=`hostname`
 export KBUILD_BUILD_USER=$pkgbase
