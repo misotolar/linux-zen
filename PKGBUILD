@@ -1,7 +1,7 @@
 pkgbase=linux-zen
 pkgname=("$pkgbase" "$pkgbase-headers")
 pkgdesc='Linux ZEN'
-pkgver=5.13.9.zen1
+pkgver=5.13.10.zen1
 pkgrel=1
 
 _srctag=v${pkgver%.*}-${pkgver##*.}
@@ -11,15 +11,16 @@ arch=('x86_64')
 url="https://github.com/zen-kernel/zen-kernel/commits/$_srctag"
 license=('GPL2')
 
-makedepends=('arch-sign-modules' 'bc' 'cpio' 'git' 'kmod' 'libelf' 'pahole' 'perl' 'tar' 'xmlto' 'xz')
+makedepends=('arch-sign-modules' 'bc' 'cpio' 'git' 'kmod' 'libelf' 'pahole' 'perl' 'rsync' 'tar' 'xmlto' 'zstd')
 options=('!strip')
 
 source=("$_srcname::git+https://github.com/zen-kernel/zen-kernel?signed#tag=$_srctag"
-        'config' 'config-trinity.sh')
+        '0001-tsc-directsync.patch' # https://bugzilla.kernel.org/show_bug.cgi?id=202525
+        'config')
 
 sha256sums=('SKIP'
-            'cca6a2f213c6b90f1db435a4985458d1faf2309d26ed880c9c33fdd66e089f0c'
-            'e87f8d68b171993409bf3a8facb051ff41df975453a43e00af52361693df7d48')
+            '7cb07c4c10d1bcce25d1073dbb9892faa0ccff10b4b61bb4f2f0d53e3e8a3958'
+            'cca6a2f213c6b90f1db435a4985458d1faf2309d26ed880c9c33fdd66e089f0c')
 
 validpgpkeys=('ABAF11C65A2970B130ABE3C479BE3E4300411886'   # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E'   # Greg Kroah-Hartman
@@ -64,14 +65,62 @@ prepare() {
     echo "Setting config..."
     cp ../config .config
 
-    if [ -x "../config-$KBUILD_BUILD_HOST.sh" ]; then
-        eval "../config-$KBUILD_BUILD_HOST.sh"
-    fi
+    sed -i 's/CONFIG_GENERIC_CPU=y/# CONFIG_GENERIC_CPU is not set/' .config
+    sed -i 's/# CONFIG_MZEN1 is not set/CONFIG_MZEN1=y/' .config
+
+    sed -i 's/CONFIG_HZ_1000=y/# CONFIG_HZ_1000 is not set/' .config
+    sed -i 's/# CONFIG_HZ_300 is not set/CONFIG_HZ_300=y/' .config
+    sed -i 's/CONFIG_HZ=1000/CONFIG_HZ=300/' .config
+
+    # General setup
+    scripts/config --set-str DEFAULT_HOSTNAME "$KBUILD_BUILD_HOST"
+
+    # Processor type and features
+    scripts/config -d HYPERVISOR_GUEST
+    scripts/config -d GART_IOMMU
+    scripts/config -d INTEL_IOMMU
+    scripts/config -d MICROCODE_INTEL
+    scripts/config -d MICROCODE_OLD_INTERFACE
+    scripts/config -d NUMA
+
+    # Enable loadable module support
+    scripts/config -e MODULE_SIG_FORCE
+    scripts/config -d MODULE_ALLOW_MISSING_NAMESPACE_IMPORTS
+
+    # Device Drivers
+    scripts/config -e RANDOM_TRUST_CPU
+    scripts/config -d WATCHDOG
+
+    # Security options
+    scripts/config -d SECURITY_SELINUX
+    scripts/config -d SECURITY_TOMOYO
+    scripts/config -d SECURITY_YAMA
+
+    # Kernel hacking
+    scripts/config -d CONFIG_DEBUG_INFO
+    scripts/config -d CONFIG_CGROUP_BPF
+    scripts/config -d CONFIG_BPF_LSM
+    scripts/config -d CONFIG_BPF_PRELOAD
+    scripts/config -d CONFIG_BPF_LIRC_MODE2
+    scripts/config -d CONFIG_BPF_KPROBE_OVERRIDE
+
+    # https://bbs.archlinux.org/viewtopic.php?pid=1824594#p1824594
+    scripts/config -e CONFIG_PSI_DEFAULT_DISABLED
+
+    # https://bbs.archlinux.org/viewtopic.php?pid=1863567#p1863567
+    scripts/config -d CONFIG_LATENCYTOP
+    scripts/config -d CONFIG_SCHED_DEBUG
+
+    # https://bugs.archlinux.org/task/66613
+    scripts/config -d CONFIG_KVM_WERROR
+
+    # https://bugs.archlinux.org/task/67614
+    scripts/config -d CONFIG_ASHMEM
+    scripts/config -d CONFIG_ANDROID
 
     make olddefconfig
     if [ -f "$HOME/.config/modprobed.db" ]; then
         yes "" | make LSMOD=$HOME/.config/modprobed.db localmodconfig >/dev/null
-        yes "" | make config >/dev/null
     fi
 
     make -s kernelrelease > version
