@@ -1,26 +1,37 @@
+_major=5.13
+_minor=12.zen1
+
 pkgbase=linux-zen
 pkgname=("$pkgbase" "$pkgbase-headers")
 pkgdesc='Linux ZEN'
-pkgver=5.13.10.zen1
+pkgver="$_major.$_minor"
 pkgrel=1
 
-_srctag=v${pkgver%.*}-${pkgver##*.}
-_srcname=zen-kernel
+_src="linux-$_major"
+_zen="v${pkgver%.*}-${pkgver##*.}"
 
 arch=('x86_64')
-url="https://github.com/zen-kernel/zen-kernel/commits/$_srctag"
+url="https://github.com/zen-kernel/zen-kernel/commits/$_zen"
 license=('GPL2')
 
-makedepends=('arch-sign-modules' 'bc' 'cpio' 'git' 'kmod' 'libelf' 'pahole' 'perl' 'rsync' 'tar' 'xmlto' 'zstd')
+makedepends=('arch-sign-modules' 'bc' 'clang' 'cpio' 'git' 'kmod' 'libelf' 'llvm' 'lld' 'pahole' 'perl' 'rsync' 'tar' 'xmlto' 'zstd')
 options=('!strip')
 
-source=("$_srcname::git+https://github.com/zen-kernel/zen-kernel?signed#tag=$_srctag"
-        '0001-tsc-directsync.patch' # https://bugzilla.kernel.org/show_bug.cgi?id=202525
+source=("https://cdn.kernel.org/pub/linux/kernel/v5.x/$_src.tar.xz"
+        "https://cdn.kernel.org/pub/linux/kernel/v5.x/$_src.tar.sign"
+        "https://github.com/zen-kernel/zen-kernel/releases/download/$_zen/$_zen.patch.xz"
+        "https://github.com/zen-kernel/zen-kernel/releases/download/$_zen/$_zen.patch.xz.sig"
+        '0001-XANMOD-kconfig-add-500Hz-timer-interrupt-kernel-conf.patch'
+        '0002-tsc-directsync-hack.patch'  # https://bugzilla.kernel.org/show_bug.cgi?id=202525
         'config')
 
-sha256sums=('SKIP'
+sha256sums=('3f6baa97f37518439f51df2e4f3d65a822ca5ff016aa8e60d2cc53b95a6c89d9'
+            'SKIP'
+            '87b8b3608fba35e1819d5f20a9b09d6e02b5284e669adfbc5066d9130e7e0014'
+            'SKIP'
+            'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'
             '7cb07c4c10d1bcce25d1073dbb9892faa0ccff10b4b61bb4f2f0d53e3e8a3958'
-            'cca6a2f213c6b90f1db435a4985458d1faf2309d26ed880c9c33fdd66e089f0c')
+            '166a5201a351536c8300190b305bc8ad3b5fd6d14447e3535c329ffe4adaf247')
 
 validpgpkeys=('ABAF11C65A2970B130ABE3C479BE3E4300411886'   # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E'   # Greg Kroah-Hartman
@@ -30,6 +41,8 @@ validpgpkeys=('ABAF11C65A2970B130ABE3C479BE3E4300411886'   # Linus Torvalds
 export KBUILD_BUILD_HOST=`hostname`
 export KBUILD_BUILD_USER=$pkgbase
 export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
+
+_makecmd="make LLVM=1 LLVM_IAS=1"
 
 prepare() {
     msg2 "Rebuilding local signing key..."
@@ -43,15 +56,17 @@ prepare() {
     ./genkeys.sh
 
     msg2 "Updating kernel config with new key..."
-
     ./fix_config.sh ../src/config
 
-    cd ../src/$_srcname
+    cd ../src/$_src
 
     echo "Setting version..."
     scripts/setlocalversion --save-scmversion
     echo "-$pkgrel" > localversion.10-pkgrel
     echo "-$KBUILD_BUILD_HOST" > localversion.20-pkgname
+
+    echo "Appling patch $_zen.patch..."
+    patch -Nsp1 < "../$_zen.patch"
 
     local src
     for src in "${source[@]}"; do
@@ -59,33 +74,41 @@ prepare() {
         src="${src##*/}"
         [[ $src = *.patch ]] || continue
         echo "Applying patch $src..."
-        patch -Np1 < "../$src"
+        patch -Nsp1 < "../$src"
     done
 
     echo "Setting config..."
     cp ../config .config
 
-    sed -i 's/CONFIG_GENERIC_CPU=y/# CONFIG_GENERIC_CPU is not set/' .config
-    sed -i 's/# CONFIG_MZEN1 is not set/CONFIG_MZEN1=y/' .config
-
-    sed -i 's/CONFIG_HZ_1000=y/# CONFIG_HZ_1000 is not set/' .config
-    sed -i 's/# CONFIG_HZ_300 is not set/CONFIG_HZ_300=y/' .config
-    sed -i 's/CONFIG_HZ=1000/CONFIG_HZ=300/' .config
+    $_makecmd olddefconfig
+    if [ -f "$HOME/.config/modprobed.db" ]; then
+        yes "" | $_makecmd LSMOD=$HOME/.config/modprobed.db localmodconfig >/dev/null
+    fi
 
     # General setup
     scripts/config --set-str DEFAULT_HOSTNAME "$KBUILD_BUILD_HOST"
 
     # Processor type and features
+    scripts/config --set-val NR_CPUS 64
+    scripts/config -e MZEN -d GENERIC_CPU
+    scripts/config -e HZ_500 -d HZ_1000
     scripts/config -d HYPERVISOR_GUEST
     scripts/config -d GART_IOMMU
     scripts/config -d INTEL_IOMMU
     scripts/config -d MICROCODE_INTEL
     scripts/config -d MICROCODE_OLD_INTERFACE
     scripts/config -d NUMA
+    
+    # General architecture-dependent options
+    scripts/config -e LTO_CLANG_THIN -d LTO_NONE
 
     # Enable loadable module support
     scripts/config -e MODULE_SIG_FORCE
     scripts/config -d MODULE_ALLOW_MISSING_NAMESPACE_IMPORTS
+
+    # Networking support
+    scripts/config -e TCP_CONG_BBR2 -e DEFAULT_BBR2
+    scripts/config -d TCP_CONG_CUBIC -d DEFAULT_CUBIC
 
     # Device Drivers
     scripts/config -e RANDOM_TRUST_CPU
@@ -97,39 +120,29 @@ prepare() {
     scripts/config -d SECURITY_YAMA
 
     # Kernel hacking
-    scripts/config -d CONFIG_DEBUG_INFO
-    scripts/config -d CONFIG_CGROUP_BPF
-    scripts/config -d CONFIG_BPF_LSM
-    scripts/config -d CONFIG_BPF_PRELOAD
-    scripts/config -d CONFIG_BPF_LIRC_MODE2
-    scripts/config -d CONFIG_BPF_KPROBE_OVERRIDE
+    scripts/config -d DEBUG_INFO
 
     # https://bbs.archlinux.org/viewtopic.php?pid=1824594#p1824594
-    scripts/config -e CONFIG_PSI_DEFAULT_DISABLED
+    scripts/config -e PSI_DEFAULT_DISABLED
 
     # https://bbs.archlinux.org/viewtopic.php?pid=1863567#p1863567
-    scripts/config -d CONFIG_LATENCYTOP
-    scripts/config -d CONFIG_SCHED_DEBUG
+    scripts/config -d LATENCYTOP
+    scripts/config -d SCHED_DEBUG
 
     # https://bugs.archlinux.org/task/66613
-    scripts/config -d CONFIG_KVM_WERROR
+    scripts/config -d KVM_WERROR
 
     # https://bugs.archlinux.org/task/67614
-    scripts/config -d CONFIG_ASHMEM
-    scripts/config -d CONFIG_ANDROID
+    scripts/config -d ASHMEM
+    scripts/config -d ANDROID
 
-    make olddefconfig
-    if [ -f "$HOME/.config/modprobed.db" ]; then
-        yes "" | make LSMOD=$HOME/.config/modprobed.db localmodconfig >/dev/null
-    fi
-
-    make -s kernelrelease > version
+    $_makecmd -s kernelrelease > version
     echo "Prepared $pkgbase version $(<version)"
 }
 
 build() {
-    cd $_srcname
-    make -j$(nproc) all
+    cd $_src
+    $_makecmd -j$(nproc) all
 }
 
 _package() {
@@ -140,20 +153,20 @@ _package() {
     provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE VHBA-MODULE)
     replaces=()
 
-    cd $_srcname
+    cd $_src
     local kernver="$(<version)"
     local modulesdir="$pkgdir/usr/lib/modules/$kernver"
 
     echo "Installing boot image..."
     # systemd expects to find the kernel here to allow hibernation
     # https://github.com/systemd/systemd/commit/edda44605f06a41fb86b7ab8128dcf99161d2344
-    install -Dm644 "$(make -s image_name)" "$modulesdir/vmlinuz"
+    install -Dm644 "$($_makecmd -s image_name)" "$modulesdir/vmlinuz"
 
     # Used by mkinitcpio to name the kernel
     echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
     echo "Installing modules..."
-    make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 modules_install
+    $_makecmd INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 modules_install
 
     # remove build and source links
     rm "$modulesdir"/{source,build}
@@ -163,7 +176,7 @@ _package-headers() {
     pkgdesc="Headers and scripts for building modules for the $pkgdesc kernel"
     depends=('pahole')
 
-    cd $_srcname
+    cd $_src
     local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
 
     echo "Installing build files..."

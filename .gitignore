@@ -1,3 +1,6 @@
-/tmp
-/zen-kernel
+/makepkg
+*.tar.sign
+*.tar.xz
+*.xz.sig
+*.xz
 *.zst
