@@ -1,5 +1,5 @@
 _major=5.13
-_minor=12.zen1
+_minor=13.zen1
 
 pkgbase=linux-zen
 pkgname=("$pkgbase" "$pkgbase-headers")
@@ -22,16 +22,16 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v5.x/$_src.tar.xz"
         "https://github.com/zen-kernel/zen-kernel/releases/download/$_zen/$_zen.patch.xz"
         "https://github.com/zen-kernel/zen-kernel/releases/download/$_zen/$_zen.patch.xz.sig"
         '0001-XANMOD-kconfig-add-500Hz-timer-interrupt-kernel-conf.patch'
-        '0002-tsc-directsync-hack.patch'  # https://bugzilla.kernel.org/show_bug.cgi?id=202525
+        '0002-tsc-directsync-gross-hack.patch'  # https://bugzilla.kernel.org/show_bug.cgi?id=202525
         'config')
 
 sha256sums=('3f6baa97f37518439f51df2e4f3d65a822ca5ff016aa8e60d2cc53b95a6c89d9'
             'SKIP'
-            '87b8b3608fba35e1819d5f20a9b09d6e02b5284e669adfbc5066d9130e7e0014'
+            'ebcc7b92b64d1de66f4bb06896b286a1d6f2f3c961466256f0a5d862b0aa6e88'
             'SKIP'
-            'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'
+            'c25fe528704550f12e3e38df985e962b7ea20ccf4a2357bb4a0f43b2aded078f'
             '7cb07c4c10d1bcce25d1073dbb9892faa0ccff10b4b61bb4f2f0d53e3e8a3958'
-            '166a5201a351536c8300190b305bc8ad3b5fd6d14447e3535c329ffe4adaf247')
+            'a42785752e81c8d80088b7f9a85c21727b15d010c50fcd9b61932348b07a1755')
 
 validpgpkeys=('ABAF11C65A2970B130ABE3C479BE3E4300411886'   # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E'   # Greg Kroah-Hartman
