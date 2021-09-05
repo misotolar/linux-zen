@@ -1,5 +1,5 @@
-_major=5.13
-_minor=13.zen1
+_major=5.14
+_minor=1.zen1
 
 pkgbase=linux-zen
 pkgname=("$pkgbase" "$pkgbase-headers")
@@ -25,13 +25,13 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v5.x/$_src.tar.xz"
         '0002-tsc-directsync-gross-hack.patch'  # https://bugzilla.kernel.org/show_bug.cgi?id=202525
         'config')
 
-sha256sums=('3f6baa97f37518439f51df2e4f3d65a822ca5ff016aa8e60d2cc53b95a6c89d9'
+sha256sums=('7e068b5e0d26a62b10e5320b25dce57588cbbc6f781c090442138c9c9c3271b2'
             'SKIP'
-            'ebcc7b92b64d1de66f4bb06896b286a1d6f2f3c961466256f0a5d862b0aa6e88'
+            '764c3971f10b582961f074a0bb28d1d75c1c990c8652d2be9ae3c59439420c91'
             'SKIP'
             'c25fe528704550f12e3e38df985e962b7ea20ccf4a2357bb4a0f43b2aded078f'
             '7cb07c4c10d1bcce25d1073dbb9892faa0ccff10b4b61bb4f2f0d53e3e8a3958'
-            'a42785752e81c8d80088b7f9a85c21727b15d010c50fcd9b61932348b07a1755')
+            'fb01db44c6741c32112f0560883b930cae1ded66eedb26b0f8e219341f2f7412')
 
 validpgpkeys=('ABAF11C65A2970B130ABE3C479BE3E4300411886'   # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E'   # Greg Kroah-Hartman
@@ -98,6 +98,9 @@ prepare() {
     scripts/config -d MICROCODE_INTEL
     scripts/config -d MICROCODE_OLD_INTERFACE
     scripts/config -d NUMA
+    
+    # Power management and ACPI options
+    scripts/config -d ACPI_PRMT
     
     # General architecture-dependent options
     scripts/config -e LTO_CLANG_THIN -d LTO_NONE
