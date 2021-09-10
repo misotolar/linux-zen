@@ -5,7 +5,7 @@ pkgbase=linux-zen
 pkgname=("$pkgbase" "$pkgbase-headers")
 pkgdesc='Linux ZEN'
 pkgver="$_major.$_minor"
-pkgrel=1
+pkgrel=2
 
 _src="linux-$_major"
 _zen="v${pkgver%.*}-${pkgver##*.}"
@@ -43,7 +43,7 @@ sha256sums=('7e068b5e0d26a62b10e5320b25dce57588cbbc6f781c090442138c9c9c3271b2'
             'd4a866659cd9c94e78e281c40080f5d91c9912d664bbe5cb29bd43b814e7dcf7'
             '8415f999d29ce6efa37f322129927b3b00495708794fa774fef09ef75e57f028'
             '7cb07c4c10d1bcce25d1073dbb9892faa0ccff10b4b61bb4f2f0d53e3e8a3958'
-            'fb01db44c6741c32112f0560883b930cae1ded66eedb26b0f8e219341f2f7412')
+            '8b3466c0896810146fa07ab38c51e765540a14b0e35661ccb62d867477b6157e')
 
 validpgpkeys=('ABAF11C65A2970B130ABE3C479BE3E4300411886'   # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E'   # Greg Kroah-Hartman
