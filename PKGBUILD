@@ -1,5 +1,5 @@
 _major=5.14
-_minor=1.zen2
+_minor=2.zen1
 
 pkgbase=linux-zen
 pkgname=("$pkgbase" "$pkgbase-headers")
@@ -22,14 +22,26 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v5.x/$_src.tar.xz"
         "https://github.com/zen-kernel/zen-kernel/releases/download/$_zen/$_zen.patch.xz"
         "https://github.com/zen-kernel/zen-kernel/releases/download/$_zen/$_zen.patch.xz.sig"
         '0001-XANMOD-kconfig-add-500Hz-timer-interrupt-kernel-conf.patch'
-        '0002-tsc-directsync-gross-hack.patch'  # https://bugzilla.kernel.org/show_bug.cgi?id=202525
+        '0002-XANMOD-block-set-rq_affinity-to-force-full-multithre.patch'
+        '0003-XANMOD-lib-zstd-Add-kernel-specific-API.patch'
+        '0004-XANMOD-lib-zstd-Add-decompress_sources.h-for-decompress_unz.patch'
+        '0005-XANMOD-lib-zstd-Upgrade-to-latest-upstream-zstd-version-1.4.patch'
+        '0006-XANMOD-MAINTAINERS-Add-maintainer-entry-for-zstd.patch'
+        '0007-ideapad-laptop-remove-dytc-version-check.patch'
+        '0008-tsc-directsync-gross-hack.patch'  # https://bugzilla.kernel.org/show_bug.cgi?id=202525
         'config')
 
 sha256sums=('7e068b5e0d26a62b10e5320b25dce57588cbbc6f781c090442138c9c9c3271b2'
             'SKIP'
-            '4d63e098c297d410f8bda40fde3f0bff2e736fe4b88d508301e44920df175d90'
+            '2ce448b2dd2223a0a80e08c54eb142bd8c22c5ee089d0856ef84b9ed18d97e2a'
             'SKIP'
             'c25fe528704550f12e3e38df985e962b7ea20ccf4a2357bb4a0f43b2aded078f'
+            '775bad29e58a32f0aa3e05f88a850d924309ac6637e4244c8b58b298509b1e1f'
+            'f7718fa14ceb049a5c75796da26d30581deb25b0c8bc3774e57170c9ad38b503'
+            '85c789f8fc229dee1ae896b052ee03351e96ae5b963fa346608fdc7891d865b0'
+            '344331792c8b38719aa28804e1e5de08d88499734a7c2228d7c2f487374eb0a2'
+            'd4a866659cd9c94e78e281c40080f5d91c9912d664bbe5cb29bd43b814e7dcf7'
+            '8415f999d29ce6efa37f322129927b3b00495708794fa774fef09ef75e57f028'
             '7cb07c4c10d1bcce25d1073dbb9892faa0ccff10b4b61bb4f2f0d53e3e8a3958'
             'fb01db44c6741c32112f0560883b930cae1ded66eedb26b0f8e219341f2f7412')
 
@@ -87,14 +99,15 @@ prepare() {
 
     # General setup
     scripts/config --set-str DEFAULT_HOSTNAME "$KBUILD_BUILD_HOST"
+    scripts/config --set-val RCU_BOOST_DELAY 331
+    scripts/config -d BPF_LSM
+    scripts/config -d BPF_PRELOAD
 
     # Processor type and features
-    scripts/config --set-val NR_CPUS 64
+    scripts/config --set-val NR_CPUS 16
     scripts/config -e MZEN -d GENERIC_CPU
     scripts/config -e HZ_500 -d HZ_1000
     scripts/config -d HYPERVISOR_GUEST
-    scripts/config -d GART_IOMMU
-    scripts/config -d INTEL_IOMMU
     scripts/config -d MICROCODE_INTEL
     scripts/config -d MICROCODE_OLD_INTERFACE
     scripts/config -d NUMA
@@ -103,7 +116,7 @@ prepare() {
     scripts/config -d ACPI_PRMT
     
     # General architecture-dependent options
-    scripts/config -e LTO_CLANG_THIN -d LTO_NONE
+    scripts/config -e LTO_CLANG_FULL -d LTO_NONE
 
     # Enable loadable module support
     scripts/config -e MODULE_SIG_FORCE
@@ -111,10 +124,12 @@ prepare() {
 
     # Networking support
     scripts/config -e TCP_CONG_BBR2 -e DEFAULT_BBR2
-    scripts/config -d TCP_CONG_CUBIC -d DEFAULT_CUBIC
+    scripts/config -d TCP_CONG_CUBIC
 
     # Device Drivers
     scripts/config -e RANDOM_TRUST_CPU
+    scripts/config -d BPF_LIRC_MODE2
+    scripts/config -d INTEL_IOMMU
     scripts/config -d WATCHDOG
 
     # Security options
@@ -124,20 +139,22 @@ prepare() {
 
     # Kernel hacking
     scripts/config -d DEBUG_INFO
+    scripts/config -d SYMBOLIC_ERRNAME
+    scripts/config -d BPF_KPROBE_OVERRIDE
+    scripts/config -d FUNCTION_TRACER
+    scripts/config -d STACK_TRACER
 
     # https://bbs.archlinux.org/viewtopic.php?pid=1824594#p1824594
     scripts/config -e PSI_DEFAULT_DISABLED
 
     # https://bbs.archlinux.org/viewtopic.php?pid=1863567#p1863567
-    scripts/config -d LATENCYTOP
-    scripts/config -d SCHED_DEBUG
+    scripts/config -d LATENCYTOP -d SCHED_DEBUG
 
     # https://bugs.archlinux.org/task/66613
     scripts/config -d KVM_WERROR
 
     # https://bugs.archlinux.org/task/67614
-    scripts/config -d ASHMEM
-    scripts/config -d ANDROID
+    scripts/config -d ASHMEM -d ANDROID
 
     $_makecmd -s kernelrelease > version
     echo "Prepared $pkgbase version $(<version)"

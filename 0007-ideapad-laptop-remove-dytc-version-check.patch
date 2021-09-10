@@ -1,0 +1,23 @@
+diff -rupN zen-kernel-5.14.2-zen1.orig/drivers/platform/x86/ideapad-laptop.c zen-kernel-5.14.2-zen1/drivers/platform/x86/ideapad-laptop.c
+--- zen-kernel-5.14.2-zen1.orig/drivers/platform/x86/ideapad-laptop.c	2021-09-09 01:28:16.079531490 +0200
++++ zen-kernel-5.14.2-zen1/drivers/platform/x86/ideapad-laptop.c	2021-09-09 01:29:00.201507838 +0200
+@@ -869,7 +869,7 @@ static void dytc_profile_refresh(struct
+ 
+ static int ideapad_dytc_profile_init(struct ideapad_private *priv)
+ {
+-	int err, dytc_version;
++	int err;
+ 	unsigned long output;
+ 
+ 	if (!priv->features.dytc)
+@@ -884,10 +884,6 @@ static int ideapad_dytc_profile_init(str
+ 	if (!test_bit(DYTC_QUERY_ENABLE_BIT, &output))
+ 		return -ENODEV;
+ 
+-	dytc_version = (output >> DYTC_QUERY_REV_BIT) & 0xF;
+-	if (dytc_version < 5)
+-		return -ENODEV;
+-
+ 	priv->dytc = kzalloc(sizeof(*priv->dytc), GFP_KERNEL);
+ 	if (!priv->dytc)
+ 		return -ENOMEM;
