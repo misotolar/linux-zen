@@ -1,11 +1,11 @@
 _major=5.14
-_minor=2.zen1
+_minor=3.zen1
 
 pkgbase=linux-zen
 pkgname=("$pkgbase" "$pkgbase-headers")
 pkgdesc='Linux ZEN'
 pkgver="$_major.$_minor"
-pkgrel=2
+pkgrel=1
 
 _src="linux-$_major"
 _zen="v${pkgver%.*}-${pkgver##*.}"
@@ -33,7 +33,7 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v5.x/$_src.tar.xz"
 
 sha256sums=('7e068b5e0d26a62b10e5320b25dce57588cbbc6f781c090442138c9c9c3271b2'
             'SKIP'
-            '2ce448b2dd2223a0a80e08c54eb142bd8c22c5ee089d0856ef84b9ed18d97e2a'
+            '5a99915804313d9d98abc4d3e7c38335a4a9bd36301819e008dda856feb7385a'
             'SKIP'
             'c25fe528704550f12e3e38df985e962b7ea20ccf4a2357bb4a0f43b2aded078f'
             '775bad29e58a32f0aa3e05f88a850d924309ac6637e4244c8b58b298509b1e1f'
@@ -123,8 +123,8 @@ prepare() {
     scripts/config -d MODULE_ALLOW_MISSING_NAMESPACE_IMPORTS
 
     # Networking support
+    scripts/config -d TCP_CONG_CUBIC -d DEFAULT_CUBIC
     scripts/config -e TCP_CONG_BBR2 -e DEFAULT_BBR2
-    scripts/config -d TCP_CONG_CUBIC
 
     # Device Drivers
     scripts/config -e RANDOM_TRUST_CPU
