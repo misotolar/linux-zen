@@ -1,5 +1,5 @@
 _major=5.14
-_minor=3.zen1
+_minor=5.zen1
 
 pkgbase=linux-zen
 pkgname=("$pkgbase" "$pkgbase-headers")
@@ -33,7 +33,7 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v5.x/$_src.tar.xz"
 
 sha256sums=('7e068b5e0d26a62b10e5320b25dce57588cbbc6f781c090442138c9c9c3271b2'
             'SKIP'
-            '5a99915804313d9d98abc4d3e7c38335a4a9bd36301819e008dda856feb7385a'
+            '1212e22066a7a8f56404b8e731f1c507d9804473c72cc1f56f12e143fee44295'
             'SKIP'
             'c25fe528704550f12e3e38df985e962b7ea20ccf4a2357bb4a0f43b2aded078f'
             '775bad29e58a32f0aa3e05f88a850d924309ac6637e4244c8b58b298509b1e1f'
@@ -43,7 +43,7 @@ sha256sums=('7e068b5e0d26a62b10e5320b25dce57588cbbc6f781c090442138c9c9c3271b2'
             'd4a866659cd9c94e78e281c40080f5d91c9912d664bbe5cb29bd43b814e7dcf7'
             '8415f999d29ce6efa37f322129927b3b00495708794fa774fef09ef75e57f028'
             '7cb07c4c10d1bcce25d1073dbb9892faa0ccff10b4b61bb4f2f0d53e3e8a3958'
-            '8b3466c0896810146fa07ab38c51e765540a14b0e35661ccb62d867477b6157e')
+            'eae8111db0236184189d7a780e950b92a2e5461baf57d1c0a8020cec105dcee6')
 
 validpgpkeys=('ABAF11C65A2970B130ABE3C479BE3E4300411886'   # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E'   # Greg Kroah-Hartman
@@ -59,11 +59,6 @@ _makecmd="make LLVM=1 LLVM_IAS=1"
 prepare() {
     msg2 "Rebuilding local signing key..."
     cp -rf /usr/src/certs-local ../
-
-    sed -i 's/#O = Unspecified company/O = Michal Sotolar/' ../certs-local/x509.oot.genkey
-    sed -i 's/CN = Local Out of tree kernel module signing key/CN = Local kernel module signing key/' ../certs-local/x509.oot.genkey
-    sed -i 's/#emailAddress = unspecified.user@unspecified.company/emailAddress = michal@sotolar.com/' ../certs-local/x509.oot.genkey 
-
     cd ../certs-local
     ./genkeys.sh
 
