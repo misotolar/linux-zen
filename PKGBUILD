@@ -1,5 +1,5 @@
 _major=5.14
-_minor=5.zen1
+_minor=5.zen2
 
 pkgbase=linux-zen
 pkgname=("$pkgbase" "$pkgbase-headers")
@@ -14,7 +14,7 @@ arch=('x86_64')
 url="https://github.com/zen-kernel/zen-kernel/commits/$_zen"
 license=('GPL2')
 
-makedepends=('arch-sign-modules' 'bc' 'clang' 'cpio' 'git' 'kmod' 'libelf' 'llvm' 'lld' 'pahole' 'perl' 'rsync' 'tar' 'xmlto' 'zstd')
+makedepends=('arch-sign-modules' 'bc' 'clang' 'cpio' 'git' 'kmod' 'libelf' 'llvm' 'lld' 'pahole' 'perl' 'rsync' 'tar' 'xmlto' 'xz' 'zstd')
 options=('!strip')
 
 source=("https://cdn.kernel.org/pub/linux/kernel/v5.x/$_src.tar.xz"
@@ -33,7 +33,7 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v5.x/$_src.tar.xz"
 
 sha256sums=('7e068b5e0d26a62b10e5320b25dce57588cbbc6f781c090442138c9c9c3271b2'
             'SKIP'
-            '1212e22066a7a8f56404b8e731f1c507d9804473c72cc1f56f12e143fee44295'
+            'f7c082fc1682e2e34951c72afe6d06712e9c413f4abac6cc9b4695ca6c86f325'
             'SKIP'
             'c25fe528704550f12e3e38df985e962b7ea20ccf4a2357bb4a0f43b2aded078f'
             '775bad29e58a32f0aa3e05f88a850d924309ac6637e4244c8b58b298509b1e1f'
@@ -95,6 +95,8 @@ prepare() {
     # General setup
     scripts/config --set-str DEFAULT_HOSTNAME "$KBUILD_BUILD_HOST"
     scripts/config --set-val RCU_BOOST_DELAY 331
+    scripts/config -e SCHED_ALT -e SCHED_PDS
+    scripts/config -d SCHED_BMQ
     scripts/config -d BPF_LSM
     scripts/config -d BPF_PRELOAD
 
