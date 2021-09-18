@@ -1,7 +1,21 @@
-diff -rupN zen-kernel-5.13.9-zen1.orig/arch/x86/kernel/tsc.c zen-kernel-5.13.9-zen1/arch/x86/kernel/tsc.c
---- zen-kernel-5.13.9-zen1.orig/arch/x86/kernel/tsc.c	2021-08-08 22:35:53.320588666 +0200
-+++ zen-kernel-5.13.9-zen1/arch/x86/kernel/tsc.c	2021-08-08 22:38:56.842824944 +0200
-@@ -47,6 +47,7 @@ static unsigned int __initdata tsc_early
+diff --git a/Documentation/admin-guide/kernel-parameters.txt b/Documentation/admin-guide/kernel-parameters.txt
+index 783837476..d0446c2ac 100644
+--- a/Documentation/admin-guide/kernel-parameters.txt
++++ b/Documentation/admin-guide/kernel-parameters.txt
+@@ -5770,6 +5770,8 @@
+ 			in situations with strict latency requirements (where
+ 			interruptions from clocksource watchdog are not
+ 			acceptable).
++			[x86] directsync: attempt to sync the tsc via direct
++			writes if MSR_IA32_TSC_ADJUST isn't available
+ 
+ 	tsc_early_khz=  [X86] Skip early TSC calibration and use the given
+ 			value instead. Useful when the early TSC frequency discovery
+diff --git a/arch/x86/kernel/tsc.c b/arch/x86/kernel/tsc.c
+index 2e076a459..148a8c635 100644
+--- a/arch/x86/kernel/tsc.c
++++ b/arch/x86/kernel/tsc.c
+@@ -47,6 +47,7 @@ static unsigned int __initdata tsc_early_khz;
  static DEFINE_STATIC_KEY_FALSE(__use_tsc);
  
  int tsc_clocksource_reliable;
@@ -20,9 +34,10 @@ diff -rupN zen-kernel-5.13.9-zen1.orig/arch/x86/kernel/tsc.c zen-kernel-5.13.9-z
  	return 1;
  }
  
-diff -rupN zen-kernel-5.13.9-zen1.orig/arch/x86/kernel/tsc_sync.c zen-kernel-5.13.9-zen1/arch/x86/kernel/tsc_sync.c
---- zen-kernel-5.13.9-zen1.orig/arch/x86/kernel/tsc_sync.c	2021-08-08 22:35:53.320588666 +0200
-+++ zen-kernel-5.13.9-zen1/arch/x86/kernel/tsc_sync.c	2021-08-08 22:47:32.655946254 +0200
+diff --git a/arch/x86/kernel/tsc_sync.c b/arch/x86/kernel/tsc_sync.c
+index 50a4515fe..a6e725ef9 100644
+--- a/arch/x86/kernel/tsc_sync.c
++++ b/arch/x86/kernel/tsc_sync.c
 @@ -31,6 +31,8 @@ struct tsc_adjust {
  
  static DEFINE_PER_CPU(struct tsc_adjust, tsc_adjust);
@@ -32,7 +47,7 @@ diff -rupN zen-kernel-5.13.9-zen1.orig/arch/x86/kernel/tsc_sync.c zen-kernel-5.1
  /*
   * TSC's on different sockets may be reset asynchronously.
   * This may cause the TSC ADJUST value on socket 0 to be NOT 0.
-@@ -299,6 +301,8 @@ static cycles_t check_tsc_warp(unsigned
+@@ -299,6 +301,8 @@ static cycles_t check_tsc_warp(unsigned int timeout)
   */
  static inline unsigned int loop_timeout(int cpu)
  {
@@ -57,7 +72,7 @@ diff -rupN zen-kernel-5.13.9-zen1.orig/arch/x86/kernel/tsc_sync.c zen-kernel-5.1
  retry:
  	/*
  	 * Wait for the target to start or to skip the test:
-@@ -365,11 +371,19 @@ retry:
+@@ -365,11 +371,19 @@ void check_tsc_sync_source(int cpu)
  
  		pr_warn("TSC synchronization [CPU#%d -> CPU#%d]:\n",
  			smp_processor_id(), cpu);
@@ -74,13 +89,13 @@ diff -rupN zen-kernel-5.13.9-zen1.orig/arch/x86/kernel/tsc_sync.c zen-kernel-5.1
 +		} else {
 +			pr_warn("Measured %Ld cycles TSC warp between CPUs, "
 +				"leaving TSC on (hack, warp less that 1000 cycles)\n", max_warp);
-+	
++
 +		}
 +
  	}
  
  	/*
-@@ -393,6 +407,21 @@ retry:
+@@ -393,6 +407,21 @@ void check_tsc_sync_source(int cpu)
  		goto retry;
  }
  
@@ -111,22 +126,20 @@ diff -rupN zen-kernel-5.13.9-zen1.orig/arch/x86/kernel/tsc_sync.c zen-kernel-5.1
  	int cpus = 2;
  
  	/* Also aborts if there is no TSC. */
-@@ -480,12 +509,18 @@ retry:
+@@ -480,12 +509,18 @@ void check_tsc_sync_target(void)
  	 * value is used. In the worst case the adjustment needs to go
  	 * through a 3rd run for fine tuning.
  	 */
 -	cur->adjusted += cur_max_warp;
--
--	pr_warn("TSC ADJUST compensate: CPU%u observed %lld warp. Adjust: %lld\n",
--		cpu, cur_max_warp, cur->adjusted);
--
--	wrmsrl(MSR_IA32_TSC_ADJUST, cur->adjusted);
 +	if (boot_cpu_has(X86_FEATURE_TSC_ADJUST)) {
 +		cur->adjusted += cur_max_warp + est_overhead;
-+		
+ 
+-	pr_warn("TSC ADJUST compensate: CPU%u observed %lld warp. Adjust: %lld\n",
+-		cpu, cur_max_warp, cur->adjusted);
 +		pr_warn("TSC ADJUST compensate: CPU%u observed %lld warp. Adjust: %lld\n",
 +			cpu, cur_max_warp, cur->adjusted);
-+
+ 
+-	wrmsrl(MSR_IA32_TSC_ADJUST, cur->adjusted);
 +		wrmsrl(MSR_IA32_TSC_ADJUST, cur->adjusted);
 +	} else {
 +		pr_warn("TSC direct sync: CPU%u observed %lld warp. Overhead: %lld\n",
@@ -136,15 +149,3 @@ diff -rupN zen-kernel-5.13.9-zen1.orig/arch/x86/kernel/tsc_sync.c zen-kernel-5.1
  	goto retry;
  
  }
-diff -rupN zen-kernel-5.13.9-zen1.orig/Documentation/admin-guide/kernel-parameters.txt zen-kernel-5.13.9-zen1/Documentation/admin-guide/kernel-parameters.txt
---- zen-kernel-5.13.9-zen1.orig/Documentation/admin-guide/kernel-parameters.txt	2021-08-08 22:35:52.780590125 +0200
-+++ zen-kernel-5.13.9-zen1/Documentation/admin-guide/kernel-parameters.txt	2021-08-08 22:37:27.660089565 +0200
-@@ -5688,6 +5688,8 @@
- 			in situations with strict latency requirements (where
- 			interruptions from clocksource watchdog are not
- 			acceptable).
-+			[x86] directsync: attempt to sync the tsc via direct
-+			writes if MSR_IA32_TSC_ADJUST isn't available
- 
- 	tsc_early_khz=  [X86] Skip early TSC calibration and use the given
- 			value instead. Useful when the early TSC frequency discovery

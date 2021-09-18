@@ -1,5 +1,5 @@
 _major=5.14
-_minor=5.zen2
+_minor=6.zen1
 
 pkgbase=linux-zen
 pkgname=("$pkgbase" "$pkgbase-headers")
@@ -21,29 +21,31 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v5.x/$_src.tar.xz"
         "https://cdn.kernel.org/pub/linux/kernel/v5.x/$_src.tar.sign"
         "https://github.com/zen-kernel/zen-kernel/releases/download/$_zen/$_zen.patch.xz"
         "https://github.com/zen-kernel/zen-kernel/releases/download/$_zen/$_zen.patch.xz.sig"
+        "https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/linux-zen/trunk/config"
         '0001-XANMOD-kconfig-add-500Hz-timer-interrupt-kernel-conf.patch'
         '0002-XANMOD-block-set-rq_affinity-to-force-full-multithre.patch'
         '0003-XANMOD-lib-zstd-Add-kernel-specific-API.patch'
         '0004-XANMOD-lib-zstd-Add-decompress_sources.h-for-decompress_unz.patch'
         '0005-XANMOD-lib-zstd-Upgrade-to-latest-upstream-zstd-version-1.4.patch'
         '0006-XANMOD-MAINTAINERS-Add-maintainer-entry-for-zstd.patch'
-        '0007-ideapad-laptop-remove-dytc-version-check.patch'
-        '0008-tsc-directsync-gross-hack.patch'  # https://bugzilla.kernel.org/show_bug.cgi?id=202525
-        'config')
+        '0007-x86-tools-fix-llvm-objdump-syntax.patch'  # https://github.com/ClangBuiltLinux/linux/issues/1362
+        '0008-ideapad-laptop-remove-dytc-version-check.patch'
+        '0009-tsc-directsync-gross-hack.patch')  # https://bugzilla.kernel.org/show_bug.cgi?id=202525
 
 sha256sums=('7e068b5e0d26a62b10e5320b25dce57588cbbc6f781c090442138c9c9c3271b2'
             'SKIP'
-            'f7c082fc1682e2e34951c72afe6d06712e9c413f4abac6cc9b4695ca6c86f325'
+            'a277f603e60a7b285f8a717d4209a1680510f42446bce5e2a3f7146e09ed4a08'
             'SKIP'
+            'e4dafc832ab5c7401d06a4758048e40e9a3ba7db6e764061708c9bf063e05bff'
             'c25fe528704550f12e3e38df985e962b7ea20ccf4a2357bb4a0f43b2aded078f'
             '775bad29e58a32f0aa3e05f88a850d924309ac6637e4244c8b58b298509b1e1f'
             'f7718fa14ceb049a5c75796da26d30581deb25b0c8bc3774e57170c9ad38b503'
             '85c789f8fc229dee1ae896b052ee03351e96ae5b963fa346608fdc7891d865b0'
             '344331792c8b38719aa28804e1e5de08d88499734a7c2228d7c2f487374eb0a2'
             'd4a866659cd9c94e78e281c40080f5d91c9912d664bbe5cb29bd43b814e7dcf7'
-            '8415f999d29ce6efa37f322129927b3b00495708794fa774fef09ef75e57f028'
-            '7cb07c4c10d1bcce25d1073dbb9892faa0ccff10b4b61bb4f2f0d53e3e8a3958'
-            'eae8111db0236184189d7a780e950b92a2e5461baf57d1c0a8020cec105dcee6')
+            'd5ce94a811ef49161fb681dff5e48ae52e4dafbbf17270613fbbd1a3f87e3fee'
+            'cee6ac8807cec8cc47dc383e90aee651dd544bd778cb458eb249a0d79fe44467'
+            '4d2ad28ed803d7b382f9e0ba6f449c1a0d8d0d8f1ecc31fde56f4556cefc802e')
 
 validpgpkeys=('ABAF11C65A2970B130ABE3C479BE3E4300411886'   # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E'   # Greg Kroah-Hartman
@@ -101,7 +103,7 @@ prepare() {
     scripts/config -d BPF_PRELOAD
 
     # Processor type and features
-    scripts/config --set-val NR_CPUS 16
+    scripts/config --set-val NR_CPUS $(nproc) 
     scripts/config -e MZEN -d GENERIC_CPU
     scripts/config -e HZ_500 -d HZ_1000
     scripts/config -d HYPERVISOR_GUEST

@@ -1,3 +1,4 @@
+/config
 /makepkg
 *.tar.sign
 *.tar.xz
