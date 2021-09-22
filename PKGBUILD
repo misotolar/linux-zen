@@ -1,5 +1,5 @@
 _major=5.14
-_minor=6.zen1
+_minor=7.zen1
 
 pkgbase=linux-zen
 pkgname=("$pkgbase" "$pkgbase-headers")
@@ -30,11 +30,11 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v5.x/$_src.tar.xz"
         '0006-XANMOD-MAINTAINERS-Add-maintainer-entry-for-zstd.patch'
         '0007-x86-tools-fix-llvm-objdump-syntax.patch'  # https://github.com/ClangBuiltLinux/linux/issues/1362
         '0008-ideapad-laptop-remove-dytc-version-check.patch'
-        '0009-tsc-directsync-gross-hack.patch')  # https://bugzilla.kernel.org/show_bug.cgi?id=202525
+        '0009-tsc-directsync-gross-hack.patch')         # https://bugzilla.kernel.org/show_bug.cgi?id=202525
 
 sha256sums=('7e068b5e0d26a62b10e5320b25dce57588cbbc6f781c090442138c9c9c3271b2'
             'SKIP'
-            'a277f603e60a7b285f8a717d4209a1680510f42446bce5e2a3f7146e09ed4a08'
+            '0fb250ca2795c83d3919b6cdca0a1c25aac1c19092b1b0dc5e1d30bd72aaf2d4'
             'SKIP'
             'e4dafc832ab5c7401d06a4758048e40e9a3ba7db6e764061708c9bf063e05bff'
             'c25fe528704550f12e3e38df985e962b7ea20ccf4a2357bb4a0f43b2aded078f'
@@ -103,7 +103,7 @@ prepare() {
     scripts/config -d BPF_PRELOAD
 
     # Processor type and features
-    scripts/config --set-val NR_CPUS $(nproc) 
+    scripts/config --set-val NR_CPUS 16
     scripts/config -e MZEN -d GENERIC_CPU
     scripts/config -e HZ_500 -d HZ_1000
     scripts/config -d HYPERVISOR_GUEST
