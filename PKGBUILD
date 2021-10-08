@@ -1,5 +1,5 @@
 _major=5.14
-_minor=9.zen2
+_minor=10.zen1
 
 pkgbase=linux-zen
 pkgname=("$pkgbase" "$pkgbase-headers")
@@ -34,15 +34,15 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v5.x/$_src.tar.xz"
 
 sha256sums=('7e068b5e0d26a62b10e5320b25dce57588cbbc6f781c090442138c9c9c3271b2'
             'SKIP'
-            'c17a9c5d403b53fc50e72a827382a364c139ea4cffdbc2e4e3c18f9dc722db8f'
+            '41d1e186a71c31667f6afcf2434ba22eaf704fce503fb36314c7a5c3ccc7e18e'
             'SKIP'
-            'c4fb5934f76a4ca1721e184fb7a8a64d7e1494773586094b16304bcde1435663'
+            '63e0f2005987ddcea2bf7325dc1055d4fa9ba6e71e59ad09f0e2702db34c9f45'
             'c25fe528704550f12e3e38df985e962b7ea20ccf4a2357bb4a0f43b2aded078f'
             '775bad29e58a32f0aa3e05f88a850d924309ac6637e4244c8b58b298509b1e1f'
-            'f7718fa14ceb049a5c75796da26d30581deb25b0c8bc3774e57170c9ad38b503'
-            '85c789f8fc229dee1ae896b052ee03351e96ae5b963fa346608fdc7891d865b0'
-            '344331792c8b38719aa28804e1e5de08d88499734a7c2228d7c2f487374eb0a2'
-            'd4a866659cd9c94e78e281c40080f5d91c9912d664bbe5cb29bd43b814e7dcf7'
+            '2080a7686c3cca78ec9053ecda20b57471f5766a1b26d56394dd6399f06cc088'
+            '1fecb903e7a43e7e3d656736897aeb79b5e2f391809651cdd135451c2d98f29f'
+            'be8e6b7cc28a3283385d393512f03e3b3160d0037dcc33440a37f01eaec5c90d'
+            'a2b19107686999c0aa1e8f07d9cfdadb7bb75564baa0105d3b68525591a4801c'
             'd5ce94a811ef49161fb681dff5e48ae52e4dafbbf17270613fbbd1a3f87e3fee'
             'cee6ac8807cec8cc47dc383e90aee651dd544bd778cb458eb249a0d79fe44467'
             '4d2ad28ed803d7b382f9e0ba6f449c1a0d8d0d8f1ecc31fde56f4556cefc802e')
