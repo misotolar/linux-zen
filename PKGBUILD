@@ -1,5 +1,5 @@
 _major=5.14
-_minor=12.zen1
+_minor=13.zen1
 
 pkgbase=linux-zen
 pkgname=("$pkgbase" "$pkgbase-headers")
@@ -31,11 +31,12 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v5.x/$_src.tar.xz"
         '0007-XANMOD-lib-zstd-Add-kernel-specific-API.patch'::"https://raw.githubusercontent.com/xanmod/linux-patches/master/linux-$_major.y-xanmod/lib_zstd/0001-lib-zstd-Add-kernel-specific-API.patch"
         '0008-XANMOD-lib-zstd-Add-decompress_sources.h-for-decompress_unz.patch'::"https://raw.githubusercontent.com/xanmod/linux-patches/master/linux-$_major.y-xanmod/lib_zstd/0002-lib-zstd-Add-decompress_sources.h-for-decompress_unz.patch"
         '0009-XANMOD-lib-zstd-Upgrade-to-latest-upstream-zstd-version-1.4.patch'::"https://raw.githubusercontent.com/xanmod/linux-patches/master/linux-$_major.y-xanmod/lib_zstd/0003-lib-zstd-Upgrade-to-latest-upstream-zstd-version-1.4.patch"
-        '0010-XANMOD-MAINTAINERS-Add-maintainer-entry-for-zstd.patch'::"https://raw.githubusercontent.com/xanmod/linux-patches/master/linux-$_major.y-xanmod/lib_zstd/0004-MAINTAINERS-Add-maintainer-entry-for-zstd.patch")
+        '0010-XANMOD-MAINTAINERS-Add-maintainer-entry-for-zstd.patch'::"https://raw.githubusercontent.com/xanmod/linux-patches/master/linux-$_major.y-xanmod/lib_zstd/0004-MAINTAINERS-Add-maintainer-entry-for-zstd.patch"
+        '0011-XANMOD-lib-zstd-Update-to-next-20211012.patch'::"https://raw.githubusercontent.com/xanmod/linux-patches/master/linux-$_major.y-xanmod/lib_zstd/0005-lib-zstd-Update-to-next-20211012.patch")
 
 sha256sums=('7e068b5e0d26a62b10e5320b25dce57588cbbc6f781c090442138c9c9c3271b2'
             'SKIP'
-            'b635b615fe17a28a5e1d407a246a811d620be6120b49e75c88713525b07a0106'
+            '6060c96a3c5e6b253561a6a5ce9e0454606e435528be0722c7f1b4e22eb72fd4'
             'SKIP'
             '81e0e128281e32025961a20bc0cee5f9ca1f094d4ce8bb387623fd8125970192'
             'd5ce94a811ef49161fb681dff5e48ae52e4dafbbf17270613fbbd1a3f87e3fee'
@@ -47,7 +48,8 @@ sha256sums=('7e068b5e0d26a62b10e5320b25dce57588cbbc6f781c090442138c9c9c3271b2'
             '5eabc479b63200545d3a6bb2be228732a73a854975124213639f95d365a613e7'
             'c74a4c6bf4bf27c41a8f6e66cda8c5bb009f0cd8f13a36e9bcbdb78268978ade'
             '67fb9a24e5f32f891a714b31ece29ee1645cc351d0f2fcc9f9fe3b36e646813c'
-            'f4042a06208ad82a2538b5c31d7e7d89cf42de37f9899cb038d9c5e51643ad70')
+            'f4042a06208ad82a2538b5c31d7e7d89cf42de37f9899cb038d9c5e51643ad70'
+            '4525abca7cfd2e41bef4ebcf079085b5880bcb453387f2baae898884349d23fd')
 
 validpgpkeys=('ABAF11C65A2970B130ABE3C479BE3E4300411886'   # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E'   # Greg Kroah-Hartman
