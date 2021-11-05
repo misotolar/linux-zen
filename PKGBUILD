@@ -1,5 +1,5 @@
-_major=5.14
-_minor=16.zen1
+_major=5.15
+_minor=zen1
 
 pkgbase=linux-zen
 pkgname=("$pkgbase" "$pkgbase-headers")
@@ -25,31 +25,35 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v5.x/$_src.tar.xz"
         '0001-x86-tools-fix-llvm-objdump-syntax.patch'  # https://github.com/ClangBuiltLinux/linux/issues/1362
         '0002-ideapad-laptop-remove-dytc-version-check.patch'
         '0003-tsc-directsync-gross-hack.patch'          # https://bugzilla.kernel.org/show_bug.cgi?id=202525
-        '0004-XANMOD-block-set-rq_affinity-to-force-full-multithre.patch'::"https://raw.githubusercontent.com/xanmod/linux-patches/master/linux-$_major.y-xanmod/xanmod/0003-XANMOD-block-set-rq_affinity-to-force-full-multithre.patch"
-        '0005-XANMOD-kconfig-add-500Hz-timer-interrupt-kernel-conf.patch'::"https://raw.githubusercontent.com/xanmod/linux-patches/master/linux-$_major.y-xanmod/xanmod/0004-XANMOD-kconfig-add-500Hz-timer-interrupt-kernel-conf.patch"
-        '0006-XANMOD-lib-kconfig.debug-disable-default-CONFIG_SYMB.patch'::"https://raw.githubusercontent.com/xanmod/linux-patches/master/linux-$_major.y-xanmod/xanmod/0011-XANMOD-lib-kconfig.debug-disable-default-CONFIG_SYMB.patch"
-        '0007-XANMOD-lib-zstd-Add-kernel-specific-API.patch'::"https://raw.githubusercontent.com/xanmod/linux-patches/master/linux-$_major.y-xanmod/lib_zstd/0001-lib-zstd-Add-kernel-specific-API.patch"
-        '0008-XANMOD-lib-zstd-Add-decompress_sources.h-for-decompress_unz.patch'::"https://raw.githubusercontent.com/xanmod/linux-patches/master/linux-$_major.y-xanmod/lib_zstd/0002-lib-zstd-Add-decompress_sources.h-for-decompress_unz.patch"
-        '0009-XANMOD-lib-zstd-Upgrade-to-latest-upstream-zstd-version-1.4.patch'::"https://raw.githubusercontent.com/xanmod/linux-patches/master/linux-$_major.y-xanmod/lib_zstd/0003-lib-zstd-Upgrade-to-latest-upstream-zstd-version-1.4.patch"
-        '0010-XANMOD-MAINTAINERS-Add-maintainer-entry-for-zstd.patch'::"https://raw.githubusercontent.com/xanmod/linux-patches/master/linux-$_major.y-xanmod/lib_zstd/0004-MAINTAINERS-Add-maintainer-entry-for-zstd.patch"
-        '0011-XANMOD-lib-zstd-Update-to-next-20211012.patch'::"https://raw.githubusercontent.com/xanmod/linux-patches/master/linux-$_major.y-xanmod/lib_zstd/0005-lib-zstd-Update-to-next-20211012.patch")
+        "0004-prjc_v$_major-r0.patch"
+        '0005-XANMOD-block-set-rq_affinity-to-force-full-multithre.patch'::"https://raw.githubusercontent.com/xanmod/linux-patches/master/linux-$_major.y-xanmod/xanmod/0003-XANMOD-block-set-rq_affinity-to-force-full-multithre.patch"
+        '0006-XANMOD-kconfig-add-500Hz-timer-interrupt-kernel-conf.patch'::"https://raw.githubusercontent.com/xanmod/linux-patches/master/linux-$_major.y-xanmod/xanmod/0004-XANMOD-kconfig-add-500Hz-timer-interrupt-kernel-conf.patch"
+        '0007-XANMOD-lib-kconfig.debug-disable-default-CONFIG_SYMB.patch'::"https://raw.githubusercontent.com/xanmod/linux-patches/master/linux-$_major.y-xanmod/xanmod/0010-XANMOD-lib-kconfig.debug-disable-default-CONFIG_SYMB.patch"
+        '0008-XANMOD-lib-zstd-Add-kernel-specific-API.patch'::"https://raw.githubusercontent.com/xanmod/linux-patches/master/linux-$_major.y-xanmod/lib_zstd/0001-lib-zstd-Add-kernel-specific-API.patch"
+        '0009-XANMOD-lib-zstd-Add-decompress_sources.h-for-decompress_unz.patch'::"https://raw.githubusercontent.com/xanmod/linux-patches/master/linux-$_major.y-xanmod/lib_zstd/0002-lib-zstd-Add-decompress_sources.h-for-decompress_unz.patch"
+        '0010-XANMOD-lib-zstd-Upgrade-to-latest-upstream-zstd-version-1.4.patch'::"https://raw.githubusercontent.com/xanmod/linux-patches/master/linux-$_major.y-xanmod/lib_zstd/0003-lib-zstd-Upgrade-to-latest-upstream-zstd-version-1.4.patch"
+        '0011-XANMOD-MAINTAINERS-Add-maintainer-entry-for-zstd.patch'::"https://raw.githubusercontent.com/xanmod/linux-patches/master/linux-$_major.y-xanmod/lib_zstd/0004-MAINTAINERS-Add-maintainer-entry-for-zstd.patch"
+        '0012-XANMOD-kbuild-Add-make-tarzst-pkg-build-option.patch'::"https://raw.githubusercontent.com/xanmod/linux-patches/master/linux-$_major.y-xanmod/lib_zstd/0005-kbuild-Add-make-tarzst-pkg-build-option.patch"
+        '0013-XANMOD-lib-zstd-Add-cast-to-silence-clang-s-Wbitwise-instea.patch'::"https://raw.githubusercontent.com/xanmod/linux-patches/master/linux-$_major.y-xanmod/lib_zstd/0006-lib-zstd-Add-cast-to-silence-clang-s-Wbitwise-instea.patch")
 
-sha256sums=('7e068b5e0d26a62b10e5320b25dce57588cbbc6f781c090442138c9c9c3271b2'
+sha256sums=('57b2cf6991910e3b67a1b3490022e8a0674b6965c74c12da1e99d138d1991ee8'
             'SKIP'
-            '1ed6fec4b9ebfba6aab0f519bb7b675727075f60e3c61179f2b966443a7afa65'
+            '133fdfeecef325fd47e569e308451bdebb70346ee03c21808247fadc0f95e1d7'
             'SKIP'
-            '81e0e128281e32025961a20bc0cee5f9ca1f094d4ce8bb387623fd8125970192'
+            'a366da315c60a7df13894372eba01c5bcc3eced0eff96edfb1b1b2f45a41243a'
             'd5ce94a811ef49161fb681dff5e48ae52e4dafbbf17270613fbbd1a3f87e3fee'
             'cee6ac8807cec8cc47dc383e90aee651dd544bd778cb458eb249a0d79fe44467'
             '4d2ad28ed803d7b382f9e0ba6f449c1a0d8d0d8f1ecc31fde56f4556cefc802e'
-            '3ab45f8b255326edc5a6525e5e68e41f3ad3d716ced3321f790b2ff80fe994e8'
-            '7f828571f7e2ca595c86ff4b833485d63a487b857fa8aee7a4b08ffe5d20a02c'
-            '0b779987c4f2bf5f3e77c9854b8e87fb7f684ea359e9ef4c10738b7e1b3e1baa'
-            '5eabc479b63200545d3a6bb2be228732a73a854975124213639f95d365a613e7'
-            'c74a4c6bf4bf27c41a8f6e66cda8c5bb009f0cd8f13a36e9bcbdb78268978ade'
-            '67fb9a24e5f32f891a714b31ece29ee1645cc351d0f2fcc9f9fe3b36e646813c'
-            'f4042a06208ad82a2538b5c31d7e7d89cf42de37f9899cb038d9c5e51643ad70'
-            '4525abca7cfd2e41bef4ebcf079085b5880bcb453387f2baae898884349d23fd')
+            'decd4a55c0d47b1eb808733490cdfea1207a2022d46f06d04a3cc60fdcb3f32c'
+            '254f3408b87b57a0ba7efaeb5e1e1168dbbcaee3c8563be0676db2e932908013'
+            '9cbd6dc9e98354127bf976125717a7366607d296bfe4ada4f3b0b30f4289c6ed'
+            '0921a18963631ed8de7b61bf0d3099efe1c54474f7c69f482a83e7aaa9f4db7f'
+            '58da9db644a0a5d6b8e05a3c0a29eb08be4749b456964d5ea8bc3ee38b0b3092'
+            '3b71745b6623ba47ece7f391502191c06cb8cd94943448496c76c68bb638bbc3'
+            'c7e7faa24936c927446f204bf2756efbd6107d44e6fc72284ad02261a106c6d9'
+            'd4965df8129092e25483f9508fb7e5fc5161c16845c61bbebea1363c3df8b33a'
+            '01fc1e457e652b8283aec1fbdf3f5f895be2cddf1c969a9a01cacbb14fda1cef'
+            '1395d66cc9af1974fea34a4bb53a43d9e8b2a49b3c2610edf220eff5e92c90e7')
 
 validpgpkeys=('ABAF11C65A2970B130ABE3C479BE3E4300411886'   # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E'   # Greg Kroah-Hartman
@@ -173,7 +177,7 @@ _package() {
     depends=('coreutils' 'kmod' 'initramfs')
     optdepends=('crda: to set the correct wireless channels of your country'
                 'linux-firmware: firmware images needed for some devices')
-    provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE VHBA-MODULE)
+    provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE VHBA-MODULE KSMBD-MODULE)
     replaces=()
 
     cd $_src
