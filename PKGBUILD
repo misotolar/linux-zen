@@ -1,5 +1,5 @@
 _major=5.15
-_minor=zen1
+_minor=1.zen1
 
 pkgbase=linux-zen
 pkgname=("$pkgbase" "$pkgbase-headers")
@@ -25,26 +25,24 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v5.x/$_src.tar.xz"
         '0001-x86-tools-fix-llvm-objdump-syntax.patch'  # https://github.com/ClangBuiltLinux/linux/issues/1362
         '0002-ideapad-laptop-remove-dytc-version-check.patch'
         '0003-tsc-directsync-gross-hack.patch'          # https://bugzilla.kernel.org/show_bug.cgi?id=202525
-        "0004-prjc_v$_major-r0.patch"
-        '0005-XANMOD-block-set-rq_affinity-to-force-full-multithre.patch'::"https://raw.githubusercontent.com/xanmod/linux-patches/master/linux-$_major.y-xanmod/xanmod/0003-XANMOD-block-set-rq_affinity-to-force-full-multithre.patch"
-        '0006-XANMOD-kconfig-add-500Hz-timer-interrupt-kernel-conf.patch'::"https://raw.githubusercontent.com/xanmod/linux-patches/master/linux-$_major.y-xanmod/xanmod/0004-XANMOD-kconfig-add-500Hz-timer-interrupt-kernel-conf.patch"
-        '0007-XANMOD-lib-kconfig.debug-disable-default-CONFIG_SYMB.patch'::"https://raw.githubusercontent.com/xanmod/linux-patches/master/linux-$_major.y-xanmod/xanmod/0010-XANMOD-lib-kconfig.debug-disable-default-CONFIG_SYMB.patch"
-        '0008-XANMOD-lib-zstd-Add-kernel-specific-API.patch'::"https://raw.githubusercontent.com/xanmod/linux-patches/master/linux-$_major.y-xanmod/lib_zstd/0001-lib-zstd-Add-kernel-specific-API.patch"
-        '0009-XANMOD-lib-zstd-Add-decompress_sources.h-for-decompress_unz.patch'::"https://raw.githubusercontent.com/xanmod/linux-patches/master/linux-$_major.y-xanmod/lib_zstd/0002-lib-zstd-Add-decompress_sources.h-for-decompress_unz.patch"
-        '0010-XANMOD-lib-zstd-Upgrade-to-latest-upstream-zstd-version-1.4.patch'::"https://raw.githubusercontent.com/xanmod/linux-patches/master/linux-$_major.y-xanmod/lib_zstd/0003-lib-zstd-Upgrade-to-latest-upstream-zstd-version-1.4.patch"
-        '0011-XANMOD-MAINTAINERS-Add-maintainer-entry-for-zstd.patch'::"https://raw.githubusercontent.com/xanmod/linux-patches/master/linux-$_major.y-xanmod/lib_zstd/0004-MAINTAINERS-Add-maintainer-entry-for-zstd.patch"
-        '0012-XANMOD-kbuild-Add-make-tarzst-pkg-build-option.patch'::"https://raw.githubusercontent.com/xanmod/linux-patches/master/linux-$_major.y-xanmod/lib_zstd/0005-kbuild-Add-make-tarzst-pkg-build-option.patch"
-        '0013-XANMOD-lib-zstd-Add-cast-to-silence-clang-s-Wbitwise-instea.patch'::"https://raw.githubusercontent.com/xanmod/linux-patches/master/linux-$_major.y-xanmod/lib_zstd/0006-lib-zstd-Add-cast-to-silence-clang-s-Wbitwise-instea.patch")
+        '0004-XANMOD-block-set-rq_affinity-to-force-full-multithre.patch'::"https://raw.githubusercontent.com/xanmod/linux-patches/master/linux-$_major.y-xanmod/xanmod/0003-XANMOD-block-set-rq_affinity-to-force-full-multithre.patch"
+        '0005-XANMOD-kconfig-add-500Hz-timer-interrupt-kernel-conf.patch'::"https://raw.githubusercontent.com/xanmod/linux-patches/master/linux-$_major.y-xanmod/xanmod/0004-XANMOD-kconfig-add-500Hz-timer-interrupt-kernel-conf.patch"
+        '0006-XANMOD-lib-kconfig.debug-disable-default-CONFIG_SYMB.patch'::"https://raw.githubusercontent.com/xanmod/linux-patches/master/linux-$_major.y-xanmod/xanmod/0010-XANMOD-lib-kconfig.debug-disable-default-CONFIG_SYMB.patch"
+        '0007-XANMOD-lib-zstd-Add-kernel-specific-API.patch'::"https://raw.githubusercontent.com/xanmod/linux-patches/master/linux-$_major.y-xanmod/lib_zstd/0001-lib-zstd-Add-kernel-specific-API.patch"
+        '0008-XANMOD-lib-zstd-Add-decompress_sources.h-for-decompress_unz.patch'::"https://raw.githubusercontent.com/xanmod/linux-patches/master/linux-$_major.y-xanmod/lib_zstd/0002-lib-zstd-Add-decompress_sources.h-for-decompress_unz.patch"
+        '0009-XANMOD-lib-zstd-Upgrade-to-latest-upstream-zstd-version-1.4.patch'::"https://raw.githubusercontent.com/xanmod/linux-patches/master/linux-$_major.y-xanmod/lib_zstd/0003-lib-zstd-Upgrade-to-latest-upstream-zstd-version-1.4.patch"
+        '0010-XANMOD-MAINTAINERS-Add-maintainer-entry-for-zstd.patch'::"https://raw.githubusercontent.com/xanmod/linux-patches/master/linux-$_major.y-xanmod/lib_zstd/0004-MAINTAINERS-Add-maintainer-entry-for-zstd.patch"
+        '0011-XANMOD-kbuild-Add-make-tarzst-pkg-build-option.patch'::"https://raw.githubusercontent.com/xanmod/linux-patches/master/linux-$_major.y-xanmod/lib_zstd/0005-kbuild-Add-make-tarzst-pkg-build-option.patch"
+        '0012-XANMOD-lib-zstd-Add-cast-to-silence-clang-s-Wbitwise-instea.patch'::"https://raw.githubusercontent.com/xanmod/linux-patches/master/linux-$_major.y-xanmod/lib_zstd/0006-lib-zstd-Add-cast-to-silence-clang-s-Wbitwise-instea.patch")
 
 sha256sums=('57b2cf6991910e3b67a1b3490022e8a0674b6965c74c12da1e99d138d1991ee8'
             'SKIP'
-            '133fdfeecef325fd47e569e308451bdebb70346ee03c21808247fadc0f95e1d7'
+            '9c57af26c74164e2a274b0cd6649cbcdfdb247b8087395908ab4213ac4a5ab2b'
             'SKIP'
-            'a366da315c60a7df13894372eba01c5bcc3eced0eff96edfb1b1b2f45a41243a'
+            'b29b13903c346cdde77af319c3fd5f62b463c8e39f6fb75a5741e4e1c0e7a6eb'
             'd5ce94a811ef49161fb681dff5e48ae52e4dafbbf17270613fbbd1a3f87e3fee'
             'cee6ac8807cec8cc47dc383e90aee651dd544bd778cb458eb249a0d79fe44467'
             '4d2ad28ed803d7b382f9e0ba6f449c1a0d8d0d8f1ecc31fde56f4556cefc802e'
-            'decd4a55c0d47b1eb808733490cdfea1207a2022d46f06d04a3cc60fdcb3f32c'
             '254f3408b87b57a0ba7efaeb5e1e1168dbbcaee3c8563be0676db2e932908013'
             '9cbd6dc9e98354127bf976125717a7366607d296bfe4ada4f3b0b30f4289c6ed'
             '0921a18963631ed8de7b61bf0d3099efe1c54474f7c69f482a83e7aaa9f4db7f'
@@ -109,6 +107,8 @@ prepare() {
     scripts/config -d SCHED_BMQ
     scripts/config -d BPF_LSM
     scripts/config -d BPF_PRELOAD
+    scripts/config -d MQ_IOSCHED_KYBER
+    scripts/config -e PSI_DEFAULT_DISABLED
 
     # Processor type and features
     scripts/config --set-val NR_CPUS 16
@@ -138,6 +138,8 @@ prepare() {
     scripts/config -d BPF_LIRC_MODE2
     scripts/config -d INTEL_IOMMU
     scripts/config -d WATCHDOG
+    scripts/config -d ANDROID
+    scripts/config -d ASHMEM 
 
     # Security options
     scripts/config -d SECURITY_SELINUX
@@ -148,20 +150,7 @@ prepare() {
     scripts/config -d DEBUG_INFO
     scripts/config -d SYMBOLIC_ERRNAME
     scripts/config -d BPF_KPROBE_OVERRIDE
-    scripts/config -d FUNCTION_TRACER
-    scripts/config -d STACK_TRACER
-
-    # https://bbs.archlinux.org/viewtopic.php?pid=1824594#p1824594
-    scripts/config -e PSI_DEFAULT_DISABLED
-
-    # https://bbs.archlinux.org/viewtopic.php?pid=1863567#p1863567
-    scripts/config -d LATENCYTOP -d SCHED_DEBUG
-
-    # https://bugs.archlinux.org/task/66613
-    scripts/config -d KVM_WERROR
-
-    # https://bugs.archlinux.org/task/67614
-    scripts/config -d ASHMEM -d ANDROID
+    scripts/config -d FTRACE
 
     $_makecmd -s kernelrelease > version
     echo "Prepared $pkgbase version $(<version)"
