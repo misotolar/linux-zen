@@ -1,5 +1,5 @@
 _major=5.15
-_minor=2.zen1
+_minor=3.zen1
 
 pkgbase=linux-zen
 pkgname=("$pkgbase" "$pkgbase-headers")
@@ -9,6 +9,8 @@ pkgrel=1
 
 _src="linux-$_major"
 _zen="v${pkgver%.*}-${pkgver##*.}"
+
+_xanmod="https://raw.githubusercontent.com/xanmod/linux-patches/master/linux-$_major.y-xanmod"
 
 arch=('x86_64')
 url="https://github.com/zen-kernel/zen-kernel/commits/$_zen"
@@ -25,24 +27,50 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v5.x/$_src.tar.xz"
         '0001-x86-tools-fix-llvm-objdump-syntax.patch'  # https://github.com/ClangBuiltLinux/linux/issues/1362
         '0002-ideapad-laptop-remove-dytc-version-check.patch'
         '0003-tsc-directsync-gross-hack.patch'          # https://bugzilla.kernel.org/show_bug.cgi?id=202525
-        '0004-XANMOD-block-set-rq_affinity-to-force-full-multithre.patch'::"https://raw.githubusercontent.com/xanmod/linux-patches/master/linux-$_major.y-xanmod/xanmod/0003-XANMOD-block-set-rq_affinity-to-force-full-multithre.patch"
-        '0005-XANMOD-kconfig-add-500Hz-timer-interrupt-kernel-conf.patch'::"https://raw.githubusercontent.com/xanmod/linux-patches/master/linux-$_major.y-xanmod/xanmod/0004-XANMOD-kconfig-add-500Hz-timer-interrupt-kernel-conf.patch"
-        '0006-XANMOD-lib-kconfig.debug-disable-default-CONFIG_SYMB.patch'::"https://raw.githubusercontent.com/xanmod/linux-patches/master/linux-$_major.y-xanmod/xanmod/0010-XANMOD-lib-kconfig.debug-disable-default-CONFIG_SYMB.patch"
-        '0007-XANMOD-lib-zstd-Add-kernel-specific-API.patch'::"https://raw.githubusercontent.com/xanmod/linux-patches/master/linux-$_major.y-xanmod/lib_zstd/0001-lib-zstd-Add-kernel-specific-API.patch"
-        '0008-XANMOD-lib-zstd-Add-decompress_sources.h-for-decompress_unz.patch'::"https://raw.githubusercontent.com/xanmod/linux-patches/master/linux-$_major.y-xanmod/lib_zstd/0002-lib-zstd-Add-decompress_sources.h-for-decompress_unz.patch"
-        '0009-XANMOD-lib-zstd-Upgrade-to-latest-upstream-zstd-version-1.4.patch'::"https://raw.githubusercontent.com/xanmod/linux-patches/master/linux-$_major.y-xanmod/lib_zstd/0003-lib-zstd-Upgrade-to-latest-upstream-zstd-version-1.4.patch"
-        '0010-XANMOD-MAINTAINERS-Add-maintainer-entry-for-zstd.patch'::"https://raw.githubusercontent.com/xanmod/linux-patches/master/linux-$_major.y-xanmod/lib_zstd/0004-MAINTAINERS-Add-maintainer-entry-for-zstd.patch"
-        '0011-XANMOD-kbuild-Add-make-tarzst-pkg-build-option.patch'::"https://raw.githubusercontent.com/xanmod/linux-patches/master/linux-$_major.y-xanmod/lib_zstd/0005-kbuild-Add-make-tarzst-pkg-build-option.patch"
-        '0012-XANMOD-lib-zstd-Add-cast-to-silence-clang-s-Wbitwise-instea.patch'::"https://raw.githubusercontent.com/xanmod/linux-patches/master/linux-$_major.y-xanmod/lib_zstd/0006-lib-zstd-Add-cast-to-silence-clang-s-Wbitwise-instea.patch")
+        '0004-prjc_v5.15-r1.patch'
+        '0101-XANMOD-block-set-rq_affinity-to-force-full-multithre.patch'::"$_xanmod/xanmod/0003-XANMOD-block-set-rq_affinity-to-force-full-multithre.patch"
+        '0102-XANMOD-kconfig-add-500Hz-timer-interrupt-kernel-conf.patch'::"$_xanmod/xanmod/0004-XANMOD-kconfig-add-500Hz-timer-interrupt-kernel-conf.patch"
+        '0103-XANMOD-lib-kconfig.debug-disable-default-CONFIG_SYMB.patch'::"$_xanmod/xanmod/0010-XANMOD-lib-kconfig.debug-disable-default-CONFIG_SYMB.patch"
+        '0104-XANMOD-lib-zstd-Add-kernel-specific-API.patch'::"$_xanmod/lib_zstd/0001-lib-zstd-Add-kernel-specific-API.patch"
+        '0105-XANMOD-lib-zstd-Add-decompress_sources.h-for-decompress_unz.patch'::"$_xanmod/lib_zstd/0002-lib-zstd-Add-decompress_sources.h-for-decompress_unz.patch"
+        '0106-XANMOD-lib-zstd-Upgrade-to-latest-upstream-zstd-version-1.4.patch'::"$_xanmod/lib_zstd/0003-lib-zstd-Upgrade-to-latest-upstream-zstd-version-1.4.patch"
+        '0107-XANMOD-MAINTAINERS-Add-maintainer-entry-for-zstd.patch'::"$_xanmod/lib_zstd/0004-MAINTAINERS-Add-maintainer-entry-for-zstd.patch"
+        '0108-XANMOD-kbuild-Add-make-tarzst-pkg-build-option.patch'::"$_xanmod/lib_zstd/0005-kbuild-Add-make-tarzst-pkg-build-option.patch"
+        '0109-XANMOD-lib-zstd-Add-cast-to-silence-clang-s-Wbitwise-instea.patch'::"$_xanmod/lib_zstd/0006-lib-zstd-Add-cast-to-silence-clang-s-Wbitwise-instea.patch"
+        '0110-XANMOD-net-introduce-sk_forward_alloc_get.patch'::"$_xanmod/net/0001-net-introduce-sk_forward_alloc_get.patch"
+        '0111-XANMOD-tcp-move-inet-rx_dst_ifindex-to-sk-sk_rx_dst_ifindex.patch'::"$_xanmod/net/0002-tcp-move-inet-rx_dst_ifindex-to-sk-sk_rx_dst_ifindex.patch"
+        '0112-XANMOD-ipv6-move-inet6_sk-sk-rx_dst_cookie-to-sk-sk_rx_dst_.patch'::"$_xanmod/net/0003-ipv6-move-inet6_sk-sk-rx_dst_cookie-to-sk-sk_rx_dst_.patch"
+        '0113-XANMOD-bpf-sockmap-Use-stricter-sk-state-checks-in-sk_looku.patch'::"$_xanmod/net/0004-bpf-sockmap-Use-stricter-sk-state-checks-in-sk_looku.patch"
+        '0114-XANMOD-tcp-minor-optimization-in-tcp_add_backlog.patch'::"$_xanmod/net/0005-tcp-minor-optimization-in-tcp_add_backlog.patch"
+        '0115-XANMOD-tcp-remove-dead-code-in-__tcp_v6_send_check.patch'::"$_xanmod/net/0006-tcp-remove-dead-code-in-__tcp_v6_send_check.patch"
+        '0116-XANMOD-tcp-small-optimization-in-tcp_v6_send_check.patch'::"$_xanmod/net/0007-tcp-small-optimization-in-tcp_v6_send_check.patch"
+        '0117-XANMOD-net-use-sk_is_tcp-in-more-places.patch'::"$_xanmod/net/0008-net-use-sk_is_tcp-in-more-places.patch"
+        '0118-XANMOD-net-remove-sk_route_forced_caps.patch'::"$_xanmod/net/0009-net-remove-sk_route_forced_caps.patch"
+        '0119-XANMOD-net-remove-sk_route_nocaps.patch'::"$_xanmod/net/0010-net-remove-sk_route_nocaps.patch"
+        '0120-XANMOD-ipv6-shrink-struct-ipcm6_cookie.patch'::"$_xanmod/net/0011-ipv6-shrink-struct-ipcm6_cookie.patch"
+        '0121-XANMOD-net-shrink-struct-sock-by-8-bytes.patch'::"$_xanmod/net/0012-net-shrink-struct-sock-by-8-bytes.patch"
+        '0122-XANMOD-net-forward_alloc_get-depends-on-CONFIG_MPTCP.patch'::"$_xanmod/net/0013-net-forward_alloc_get-depends-on-CONFIG_MPTCP.patch"
+        '0123-XANMOD-net-cache-align-tcp_memory_allocated-tcp_sockets_all.patch'::"$_xanmod/net/0014-net-cache-align-tcp_memory_allocated-tcp_sockets_all.patch"
+        '0124-XANMOD-tcp-small-optimization-in-tcp-recvmsg.patch'::"$_xanmod/net/0015-tcp-small-optimization-in-tcp-recvmsg.patch"
+        '0125-XANMOD-tcp-add-RETPOLINE-mitigation-to-sk_backlog_rcv.patch'::"$_xanmod/net/0016-tcp-add-RETPOLINE-mitigation-to-sk_backlog_rcv.patch"
+        '0126-XANMOD-tcp-annotate-data-races-on-tp-segs_in-and-tp-data_se.patch'::"$_xanmod/net/0017-tcp-annotate-data-races-on-tp-segs_in-and-tp-data_se.patch"
+        '0127-XANMOD-tcp-annotate-races-around-tp-urg_data.patch'::"$_xanmod/net/0018-tcp-annotate-races-around-tp-urg_data.patch"
+        '0128-XANMOD-tcp-tp-urg_data-is-unlikely-to-be-set.patch'::"$_xanmod/net/0019-tcp-tp-urg_data-is-unlikely-to-be-set.patch"
+        '0129-XANMOD-tcp-avoid-indirect-calls-to-sock_rfree.patch'::"$_xanmod/net/0020-tcp-avoid-indirect-calls-to-sock_rfree.patch"
+        '0130-XANMOD-tcp-defer-skb-freeing-after-socket-lock-is-released.patch'::"$_xanmod/net/0021-tcp-defer-skb-freeing-after-socket-lock-is-released.patch"
+        '0131-XANMOD-tcp-check-local-var-timeo-before-socket-fields-in-on.patch'::"$_xanmod/net/0022-tcp-check-local-var-timeo-before-socket-fields-in-on.patch"
+        '0132-XANMOD-tcp-do-not-call-tcp_cleanup_rbuf-if-we-have-a-backlo.patch'::"$_xanmod/net/0023-tcp-do-not-call-tcp_cleanup_rbuf-if-we-have-a-backlo.patch"
+        '0133-XANMOD-net-move-early-demux-fields-close-to-sk_refcnt.patch'::"$_xanmod/net/0024-net-move-early-demux-fields-close-to-sk_refcnt.patch")
 
 sha256sums=('57b2cf6991910e3b67a1b3490022e8a0674b6965c74c12da1e99d138d1991ee8'
             'SKIP'
-            '235f170fa378a7459e7d87c35754bd6a6fcf8914be49d1f6c1f359cb66179551'
+            '14cf67f45f1e101ca3a129cef939ebfa0a4f18bcfca91b8702458cf27c74e969'
             'SKIP'
-            '3625d005b28bea48c755b1d433cf78f4912e372d9041c054098b4a57d86518b5'
+            'c939d9562586349d2d8dca11d964d17cd010f72260726b982f256c87d0ee5816'
             'd5ce94a811ef49161fb681dff5e48ae52e4dafbbf17270613fbbd1a3f87e3fee'
             'cee6ac8807cec8cc47dc383e90aee651dd544bd778cb458eb249a0d79fe44467'
             '4d2ad28ed803d7b382f9e0ba6f449c1a0d8d0d8f1ecc31fde56f4556cefc802e'
+            '1d2ee58db0565a27a03b7ce2bf428ebb443521e24cb23880228c0536166bc15a'
             '254f3408b87b57a0ba7efaeb5e1e1168dbbcaee3c8563be0676db2e932908013'
             '9cbd6dc9e98354127bf976125717a7366607d296bfe4ada4f3b0b30f4289c6ed'
             '0921a18963631ed8de7b61bf0d3099efe1c54474f7c69f482a83e7aaa9f4db7f'
@@ -51,7 +79,31 @@ sha256sums=('57b2cf6991910e3b67a1b3490022e8a0674b6965c74c12da1e99d138d1991ee8'
             'c7e7faa24936c927446f204bf2756efbd6107d44e6fc72284ad02261a106c6d9'
             'd4965df8129092e25483f9508fb7e5fc5161c16845c61bbebea1363c3df8b33a'
             '01fc1e457e652b8283aec1fbdf3f5f895be2cddf1c969a9a01cacbb14fda1cef'
-            '1395d66cc9af1974fea34a4bb53a43d9e8b2a49b3c2610edf220eff5e92c90e7')
+            '1395d66cc9af1974fea34a4bb53a43d9e8b2a49b3c2610edf220eff5e92c90e7'
+            'b49b8104460ffe81b3a2cc6d7a64c2c2a099e9f36700eff79c246b1a087f0c75'
+            '37dcd2e6f19ac9b51b93879239e437fdb1f041e3e3819efa762dd8bf46900ef6'
+            '965757313f9b31b6213bf50e0b9d09a303441a8ad85c4a3a7813906348c778d5'
+            '28b1ded74d65d52eabf5a6fbb0c244b3d9429c170254c68eece44afaa9f1dbff'
+            'a55d3bb8045ebcceceaecad903d01dcefa9877478e7c3be40293d976bf21b262'
+            'e0dccf09799dd84148ade06412c218c6a42861f58719fb6a5778f5e88016e00d'
+            '4c2a38a05f50351fee44d41cedf677737346642c7b991b24967d86c6e3c0c523'
+            'd7598f8fa9938a7078107f8391ef5f3d1b2100083790bb510a2d0ddf2dd4e95b'
+            'a81a47506cc3a985daee9ffddf8ef49adf2b22e3359b2452c1f453a891bc83ed'
+            'f5ada528853f58fcfbbf94f66657f352d44bbb7bc1d452450d693b28f89e9b06'
+            'e2d6fe0f0665916c718abbe38c99429a4e858b86a40dda94b354cee8d103c888'
+            'd5aedf1b52c0117874b9b4225fdd0396fbfd39c389d3bba4e7befcbab48dd33c'
+            '1ed06975eddc5e4e44752b3b1cf57a172b4cf7f15af5eb13dee56922e669799a'
+            '0df20f174cc149f198cc1ff86b79772074e1b5fcc99ee3cd2d442dda1675f3d0'
+            'ef493717ecae9a0fb9e06755278be52a2424ea79a4d0a4dd30e7657fe0e3b0af'
+            '584aa9fede6dc91a6cae7415027c0960434e070d1e69e73eb9ed7dc97c0711ce'
+            '9ef87dc8173fed19d517c8ecfb91f16e0ceae8f71846d9457adf88c4d41852ca'
+            'fe2ec23c73e24058d3a0826dd73cefd22f82d781807e7365a5c951e73306b144'
+            '8b4067dd2041c6d4ae80dc382e77040e3487ccd663be30fb99e9aa7219f981b1'
+            'd4526ffdc23451fdfe4cd95a31b4936bbceb1aabafb0681e0a2d7f8ee5c7ccc9'
+            'a201fa0a714db4f1d7d89fa93275a7b119c9e338f35862b84a1947e1fae4f556'
+            '806913a4b270f53630efe416f574f658051f3a900d23c6d624f590a4d410d213'
+            '9f4998eea0058da76fe2fabc792405f29597e63499cee3d47463b6c41cb40f42'
+            '0f88485cdeec5a9a99be91a6e7e1deef96d3f81f9ffd6205e1e136ec4a72a575')
 
 validpgpkeys=('ABAF11C65A2970B130ABE3C479BE3E4300411886'   # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E'   # Greg Kroah-Hartman
@@ -80,7 +132,7 @@ prepare() {
     echo "-$pkgrel" > localversion.10-pkgrel
     echo "-$KBUILD_BUILD_HOST" > localversion.20-pkgname
 
-    echo "Appling patch $_zen.patch..."
+    echo "Applying patch $_zen.patch..."
     patch -Nsp1 < "../$_zen.patch"
 
     local src

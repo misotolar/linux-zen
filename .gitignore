@@ -1,4 +1,4 @@
-/00*-XANMOD-*.patch
+/01*.patch
 /config
 /makepkg
 *.tar.sign
