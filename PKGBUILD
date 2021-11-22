@@ -1,5 +1,5 @@
 _major=5.15
-_minor=3.zen1
+_minor=4.zen1
 
 pkgbase=linux-zen
 pkgname=("$pkgbase" "$pkgbase-headers")
@@ -27,7 +27,6 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v5.x/$_src.tar.xz"
         '0001-x86-tools-fix-llvm-objdump-syntax.patch'  # https://github.com/ClangBuiltLinux/linux/issues/1362
         '0002-ideapad-laptop-remove-dytc-version-check.patch'
         '0003-tsc-directsync-gross-hack.patch'          # https://bugzilla.kernel.org/show_bug.cgi?id=202525
-        '0004-prjc_v5.15-r1.patch'
         '0101-XANMOD-block-set-rq_affinity-to-force-full-multithre.patch'::"$_xanmod/xanmod/0003-XANMOD-block-set-rq_affinity-to-force-full-multithre.patch"
         '0102-XANMOD-kconfig-add-500Hz-timer-interrupt-kernel-conf.patch'::"$_xanmod/xanmod/0004-XANMOD-kconfig-add-500Hz-timer-interrupt-kernel-conf.patch"
         '0103-XANMOD-lib-kconfig.debug-disable-default-CONFIG_SYMB.patch'::"$_xanmod/xanmod/0010-XANMOD-lib-kconfig.debug-disable-default-CONFIG_SYMB.patch"
@@ -64,13 +63,12 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v5.x/$_src.tar.xz"
 
 sha256sums=('57b2cf6991910e3b67a1b3490022e8a0674b6965c74c12da1e99d138d1991ee8'
             'SKIP'
-            '14cf67f45f1e101ca3a129cef939ebfa0a4f18bcfca91b8702458cf27c74e969'
+            '5930194948a7952ffbf70751e37c462caffd2a8e4dfe7bef29d06e968948069c'
             'SKIP'
             'c939d9562586349d2d8dca11d964d17cd010f72260726b982f256c87d0ee5816'
             'd5ce94a811ef49161fb681dff5e48ae52e4dafbbf17270613fbbd1a3f87e3fee'
             'cee6ac8807cec8cc47dc383e90aee651dd544bd778cb458eb249a0d79fe44467'
             '4d2ad28ed803d7b382f9e0ba6f449c1a0d8d0d8f1ecc31fde56f4556cefc802e'
-            '1d2ee58db0565a27a03b7ce2bf428ebb443521e24cb23880228c0536166bc15a'
             '254f3408b87b57a0ba7efaeb5e1e1168dbbcaee3c8563be0676db2e932908013'
             '9cbd6dc9e98354127bf976125717a7366607d296bfe4ada4f3b0b30f4289c6ed'
             '0921a18963631ed8de7b61bf0d3099efe1c54474f7c69f482a83e7aaa9f4db7f'
