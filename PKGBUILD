@@ -1,5 +1,5 @@
 _major=5.15
-_minor=6.zen2
+_minor=7.zen1
 
 pkgbase=linux-zen
 pkgname=("$pkgbase" "$pkgbase-headers")
@@ -59,11 +59,14 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v5.x/$_src.tar.xz"
         '0130-XANMOD-tcp-defer-skb-freeing-after-socket-lock-is-released.patch'::"$_xanmod/net/0021-tcp-defer-skb-freeing-after-socket-lock-is-released.patch"
         '0131-XANMOD-tcp-check-local-var-timeo-before-socket-fields-in-on.patch'::"$_xanmod/net/0022-tcp-check-local-var-timeo-before-socket-fields-in-on.patch"
         '0132-XANMOD-tcp-do-not-call-tcp_cleanup_rbuf-if-we-have-a-backlo.patch'::"$_xanmod/net/0023-tcp-do-not-call-tcp_cleanup_rbuf-if-we-have-a-backlo.patch"
-        '0133-XANMOD-net-move-early-demux-fields-close-to-sk_refcnt.patch'::"$_xanmod/net/0024-net-move-early-demux-fields-close-to-sk_refcnt.patch")
+        '0133-XANMOD-net-move-early-demux-fields-close-to-sk_refcnt.patch'::"$_xanmod/net/0024-net-move-early-demux-fields-close-to-sk_refcnt.patch"
+        '0134-XANMOD-x86-csum-Rewrite-optimize-csum_partial.patch'::"$_xanmod/net/x86_csum/0001-x86-csum-Rewrite-optimize-csum_partial.patch"
+        '0135-XANMOD-x86-csum-Fix-compilation-error-for-UM.patch'::"$_xanmod/net/x86_csum/0002-x86-csum-Fix-compilation-error-for-UM.patch"
+        '0136-XANMOD-amd-pmu-fix-s2idle-failures-on-certain-AMD-laptops.patch'::"$_xanmod/amd-pmu/0001-amd-pmu-fix-s2idle-failures-on-certain-AMD-laptops.patch")
 
 sha256sums=('57b2cf6991910e3b67a1b3490022e8a0674b6965c74c12da1e99d138d1991ee8'
             'SKIP'
-            '2ccbbf44128a287b19c0ed223a94d35c4ee67c7a286aec21ecfe7f348d88ca70'
+            '6a013c329188cf4e24383f53b01d5a410dd6e921bd09dce4f1f84aa7f842d3ab'
             'SKIP'
             'a8eaf6eb21cca77aa470443c8a0d07577023edee3d589c4de6e7d0f66eebbc99'
             'd5ce94a811ef49161fb681dff5e48ae52e4dafbbf17270613fbbd1a3f87e3fee'
@@ -101,7 +104,10 @@ sha256sums=('57b2cf6991910e3b67a1b3490022e8a0674b6965c74c12da1e99d138d1991ee8'
             'a201fa0a714db4f1d7d89fa93275a7b119c9e338f35862b84a1947e1fae4f556'
             '806913a4b270f53630efe416f574f658051f3a900d23c6d624f590a4d410d213'
             '9f4998eea0058da76fe2fabc792405f29597e63499cee3d47463b6c41cb40f42'
-            '0f88485cdeec5a9a99be91a6e7e1deef96d3f81f9ffd6205e1e136ec4a72a575')
+            '0f88485cdeec5a9a99be91a6e7e1deef96d3f81f9ffd6205e1e136ec4a72a575'
+            'c5d3ef70e553e111e05541ff212f51a4565bf5041fef91f0f1d609a7f87bcf93'
+            '448cce5a9e22e62f01613bc59f9f1dcdf893bb5359b21bc7ba5bdf5dc1997a19'
+            '5ba9846f288362857fc13cbcbb4ca750f09aa3bbd7733572b8b4cb6436f42722')
 
 validpgpkeys=('ABAF11C65A2970B130ABE3C479BE3E4300411886'   # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E'   # Greg Kroah-Hartman
