@@ -1,5 +1,5 @@
 _major=5.15
-_minor=12.zen1
+_minor=13.zen1
 
 pkgbase=linux-zen
 pkgname=("$pkgbase" "$pkgbase-headers")
@@ -28,31 +28,33 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v5.x/$_src.tar.xz"
         '0001-x86-tools-fix-llvm-objdump-syntax.patch'  # https://github.com/ClangBuiltLinux/linux/issues/1362
         '0002-ideapad-laptop-remove-dytc-version-check.patch'
         '0003-tsc-directsync-gross-hack.patch'          # https://bugzilla.kernel.org/show_bug.cgi?id=202525
-        '0101-XANMOD-block-set-rq_affinity-to-force-full-multithre.patch'::"$_xanmod/xanmod/0003-XANMOD-block-set-rq_affinity-to-force-full-multithre.patch"
-        '0102-XANMOD-kconfig-add-500Hz-timer-interrupt-kernel-conf.patch'::"$_xanmod/xanmod/0004-XANMOD-kconfig-add-500Hz-timer-interrupt-kernel-conf.patch"
-        '0103-XANMOD-lib-kconfig.debug-disable-default-CONFIG_SYMB.patch'::"$_xanmod/xanmod/0010-XANMOD-lib-kconfig.debug-disable-default-CONFIG_SYMB.patch"
+        '0101-XANMOD-block-set-rq_affinity-to-force-full-multithre.patch'::"$_xanmod/xanmod/0002-XANMOD-block-set-rq_affinity-to-force-full-multithre.patch"
+        '0102-XANMOD-kconfig-add-500Hz-timer-interrupt-kernel-conf.patch'::"$_xanmod/xanmod/0003-XANMOD-kconfig-add-500Hz-timer-interrupt-kernel-conf.patch"
+        '0103-XANMOD-lib-kconfig.debug-disable-default-CONFIG_SYMB.patch'::"$_xanmod/xanmod/0009-XANMOD-lib-kconfig.debug-disable-default-CONFIG_SYMB.patch"
         '0104-LUCJAN-x86-csum-rewrite-csum_partial.patch'::"$_lucjan/fixes-miscellaneous-v9-sep/0015-x86-csum-rewrite-csum_partial.patch"
         '0105-LUCJAN-x86-csum-Fix-compilation-error-for-UM.patch'::"$_lucjan/fixes-miscellaneous-v9-sep/0016-x86-csum-Fix-compilation-error-for-UM.patch"
         '0106-LUCJAN-x86-csum-Fix-initial-seed-for-odd-buffers.patch'::"$_lucjan/fixes-miscellaneous-v9-sep/0017-x86-csum-Fix-initial-seed-for-odd-buffers.patch"
         '0107-LUCJAN-net-patches.patch'::"$_lucjan/net-patches-v2/0001-net-patches.patch"
-        '0108-LUCJAN-zstd-upstream-patches.patch'::"$_lucjan/zstd-upstream-patches-v4/0001-zstd-upstream-patches.patch")
+        '0108-LUCJAN-zstd-upstream-patches.patch'::"$_lucjan/zstd-upstream-patches-v4/0001-zstd-upstream-patches.patch"
+        "0109-LUCJAN-UKSM.patch"::"$_lucjan/uksm-patches/0001-UKSM-for-5.15.patch")
 
 sha256sums=('57b2cf6991910e3b67a1b3490022e8a0674b6965c74c12da1e99d138d1991ee8'
             'SKIP'
-            '621b0752de444144126bd04a70a5d8d976f55eaa17734ebcf87bc0d731028a78'
+            '696a1f5ac1885ddb0c7653bda6131d71d39cf921463aec6d77a66e68e060d7b8'
             'SKIP'
             'de0f863e315ab2de7671ce512f6755ae14b58a64f21e48bd2b0158d719533011'
             'd5ce94a811ef49161fb681dff5e48ae52e4dafbbf17270613fbbd1a3f87e3fee'
             'cee6ac8807cec8cc47dc383e90aee651dd544bd778cb458eb249a0d79fe44467'
             '4d2ad28ed803d7b382f9e0ba6f449c1a0d8d0d8f1ecc31fde56f4556cefc802e'
-            '254f3408b87b57a0ba7efaeb5e1e1168dbbcaee3c8563be0676db2e932908013'
-            '9cbd6dc9e98354127bf976125717a7366607d296bfe4ada4f3b0b30f4289c6ed'
-            '0921a18963631ed8de7b61bf0d3099efe1c54474f7c69f482a83e7aaa9f4db7f'
+            '246f3b3d94944d61dd423296f10bb23c3c0cde9d28b9d039d898731cf91d3dfe'
+            'dd7f6ffdd6d698d5c022629393b5dd9ccbdbcacc19d37be704b9e2c8723efc25'
+            'e60423f23f4cf2b1e7e85c867fe850c1a059778ba86ca9212fd03625f68eead5'
             'd595282abd96245f1378aa017d53685bb097971767a6c1e6a2e80a5dda247446'
             '32e1b9b9dac7b2d837c4d410217a194058003870337dfb08358cfcc048ce28b9'
             'b556b28ad9f366f1ce3060f5bc5ec871aa18532e286b4b4d79db42e6e347563b'
             'c77aad266253c842a9c17121b0cac012daeda3cd4d01a8f32fcbd67941df912f'
-            '6405bd97bb9b443fdb98de90f9962717d6613d68c73df8fa774d727677784db3')
+            '6405bd97bb9b443fdb98de90f9962717d6613d68c73df8fa774d727677784db3'
+            'cb348cc3ba1a453ac6057ecc08000a2ccddc47b70491caaf71db34a3d630f77c')
 
 validpgpkeys=('ABAF11C65A2970B130ABE3C479BE3E4300411886'   # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E'   # Greg Kroah-Hartman
@@ -84,10 +86,9 @@ prepare() {
     echo "Setting version..."
     scripts/setlocalversion --save-scmversion
     echo "-$pkgrel" > localversion.10-pkgrel
+    echo "${pkgbase#linux}" > localversion.20-pkgname
     if [[ "archlinux" != "$KBUILD_BUILD_HOST" ]]; then
         echo "-$KBUILD_BUILD_HOST" > localversion.20-pkgname
-    else
-        echo "-misotolar" > localversion.20-pkgname
     fi
 
     echo "Applying patch $_zen.patch..."
