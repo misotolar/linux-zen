@@ -1,5 +1,5 @@
-_major=5.15
-_minor=13.zen1
+_major=5.16
+_minor=zen1
 
 pkgbase=linux-zen
 pkgname=("$pkgbase" "$pkgbase-headers")
@@ -26,35 +26,39 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v5.x/$_src.tar.xz"
         "https://github.com/zen-kernel/zen-kernel/releases/download/$_zen/$_zen.patch.xz.sig"
         "https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/linux-zen/trunk/config"
         '0001-x86-tools-fix-llvm-objdump-syntax.patch'  # https://github.com/ClangBuiltLinux/linux/issues/1362
-        '0002-ideapad-laptop-remove-dytc-version-check.patch'
+        '0002-ideapad-laptop-add-platform-support-for-Ideapad-3-15ADA05-81W1.patch'
         '0003-tsc-directsync-gross-hack.patch'          # https://bugzilla.kernel.org/show_bug.cgi?id=202525
-        '0101-XANMOD-block-set-rq_affinity-to-force-full-multithre.patch'::"$_xanmod/xanmod/0002-XANMOD-block-set-rq_affinity-to-force-full-multithre.patch"
-        '0102-XANMOD-kconfig-add-500Hz-timer-interrupt-kernel-conf.patch'::"$_xanmod/xanmod/0003-XANMOD-kconfig-add-500Hz-timer-interrupt-kernel-conf.patch"
-        '0103-XANMOD-lib-kconfig.debug-disable-default-CONFIG_SYMB.patch'::"$_xanmod/xanmod/0009-XANMOD-lib-kconfig.debug-disable-default-CONFIG_SYMB.patch"
-        '0104-LUCJAN-x86-csum-rewrite-csum_partial.patch'::"$_lucjan/fixes-miscellaneous-v9-sep/0015-x86-csum-rewrite-csum_partial.patch"
-        '0105-LUCJAN-x86-csum-Fix-compilation-error-for-UM.patch'::"$_lucjan/fixes-miscellaneous-v9-sep/0016-x86-csum-Fix-compilation-error-for-UM.patch"
-        '0106-LUCJAN-x86-csum-Fix-initial-seed-for-odd-buffers.patch'::"$_lucjan/fixes-miscellaneous-v9-sep/0017-x86-csum-Fix-initial-seed-for-odd-buffers.patch"
-        '0107-LUCJAN-net-patches.patch'::"$_lucjan/net-patches-v2/0001-net-patches.patch"
-        '0108-LUCJAN-zstd-upstream-patches.patch'::"$_lucjan/zstd-upstream-patches-v4/0001-zstd-upstream-patches.patch"
-        "0109-LUCJAN-UKSM.patch"::"$_lucjan/uksm-patches/0001-UKSM-for-5.15.patch")
+        '0101-XANMOD-block-set-rq_affinity-to-force-full-multithre.patch'::"$_xanmod/xanmod/0003-XANMOD-block-set-rq_affinity-to-force-full-multithre.patch"
+        '0102-XANMOD-kconfig-add-500Hz-timer-interrupt-kernel-conf.patch'::"$_xanmod/xanmod/0004-XANMOD-kconfig-add-500Hz-timer-interrupt-kernel-conf.patch"
+        '0103-XANMOD-lib-kconfig.debug-disable-default-CONFIG_SYMB.patch'::"$_xanmod/xanmod/0010-XANMOD-lib-kconfig.debug-disable-default-CONFIG_SYMB.patch"
+        '0104-LUCJAN-x86-csum-rewrite-csum_partial.patch'::"$_lucjan/fixes-miscellaneous-sep/0010-x86-csum-rewrite-csum_partial.patch"
+        '0105-LUCJAN-x86-csum-Fix-compilation-error-for-UM.patch'::"$_lucjan/fixes-miscellaneous-sep/0011-x86-csum-Fix-compilation-error-for-UM.patch"
+        '0106-LUCJAN-x86-csum-Fix-initial-seed-for-odd-buffers.patch'::"$_lucjan/fixes-miscellaneous-sep/0012-x86-csum-Fix-initial-seed-for-odd-buffers.patch"
+        '0107-LUCJAN-net-patches.patch'::"$_lucjan/net-patches-v3/0001-net-patches.patch"
+        '0108-LUCJAN-PRJC.patch'::"$_lucjan/prjc-patches-v2/0001-PRJC-for-$_major.patch"
+        '0109-LUCJAN-sched-alt-Add-MG-LRU-changes-through-ifdef-macro.patch'::"$_lucjan/prjc-lru-patches-v2/0001-sched-alt-Add-MG-LRU-changes-through-ifdef-macro.patch"
+        '0110-LUCJAN-prjc-fixes.patch'::"$_lucjan/prjc-fixes/0001-prjc-fixes.patch"
+        '0111-LUCJAN-UKSM.patch'::"$_lucjan/uksm-patches/0001-UKSM-for-$_major.patch")
 
-sha256sums=('57b2cf6991910e3b67a1b3490022e8a0674b6965c74c12da1e99d138d1991ee8'
+sha256sums=('027d7e8988bb69ac12ee92406c3be1fe13f990b1ca2249e226225cd1573308bb'
             'SKIP'
-            '696a1f5ac1885ddb0c7653bda6131d71d39cf921463aec6d77a66e68e060d7b8'
+            '92507ec370db1c940e496f877c3ee279a05ffca954bef8def241a1ce65269d91'
             'SKIP'
-            'de0f863e315ab2de7671ce512f6755ae14b58a64f21e48bd2b0158d719533011'
+            'f8d332e96d1d5826b386a87e1588fef9c94c36638228718eb847658efa07dbaa'
             'd5ce94a811ef49161fb681dff5e48ae52e4dafbbf17270613fbbd1a3f87e3fee'
-            'cee6ac8807cec8cc47dc383e90aee651dd544bd778cb458eb249a0d79fe44467'
+            'ee03df755ae52b04c40c979e9e04745f9c0c8ce34bcc5a3c652bf3029268ad27'
             '4d2ad28ed803d7b382f9e0ba6f449c1a0d8d0d8f1ecc31fde56f4556cefc802e'
-            '246f3b3d94944d61dd423296f10bb23c3c0cde9d28b9d039d898731cf91d3dfe'
-            'dd7f6ffdd6d698d5c022629393b5dd9ccbdbcacc19d37be704b9e2c8723efc25'
-            'e60423f23f4cf2b1e7e85c867fe850c1a059778ba86ca9212fd03625f68eead5'
-            'd595282abd96245f1378aa017d53685bb097971767a6c1e6a2e80a5dda247446'
-            '32e1b9b9dac7b2d837c4d410217a194058003870337dfb08358cfcc048ce28b9'
-            'b556b28ad9f366f1ce3060f5bc5ec871aa18532e286b4b4d79db42e6e347563b'
-            'c77aad266253c842a9c17121b0cac012daeda3cd4d01a8f32fcbd67941df912f'
-            '6405bd97bb9b443fdb98de90f9962717d6613d68c73df8fa774d727677784db3'
-            'cb348cc3ba1a453ac6057ecc08000a2ccddc47b70491caaf71db34a3d630f77c')
+            'c6b37e668e85cec65bdf1a81e4b40659b6a7e545d25842eb7a1d3322fbdf68e7'
+            '4e0cca8b30d5495f43bf656c2f4872fd13b5396c2912dee1cc2774ee4a04272d'
+            'd5cd8860689edd358fe4330bf584a2b8a647c068c082db847403d98866c24bfe'
+            'c6a73b5593f3ed36f06819ab4aa663ae0edd37b00a4a28522c5201dbcba9d29e'
+            '128332855defc27092f919d8f220dd62555ff838d741420ba2d330e24ba9be93'
+            '0524d0591b2f376df24e44b6e0e25acb3a4db4088530ff103c1b24f7f79fd0b1'
+            'db0d2fde8f1e994fbb4eb37c8affa3f0b339aa658f9ab5003bb2ce453a68ab95'
+            '65d385e78b66068bce83ac9bf136b21d2428a5f4de1d2c4c0adb4bfed6b8573b'
+            'b4b8f68b1393a3387f73ac7adeff33343fb4c52fbd1f946835d4e57983e21913'
+            'ff34181ee7a52ce740f63f5613ec99cfaccbeec5fe55e57a034d6d9938e5f2aa'
+            'dc3a5d24305da05124c004b191d071d5b00c6a89e435acfc7bbd9034732775bc')
 
 validpgpkeys=('ABAF11C65A2970B130ABE3C479BE3E4300411886'   # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E'   # Greg Kroah-Hartman
@@ -214,10 +218,10 @@ _package-headers() {
     install -Dt "$builddir/arch/x86" -m644 arch/x86/Makefile
     cp -t "$builddir" -a scripts
 
-    # add objtool for external module building and enabled VALIDATION_STACK option
+    # required when STACK_VALIDATION is enabled
     install -Dt "$builddir/tools/objtool" tools/objtool/objtool
 
-    # add xfs and shmem for aufs building
+    # required when DEBUG_INFO_BTF_MODULES is enabled
     mkdir -p "$builddir"/{fs/xfs,mm}
 
     echo "Installing headers..."

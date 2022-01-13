@@ -1,0 +1,19 @@
+diff --git a/drivers/platform/x86/ideapad-laptop.c b/drivers/platform/x86/ideapad-laptop.c
+index 3ccb7b71dfb1..9989329fec55 100644
+--- a/drivers/platform/x86/ideapad-laptop.c
++++ b/drivers/platform/x86/ideapad-laptop.c
+@@ -869,6 +869,14 @@ static void dytc_profile_refresh(struct ideapad_private *priv)
+ }
+ 
+ static const struct dmi_system_id ideapad_dytc_v4_allow_table[] = {
++	{
++		/* IdeaPad 3 15ADA05 */
++		.ident = "LENOVO 81W1",
++		.matches = {
++			DMI_MATCH(DMI_SYS_VENDOR, "LENOVO"),
++			DMI_MATCH(DMI_PRODUCT_NAME, "81W1")
++		}
++	},
+ 	{
+ 		/* Ideapad 5 Pro 16ACH6 */
+ 		.ident = "LENOVO 82L5",
