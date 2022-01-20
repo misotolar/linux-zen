@@ -1,5 +1,5 @@
 _major=5.16
-_minor=1.zen1
+_minor=2.zen1
 
 pkgbase=linux-zen
 pkgname=("$pkgbase" "$pkgbase-headers")
@@ -37,12 +37,12 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v5.x/$_src.tar.xz"
         '0107-LUCJAN-net-patches.patch'::"$_lucjan/net-patches-v3/0001-net-patches.patch"
         '0108-LUCJAN-PRJC.patch'::"$_lucjan/prjc-patches-v2/0001-PRJC-for-$_major.patch"
         '0109-LUCJAN-sched-alt-Add-MG-LRU-changes-through-ifdef-macro.patch'::"$_lucjan/prjc-lru-patches-v2/0001-sched-alt-Add-MG-LRU-changes-through-ifdef-macro.patch"
-        '0110-LUCJAN-prjc-fixes.patch'::"$_lucjan/prjc-fixes/0001-prjc-fixes.patch"
+        '0110-LUCJAN-prjc-fixes.patch'::"$_lucjan/prjc-fixes-v2/0001-prjc-fixes.patch"
         '0111-LUCJAN-UKSM.patch'::"$_lucjan/uksm-patches/0001-UKSM-for-$_major.patch")
 
 sha256sums=('027d7e8988bb69ac12ee92406c3be1fe13f990b1ca2249e226225cd1573308bb'
             'SKIP'
-            '98811d32f272589d0d492dc3e357558c40d9065ba02c5fd234e17ae306c7379f'
+            '6486065026163e9388ab6a4aad183835b44a5f0ecf088750c22d2d3b6e452dfa'
             'SKIP'
             'f8d332e96d1d5826b386a87e1588fef9c94c36638228718eb847658efa07dbaa'
             'd5ce94a811ef49161fb681dff5e48ae52e4dafbbf17270613fbbd1a3f87e3fee'
@@ -57,7 +57,7 @@ sha256sums=('027d7e8988bb69ac12ee92406c3be1fe13f990b1ca2249e226225cd1573308bb'
             'db0d2fde8f1e994fbb4eb37c8affa3f0b339aa658f9ab5003bb2ce453a68ab95'
             '65d385e78b66068bce83ac9bf136b21d2428a5f4de1d2c4c0adb4bfed6b8573b'
             'b4b8f68b1393a3387f73ac7adeff33343fb4c52fbd1f946835d4e57983e21913'
-            'ff34181ee7a52ce740f63f5613ec99cfaccbeec5fe55e57a034d6d9938e5f2aa'
+            'ae4dd61528997bdce2f0b3f6e9c5bac77935d991ec14d0f60075d247003f1852'
             'dc3a5d24305da05124c004b191d071d5b00c6a89e435acfc7bbd9034732775bc')
 
 validpgpkeys=('ABAF11C65A2970B130ABE3C479BE3E4300411886'   # Linus Torvalds
