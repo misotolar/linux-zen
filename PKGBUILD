@@ -1,5 +1,5 @@
 _major=5.16
-_minor=2.zen1
+_minor=3.zen1
 
 pkgbase=linux-zen
 pkgname=("$pkgbase" "$pkgbase-headers")
@@ -31,18 +31,18 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v5.x/$_src.tar.xz"
         '0101-XANMOD-block-set-rq_affinity-to-force-full-multithre.patch'::"$_xanmod/xanmod/0003-XANMOD-block-set-rq_affinity-to-force-full-multithre.patch"
         '0102-XANMOD-kconfig-add-500Hz-timer-interrupt-kernel-conf.patch'::"$_xanmod/xanmod/0004-XANMOD-kconfig-add-500Hz-timer-interrupt-kernel-conf.patch"
         '0103-XANMOD-lib-kconfig.debug-disable-default-CONFIG_SYMB.patch'::"$_xanmod/xanmod/0010-XANMOD-lib-kconfig.debug-disable-default-CONFIG_SYMB.patch"
-        '0104-LUCJAN-x86-csum-rewrite-csum_partial.patch'::"$_lucjan/fixes-miscellaneous-sep/0010-x86-csum-rewrite-csum_partial.patch"
-        '0105-LUCJAN-x86-csum-Fix-compilation-error-for-UM.patch'::"$_lucjan/fixes-miscellaneous-sep/0011-x86-csum-Fix-compilation-error-for-UM.patch"
-        '0106-LUCJAN-x86-csum-Fix-initial-seed-for-odd-buffers.patch'::"$_lucjan/fixes-miscellaneous-sep/0012-x86-csum-Fix-initial-seed-for-odd-buffers.patch"
+        '0104-LUCJAN-x86-csum-rewrite-csum_partial.patch'::"$_lucjan/fixes-miscellaneous-v3-sep/0010-x86-csum-rewrite-csum_partial.patch"
+        '0105-LUCJAN-x86-csum-Fix-compilation-error-for-UM.patch'::"$_lucjan/fixes-miscellaneous-v3-sep/0011-x86-csum-Fix-compilation-error-for-UM.patch"
+        '0106-LUCJAN-x86-csum-Fix-initial-seed-for-odd-buffers.patch'::"$_lucjan/fixes-miscellaneous-v3-sep/0012-x86-csum-Fix-initial-seed-for-odd-buffers.patch"
         '0107-LUCJAN-net-patches.patch'::"$_lucjan/net-patches-v3/0001-net-patches.patch"
-        '0108-LUCJAN-PRJC.patch'::"$_lucjan/prjc-patches-v2/0001-PRJC-for-$_major.patch"
+        '0108-LUCJAN-PRJC.patch'::"$_lucjan/prjc-patches-v3/0001-PRJC-for-$_major.patch"
         '0109-LUCJAN-sched-alt-Add-MG-LRU-changes-through-ifdef-macro.patch'::"$_lucjan/prjc-lru-patches-v2/0001-sched-alt-Add-MG-LRU-changes-through-ifdef-macro.patch"
         '0110-LUCJAN-prjc-fixes.patch'::"$_lucjan/prjc-fixes-v2/0001-prjc-fixes.patch"
         '0111-LUCJAN-UKSM.patch'::"$_lucjan/uksm-patches/0001-UKSM-for-$_major.patch")
 
 sha256sums=('027d7e8988bb69ac12ee92406c3be1fe13f990b1ca2249e226225cd1573308bb'
             'SKIP'
-            '6486065026163e9388ab6a4aad183835b44a5f0ecf088750c22d2d3b6e452dfa'
+            '54f62b4d759cdea4e7217b1cc4336da908dab6f45e53be8183b8ae9862745509'
             'SKIP'
             'f8d332e96d1d5826b386a87e1588fef9c94c36638228718eb847658efa07dbaa'
             'd5ce94a811ef49161fb681dff5e48ae52e4dafbbf17270613fbbd1a3f87e3fee'
@@ -51,11 +51,11 @@ sha256sums=('027d7e8988bb69ac12ee92406c3be1fe13f990b1ca2249e226225cd1573308bb'
             'c6b37e668e85cec65bdf1a81e4b40659b6a7e545d25842eb7a1d3322fbdf68e7'
             '4e0cca8b30d5495f43bf656c2f4872fd13b5396c2912dee1cc2774ee4a04272d'
             'd5cd8860689edd358fe4330bf584a2b8a647c068c082db847403d98866c24bfe'
-            'c6a73b5593f3ed36f06819ab4aa663ae0edd37b00a4a28522c5201dbcba9d29e'
-            '128332855defc27092f919d8f220dd62555ff838d741420ba2d330e24ba9be93'
-            '0524d0591b2f376df24e44b6e0e25acb3a4db4088530ff103c1b24f7f79fd0b1'
+            '4c88f6a645242f37d95c9bd88bcfb10434f5a6e4f6139178199705f8818a0485'
+            'edd8e1113da75d7430aa7573bbc24d9aea13e0a11f227b41f4198d4a5bd164d3'
+            '6bc2ea9f57e0cdb0bfc32937e1393f411b0f1216ef69b5facfea604cecaf6601'
             'db0d2fde8f1e994fbb4eb37c8affa3f0b339aa658f9ab5003bb2ce453a68ab95'
-            '65d385e78b66068bce83ac9bf136b21d2428a5f4de1d2c4c0adb4bfed6b8573b'
+            '23dfa130d93b9984a63d24b4c32da27c6691dfc7d9904eebf786c04def1c76ac'
             'b4b8f68b1393a3387f73ac7adeff33343fb4c52fbd1f946835d4e57983e21913'
             'ae4dd61528997bdce2f0b3f6e9c5bac77935d991ec14d0f60075d247003f1852'
             'dc3a5d24305da05124c004b191d071d5b00c6a89e435acfc7bbd9034732775bc')
