@@ -1,5 +1,5 @@
 _major=5.16
-_minor=4.zen1
+_minor=5.zen1
 
 pkgbase=linux-zen
 pkgname=("$pkgbase" "$pkgbase-headers")
@@ -35,16 +35,15 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v5.x/$_src.tar.xz"
         '0105-LUCJAN-x86-csum-Fix-compilation-error-for-UM.patch'::"$_lucjan/fixes-miscellaneous-v3-sep/0011-x86-csum-Fix-compilation-error-for-UM.patch"
         '0106-LUCJAN-x86-csum-Fix-initial-seed-for-odd-buffers.patch'::"$_lucjan/fixes-miscellaneous-v3-sep/0012-x86-csum-Fix-initial-seed-for-odd-buffers.patch"
         '0107-LUCJAN-net-patches.patch'::"$_lucjan/net-patches-v3/0001-net-patches.patch"
-        '0108-LUCJAN-PRJC.patch'::"$_lucjan/prjc-patches-v3/0001-PRJC-for-$_major.patch"
-        '0109-LUCJAN-sched-alt-Add-MG-LRU-changes-through-ifdef-macro.patch'::"$_lucjan/prjc-lru-patches-v2/0001-sched-alt-Add-MG-LRU-changes-through-ifdef-macro.patch"
-        '0110-LUCJAN-prjc-fixes.patch'::"$_lucjan/prjc-fixes-v2/0001-prjc-fixes.patch"
-        '0111-LUCJAN-UKSM.patch'::"$_lucjan/uksm-patches/0001-UKSM-for-$_major.patch")
+        '0108-LUCJAN-prjc-fixes.patch'::"$_lucjan/prjc-fixes-v2/0001-prjc-fixes.patch"
+        '0109-LUCJAN-UKSM.patch'::"$_lucjan/uksm-patches/0001-UKSM-for-$_major.patch"
+        '0110-LUCJAN-zstd-dev-patches.patch'::"$_lucjan/zstd-dev-patches-v2/0001-zstd-dev-patches.patch")
 
 sha256sums=('027d7e8988bb69ac12ee92406c3be1fe13f990b1ca2249e226225cd1573308bb'
             'SKIP'
-            '46b561fb00d000ae99136bddc0bf6fbdb77baac2b4459c01952e26115e149cee'
+            '496baf65a4004554fa75984055d7e5fb1449ae43a457a63818b84aa022304d0c'
             'SKIP'
-            'f8d332e96d1d5826b386a87e1588fef9c94c36638228718eb847658efa07dbaa'
+            '8b30e1c6dcce1485d366c5a206e1497115f1cff6b487df6c5c539330645e94b6'
             'd5ce94a811ef49161fb681dff5e48ae52e4dafbbf17270613fbbd1a3f87e3fee'
             'ee03df755ae52b04c40c979e9e04745f9c0c8ce34bcc5a3c652bf3029268ad27'
             '4d2ad28ed803d7b382f9e0ba6f449c1a0d8d0d8f1ecc31fde56f4556cefc802e'
@@ -55,10 +54,9 @@ sha256sums=('027d7e8988bb69ac12ee92406c3be1fe13f990b1ca2249e226225cd1573308bb'
             'edd8e1113da75d7430aa7573bbc24d9aea13e0a11f227b41f4198d4a5bd164d3'
             '6bc2ea9f57e0cdb0bfc32937e1393f411b0f1216ef69b5facfea604cecaf6601'
             'db0d2fde8f1e994fbb4eb37c8affa3f0b339aa658f9ab5003bb2ce453a68ab95'
-            '23dfa130d93b9984a63d24b4c32da27c6691dfc7d9904eebf786c04def1c76ac'
-            'b4b8f68b1393a3387f73ac7adeff33343fb4c52fbd1f946835d4e57983e21913'
             'ae4dd61528997bdce2f0b3f6e9c5bac77935d991ec14d0f60075d247003f1852'
-            'dc3a5d24305da05124c004b191d071d5b00c6a89e435acfc7bbd9034732775bc')
+            'dc3a5d24305da05124c004b191d071d5b00c6a89e435acfc7bbd9034732775bc'
+            '9e617e3ba7faab2bec4d7e58190ac74091d13a34c1ec1676abcdf5992640e6e2')
 
 validpgpkeys=('ABAF11C65A2970B130ABE3C479BE3E4300411886'   # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E'   # Greg Kroah-Hartman
