@@ -6,7 +6,7 @@ Slightly optimized for Lenovo IdeaPad 3 15ADA05-81W1
 - Clang Full LTO build
 - [PDS Process Scheduler](https://gitlab.com/alfredchen/projectc)
 - AMD Zen processor family
-- Ultra-KSM for page merging
+- ~~Ultra-KSM for page merging~~
 - Kernel module signing if [arch-sign-modules](https://aur.archlinux.org/packages/arch-sign-modules) installed
 - platform/x86: ideapad-laptop: add support for Ideapad 3 15ADA05-81W1
 - [tsc: allow directly synchronizing TSC if TSC_ADJUST is absent](https://bugzilla.kernel.org/show_bug.cgi?id=202525)
