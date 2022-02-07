@@ -1,11 +1,11 @@
 _major=5.16
-_minor=5.zen1
+_minor=7.zen1
 
 pkgbase=linux-zen
 pkgname=("$pkgbase" "$pkgbase-headers")
 pkgdesc='Linux ZEN'
 pkgver="$_major.$_minor"
-pkgrel=2
+pkgrel=1
 
 _src="linux-$_major"
 _zen="v${pkgver%.*}-${pkgver##*.}"
@@ -40,7 +40,7 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v5.x/$_src.tar.xz"
 
 sha256sums=('027d7e8988bb69ac12ee92406c3be1fe13f990b1ca2249e226225cd1573308bb'
             'SKIP'
-            '496baf65a4004554fa75984055d7e5fb1449ae43a457a63818b84aa022304d0c'
+            '8ef41a555dbc6f52a1de538acb5da973ee8b648fb9b9038eb836adfcc0967e36'
             'SKIP'
             '8b30e1c6dcce1485d366c5a206e1497115f1cff6b487df6c5c539330645e94b6'
             'd5ce94a811ef49161fb681dff5e48ae52e4dafbbf17270613fbbd1a3f87e3fee'
