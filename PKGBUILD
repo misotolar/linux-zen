@@ -1,5 +1,5 @@
 _major=5.16
-_minor=7.zen1
+_minor=8.zen1
 
 pkgbase=linux-zen
 pkgname=("$pkgbase" "$pkgbase-headers")
@@ -40,9 +40,9 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v5.x/$_src.tar.xz"
 
 sha256sums=('027d7e8988bb69ac12ee92406c3be1fe13f990b1ca2249e226225cd1573308bb'
             'SKIP'
-            '8ef41a555dbc6f52a1de538acb5da973ee8b648fb9b9038eb836adfcc0967e36'
+            '17fb6be1d5337de48a1bb007a4de45af61a4beba598b1ec3846af7f615803c07'
             'SKIP'
-            '8b30e1c6dcce1485d366c5a206e1497115f1cff6b487df6c5c539330645e94b6'
+            'c2a9b42dbc3fa917726ac2a636c0af5f01829b3231fa8779ac04fb678cc4e3c3'
             'd5ce94a811ef49161fb681dff5e48ae52e4dafbbf17270613fbbd1a3f87e3fee'
             'ee03df755ae52b04c40c979e9e04745f9c0c8ce34bcc5a3c652bf3029268ad27'
             '4d2ad28ed803d7b382f9e0ba6f449c1a0d8d0d8f1ecc31fde56f4556cefc802e'
