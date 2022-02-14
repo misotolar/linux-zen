@@ -5,7 +5,7 @@ pkgbase=linux-zen
 pkgname=("$pkgbase" "$pkgbase-headers")
 pkgdesc='Linux ZEN'
 pkgver="$_major.$_minor"
-pkgrel=1
+pkgrel=2
 
 _src="linux-$_major"
 _zen="v${pkgver%.*}-${pkgver##*.}"
@@ -31,9 +31,9 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v5.x/$_src.tar.xz"
         '0101-XANMOD-block-set-rq_affinity-to-force-full-multithre.patch'::"$_xanmod/xanmod/0003-XANMOD-block-set-rq_affinity-to-force-full-multithre.patch"
         '0102-XANMOD-kconfig-add-500Hz-timer-interrupt-kernel-conf.patch'::"$_xanmod/xanmod/0004-XANMOD-kconfig-add-500Hz-timer-interrupt-kernel-conf.patch"
         '0103-XANMOD-lib-kconfig.debug-disable-default-CONFIG_SYMB.patch'::"$_xanmod/xanmod/0010-XANMOD-lib-kconfig.debug-disable-default-CONFIG_SYMB.patch"
-        '0104-LUCJAN-x86-csum-rewrite-csum_partial.patch'::"$_lucjan/fixes-miscellaneous-v3-sep/0010-x86-csum-rewrite-csum_partial.patch"
-        '0105-LUCJAN-x86-csum-Fix-compilation-error-for-UM.patch'::"$_lucjan/fixes-miscellaneous-v3-sep/0011-x86-csum-Fix-compilation-error-for-UM.patch"
-        '0106-LUCJAN-x86-csum-Fix-initial-seed-for-odd-buffers.patch'::"$_lucjan/fixes-miscellaneous-v3-sep/0012-x86-csum-Fix-initial-seed-for-odd-buffers.patch"
+        '0104-LUCJAN-x86-csum-rewrite-csum_partial.patch'::"$_lucjan/fixes-miscellaneous-v4-sep/0010-x86-csum-rewrite-csum_partial.patch"
+        '0105-LUCJAN-x86-csum-Fix-compilation-error-for-UM.patch'::"$_lucjan/fixes-miscellaneous-v4-sep/0011-x86-csum-Fix-compilation-error-for-UM.patch"
+        '0106-LUCJAN-x86-csum-Fix-initial-seed-for-odd-buffers.patch'::"$_lucjan/fixes-miscellaneous-v4-sep/0012-x86-csum-Fix-initial-seed-for-odd-buffers.patch"
         '0107-LUCJAN-net-patches.patch'::"$_lucjan/net-patches-v3/0001-net-patches.patch"
         '0108-LUCJAN-prjc-fixes.patch'::"$_lucjan/prjc-fixes-v2/0001-prjc-fixes.patch"
         '0109-LUCJAN-zstd-dev-patches.patch'::"$_lucjan/zstd-dev-patches-v2/0001-zstd-dev-patches.patch")
@@ -49,9 +49,9 @@ sha256sums=('027d7e8988bb69ac12ee92406c3be1fe13f990b1ca2249e226225cd1573308bb'
             'c6b37e668e85cec65bdf1a81e4b40659b6a7e545d25842eb7a1d3322fbdf68e7'
             '4e0cca8b30d5495f43bf656c2f4872fd13b5396c2912dee1cc2774ee4a04272d'
             'd5cd8860689edd358fe4330bf584a2b8a647c068c082db847403d98866c24bfe'
-            '4c88f6a645242f37d95c9bd88bcfb10434f5a6e4f6139178199705f8818a0485'
-            'edd8e1113da75d7430aa7573bbc24d9aea13e0a11f227b41f4198d4a5bd164d3'
-            '6bc2ea9f57e0cdb0bfc32937e1393f411b0f1216ef69b5facfea604cecaf6601'
+            '90864759311f87bcdff152667c692b376b8d0785180469045741a013c3ddff27'
+            '048e59030a44cfd518ae7b56333ddfc3efd47d2a2c9cd1defabfacbcba7d3827'
+            '77116f576f7e90b482b60b206a264597fa5ca37c1450c47f0926ac6e35d9bf39'
             'db0d2fde8f1e994fbb4eb37c8affa3f0b339aa658f9ab5003bb2ce453a68ab95'
             'ae4dd61528997bdce2f0b3f6e9c5bac77935d991ec14d0f60075d247003f1852'
             '9e617e3ba7faab2bec4d7e58190ac74091d13a34c1ec1676abcdf5992640e6e2')
@@ -120,6 +120,9 @@ prepare() {
     scripts/config -d BPF_PRELOAD
     scripts/config -d MQ_IOSCHED_KYBER
     scripts/config -e PSI_DEFAULT_DISABLED
+
+    # Device drivers
+    scripts/config -e SYSFB_SIMPLEFB
 
     # Processor type and features
     scripts/config --set-val NR_CPUS 16
