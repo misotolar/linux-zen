@@ -23,7 +23,19 @@ steps:
   commands:
   - BUILD_PATH=. makepkg.sh
   - sudo repo-add export/$DRONE_REPO_NAME.db.tar.gz export/*.pkg.tar.zst
+
+- name: cleanup
+  image: misotolar/makepkg
+  volumes:
+  - name: cache
+    path: /tmp
+  commands:
   - rm -rf /tmp/build
+  - rm -rf /tmp/tmp.*
+  when:
+    status:
+    - success
+    - failure
 
 - name: publish
   image: misotolar/drone-rsync
