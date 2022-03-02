@@ -1,5 +1,5 @@
 _major=5.16
-_minor=11.zen1
+_minor=12.zen1
 
 pkgbase=linux-zen
 pkgname=("$pkgbase" "$pkgbase-headers")
@@ -32,16 +32,16 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v5.x/$_src.tar.xz"
         '0102-XANMOD-kconfig-add-500Hz-timer-interrupt-kernel-conf.patch'::"$_xanmod/xanmod/0004-XANMOD-kconfig-add-500Hz-timer-interrupt-kernel-conf.patch"
         '0103-XANMOD-lib-kconfig.debug-disable-default-CONFIG_SYMB.patch'::"$_xanmod/xanmod/0010-XANMOD-lib-kconfig.debug-disable-default-CONFIG_SYMB.patch"
         '0104-XANMOD-mac80211-ignore-AP-power-level-when-tx-power-type-is.patch'::"$_xanmod/net/mac80221/0001-mac80211-ignore-AP-power-level-when-tx-power-type-is.patch"
-        '0105-LUCJAN-x86-csum-rewrite-csum_partial.patch'::"$_lucjan/fixes-miscellaneous-v4-sep/0010-x86-csum-rewrite-csum_partial.patch"
-        '0106-LUCJAN-x86-csum-Fix-compilation-error-for-UM.patch'::"$_lucjan/fixes-miscellaneous-v4-sep/0011-x86-csum-Fix-compilation-error-for-UM.patch"
-        '0107-LUCJAN-x86-csum-Fix-initial-seed-for-odd-buffers.patch'::"$_lucjan/fixes-miscellaneous-v4-sep/0012-x86-csum-Fix-initial-seed-for-odd-buffers.patch"
+        '0105-LUCJAN-x86-csum-rewrite-csum_partial.patch'::"$_lucjan/fixes-miscellaneous-v5-sep/0010-x86-csum-rewrite-csum_partial.patch"
+        '0106-LUCJAN-x86-csum-Fix-compilation-error-for-UM.patch'::"$_lucjan/fixes-miscellaneous-v5-sep/0011-x86-csum-Fix-compilation-error-for-UM.patch"
+        '0107-LUCJAN-x86-csum-Fix-initial-seed-for-odd-buffers.patch'::"$_lucjan/fixes-miscellaneous-v5-sep/0012-x86-csum-Fix-initial-seed-for-odd-buffers.patch"
         '0108-LUCJAN-net-patches.patch'::"$_lucjan/net-patches-v3/0001-net-patches.patch"
         '0109-LUCJAN-prjc-fixes.patch'::"$_lucjan/prjc-fixes-v2/0001-prjc-fixes.patch"
         '0110-LUCJAN-zstd-dev-patches.patch'::"$_lucjan/zstd-dev-patches-v2/0001-zstd-dev-patches.patch")
 
 sha256sums=('027d7e8988bb69ac12ee92406c3be1fe13f990b1ca2249e226225cd1573308bb'
             'SKIP'
-            '37d14b8f0ea296bfa97a9c0d2ab574a236b6fab7a123973d99c464b803022510'
+            'b1dc74347d518b1287da1b3f2358d237b269d11bec2efabdf494eca2b1204e80'
             'SKIP'
             '4fb8b32bd7f9b11fa9e546d705982500f8e6ae63e0a49b9d2f2931f86905648e'
             'd5ce94a811ef49161fb681dff5e48ae52e4dafbbf17270613fbbd1a3f87e3fee'
@@ -51,9 +51,9 @@ sha256sums=('027d7e8988bb69ac12ee92406c3be1fe13f990b1ca2249e226225cd1573308bb'
             '4e0cca8b30d5495f43bf656c2f4872fd13b5396c2912dee1cc2774ee4a04272d'
             'd5cd8860689edd358fe4330bf584a2b8a647c068c082db847403d98866c24bfe'
             '40c17e38445debb5ca5acedb34a1e608b2b598a62a5c2c1efee2a6baaf36d3c1'
-            '90864759311f87bcdff152667c692b376b8d0785180469045741a013c3ddff27'
-            '048e59030a44cfd518ae7b56333ddfc3efd47d2a2c9cd1defabfacbcba7d3827'
-            '77116f576f7e90b482b60b206a264597fa5ca37c1450c47f0926ac6e35d9bf39'
+            'e3a33e0f1d72ab62c4892a0792f4b0fe78b6a3195cd629744fb52294baa8c7f0'
+            'd2b51f536404580f5503aa25acc38c51ae240c33a620e1d050e93ee2bd689f87'
+            '1db92f1f07050854ed2cbf133db2710fdea4246baa7c9fb25c26083a169bc0bf'
             'db0d2fde8f1e994fbb4eb37c8affa3f0b339aa658f9ab5003bb2ce453a68ab95'
             'ae4dd61528997bdce2f0b3f6e9c5bac77935d991ec14d0f60075d247003f1852'
             '9e617e3ba7faab2bec4d7e58190ac74091d13a34c1ec1676abcdf5992640e6e2')
