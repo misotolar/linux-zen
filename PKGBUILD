@@ -5,7 +5,7 @@ pkgbase=linux-zen
 pkgname=("$pkgbase" "$pkgbase-headers")
 pkgdesc='Linux ZEN'
 pkgver="$_major.$_minor"
-pkgrel=1
+pkgrel=2
 
 _src="linux-$_major"
 _zen="v${pkgver%.*}-${pkgver##*.}"
@@ -32,12 +32,15 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v5.x/$_src.tar.xz"
         '0102-XANMOD-kconfig-add-500Hz-timer-interrupt-kernel-conf.patch'::"$_xanmod/xanmod/0004-XANMOD-kconfig-add-500Hz-timer-interrupt-kernel-conf.patch"
         '0103-XANMOD-lib-kconfig.debug-disable-default-CONFIG_SYMB.patch'::"$_xanmod/xanmod/0010-XANMOD-lib-kconfig.debug-disable-default-CONFIG_SYMB.patch"
         '0104-XANMOD-mac80211-ignore-AP-power-level-when-tx-power-type-is.patch'::"$_xanmod/net/mac80221/0001-mac80211-ignore-AP-power-level-when-tx-power-type-is.patch"
-        '0105-LUCJAN-x86-csum-rewrite-csum_partial.patch'::"$_lucjan/fixes-miscellaneous-v5-sep/0010-x86-csum-rewrite-csum_partial.patch"
-        '0106-LUCJAN-x86-csum-Fix-compilation-error-for-UM.patch'::"$_lucjan/fixes-miscellaneous-v5-sep/0011-x86-csum-Fix-compilation-error-for-UM.patch"
-        '0107-LUCJAN-x86-csum-Fix-initial-seed-for-odd-buffers.patch'::"$_lucjan/fixes-miscellaneous-v5-sep/0012-x86-csum-Fix-initial-seed-for-odd-buffers.patch"
-        '0108-LUCJAN-net-patches.patch'::"$_lucjan/net-patches-v3/0001-net-patches.patch"
-        '0109-LUCJAN-prjc-fixes.patch'::"$_lucjan/prjc-fixes-v2/0001-prjc-fixes.patch"
-        '0110-LUCJAN-zstd-dev-patches.patch'::"$_lucjan/zstd-dev-patches-v2/0001-zstd-dev-patches.patch")
+        '0105-LUCJAN-x86-csum-rewrite-csum_partial.patch'::"$_lucjan/fixes-miscellaneous-v6-sep/0010-x86-csum-rewrite-csum_partial.patch"
+        '0106-LUCJAN-x86-csum-Fix-compilation-error-for-UM.patch'::"$_lucjan/fixes-miscellaneous-v6-sep/0011-x86-csum-Fix-compilation-error-for-UM.patch"
+        '0107-LUCJAN-x86-csum-Fix-initial-seed-for-odd-buffers.patch'::"$_lucjan/fixes-miscellaneous-v6-sep/0012-x86-csum-Fix-initial-seed-for-odd-buffers.patch"
+        '0108-LUCJAN-mm-Increment-kswapd_waiters-for-throttled-direct-rec.patch'::"$_lucjan/fixes-miscellaneous-v6-sep/0025-mm-Increment-kswapd_waiters-for-throttled-direct-rec.patch"
+        '0109-LUCJAN-mm-Lower-the-non-hugetlbpage-pageblock-size-to-reduc.patch'::"$_lucjan/fixes-miscellaneous-v6-sep/0026-mm-Lower-the-non-hugetlbpage-pageblock-size-to-reduc.patch"
+        '0110-LUCJAN-mm-Don-t-hog-the-CPU-and-zone-lock-in-rmqueue_bulk.patch'::"$_lucjan/fixes-miscellaneous-v6-sep/0027-mm-Don-t-hog-the-CPU-and-zone-lock-in-rmqueue_bulk.patch"
+        '0111-LUCJAN-net-patches.patch'::"$_lucjan/net-patches-v3/0001-net-patches.patch"
+        '0112-LUCJAN-prjc-fixes.patch'::"$_lucjan/prjc-fixes-v2/0001-prjc-fixes.patch"
+        '0113-LUCJAN-zstd-dev-patches.patch'::"$_lucjan/zstd-dev-patches-v2/0001-zstd-dev-patches.patch")
 
 sha256sums=('027d7e8988bb69ac12ee92406c3be1fe13f990b1ca2249e226225cd1573308bb'
             'SKIP'
@@ -51,9 +54,12 @@ sha256sums=('027d7e8988bb69ac12ee92406c3be1fe13f990b1ca2249e226225cd1573308bb'
             '4e0cca8b30d5495f43bf656c2f4872fd13b5396c2912dee1cc2774ee4a04272d'
             'd5cd8860689edd358fe4330bf584a2b8a647c068c082db847403d98866c24bfe'
             '40c17e38445debb5ca5acedb34a1e608b2b598a62a5c2c1efee2a6baaf36d3c1'
-            'e3a33e0f1d72ab62c4892a0792f4b0fe78b6a3195cd629744fb52294baa8c7f0'
-            'd2b51f536404580f5503aa25acc38c51ae240c33a620e1d050e93ee2bd689f87'
-            '1db92f1f07050854ed2cbf133db2710fdea4246baa7c9fb25c26083a169bc0bf'
+            '973ba7478cac22d947f737751765e51efa8cfd115833b01d73cd37372341c87e'
+            '0ec2b09d7379947d46ab4d1f4a70b80aa09ce31c3b7db463be351ae3371921f9'
+            'bc11f7434aeb28d901766336d49e827d1a1aaf3503d8c715a7341a6131143f44'
+            '34466b38893e4a45cd974c603972032747591bbfe5567e79c675eeb6dd92d4f0'
+            'fc5f5e4f084d1f0288d8b32023db36224b2715ee50796c4add92cb43eadbc814'
+            '7b2fdbee41834b666126e23e6aa2769ac96d5314b66cc19e6fc6b7885704077a'
             'db0d2fde8f1e994fbb4eb37c8affa3f0b339aa658f9ab5003bb2ce453a68ab95'
             'ae4dd61528997bdce2f0b3f6e9c5bac77935d991ec14d0f60075d247003f1852'
             '9e617e3ba7faab2bec4d7e58190ac74091d13a34c1ec1676abcdf5992640e6e2')
