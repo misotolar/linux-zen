@@ -1,5 +1,5 @@
 _major=5.16
-_minor=13.zen1
+_minor=14.zen1
 
 pkgbase=linux-zen
 pkgname=("$pkgbase" "$pkgbase-headers")
@@ -37,14 +37,13 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v5.x/$_src.tar.xz"
         '0107-LUCJAN-x86-csum-Fix-initial-seed-for-odd-buffers.patch'::"$_lucjan/fixes-miscellaneous-v6-sep/0012-x86-csum-Fix-initial-seed-for-odd-buffers.patch"
         '0108-LUCJAN-net-patches.patch'::"$_lucjan/net-patches-v3/0001-net-patches.patch"
         '0109-LUCJAN-prjc-fixes.patch'::"$_lucjan/prjc-fixes-v2/0001-prjc-fixes.patch"
-        '0110-LUCJAN-zstd-dev-patches.patch'::"$_lucjan/zstd-dev-patches-v2/0001-zstd-dev-patches.patch"
-        '0201-linux-prjc-compilation-fix.patch')       # https://gitlab.com/alfredchen/linux-prjc/-/issues/47#note_865259845
+        '0110-LUCJAN-zstd-dev-patches.patch'::"$_lucjan/zstd-dev-patches-v2/0001-zstd-dev-patches.patch")
 
 sha256sums=('027d7e8988bb69ac12ee92406c3be1fe13f990b1ca2249e226225cd1573308bb'
             'SKIP'
-            '27d61ccff2223c1427a32ca382aafd5d29acef8ee64c413d687096117323a86f'
+            '3d64eb9532752e0b36123cecdd85d882cccebfe58a8b5c047141f671e0a41dac'
             'SKIP'
-            '37e79b526efeeb219f7255a39602bfaab3cc5fefe5a9aa721bc7a00c62736958'
+            '1a0e945f63c45aa876b19645ed1385749d29f7365a717b35298071d78fb75f63'
             'd5ce94a811ef49161fb681dff5e48ae52e4dafbbf17270613fbbd1a3f87e3fee'
             'ee03df755ae52b04c40c979e9e04745f9c0c8ce34bcc5a3c652bf3029268ad27'
             '4d2ad28ed803d7b382f9e0ba6f449c1a0d8d0d8f1ecc31fde56f4556cefc802e'
@@ -57,8 +56,7 @@ sha256sums=('027d7e8988bb69ac12ee92406c3be1fe13f990b1ca2249e226225cd1573308bb'
             'bc11f7434aeb28d901766336d49e827d1a1aaf3503d8c715a7341a6131143f44'
             'db0d2fde8f1e994fbb4eb37c8affa3f0b339aa658f9ab5003bb2ce453a68ab95'
             'ae4dd61528997bdce2f0b3f6e9c5bac77935d991ec14d0f60075d247003f1852'
-            '9e617e3ba7faab2bec4d7e58190ac74091d13a34c1ec1676abcdf5992640e6e2'
-            'c328f3e00fa1e59b12f9a9376ed0f3965493f425590c1a83340916650b2643a6')
+            '9e617e3ba7faab2bec4d7e58190ac74091d13a34c1ec1676abcdf5992640e6e2')
 
 validpgpkeys=('ABAF11C65A2970B130ABE3C479BE3E4300411886'   # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E'   # Greg Kroah-Hartman
