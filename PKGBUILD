@@ -5,7 +5,7 @@ pkgbase=linux-zen
 pkgname=("$pkgbase" "$pkgbase-headers")
 pkgdesc='Linux ZEN'
 pkgver="$_major.$_minor"
-pkgrel=1
+pkgrel=2
 
 _src="linux-$_major"
 _zen="v${pkgver%.*}-${pkgver##*.}"
@@ -36,7 +36,7 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v5.x/$_src.tar.xz"
         '0106-LUCJAN-x86-csum-Fix-compilation-error-for-UM.patch'::"$_lucjan/fixes-miscellaneous-v6-sep/0011-x86-csum-Fix-compilation-error-for-UM.patch"
         '0107-LUCJAN-x86-csum-Fix-initial-seed-for-odd-buffers.patch'::"$_lucjan/fixes-miscellaneous-v6-sep/0012-x86-csum-Fix-initial-seed-for-odd-buffers.patch"
         '0108-LUCJAN-net-patches.patch'::"$_lucjan/net-patches-v3/0001-net-patches.patch"
-        '0109-LUCJAN-prjc-fixes.patch'::"$_lucjan/prjc-fixes-v2/0001-prjc-fixes.patch"
+        '0109-LUCJAN-prjc-fixes.patch'::"$_lucjan/prjc-fixes-v3/0001-prjc-fixes.patch"
         '0110-LUCJAN-zstd-dev-patches.patch'::"$_lucjan/zstd-dev-patches-v2/0001-zstd-dev-patches.patch")
 
 sha256sums=('027d7e8988bb69ac12ee92406c3be1fe13f990b1ca2249e226225cd1573308bb'
@@ -55,7 +55,7 @@ sha256sums=('027d7e8988bb69ac12ee92406c3be1fe13f990b1ca2249e226225cd1573308bb'
             '0ec2b09d7379947d46ab4d1f4a70b80aa09ce31c3b7db463be351ae3371921f9'
             'bc11f7434aeb28d901766336d49e827d1a1aaf3503d8c715a7341a6131143f44'
             'db0d2fde8f1e994fbb4eb37c8affa3f0b339aa658f9ab5003bb2ce453a68ab95'
-            'ae4dd61528997bdce2f0b3f6e9c5bac77935d991ec14d0f60075d247003f1852'
+            '2e563cc0f33d0b48e74db88a91adc725e98e56e4b21883c7f59f7fb0b463992c'
             '9e617e3ba7faab2bec4d7e58190ac74091d13a34c1ec1676abcdf5992640e6e2')
 
 validpgpkeys=('ABAF11C65A2970B130ABE3C479BE3E4300411886'   # Linus Torvalds
