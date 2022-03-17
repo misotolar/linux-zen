@@ -1,11 +1,11 @@
 _major=5.16
-_minor=14.zen1
+_minor=15.zen1
 
 pkgbase=linux-zen
 pkgname=("$pkgbase" "$pkgbase-headers")
 pkgdesc='Linux ZEN'
 pkgver="$_major.$_minor"
-pkgrel=3
+pkgrel=1
 
 _src="linux-$_major"
 _zen="v${pkgver%.*}-${pkgver##*.}"
@@ -36,12 +36,13 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v5.x/$_src.tar.xz"
         '0106-LUCJAN-x86-csum-Fix-compilation-error-for-UM.patch'::"$_lucjan/fixes-miscellaneous-v6-sep/0011-x86-csum-Fix-compilation-error-for-UM.patch"
         '0107-LUCJAN-x86-csum-Fix-initial-seed-for-odd-buffers.patch'::"$_lucjan/fixes-miscellaneous-v6-sep/0012-x86-csum-Fix-initial-seed-for-odd-buffers.patch"
         '0108-LUCJAN-net-patches.patch'::"$_lucjan/net-patches-v3/0001-net-patches.patch"
-        '0109-LUCJAN-prjc-fixes.patch'::"$_lucjan/prjc-fixes-v4/0001-prjc-fixes.patch"
-        '0110-LUCJAN-zstd-dev-patches.patch'::"$_lucjan/zstd-dev-patches-v2/0001-zstd-dev-patches.patch")
+        '0109-LUCJAN-sched-alt-Add-memory-barriers-around-atomics.patch'::"$_lucjan/prjc-fixes-v5-sep/0007-sched-alt-Add-memory-barriers-around-atomics.patch"
+        '0110-LUCJAN-Add-potentially-missing-assignment.patch'::"$_lucjan/prjc-fixes-v5-sep/0009-Add-potentially-missing-assignment.patch"
+        '0111-LUCJAN-zstd-dev-patches.patch'::"$_lucjan/zstd-dev-patches-v2/0001-zstd-dev-patches.patch")
 
 sha256sums=('027d7e8988bb69ac12ee92406c3be1fe13f990b1ca2249e226225cd1573308bb'
             'SKIP'
-            '3d64eb9532752e0b36123cecdd85d882cccebfe58a8b5c047141f671e0a41dac'
+            '7ccfd94874271f6338fe77daa09fd4c9dfe28adba8c84e153fde94c85c774c5f'
             'SKIP'
             '1a0e945f63c45aa876b19645ed1385749d29f7365a717b35298071d78fb75f63'
             'd5ce94a811ef49161fb681dff5e48ae52e4dafbbf17270613fbbd1a3f87e3fee'
@@ -55,7 +56,8 @@ sha256sums=('027d7e8988bb69ac12ee92406c3be1fe13f990b1ca2249e226225cd1573308bb'
             '0ec2b09d7379947d46ab4d1f4a70b80aa09ce31c3b7db463be351ae3371921f9'
             'bc11f7434aeb28d901766336d49e827d1a1aaf3503d8c715a7341a6131143f44'
             'db0d2fde8f1e994fbb4eb37c8affa3f0b339aa658f9ab5003bb2ce453a68ab95'
-            'cdd893d97286e1e5e8f0b04b27b6af70e58b0a5698b0b913f03b9b3082170731'
+            '77b97e520265a2fdef83432fa9025a1e4b6bdcd67913caab66db901ffe5a9c8d'
+            'feac4d1824e19c4ea3d6cb9ce6ff34705bb4e0673b98e72867d6c1788638a787'
             '9e617e3ba7faab2bec4d7e58190ac74091d13a34c1ec1676abcdf5992640e6e2')
 
 validpgpkeys=('ABAF11C65A2970B130ABE3C479BE3E4300411886'   # Linus Torvalds
