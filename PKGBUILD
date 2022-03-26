@@ -1,5 +1,5 @@
-_major=5.16
-_minor=16.zen1
+_major=5.17
+_minor=zen1
 
 pkgbase=linux-zen
 pkgname=("$pkgbase" "$pkgbase-headers")
@@ -32,31 +32,27 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v5.x/$_src.tar.xz"
         '0102-XANMOD-kconfig-add-500Hz-timer-interrupt-kernel-conf.patch'::"$_xanmod/xanmod/0004-XANMOD-kconfig-add-500Hz-timer-interrupt-kernel-conf.patch"
         '0103-XANMOD-lib-kconfig.debug-disable-default-CONFIG_SYMB.patch'::"$_xanmod/xanmod/0010-XANMOD-lib-kconfig.debug-disable-default-CONFIG_SYMB.patch"
         '0104-XANMOD-mac80211-ignore-AP-power-level-when-tx-power-type-is.patch'::"$_xanmod/net/mac80221/0001-mac80211-ignore-AP-power-level-when-tx-power-type-is.patch"
-        '0105-LUCJAN-x86-csum-rewrite-csum_partial.patch'::"$_lucjan/fixes-miscellaneous-v6-sep/0010-x86-csum-rewrite-csum_partial.patch"
-        '0106-LUCJAN-x86-csum-Fix-compilation-error-for-UM.patch'::"$_lucjan/fixes-miscellaneous-v6-sep/0011-x86-csum-Fix-compilation-error-for-UM.patch"
-        '0107-LUCJAN-x86-csum-Fix-initial-seed-for-odd-buffers.patch'::"$_lucjan/fixes-miscellaneous-v6-sep/0012-x86-csum-Fix-initial-seed-for-odd-buffers.patch"
-        '0108-LUCJAN-net-patches.patch'::"$_lucjan/net-patches-v3/0001-net-patches.patch"
-        '0109-LUCJAN-Add-potentially-missing-assignment.patch'::"$_lucjan/prjc-fixes-v6-sep/0009-Add-potentially-missing-assignment.patch"
-        '0110-LUCJAN-zstd-dev-patches.patch'::"$_lucjan/zstd-dev-patches-v2/0001-zstd-dev-patches.patch")
+        '0105-LUCJAN-PRJC-for-5.17.patch'::"$_lucjan/prjc-patches/0001-PRJC-for-5.17.patch"
+        '0106-LUCJAN-sched-alt-Add-MG-LRU-changes-through-ifdef-macro.patch'::"$_lucjan/prjc-lru-patches/0001-sched-alt-Add-MG-LRU-changes-through-ifdef-macro.patch"
+        '0107-LUCJAN-prjc-fixes.patch'::"$_lucjan/prjc-fixes-v2/0001-prjc-fixes.patch"
+        '0108-LUCJAN-zstd-dev-patches.patch'::"$_lucjan/zstd-dev-patches/0001-zstd-dev-patches.patch")
 
-sha256sums=('027d7e8988bb69ac12ee92406c3be1fe13f990b1ca2249e226225cd1573308bb'
+sha256sums=('555fef61dddb591a83d62dd04e252792f9af4ba9ef14683f64840e46fa20b1b1'
             'SKIP'
-            '2a757a7a24cbfac5e4e29d09314d8edd315a87490657d82ac819522e04a25606'
+            '8bd7c2b9aac2dc75b52afac0ad443f12223be187dee54ebf7f90e32436646f36'
             'SKIP'
-            '1a0e945f63c45aa876b19645ed1385749d29f7365a717b35298071d78fb75f63'
+            '27f59cb7d4adb08a81da3de822ce07d5b103c799e89aa36370e16e0b4d1f8672'
             'd5ce94a811ef49161fb681dff5e48ae52e4dafbbf17270613fbbd1a3f87e3fee'
             'ee03df755ae52b04c40c979e9e04745f9c0c8ce34bcc5a3c652bf3029268ad27'
             '4d2ad28ed803d7b382f9e0ba6f449c1a0d8d0d8f1ecc31fde56f4556cefc802e'
-            'c6b37e668e85cec65bdf1a81e4b40659b6a7e545d25842eb7a1d3322fbdf68e7'
-            '4e0cca8b30d5495f43bf656c2f4872fd13b5396c2912dee1cc2774ee4a04272d'
-            'd5cd8860689edd358fe4330bf584a2b8a647c068c082db847403d98866c24bfe'
+            'b06c7eec6114c05196613048a308b598c8873def7bfdabbea3d4a983f62c19cb'
+            '0f3fc59eb50305c82b93ad56c640695399eb38453345b7ed1e10886223f5cb47'
+            'c949b420494e2c020eb5a59bf067aa4aeaf35980da6500b1be18cd77973de166'
             '40c17e38445debb5ca5acedb34a1e608b2b598a62a5c2c1efee2a6baaf36d3c1'
-            '973ba7478cac22d947f737751765e51efa8cfd115833b01d73cd37372341c87e'
-            '0ec2b09d7379947d46ab4d1f4a70b80aa09ce31c3b7db463be351ae3371921f9'
-            'bc11f7434aeb28d901766336d49e827d1a1aaf3503d8c715a7341a6131143f44'
-            'db0d2fde8f1e994fbb4eb37c8affa3f0b339aa658f9ab5003bb2ce453a68ab95'
-            '84498c00358f8278f106e83409c729a49208dd13e44523d5bc54084b03b2d688'
-            '9e617e3ba7faab2bec4d7e58190ac74091d13a34c1ec1676abcdf5992640e6e2')
+            '6f1fbed65deab3ec19b186a2d59ae94297b366719d2302d1b72bf7c7bcc85179'
+            'fd8682f349e573e5a7674766b41ee0ed97aebb74e2c806b747ebc3a1662c31ed'
+            'da8f9fca99da74cbd213fdcf04aa636cb9bbb815b7c19d1a82905d6c468c93fd'
+            '3c866fd701c89167febc0ea3d97f332183c157a18df4b2a07d4ad78ed258f0c2')
 
 validpgpkeys=('ABAF11C65A2970B130ABE3C479BE3E4300411886'   # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E'   # Greg Kroah-Hartman
@@ -139,7 +135,7 @@ prepare() {
     scripts/config -d ACPI_PRMT
 
     # General architecture-dependent options
-    scripts/config -e LTO_CLANG_FULL -d LTO_NONE
+    scripts/config -e LTO_CLANG_THIN -d LTO_NONE
 
     # Enable loadable module support
     if [ -d /usr/src/certs-local ]; then

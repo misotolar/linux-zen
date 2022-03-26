@@ -3,7 +3,7 @@
 
 Slightly optimized for Lenovo IdeaPad 3 15ADA05-81W1
 
-- Clang Full LTO build
+- Clang Thin LTO build
 - [PDS Process Scheduler](https://gitlab.com/alfredchen/projectc)
 - AMD Zen processor family
 - Kernel module signing if [arch-sign-modules](https://aur.archlinux.org/packages/arch-sign-modules) installed
@@ -13,9 +13,6 @@ Slightly optimized for Lenovo IdeaPad 3 15ADA05-81W1
 - XANMOD: kconfig: add 500Hz timer interrupt kernel config option
 - XANMOD: lib/kconfig.debug: disable default SYMBOLIC_ERRNAME and DEBUG_BUGVERBOSE
 - mac80211: ignore AP power level when tx power type is "fixed"
-- x86/csum: rewrite/optimize csum_partial()
-- tcp: optimizations for linux 5.17
-- lib: zstd: upstream updates
 
 ```
 [linux-zen]
