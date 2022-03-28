@@ -3,7 +3,7 @@
 
 Slightly optimized for Lenovo IdeaPad 3 15ADA05-81W1
 
-- Clang Thin LTO build
+- Clang ~~Full~~ Thin LTO build (see [ClangBuiltLinux/linux#1612](https://github.com/ClangBuiltLinux/linux/issues/1612))
 - [PDS Process Scheduler](https://gitlab.com/alfredchen/projectc)
 - AMD Zen processor family
 - Kernel module signing if [arch-sign-modules](https://aur.archlinux.org/packages/arch-sign-modules) installed

@@ -5,7 +5,7 @@ pkgbase=linux-zen
 pkgname=("$pkgbase" "$pkgbase-headers")
 pkgdesc='Linux ZEN'
 pkgver="$_major.$_minor"
-pkgrel=1
+pkgrel=2
 
 _src="linux-$_major"
 _zen="v${pkgver%.*}-${pkgver##*.}"
@@ -35,7 +35,8 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v5.x/$_src.tar.xz"
         '0105-LUCJAN-PRJC-for-5.17.patch'::"$_lucjan/prjc-patches/0001-PRJC-for-5.17.patch"
         '0106-LUCJAN-sched-alt-Add-MG-LRU-changes-through-ifdef-macro.patch'::"$_lucjan/prjc-lru-patches/0001-sched-alt-Add-MG-LRU-changes-through-ifdef-macro.patch"
         '0107-LUCJAN-prjc-fixes.patch'::"$_lucjan/prjc-fixes-v2/0001-prjc-fixes.patch"
-        '0108-LUCJAN-zstd-dev-patches.patch'::"$_lucjan/zstd-dev-patches/0001-zstd-dev-patches.patch")
+        '0108-LUCJAN-rcu-5.17-port-changes-from-zenkernel.patch'::"$_lucjan/rcu-patches-v2/0001-rcu-5.17-port-changes-from-zenkernel.patch"
+        '0109-LUCJAN-zstd-dev-patches.patch'::"$_lucjan/zstd-dev-patches/0001-zstd-dev-patches.patch")
 
 sha256sums=('555fef61dddb591a83d62dd04e252792f9af4ba9ef14683f64840e46fa20b1b1'
             'SKIP'
@@ -52,6 +53,7 @@ sha256sums=('555fef61dddb591a83d62dd04e252792f9af4ba9ef14683f64840e46fa20b1b1'
             '6f1fbed65deab3ec19b186a2d59ae94297b366719d2302d1b72bf7c7bcc85179'
             'fd8682f349e573e5a7674766b41ee0ed97aebb74e2c806b747ebc3a1662c31ed'
             'da8f9fca99da74cbd213fdcf04aa636cb9bbb815b7c19d1a82905d6c468c93fd'
+            '650bdb26e28bd260fed2025e5896d9b843c6ccd8a82071c4ea1f460fbc69065c'
             '3c866fd701c89167febc0ea3d97f332183c157a18df4b2a07d4ad78ed258f0c2')
 
 validpgpkeys=('ABAF11C65A2970B130ABE3C479BE3E4300411886'   # Linus Torvalds
@@ -118,9 +120,6 @@ prepare() {
     scripts/config -d BPF_PRELOAD
     scripts/config -d MQ_IOSCHED_KYBER
     scripts/config -e PSI_DEFAULT_DISABLED
-
-    # Device drivers
-    scripts/config -e SYSFB_SIMPLEFB
 
     # Processor type and features
     scripts/config --set-val NR_CPUS 16
