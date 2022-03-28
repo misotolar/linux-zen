@@ -1,11 +1,11 @@
 _major=5.17
-_minor=zen1
+_minor=1.zen1
 
 pkgbase=linux-zen
 pkgname=("$pkgbase" "$pkgbase-headers")
 pkgdesc='Linux ZEN'
 pkgver="$_major.$_minor"
-pkgrel=2
+pkgrel=1
 
 _src="linux-$_major"
 _zen="v${pkgver%.*}-${pkgver##*.}"
@@ -28,32 +28,34 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v5.x/$_src.tar.xz"
         '0001-x86-tools-fix-llvm-objdump-syntax.patch'  # https://github.com/ClangBuiltLinux/linux/issues/1362
         '0002-ideapad-laptop-add-platform-support-for-Ideapad-3-15ADA05-81W1.patch'
         '0003-tsc-directsync-gross-hack.patch'          # https://bugzilla.kernel.org/show_bug.cgi?id=202525
-        '0101-XANMOD-block-set-rq_affinity-to-force-full-multithre.patch'::"$_xanmod/xanmod/0003-XANMOD-block-set-rq_affinity-to-force-full-multithre.patch"
-        '0102-XANMOD-kconfig-add-500Hz-timer-interrupt-kernel-conf.patch'::"$_xanmod/xanmod/0004-XANMOD-kconfig-add-500Hz-timer-interrupt-kernel-conf.patch"
-        '0103-XANMOD-lib-kconfig.debug-disable-default-CONFIG_SYMB.patch'::"$_xanmod/xanmod/0010-XANMOD-lib-kconfig.debug-disable-default-CONFIG_SYMB.patch"
-        '0104-XANMOD-mac80211-ignore-AP-power-level-when-tx-power-type-is.patch'::"$_xanmod/net/mac80221/0001-mac80211-ignore-AP-power-level-when-tx-power-type-is.patch"
-        '0105-LUCJAN-PRJC-for-5.17.patch'::"$_lucjan/prjc-patches/0001-PRJC-for-5.17.patch"
-        '0106-LUCJAN-sched-alt-Add-MG-LRU-changes-through-ifdef-macro.patch'::"$_lucjan/prjc-lru-patches/0001-sched-alt-Add-MG-LRU-changes-through-ifdef-macro.patch"
-        '0107-LUCJAN-prjc-fixes.patch'::"$_lucjan/prjc-fixes-v2/0001-prjc-fixes.patch"
-        '0108-LUCJAN-rcu-5.17-port-changes-from-zenkernel.patch'::"$_lucjan/rcu-patches-v2/0001-rcu-5.17-port-changes-from-zenkernel.patch"
-        '0109-LUCJAN-zstd-dev-patches.patch'::"$_lucjan/zstd-dev-patches/0001-zstd-dev-patches.patch")
+        '0101-XANMOD-block-mq-deadline-Disable-front_merges-by-def.patch'::"$_xanmod/xanmod/0002-XANMOD-block-mq-deadline-Disable-front_merges-by-def.patch"
+        '0102-XANMOD-block-set-rq_affinity-to-force-full-multithre.patch'::"$_xanmod/xanmod/0003-XANMOD-block-set-rq_affinity-to-force-full-multithre.patch"
+        '0103-XANMOD-kconfig-add-500Hz-timer-interrupt-kernel-conf.patch'::"$_xanmod/xanmod/0004-XANMOD-kconfig-add-500Hz-timer-interrupt-kernel-conf.patch"
+        '0104-XANMOD-lib-kconfig.debug-disable-default-CONFIG_SYMB.patch'::"$_xanmod/xanmod/0010-XANMOD-lib-kconfig.debug-disable-default-CONFIG_SYMB.patch"
+        '0105-XANMOD-Change-rcutree.kthread_prio-to-SCHED_RR-polic.patch'::"$_lucjan/xanmod-patches-v3-sep/0005-XANMOD-Change-rcutree.kthread_prio-to-SCHED_RR-polic.patch"
+        '0106-XANMOD-mac80211-ignore-AP-power-level-when-tx-power-type-is.patch'::"$_lucjan/xanmod-patches-v3-sep/0004-mac80211-ignore-AP-power-level-when-tx-power-type-is.patch"
+        '0107-LUCJAN-PRJC-for-5.17.patch'::"$_lucjan/prjc-patches/0001-PRJC-for-5.17.patch"
+        '0108-LUCJAN-sched-alt-Add-MG-LRU-changes-through-ifdef-macro.patch'::"$_lucjan/prjc-lru-patches/0001-sched-alt-Add-MG-LRU-changes-through-ifdef-macro.patch"
+        '0109-LUCJAN-prjc-fixes.patch'::"$_lucjan/prjc-fixes-v2/0001-prjc-fixes.patch"
+        '0110-LUCJAN-zstd-dev-patches.patch'::"$_lucjan/zstd-dev-patches/0001-zstd-dev-patches.patch")
 
 sha256sums=('555fef61dddb591a83d62dd04e252792f9af4ba9ef14683f64840e46fa20b1b1'
             'SKIP'
-            '8bd7c2b9aac2dc75b52afac0ad443f12223be187dee54ebf7f90e32436646f36'
+            'df62cc46c41212860fe1e9058e69f7022e5cbbe6588b418801162e365adaf6db'
             'SKIP'
-            '27f59cb7d4adb08a81da3de822ce07d5b103c799e89aa36370e16e0b4d1f8672'
+            '812250d12684c263c2db878d0d49539cb4f987790d74d42225ae3f51f3e28133'
             'd5ce94a811ef49161fb681dff5e48ae52e4dafbbf17270613fbbd1a3f87e3fee'
             'ee03df755ae52b04c40c979e9e04745f9c0c8ce34bcc5a3c652bf3029268ad27'
             '4d2ad28ed803d7b382f9e0ba6f449c1a0d8d0d8f1ecc31fde56f4556cefc802e'
+            'c98db26c0861eeb99aed205f4b097486793e385934f0ce9d726724edf649fac5'
             'b06c7eec6114c05196613048a308b598c8873def7bfdabbea3d4a983f62c19cb'
             '0f3fc59eb50305c82b93ad56c640695399eb38453345b7ed1e10886223f5cb47'
             'c949b420494e2c020eb5a59bf067aa4aeaf35980da6500b1be18cd77973de166'
-            '40c17e38445debb5ca5acedb34a1e608b2b598a62a5c2c1efee2a6baaf36d3c1'
+            '0462e8ef0b57c660256e720dc8303dbb72ee276391ffaabcc4ef709ccb060fcd'
+            'c0f08a845a4ee94b87242d90a018e23b906d0d5ee575cf1b57128f82af3b9b29'
             '6f1fbed65deab3ec19b186a2d59ae94297b366719d2302d1b72bf7c7bcc85179'
             'fd8682f349e573e5a7674766b41ee0ed97aebb74e2c806b747ebc3a1662c31ed'
             'da8f9fca99da74cbd213fdcf04aa636cb9bbb815b7c19d1a82905d6c468c93fd'
-            '650bdb26e28bd260fed2025e5896d9b843c6ccd8a82071c4ea1f460fbc69065c'
             '3c866fd701c89167febc0ea3d97f332183c157a18df4b2a07d4ad78ed258f0c2')
 
 validpgpkeys=('ABAF11C65A2970B130ABE3C479BE3E4300411886'   # Linus Torvalds
@@ -120,6 +122,9 @@ prepare() {
     scripts/config -d BPF_PRELOAD
     scripts/config -d MQ_IOSCHED_KYBER
     scripts/config -e PSI_DEFAULT_DISABLED
+
+    # Device drivers
+    scripts/config -e SYSFB_SIMPLEFB
 
     # Processor type and features
     scripts/config --set-val NR_CPUS 16
