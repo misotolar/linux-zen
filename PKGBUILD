@@ -5,7 +5,7 @@ pkgbase=linux-zen
 pkgname=("$pkgbase" "$pkgbase-headers")
 pkgdesc='Linux ZEN'
 pkgver="$_major.$_minor"
-pkgrel=1
+pkgrel=2
 
 _src="linux-$_major"
 _zen="v${pkgver%.*}-${pkgver##*.}"
@@ -25,9 +25,10 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v5.x/$_src.tar.xz"
         "https://github.com/zen-kernel/zen-kernel/releases/download/$_zen/$_zen.patch.xz"
         "https://github.com/zen-kernel/zen-kernel/releases/download/$_zen/$_zen.patch.xz.sig"
         "https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/linux-zen/trunk/config"
-        '0001-x86-tools-fix-llvm-objdump-syntax.patch'  # https://github.com/ClangBuiltLinux/linux/issues/1362
+        '0001-x86-tools-fix-llvm-objdump-syntax.patch' # https://github.com/ClangBuiltLinux/linux/issues/1362
         '0002-ideapad-laptop-add-platform-support-for-Ideapad-3-15ADA05-81W1.patch'
-        '0003-tsc-directsync-gross-hack.patch'          # https://bugzilla.kernel.org/show_bug.cgi?id=202525
+        '0003-tsc-directsync-gross-hack.patch' # https://bugzilla.kernel.org/show_bug.cgi?id=202525
+        '0004-x86-extable-prefer-local-labels-in-set-directives.patch' # https://github.com/ClangBuiltLinux/linux/issues/1612
         '0101-XANMOD-block-mq-deadline-Disable-front_merges-by-def.patch'::"$_xanmod/xanmod/0002-XANMOD-block-mq-deadline-Disable-front_merges-by-def.patch"
         '0102-XANMOD-block-set-rq_affinity-to-force-full-multithre.patch'::"$_xanmod/xanmod/0003-XANMOD-block-set-rq_affinity-to-force-full-multithre.patch"
         '0103-XANMOD-kconfig-add-500Hz-timer-interrupt-kernel-conf.patch'::"$_xanmod/xanmod/0004-XANMOD-kconfig-add-500Hz-timer-interrupt-kernel-conf.patch"
@@ -47,6 +48,7 @@ sha256sums=('555fef61dddb591a83d62dd04e252792f9af4ba9ef14683f64840e46fa20b1b1'
             'd5ce94a811ef49161fb681dff5e48ae52e4dafbbf17270613fbbd1a3f87e3fee'
             'ee03df755ae52b04c40c979e9e04745f9c0c8ce34bcc5a3c652bf3029268ad27'
             '4d2ad28ed803d7b382f9e0ba6f449c1a0d8d0d8f1ecc31fde56f4556cefc802e'
+            'aceac75b840aefe7c315bfdd3d9e269d186ca83e43dd938391a9d3f8fe1263bf'
             'c98db26c0861eeb99aed205f4b097486793e385934f0ce9d726724edf649fac5'
             'b06c7eec6114c05196613048a308b598c8873def7bfdabbea3d4a983f62c19cb'
             '0f3fc59eb50305c82b93ad56c640695399eb38453345b7ed1e10886223f5cb47'
@@ -139,7 +141,7 @@ prepare() {
     scripts/config -d ACPI_PRMT
 
     # General architecture-dependent options
-    scripts/config -e LTO_CLANG_THIN -d LTO_NONE
+    scripts/config -e LTO_CLANG_FULL -d LTO_NONE
 
     # Enable loadable module support
     if [ -d /usr/src/certs-local ]; then

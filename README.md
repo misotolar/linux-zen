@@ -3,11 +3,12 @@
 
 Slightly optimized for Lenovo IdeaPad 3 15ADA05-81W1
 
-- Clang ~~Full~~ Thin LTO build (see [ClangBuiltLinux/linux#1612](https://github.com/ClangBuiltLinux/linux/issues/1612))
+- Clang Full LTO build
 - [PDS Process Scheduler](https://gitlab.com/alfredchen/projectc)
 - AMD Zen processor family
 - Kernel module signing if [arch-sign-modules](https://aur.archlinux.org/packages/arch-sign-modules) installed
 - platform/x86: ideapad-laptop: add support for Ideapad 3 15ADA05-81W1
+- [x86/extable: prefer local labels in .set directives](https://github.com/ClangBuiltLinux/linux/issues/1612)
 - [tsc: allow directly synchronizing TSC if TSC_ADJUST is absent](https://bugzilla.kernel.org/show_bug.cgi?id=202525)
 - XANMOD: block/mq-deadline: Disable front_merges by default
 - XANMOD: block: set rq_affinity to force full multithreading I/O requests
