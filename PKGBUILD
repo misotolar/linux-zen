@@ -5,7 +5,7 @@ pkgbase=linux-zen
 pkgname=("$pkgbase" "$pkgbase-headers")
 pkgdesc='Linux ZEN'
 pkgver="$_major.$_minor"
-pkgrel=2
+pkgrel=3
 
 _src="linux-$_major"
 _zen="v${pkgver%.*}-${pkgver##*.}"
@@ -35,9 +35,9 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v5.x/$_src.tar.xz"
         '0104-XANMOD-lib-kconfig.debug-disable-default-CONFIG_SYMB.patch'::"$_xanmod/xanmod/0010-XANMOD-lib-kconfig.debug-disable-default-CONFIG_SYMB.patch"
         '0105-XANMOD-Change-rcutree.kthread_prio-to-SCHED_RR-polic.patch'::"$_lucjan/xanmod-patches-v3-sep/0005-XANMOD-Change-rcutree.kthread_prio-to-SCHED_RR-polic.patch"
         '0106-XANMOD-mac80211-ignore-AP-power-level-when-tx-power-type-is.patch'::"$_lucjan/xanmod-patches-v3-sep/0004-mac80211-ignore-AP-power-level-when-tx-power-type-is.patch"
-        '0107-LUCJAN-PRJC-for-5.17.patch'::"$_lucjan/prjc-patches/0001-PRJC-for-5.17.patch"
+        '0107-LUCJAN-PRJC-for-5.17.patch'::"$_lucjan/prjc-patches-v2/0001-PRJC-for-5.17.patch"
         '0108-LUCJAN-sched-alt-Add-MG-LRU-changes-through-ifdef-macro.patch'::"$_lucjan/prjc-lru-patches/0001-sched-alt-Add-MG-LRU-changes-through-ifdef-macro.patch"
-        '0109-LUCJAN-prjc-fixes.patch'::"$_lucjan/prjc-fixes-v2/0001-prjc-fixes.patch"
+        '0109-LUCJAN-prjc-fixes.patch'::"$_lucjan/prjc-fixes-v4/0001-prjc-fixes.patch"
         '0110-LUCJAN-zstd-dev-patches.patch'::"$_lucjan/zstd-dev-patches/0001-zstd-dev-patches.patch")
 
 sha256sums=('555fef61dddb591a83d62dd04e252792f9af4ba9ef14683f64840e46fa20b1b1'
@@ -55,9 +55,9 @@ sha256sums=('555fef61dddb591a83d62dd04e252792f9af4ba9ef14683f64840e46fa20b1b1'
             'c949b420494e2c020eb5a59bf067aa4aeaf35980da6500b1be18cd77973de166'
             '0462e8ef0b57c660256e720dc8303dbb72ee276391ffaabcc4ef709ccb060fcd'
             'c0f08a845a4ee94b87242d90a018e23b906d0d5ee575cf1b57128f82af3b9b29'
-            '6f1fbed65deab3ec19b186a2d59ae94297b366719d2302d1b72bf7c7bcc85179'
+            '4546fd2e208295375ef80982c55598b02bf5b6f8689c1ebc757d282d062fc0a0'
             'fd8682f349e573e5a7674766b41ee0ed97aebb74e2c806b747ebc3a1662c31ed'
-            'da8f9fca99da74cbd213fdcf04aa636cb9bbb815b7c19d1a82905d6c468c93fd'
+            '44a6ad19d55945aa3354eb843ac5709b987ade490e785bd1bb61cc7aa9f4e4af'
             '3c866fd701c89167febc0ea3d97f332183c157a18df4b2a07d4ad78ed258f0c2')
 
 validpgpkeys=('ABAF11C65A2970B130ABE3C479BE3E4300411886'   # Linus Torvalds
@@ -184,7 +184,7 @@ build() {
 _package() {
     pkgdesc="The $pkgdesc kernel and modules"
     depends=('coreutils' 'kmod' 'initramfs')
-    optdepends=('crda: to set the correct wireless channels of your country'
+    optdepends=('wireless-regdb: to set the correct wireless channels of your country'
                 'linux-firmware: firmware images needed for some devices')
     provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE VHBA-MODULE KSMBD-MODULE)
     replaces=()
