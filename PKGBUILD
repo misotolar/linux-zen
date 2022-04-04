@@ -5,7 +5,7 @@ pkgbase=linux-zen
 pkgname=("$pkgbase" "$pkgbase-headers")
 pkgdesc='Linux ZEN'
 pkgver="$_major.$_minor"
-pkgrel=3
+pkgrel=4
 
 _src="linux-$_major"
 _zen="v${pkgver%.*}-${pkgver##*.}"
@@ -37,7 +37,7 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v5.x/$_src.tar.xz"
         '0106-XANMOD-mac80211-ignore-AP-power-level-when-tx-power-type-is.patch'::"$_lucjan/xanmod-patches-v3-sep/0004-mac80211-ignore-AP-power-level-when-tx-power-type-is.patch"
         '0107-LUCJAN-PRJC-for-5.17.patch'::"$_lucjan/prjc-patches-v2/0001-PRJC-for-5.17.patch"
         '0108-LUCJAN-sched-alt-Add-MG-LRU-changes-through-ifdef-macro.patch'::"$_lucjan/prjc-lru-patches/0001-sched-alt-Add-MG-LRU-changes-through-ifdef-macro.patch"
-        '0109-LUCJAN-prjc-fixes.patch'::"$_lucjan/prjc-fixes-v4/0001-prjc-fixes.patch"
+        '0109-LUCJAN-prjc-fixes.patch'::"$_lucjan/prjc-fixes-v5/0001-prjc-fixes.patch"
         '0110-LUCJAN-zstd-dev-patches.patch'::"$_lucjan/zstd-dev-patches/0001-zstd-dev-patches.patch")
 
 sha256sums=('555fef61dddb591a83d62dd04e252792f9af4ba9ef14683f64840e46fa20b1b1'
@@ -57,7 +57,7 @@ sha256sums=('555fef61dddb591a83d62dd04e252792f9af4ba9ef14683f64840e46fa20b1b1'
             'c0f08a845a4ee94b87242d90a018e23b906d0d5ee575cf1b57128f82af3b9b29'
             '4546fd2e208295375ef80982c55598b02bf5b6f8689c1ebc757d282d062fc0a0'
             'fd8682f349e573e5a7674766b41ee0ed97aebb74e2c806b747ebc3a1662c31ed'
-            '44a6ad19d55945aa3354eb843ac5709b987ade490e785bd1bb61cc7aa9f4e4af'
+            'db216d8e1fe887d691a43ef5869aa6c4ce8074b3038e91f36e44492fe125ff8f'
             '3c866fd701c89167febc0ea3d97f332183c157a18df4b2a07d4ad78ed258f0c2')
 
 validpgpkeys=('ABAF11C65A2970B130ABE3C479BE3E4300411886'   # Linus Torvalds
