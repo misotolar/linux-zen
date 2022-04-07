@@ -5,7 +5,7 @@ pkgbase=linux-zen
 pkgname=("$pkgbase" "$pkgbase-headers")
 pkgdesc='Linux ZEN'
 pkgver="$_major.$_minor"
-pkgrel=5
+pkgrel=6
 
 _src="linux-$_major"
 _zen="v${pkgver%.*}-${pkgver##*.}"
@@ -35,10 +35,11 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v5.x/$_src.tar.xz"
         '0104-XANMOD-lib-kconfig.debug-disable-default-CONFIG_SYMB.patch'::"$_xanmod/xanmod/0010-XANMOD-lib-kconfig.debug-disable-default-CONFIG_SYMB.patch"
         '0105-XANMOD-Change-rcutree.kthread_prio-to-SCHED_RR-polic.patch'::"$_lucjan/xanmod-patches-v3-sep/0005-XANMOD-Change-rcutree.kthread_prio-to-SCHED_RR-polic.patch"
         '0106-XANMOD-mac80211-ignore-AP-power-level-when-tx-power-type-is.patch'::"$_lucjan/xanmod-patches-v3-sep/0004-mac80211-ignore-AP-power-level-when-tx-power-type-is.patch"
-        '0107-LUCJAN-PRJC-for-5.17.patch'::"$_lucjan/prjc-patches-v3/0001-PRJC-for-5.17.patch"
-        '0108-LUCJAN-sched-alt-Add-MG-LRU-changes-through-ifdef-macro.patch'::"$_lucjan/prjc-lru-patches/0001-sched-alt-Add-MG-LRU-changes-through-ifdef-macro.patch"
-        '0109-LUCJAN-prjc-fixes.patch'::"$_lucjan/prjc-fixes-v6/0001-prjc-fixes.patch"
-        '0110-LUCJAN-zstd-dev-patches.patch'::"$_lucjan/zstd-dev-patches/0001-zstd-dev-patches.patch")
+        "0107-LUCJAN-x86-speculation-Restore-speculation-related-MSRs-dur.patch"::"$_lucjan/lqx-patches-v3-sep/0008-x86-speculation-Restore-speculation-related-MSRs-dur.patch"
+        '0108-LUCJAN-PRJC-for-5.17.patch'::"$_lucjan/prjc-patches-v3/0001-PRJC-for-5.17.patch"
+        '0109-LUCJAN-sched-alt-Add-MG-LRU-changes-through-ifdef-macro.patch'::"$_lucjan/prjc-lru-patches/0001-sched-alt-Add-MG-LRU-changes-through-ifdef-macro.patch"
+        '0110-LUCJAN-prjc-fixes.patch'::"$_lucjan/prjc-fixes-v6/0001-prjc-fixes.patch"
+        '0111-LUCJAN-zstd-dev-patches.patch'::"$_lucjan/zstd-dev-patches/0001-zstd-dev-patches.patch")
 
 sha256sums=('555fef61dddb591a83d62dd04e252792f9af4ba9ef14683f64840e46fa20b1b1'
             'SKIP'
@@ -55,6 +56,7 @@ sha256sums=('555fef61dddb591a83d62dd04e252792f9af4ba9ef14683f64840e46fa20b1b1'
             'c949b420494e2c020eb5a59bf067aa4aeaf35980da6500b1be18cd77973de166'
             '0462e8ef0b57c660256e720dc8303dbb72ee276391ffaabcc4ef709ccb060fcd'
             'c0f08a845a4ee94b87242d90a018e23b906d0d5ee575cf1b57128f82af3b9b29'
+            'ca5c695c41f7481bf66d6da71690f60ddd571a0c3bd5c5c37cf18b2159c829bb'
             '88844d1c440453e06c4d967edb914284205d67abf3e8d23bbedbe5bc114fdaf1'
             'fd8682f349e573e5a7674766b41ee0ed97aebb74e2c806b747ebc3a1662c31ed'
             '3e321c8d06e99b8975bc6adc97d6bbe56ebe0e3976b59ae3f4f72ad13a0d514d'
