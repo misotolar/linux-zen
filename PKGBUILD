@@ -5,16 +5,17 @@ pkgbase=linux-zen
 pkgname=("$pkgbase" "$pkgbase-headers")
 pkgdesc='Linux ZEN'
 pkgver="$_major.$_minor"
-pkgrel=1
+pkgrel=2
 
 _src="linux-$_major"
 _zen="v${pkgver%.*}-${pkgver##*.}"
 
+_master="https://github.com/zen-kernel/zen-kernel"
 _xanmod="https://raw.githubusercontent.com/xanmod/linux-patches/master/linux-$_major.y-xanmod"
 _lucjan="https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/$_major"
 
 arch=('x86_64')
-url="https://github.com/zen-kernel/zen-kernel/commits/$_zen"
+url="$_master/commits/$_zen"
 license=('GPL2')
 
 makedepends=('bc' 'clang' 'cpio' 'git' 'kmod' 'libelf' 'llvm' 'lld' 'pahole' 'perl' 'rsync' 'tar' 'xmlto' 'xz' 'zstd')
@@ -38,7 +39,8 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v5.x/$_src.tar.xz"
         '0108-LUCJAN-sched-alt-Sync-32ed980c3020-sched-Remove-unused-inli.patch'::"$_lucjan/prjc-fixes-v7-sep/0006-sched-alt-Sync-32ed980c3020-sched-Remove-unused-inli.patch"
         '0109-LUCJAN-sched-alt-Sync-sched-sugov-Ignore-busy-filter-when-r.patch'::"$_lucjan/prjc-fixes-v7-sep/0007-sched-alt-Sync-sched-sugov-Ignore-busy-filter-when-r.patch"
         '0110-LUCJAN-sched-alt-Sync-sched-uclamp-Fix-iowait-boost-escapin.patch'::"$_lucjan/prjc-fixes-v7-sep/0008-sched-alt-Sync-sched-uclamp-Fix-iowait-boost-escapin.patch"
-        '0111-LUCJAN-zstd-dev-patches.patch'::"$_lucjan/zstd-dev-patches/0001-zstd-dev-patches.patch")
+        '0111-LUCJAN-zstd-dev-patches.patch'::"$_lucjan/zstd-dev-patches/0001-zstd-dev-patches.patch"
+        '0112-849e1f30b580200af00d40244bdae58c8bb9768e.patch'::"$_master/commit/849e1f30b580200af00d40244bdae58c8bb9768e.patch")
 
 sha256sums=('555fef61dddb591a83d62dd04e252792f9af4ba9ef14683f64840e46fa20b1b1'
             'SKIP'
@@ -58,7 +60,8 @@ sha256sums=('555fef61dddb591a83d62dd04e252792f9af4ba9ef14683f64840e46fa20b1b1'
             '21ce18c0567b055bb96f9b64aa2d6ba6c7f9e9dac304f5b190394452ffaec86e'
             'a0781a49d6d26dc0a5cc5b857520f1293fbb66ef22f461025d7a8060d35d9d43'
             '652541d5132b736a10fe6334a4884f3258a340ebe5e1479729efeccd9f092452'
-            '3c866fd701c89167febc0ea3d97f332183c157a18df4b2a07d4ad78ed258f0c2')
+            '8c728e5aff86e66a9cbad26b487b67dc77897c575b5fb4e3483b032799db01dc'
+            'e3380802a1dfda840fe7d31273e4ccedfd486e8895be49981a382e59bb7f73f5')
 
 validpgpkeys=('ABAF11C65A2970B130ABE3C479BE3E4300411886'   # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E'   # Greg Kroah-Hartman
@@ -126,6 +129,7 @@ prepare() {
     scripts/config -e PSI_DEFAULT_DISABLED
 
     # Device drivers
+    scripts/config -e CONFIG_FW_LOADER_COMPRESS_XZ
     scripts/config -e SYSFB_SIMPLEFB
 
     # Processor type and features
