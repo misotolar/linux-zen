@@ -1,11 +1,11 @@
 _major=5.17
-_minor=3.zen1
+_minor=4.zen1
 
 pkgbase=linux-zen
 pkgname=("$pkgbase" "$pkgbase-headers")
 pkgdesc='Linux ZEN'
 pkgver="$_major.$_minor"
-pkgrel=2
+pkgrel=1
 
 _src="linux-$_major"
 _zen="v${pkgver%.*}-${pkgver##*.}"
@@ -39,14 +39,13 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v5.x/$_src.tar.xz"
         '0108-LUCJAN-sched-alt-Sync-32ed980c3020-sched-Remove-unused-inli.patch'::"$_lucjan/prjc-fixes-v7-sep/0006-sched-alt-Sync-32ed980c3020-sched-Remove-unused-inli.patch"
         '0109-LUCJAN-sched-alt-Sync-sched-sugov-Ignore-busy-filter-when-r.patch'::"$_lucjan/prjc-fixes-v7-sep/0007-sched-alt-Sync-sched-sugov-Ignore-busy-filter-when-r.patch"
         '0110-LUCJAN-sched-alt-Sync-sched-uclamp-Fix-iowait-boost-escapin.patch'::"$_lucjan/prjc-fixes-v7-sep/0008-sched-alt-Sync-sched-uclamp-Fix-iowait-boost-escapin.patch"
-        '0111-LUCJAN-zstd-dev-patches.patch'::"$_lucjan/zstd-dev-patches/0001-zstd-dev-patches.patch"
-        '0112-849e1f30b580200af00d40244bdae58c8bb9768e.patch'::"$_master/commit/849e1f30b580200af00d40244bdae58c8bb9768e.patch")
+        '0111-LUCJAN-zstd-dev-patches.patch'::"$_lucjan/zstd-dev-patches/0001-zstd-dev-patches.patch")
 
 sha256sums=('555fef61dddb591a83d62dd04e252792f9af4ba9ef14683f64840e46fa20b1b1'
             'SKIP'
-            'ebb827ab1f803b76c2096f0cbb728d21785855c3d6cc61a4bf7dfbba8b4e6d13'
+            '85c7b716efd813f9f816f5399dd1cbcc4fa6faf6f17ef74aa6b937076ddae9ed'
             'SKIP'
-            '5b00c25683ca77c6e160861b3e089421215e77951d54c635d8108158f33b6980'
+            '7e502da2cedb514d1823b2c390aa6a105579f9efedb2aae0d4a0d2c4f802e3d2'
             'd5ce94a811ef49161fb681dff5e48ae52e4dafbbf17270613fbbd1a3f87e3fee'
             'ee03df755ae52b04c40c979e9e04745f9c0c8ce34bcc5a3c652bf3029268ad27'
             '4d2ad28ed803d7b382f9e0ba6f449c1a0d8d0d8f1ecc31fde56f4556cefc802e'
@@ -60,8 +59,7 @@ sha256sums=('555fef61dddb591a83d62dd04e252792f9af4ba9ef14683f64840e46fa20b1b1'
             '21ce18c0567b055bb96f9b64aa2d6ba6c7f9e9dac304f5b190394452ffaec86e'
             'a0781a49d6d26dc0a5cc5b857520f1293fbb66ef22f461025d7a8060d35d9d43'
             '652541d5132b736a10fe6334a4884f3258a340ebe5e1479729efeccd9f092452'
-            '8c728e5aff86e66a9cbad26b487b67dc77897c575b5fb4e3483b032799db01dc'
-            'e3380802a1dfda840fe7d31273e4ccedfd486e8895be49981a382e59bb7f73f5')
+            '8c728e5aff86e66a9cbad26b487b67dc77897c575b5fb4e3483b032799db01dc')
 
 validpgpkeys=('ABAF11C65A2970B130ABE3C479BE3E4300411886'   # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E'   # Greg Kroah-Hartman
