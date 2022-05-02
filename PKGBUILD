@@ -5,11 +5,12 @@ pkgbase=linux-zen
 pkgname=("$pkgbase" "$pkgbase-headers")
 pkgdesc='Linux ZEN'
 pkgver="$_major.$_minor"
-pkgrel=1
+pkgrel=2
 
 _src="linux-$_major"
 _zen="v${pkgver%.*}-${pkgver##*.}"
 
+_kernel="https://cdn.kernel.org/pub/linux/kernel"
 _master="https://github.com/zen-kernel/zen-kernel"
 _xanmod="https://raw.githubusercontent.com/xanmod/linux-patches/master/linux-$_major.y-xanmod"
 _lucjan="https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/$_major"
@@ -21,11 +22,11 @@ license=('GPL2')
 makedepends=('bc' 'clang' 'cpio' 'git' 'kmod' 'libelf' 'llvm' 'lld' 'pahole' 'perl' 'rsync' 'tar' 'xmlto' 'xz' 'zstd')
 options=('!strip')
 
-source=("https://cdn.kernel.org/pub/linux/kernel/v5.x/$_src.tar.xz"
-        "https://cdn.kernel.org/pub/linux/kernel/v5.x/$_src.tar.sign"
-        "https://github.com/zen-kernel/zen-kernel/releases/download/$_zen/$_zen.patch.xz"
-        "https://github.com/zen-kernel/zen-kernel/releases/download/$_zen/$_zen.patch.xz.sig"
-        "https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/linux-zen/trunk/config"
+source=("$_kernel/v5.x/$_src.tar.xz"
+        "$_kernel/v5.x/$_src.tar.sign"
+        "$_master/releases/download/$_zen/$_zen.patch.xz"
+        "$_master/releases/download/$_zen/$_zen.patch.xz.sig"
+        "https://github.com/archlinux/svntogit-packages/raw/master/linux-zen/trunk/config"
         '0001-x86-tools-fix-llvm-objdump-syntax.patch' # https://github.com/ClangBuiltLinux/linux/issues/1362
         '0002-ideapad-laptop-add-platform-support-for-Ideapad-3-15ADA05-81W1.patch'
         '0003-tsc-directsync-gross-hack.patch' # https://bugzilla.kernel.org/show_bug.cgi?id=202525
@@ -39,7 +40,7 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v5.x/$_src.tar.xz"
         '0108-LUCJAN-sched-alt-Sync-32ed980c3020-sched-Remove-unused-inli.patch'::"$_lucjan/prjc-fixes-v7-sep/0006-sched-alt-Sync-32ed980c3020-sched-Remove-unused-inli.patch"
         '0109-LUCJAN-sched-alt-Sync-sched-sugov-Ignore-busy-filter-when-r.patch'::"$_lucjan/prjc-fixes-v7-sep/0007-sched-alt-Sync-sched-sugov-Ignore-busy-filter-when-r.patch"
         '0110-LUCJAN-sched-alt-Sync-sched-uclamp-Fix-iowait-boost-escapin.patch'::"$_lucjan/prjc-fixes-v7-sep/0008-sched-alt-Sync-sched-uclamp-Fix-iowait-boost-escapin.patch"
-        '0111-LUCJAN-zstd-dev-patches.patch'::"$_lucjan/zstd-dev-patches-v5/0001-zstd-dev-patches.patch")
+        '0111-LUCJAN-zstd-dev-patches.patch'::"$_lucjan/zstd-dev-patches-v6/0001-zstd-dev-patches.patch")
 
 sha256sums=('555fef61dddb591a83d62dd04e252792f9af4ba9ef14683f64840e46fa20b1b1'
             'SKIP'
@@ -59,7 +60,7 @@ sha256sums=('555fef61dddb591a83d62dd04e252792f9af4ba9ef14683f64840e46fa20b1b1'
             '21ce18c0567b055bb96f9b64aa2d6ba6c7f9e9dac304f5b190394452ffaec86e'
             'a0781a49d6d26dc0a5cc5b857520f1293fbb66ef22f461025d7a8060d35d9d43'
             '652541d5132b736a10fe6334a4884f3258a340ebe5e1479729efeccd9f092452'
-            '627233a7a9cd9922d98f5d4a2e0639de298c69f3d9b358c23ee7f60b7a68f286')
+            '79b6dd7d4ad2eaf79fc8bf8a207f0124d3122a7c69b0806eff8ddff4ee17c4f4')
 
 validpgpkeys=('ABAF11C65A2970B130ABE3C479BE3E4300411886'   # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E'   # Greg Kroah-Hartman
