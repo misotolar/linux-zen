@@ -1,5 +1,5 @@
 _major=5.17
-_minor=7.zen1
+_minor=8.zen1
 
 pkgbase=linux-zen
 pkgname=("$pkgbase" "$pkgbase-headers")
@@ -37,15 +37,15 @@ source=("$_kernel/v5.x/$_src.tar.xz"
         '0105-XANMOD-Change-rcutree.kthread_prio-to-SCHED_RR-polic.patch'::"$_lucjan/xanmod-patches-v4-sep/0005-XANMOD-Change-rcutree.kthread_prio-to-SCHED_RR-polic.patch"
         '0106-XANMOD-block-mq-deadline-Disable-front_merges-by-def.patch'::"$_lucjan/xanmod-patches-v4-sep/0006-XANMOD-block-mq-deadline-Disable-front_merges-by-def.patch"
         '0107-XANMOD-block-mq-deadline-Increase-write-priority-to-.patch'::"$_lucjan/xanmod-patches-v4-sep/0007-XANMOD-block-mq-deadline-Increase-write-priority-to-.patch"
-        '0108-LUCJAN-alt_core.c-Add-potentially-missing-idle-on_rq-assign.patch'::"$_lucjan/prjc-fixes-v7-sep/0004-alt_core.c-Add-potentially-missing-idle-on_rq-assign.patch"
-        '0109-LUCJAN-sched-alt-Sync-32ed980c3020-sched-Remove-unused-inli.patch'::"$_lucjan/prjc-fixes-v7-sep/0006-sched-alt-Sync-32ed980c3020-sched-Remove-unused-inli.patch"
-        '0110-LUCJAN-sched-alt-Sync-sched-sugov-Ignore-busy-filter-when-r.patch'::"$_lucjan/prjc-fixes-v7-sep/0007-sched-alt-Sync-sched-sugov-Ignore-busy-filter-when-r.patch"
-        '0111-LUCJAN-sched-alt-Sync-sched-uclamp-Fix-iowait-boost-escapin.patch'::"$_lucjan/prjc-fixes-v7-sep/0008-sched-alt-Sync-sched-uclamp-Fix-iowait-boost-escapin.patch"
+        '0108-LUCJAN-alt_core.c-Add-potentially-missing-idle-on_rq-assign.patch'::"$_lucjan/prjc-fixes-v8-sep/0004-alt_core.c-Add-potentially-missing-idle-on_rq-assign.patch"
+        '0109-LUCJAN-sched-alt-Sync-32ed980c3020-sched-Remove-unused-inli.patch'::"$_lucjan/prjc-fixes-v8-sep/0006-sched-alt-Sync-32ed980c3020-sched-Remove-unused-inli.patch"
+        '0110-LUCJAN-sched-alt-Sync-sched-sugov-Ignore-busy-filter-when-r.patch'::"$_lucjan/prjc-fixes-v8-sep/0007-sched-alt-Sync-sched-sugov-Ignore-busy-filter-when-r.patch"
+        '0111-LUCJAN-sched-alt-Sync-sched-uclamp-Fix-iowait-boost-escapin.patch'::"$_lucjan/prjc-fixes-v8-sep/0008-sched-alt-Sync-sched-uclamp-Fix-iowait-boost-escapin.patch"
         '0112-LUCJAN-zstd-dev-patches.patch'::"$_lucjan/zstd-dev-patches-v8/0001-zstd-dev-patches.patch")
 
 sha256sums=('555fef61dddb591a83d62dd04e252792f9af4ba9ef14683f64840e46fa20b1b1'
             'SKIP'
-            'b0b46e4217722cc61a67ac9ae95e4bbe69c42718aaca9d9f2929c490b819795c'
+            'dac7ada0724847767335777fe3f9c16bba166bad3b6a31b33e7df143557e2cb2'
             'SKIP'
             'ea604f8457e97764d604b3e484f372ab7b30452ef112acb23b399d39c954faaf'
             'd5ce94a811ef49161fb681dff5e48ae52e4dafbbf17270613fbbd1a3f87e3fee'
@@ -58,10 +58,10 @@ sha256sums=('555fef61dddb591a83d62dd04e252792f9af4ba9ef14683f64840e46fa20b1b1'
             '29d6ff69d6108eb68fcd43a01578a5c570007bd49e15299b8e86d38c945b66d5'
             'b1e3fc5c46c92b273cacfc230abad3ea452e4d188dec96e29138280470ba489f'
             'c394be99f2c6824754b00e26bef2eecec67de1f171c4dc32ebd5fe97fae95031'
-            'fa036f3c3156e0d88c4c7ec187c9f21725f536a17df6cc2325f652bcddfcdaeb'
-            '21ce18c0567b055bb96f9b64aa2d6ba6c7f9e9dac304f5b190394452ffaec86e'
-            'a0781a49d6d26dc0a5cc5b857520f1293fbb66ef22f461025d7a8060d35d9d43'
-            '652541d5132b736a10fe6334a4884f3258a340ebe5e1479729efeccd9f092452'
+            '7f310bda1bbbe9a735ba6299fb87dbee55a5b41ca7b6a94af067108bbb4ceb2f'
+            '88821d93faa996f1e8631aa24f4d52686efd970fc1a917351ed9beedde8d4613'
+            'e045fcb228f61422cef3aaca1e610c1b7a32f584f401d82ac881debdd400450f'
+            'd41340e8fe458e2abfab6467dea3f93e6cb7a05d19106d871011dd188c585355'
             '90f8c2c3c5f0434dfbd6d35b8858e4075ef852697f3839479f2c31075cd4d993')
 
 validpgpkeys=('ABAF11C65A2970B130ABE3C479BE3E4300411886'   # Linus Torvalds
