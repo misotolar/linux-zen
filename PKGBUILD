@@ -5,7 +5,7 @@ pkgbase=linux-zen
 pkgname=("$pkgbase" "$pkgbase-headers")
 pkgdesc='Linux ZEN'
 pkgver="$_major.$_minor"
-pkgrel=2
+pkgrel=3
 
 _src="linux-$_major"
 _zen="v${pkgver%.*}-${pkgver##*.}"
@@ -30,6 +30,7 @@ source=("$_kernel/v5.x/$_src.tar.xz"
         '0001-x86-tools-fix-llvm-objdump-syntax.patch' # https://github.com/ClangBuiltLinux/linux/issues/1362
         '0002-ideapad-laptop-add-platform-support-for-Ideapad-3-15ADA05-81W1.patch'
         '0003-tsc-directsync-gross-hack.patch' # https://bugzilla.kernel.org/show_bug.cgi?id=202525
+        '0100-ZEN-dm-crypt-disable-workqueues-for-crypto-operation.patch'::"$_master/commit/9e4c25bd1fddc391094b2dbd7141afd57d5cfc4d.patch"
         '0101-XANMOD-block-set-rq_affinity-to-force-full-multithre.patch'::"$_xanmod/xanmod/0003-XANMOD-block-set-rq_affinity-to-force-full-multithre.patch"
         '0102-XANMOD-kconfig-add-500Hz-timer-interrupt-kernel-conf.patch'::"$_xanmod/xanmod/0004-XANMOD-kconfig-add-500Hz-timer-interrupt-kernel-conf.patch"
         '0103-XANMOD-lib-kconfig.debug-disable-default-CONFIG_SYMB.patch'::"$_xanmod/xanmod/0010-XANMOD-lib-kconfig.debug-disable-default-CONFIG_SYMB.patch"
@@ -37,13 +38,11 @@ source=("$_kernel/v5.x/$_src.tar.xz"
         '0105-XANMOD-Change-rcutree.kthread_prio-to-SCHED_RR-polic.patch'::"$_lucjan/xanmod-patches-v4-sep/0005-XANMOD-Change-rcutree.kthread_prio-to-SCHED_RR-polic.patch"
         '0106-XANMOD-block-mq-deadline-Disable-front_merges-by-def.patch'::"$_lucjan/xanmod-patches-v4-sep/0006-XANMOD-block-mq-deadline-Disable-front_merges-by-def.patch"
         '0107-XANMOD-block-mq-deadline-Increase-write-priority-to-.patch'::"$_lucjan/xanmod-patches-v4-sep/0007-XANMOD-block-mq-deadline-Increase-write-priority-to-.patch"
-        '0108-LUCJAN-alt_core.c-Add-potentially-missing-idle-on_rq-assign.patch'::"$_lucjan/prjc-fixes-v10-sep/0004-alt_core.c-Add-potentially-missing-idle-on_rq-assign.patch"
-        '0109-LUCJAN-sched-alt-Sync-32ed980c3020-sched-Remove-unused-inli.patch'::"$_lucjan/prjc-fixes-v10-sep/0006-sched-alt-Sync-32ed980c3020-sched-Remove-unused-inli.patch"
-        '0110-LUCJAN-sched-alt-Sync-sched-sugov-Ignore-busy-filter-when-r.patch'::"$_lucjan/prjc-fixes-v10-sep/0007-sched-alt-Sync-sched-sugov-Ignore-busy-filter-when-r.patch"
-        '0111-LUCJAN-sched-alt-Sync-sched-uclamp-Fix-iowait-boost-escapin.patch'::"$_lucjan/prjc-fixes-v10-sep/0008-sched-alt-Sync-sched-uclamp-Fix-iowait-boost-escapin.patch"
-        '0112-LUCJAN-sched-alt-Make-sure-that-__set_task_cpu-gets-called-.patch'::"$_lucjan/prjc-fixes-v10-sep/0009-sched-alt-Make-sure-that-__set_task_cpu-gets-called-.patch"
-        '0113-LUCJAN-sched-alt-Tentative-Add-lockdep-to-select_task_rq.patch'::"$_lucjan/prjc-fixes-v10-sep/0010-sched-alt-Tentative-Add-lockdep-to-select_task_rq.patch"
-        '0114-LUCJAN-zstd-dev-patches.patch'::"$_lucjan/zstd-dev-patches-v9/0001-zstd-dev-patches.patch")
+        '0108-LUCJAN-alt_core.c-Add-potentially-missing-idle-on_rq-assign.patch'::"$_lucjan/prjc-fixes-v11-sep/0004-alt_core.c-Add-potentially-missing-idle-on_rq-assign.patch"
+        '0109-LUCJAN-sched-alt-Sync-32ed980c3020-sched-Remove-unused-inli.patch'::"$_lucjan/prjc-fixes-v11-sep/0006-sched-alt-Sync-32ed980c3020-sched-Remove-unused-inli.patch"
+        '0110-LUCJAN-sched-alt-Sync-sched-sugov-Ignore-busy-filter-when-r.patch'::"$_lucjan/prjc-fixes-v11-sep/0007-sched-alt-Sync-sched-sugov-Ignore-busy-filter-when-r.patch"
+        '0111-LUCJAN-sched-alt-Sync-sched-uclamp-Fix-iowait-boost-escapin.patch'::"$_lucjan/prjc-fixes-v11-sep/0008-sched-alt-Sync-sched-uclamp-Fix-iowait-boost-escapin.patch"
+        '0112-LUCJAN-zstd-dev-patches.patch'::"$_lucjan/zstd-dev-patches-v11/0001-zstd-dev-patches.patch")
 
 sha256sums=('555fef61dddb591a83d62dd04e252792f9af4ba9ef14683f64840e46fa20b1b1'
             'SKIP'
@@ -53,6 +52,7 @@ sha256sums=('555fef61dddb591a83d62dd04e252792f9af4ba9ef14683f64840e46fa20b1b1'
             'd5ce94a811ef49161fb681dff5e48ae52e4dafbbf17270613fbbd1a3f87e3fee'
             'ee03df755ae52b04c40c979e9e04745f9c0c8ce34bcc5a3c652bf3029268ad27'
             '4d2ad28ed803d7b382f9e0ba6f449c1a0d8d0d8f1ecc31fde56f4556cefc802e'
+            'f0efa006f890abd0546801f8ed345faafc3a15db02871f05e4e81cf994193a46'
             'b06c7eec6114c05196613048a308b598c8873def7bfdabbea3d4a983f62c19cb'
             '0f3fc59eb50305c82b93ad56c640695399eb38453345b7ed1e10886223f5cb47'
             'c949b420494e2c020eb5a59bf067aa4aeaf35980da6500b1be18cd77973de166'
@@ -60,13 +60,11 @@ sha256sums=('555fef61dddb591a83d62dd04e252792f9af4ba9ef14683f64840e46fa20b1b1'
             '29d6ff69d6108eb68fcd43a01578a5c570007bd49e15299b8e86d38c945b66d5'
             'b1e3fc5c46c92b273cacfc230abad3ea452e4d188dec96e29138280470ba489f'
             'c394be99f2c6824754b00e26bef2eecec67de1f171c4dc32ebd5fe97fae95031'
-            '846a235cf2cd83171d6f4564023290f7507ab4ac2f0fcfbbd3245e94ad89f7bc'
-            '2d7f07dd6b1d199fdc93e1f97578127b0097faa945a03cbbc6962da9bde23adc'
-            'fd486733a5b63e61c62e88e6c16f1af1741a09df941feb325ceb465c6de67917'
-            '940372c7cd1565cb17c317bf9882809d8506dc7960b16abed942890890df433b'
-            '9063e9fdd2490e8eaed1fe87627051e966c94e84d818d283aac65598bf6dc287'
-            '6a3e62708ea1db7bd5fcb5665b6faefdeb1f1784ca320a173e9c742bd033c480'
-            '33ac6f24d56b0fe64ef9394dea0a1f3dc5914a7c8cf54f20aa1a4862df2f2a6a')
+            'b5ef05a9b07254d94f196d042137657291df6ff17f7d4f439f2eed1f5694e12e'
+            'c8468211da95f34babff6dc6f60b84b3885629a4eadb31f2a6a2ed1a8e40e18e'
+            'a689cc926617a3ee72436c09e99bd6ff03232fa03d20cd8d813ddbf63eadd1a8'
+            '6c02e8c2aae57f18ad01bf53b04db1b9d2425490c13ffa16314a43d8bd06d440'
+            '6e6bbc3e578fe3abfbd82f5569c869a6ca6e50a191ffe266c9f8dc9e6faf0295')
 
 validpgpkeys=('ABAF11C65A2970B130ABE3C479BE3E4300411886'   # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E'   # Greg Kroah-Hartman
