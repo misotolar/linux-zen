@@ -1,11 +1,11 @@
-_major=5.17
-_minor=9.zen1
+_major=5.18
+_minor=zen1
 
 pkgbase=linux-zen
 pkgname=("$pkgbase" "$pkgbase-headers")
 pkgdesc='Linux ZEN'
 pkgver="$_major.$_minor"
-pkgrel=3
+pkgrel=1
 
 _src="linux-$_major"
 _zen="v${pkgver%.*}-${pkgver##*.}"
@@ -30,41 +30,35 @@ source=("$_kernel/v5.x/$_src.tar.xz"
         '0001-x86-tools-fix-llvm-objdump-syntax.patch' # https://github.com/ClangBuiltLinux/linux/issues/1362
         '0002-ideapad-laptop-add-platform-support-for-Ideapad-3-15ADA05-81W1.patch'
         '0003-tsc-directsync-gross-hack.patch' # https://bugzilla.kernel.org/show_bug.cgi?id=202525
-        '0100-ZEN-dm-crypt-disable-workqueues-for-crypto-operation.patch'::"$_master/commit/9e4c25bd1fddc391094b2dbd7141afd57d5cfc4d.patch"
-        '0101-XANMOD-block-set-rq_affinity-to-force-full-multithre.patch'::"$_xanmod/xanmod/0003-XANMOD-block-set-rq_affinity-to-force-full-multithre.patch"
-        '0102-XANMOD-kconfig-add-500Hz-timer-interrupt-kernel-conf.patch'::"$_xanmod/xanmod/0004-XANMOD-kconfig-add-500Hz-timer-interrupt-kernel-conf.patch"
-        '0103-XANMOD-lib-kconfig.debug-disable-default-CONFIG_SYMB.patch'::"$_xanmod/xanmod/0010-XANMOD-lib-kconfig.debug-disable-default-CONFIG_SYMB.patch"
-        '0104-XANMOD-mac80211-ignore-AP-power-level-when-tx-power-type-is.patch'::"$_lucjan/xanmod-patches-v4-sep/0004-mac80211-ignore-AP-power-level-when-tx-power-type-is.patch"
-        '0105-XANMOD-Change-rcutree.kthread_prio-to-SCHED_RR-polic.patch'::"$_lucjan/xanmod-patches-v4-sep/0005-XANMOD-Change-rcutree.kthread_prio-to-SCHED_RR-polic.patch"
-        '0106-XANMOD-block-mq-deadline-Disable-front_merges-by-def.patch'::"$_lucjan/xanmod-patches-v4-sep/0006-XANMOD-block-mq-deadline-Disable-front_merges-by-def.patch"
-        '0107-XANMOD-block-mq-deadline-Increase-write-priority-to-.patch'::"$_lucjan/xanmod-patches-v4-sep/0007-XANMOD-block-mq-deadline-Increase-write-priority-to-.patch"
-        '0108-LUCJAN-alt_core.c-Add-potentially-missing-idle-on_rq-assign.patch'::"$_lucjan/prjc-fixes-v11-sep/0004-alt_core.c-Add-potentially-missing-idle-on_rq-assign.patch"
-        '0109-LUCJAN-sched-alt-Sync-32ed980c3020-sched-Remove-unused-inli.patch'::"$_lucjan/prjc-fixes-v11-sep/0006-sched-alt-Sync-32ed980c3020-sched-Remove-unused-inli.patch"
-        '0110-LUCJAN-sched-alt-Sync-sched-sugov-Ignore-busy-filter-when-r.patch'::"$_lucjan/prjc-fixes-v11-sep/0007-sched-alt-Sync-sched-sugov-Ignore-busy-filter-when-r.patch"
-        '0111-LUCJAN-sched-alt-Sync-sched-uclamp-Fix-iowait-boost-escapin.patch'::"$_lucjan/prjc-fixes-v11-sep/0008-sched-alt-Sync-sched-uclamp-Fix-iowait-boost-escapin.patch"
-        '0112-LUCJAN-zstd-dev-patches.patch'::"$_lucjan/zstd-dev-patches-v11/0001-zstd-dev-patches.patch")
+        '0101-XANMOD-block-set-rq_affinity-to-force-full-multithre.patch'::"https://raw.githubusercontent.com/xanmod/linux-patches/master/linux-5.17.y-xanmod/xanmod/0003-XANMOD-block-set-rq_affinity-to-force-full-multithre.patch"
+        '0102-XANMOD-kconfig-add-500Hz-timer-interrupt-kernel-conf.patch'::"https://raw.githubusercontent.com/xanmod/linux-patches/master/linux-5.17.y-xanmod/xanmod/0004-XANMOD-kconfig-add-500Hz-timer-interrupt-kernel-conf.patch"
+        '0103-XANMOD-lib-kconfig.debug-disable-default-CONFIG_SYMB.patch'::"https://raw.githubusercontent.com/xanmod/linux-patches/master/linux-5.17.y-xanmod/xanmod/0010-XANMOD-lib-kconfig.debug-disable-default-CONFIG_SYMB.patch"
+        '0104-XANMOD-mac80211-ignore-AP-power-level-when-tx-power-type-is.patch'::"$_lucjan/xanmod-patches-sep/0004-mac80211-ignore-AP-power-level-when-tx-power-type-is.patch"
+        '0105-XANMOD-Change-rcutree.kthread_prio-to-SCHED_RR-polic.patch'::"$_lucjan/xanmod-patches-sep/0005-XANMOD-Change-rcutree.kthread_prio-to-SCHED_RR-polic.patch"
+        '0106-XANMOD-block-mq-deadline-Disable-front_merges-by-def.patch'::"$_lucjan/xanmod-patches-sep/0006-XANMOD-block-mq-deadline-Disable-front_merges-by-def.patch"
+        '0107-XANMOD-block-mq-deadline-Increase-write-priority-to-.patch'::"$_lucjan/xanmod-patches-sep/0007-XANMOD-block-mq-deadline-Increase-write-priority-to-.patch"
+        '0108-LUCJAN-PRJC-for-5.18.patch'::"$_lucjan/prjc-patches-v6/0001-PRJC-for-5.18.patch"
+        '0109-LUCJAN-prjc-fixes.patch'::"$_lucjan/prjc-fixes-v3/0001-prjc-fixes.patch"
+        '0110-LUCJAN-zstd-dev-patches.patch'::"$_lucjan/zstd-dev-patches/0001-zstd-dev-patches.patch")
 
-sha256sums=('555fef61dddb591a83d62dd04e252792f9af4ba9ef14683f64840e46fa20b1b1'
+sha256sums=('51f3f1684a896e797182a0907299cc1f0ff5e5b51dd9a55478ae63a409855cee'
             'SKIP'
-            '2a60a6b226986aec5a4106f6c33ff6a0dbec530770973518e51d068736d461f1'
+            '13758f0d039d02ff03de31406ecfabfff5a29ada45e2624aca4cab8d8eb9072c'
             'SKIP'
-            'ea604f8457e97764d604b3e484f372ab7b30452ef112acb23b399d39c954faaf'
+            '115c341aa006eddca1690e0346091a78f4dbbe9b520ac0c9a17331271324faf0'
             'd5ce94a811ef49161fb681dff5e48ae52e4dafbbf17270613fbbd1a3f87e3fee'
             'ee03df755ae52b04c40c979e9e04745f9c0c8ce34bcc5a3c652bf3029268ad27'
             '4d2ad28ed803d7b382f9e0ba6f449c1a0d8d0d8f1ecc31fde56f4556cefc802e'
-            'f0efa006f890abd0546801f8ed345faafc3a15db02871f05e4e81cf994193a46'
             'b06c7eec6114c05196613048a308b598c8873def7bfdabbea3d4a983f62c19cb'
             '0f3fc59eb50305c82b93ad56c640695399eb38453345b7ed1e10886223f5cb47'
             'c949b420494e2c020eb5a59bf067aa4aeaf35980da6500b1be18cd77973de166'
-            'fa5bdb2550f745a5fc518015fa8cf4dcec04183b5ec75ec19c76c062ec9d79d6'
-            '29d6ff69d6108eb68fcd43a01578a5c570007bd49e15299b8e86d38c945b66d5'
-            'b1e3fc5c46c92b273cacfc230abad3ea452e4d188dec96e29138280470ba489f'
-            'c394be99f2c6824754b00e26bef2eecec67de1f171c4dc32ebd5fe97fae95031'
-            'b5ef05a9b07254d94f196d042137657291df6ff17f7d4f439f2eed1f5694e12e'
-            'c8468211da95f34babff6dc6f60b84b3885629a4eadb31f2a6a2ed1a8e40e18e'
-            'a689cc926617a3ee72436c09e99bd6ff03232fa03d20cd8d813ddbf63eadd1a8'
-            '6c02e8c2aae57f18ad01bf53b04db1b9d2425490c13ffa16314a43d8bd06d440'
-            '6e6bbc3e578fe3abfbd82f5569c869a6ca6e50a191ffe266c9f8dc9e6faf0295')
+            'ee230cf6a8799f70ed136ca43829dfa392589253195a2f05504043b641b05c67'
+            '9e7d8596ea55292ed7458d0bb891321eba9bd6c064abacff269cca97d5937dc5'
+            '7a76668f0e7e5bb742aa8c807f5d5c5361aed3400f65df38f22ffbbf240ed802'
+            '13ae96cfeb799750fc1200ac8e414c70163881b2d95d9db859d7ad100e59a9cf'
+            'c6c332c3cd44bdbb82923cdeb6b8c6bfc539ed42e439b11d82093d575c79bbc0'
+            '431c196158f9a852fd382c79befbe6b45e3fca44f8612ff0e03f6cdb0867637b'
+            'adfa5c97033023dfa85bf5f0d71110cce90c55f0c5fb12c0b5c6eb1d64ac0875')
 
 validpgpkeys=('ABAF11C65A2970B130ABE3C479BE3E4300411886'   # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E'   # Greg Kroah-Hartman
@@ -232,6 +226,9 @@ _package-headers() {
 
     # required when DEBUG_INFO_BTF_MODULES is enabled
     mkdir -p "$builddir"/{fs/xfs,mm}
+
+    # add resolve_btfids
+    install -Dt "$builddir"/tools/bpf/resolve_btfids tools/bpf/resolve_btfids/resolve_btfids
 
     echo "Installing headers..."
     cp -t "$builddir" -a include
