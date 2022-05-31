@@ -5,7 +5,7 @@ pkgbase=linux-zen
 pkgname=("$pkgbase" "$pkgbase-headers")
 pkgdesc='Linux ZEN'
 pkgver="$_major.$_minor"
-pkgrel=1
+pkgrel=2
 
 _src="linux-$_major"
 _zen="v${pkgver%.*}-${pkgver##*.}"
@@ -30,9 +30,9 @@ source=("$_kernel/v5.x/$_src.tar.xz"
         '0001-x86-tools-fix-llvm-objdump-syntax.patch' # https://github.com/ClangBuiltLinux/linux/issues/1362
         '0002-ideapad-laptop-add-platform-support-for-Ideapad-3-15ADA05-81W1.patch'
         '0003-tsc-directsync-gross-hack.patch' # https://bugzilla.kernel.org/show_bug.cgi?id=202525
-        '0101-XANMOD-block-set-rq_affinity-to-force-full-multithre.patch'::"https://raw.githubusercontent.com/xanmod/linux-patches/master/linux-5.17.y-xanmod/xanmod/0003-XANMOD-block-set-rq_affinity-to-force-full-multithre.patch"
-        '0102-XANMOD-kconfig-add-500Hz-timer-interrupt-kernel-conf.patch'::"https://raw.githubusercontent.com/xanmod/linux-patches/master/linux-5.17.y-xanmod/xanmod/0004-XANMOD-kconfig-add-500Hz-timer-interrupt-kernel-conf.patch"
-        '0103-XANMOD-lib-kconfig.debug-disable-default-CONFIG_SYMB.patch'::"https://raw.githubusercontent.com/xanmod/linux-patches/master/linux-5.17.y-xanmod/xanmod/0010-XANMOD-lib-kconfig.debug-disable-default-CONFIG_SYMB.patch"
+        '0101-XANMOD-block-set-rq_affinity-to-force-full-multithre.patch'::"$_xanmod/xanmod/0005-XANMOD-block-set-rq_affinity-to-force-full-multithre.patch"
+        '0102-XANMOD-kconfig-add-500Hz-timer-interrupt-kernel-conf.patch'::"$_xanmod/xanmod/0006-XANMOD-kconfig-add-500Hz-timer-interrupt-kernel-conf.patch"
+        '0103-XANMOD-lib-kconfig.debug-disable-default-CONFIG_SYMB.patch'::"$_xanmod/xanmod/0012-XANMOD-lib-kconfig.debug-disable-default-CONFIG_SYMB.patch"
         '0104-XANMOD-mac80211-ignore-AP-power-level-when-tx-power-type-is.patch'::"$_lucjan/xanmod-patches-sep/0004-mac80211-ignore-AP-power-level-when-tx-power-type-is.patch"
         '0105-XANMOD-Change-rcutree.kthread_prio-to-SCHED_RR-polic.patch'::"$_lucjan/xanmod-patches-sep/0005-XANMOD-Change-rcutree.kthread_prio-to-SCHED_RR-polic.patch"
         '0106-XANMOD-block-mq-deadline-Disable-front_merges-by-def.patch'::"$_lucjan/xanmod-patches-sep/0006-XANMOD-block-mq-deadline-Disable-front_merges-by-def.patch"
@@ -49,9 +49,9 @@ sha256sums=('51f3f1684a896e797182a0907299cc1f0ff5e5b51dd9a55478ae63a409855cee'
             'd5ce94a811ef49161fb681dff5e48ae52e4dafbbf17270613fbbd1a3f87e3fee'
             'ee03df755ae52b04c40c979e9e04745f9c0c8ce34bcc5a3c652bf3029268ad27'
             '4d2ad28ed803d7b382f9e0ba6f449c1a0d8d0d8f1ecc31fde56f4556cefc802e'
-            'b06c7eec6114c05196613048a308b598c8873def7bfdabbea3d4a983f62c19cb'
-            '0f3fc59eb50305c82b93ad56c640695399eb38453345b7ed1e10886223f5cb47'
-            'c949b420494e2c020eb5a59bf067aa4aeaf35980da6500b1be18cd77973de166'
+            '04777c1b39fe16a156a5058f06772d34d64b29702702f99c3aa72243a54aea16'
+            '0115e8938f26127ea05343406bc89d0d09a361f737e55b0765771564cd5e2aae'
+            '98b7324a240e43b0459f25575c94780cea0dff9c1fc5109fae408008641d940c'
             'ee230cf6a8799f70ed136ca43829dfa392589253195a2f05504043b641b05c67'
             '9e7d8596ea55292ed7458d0bb891321eba9bd6c064abacff269cca97d5937dc5'
             '7a76668f0e7e5bb742aa8c807f5d5c5361aed3400f65df38f22ffbbf240ed802'
