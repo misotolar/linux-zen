@@ -5,7 +5,7 @@ pkgbase=linux-zen
 pkgname=("$pkgbase" "$pkgbase-headers")
 pkgdesc='Linux ZEN'
 pkgver="$_major.$_minor"
-pkgrel=2
+pkgrel=3
 
 _src="linux-$_major"
 _zen="v${pkgver%.*}-${pkgver##*.}"
@@ -39,7 +39,8 @@ source=("$_kernel/v5.x/$_src.tar.xz"
         '0107-XANMOD-block-mq-deadline-Increase-write-priority-to-.patch'::"$_lucjan/xanmod-patches-sep/0007-XANMOD-block-mq-deadline-Increase-write-priority-to-.patch"
         '0108-LUCJAN-PRJC-for-5.18.patch'::"$_lucjan/prjc-patches-v6/0001-PRJC-for-5.18.patch"
         '0109-LUCJAN-prjc-fixes.patch'::"$_lucjan/prjc-fixes-v3/0001-prjc-fixes.patch"
-        '0110-LUCJAN-zstd-dev-patches.patch'::"$_lucjan/zstd-dev-patches/0001-zstd-dev-patches.patch")
+        '0110-LUCJAN-zstd-dev-patches.patch'::"$_lucjan/zstd-dev-patches/0001-zstd-dev-patches.patch"
+        '0111-LUCJAN-ksm-patches.patch'::"$_lucjan/ksm-patches/0001-ksm-patches.patch")
 
 sha256sums=('51f3f1684a896e797182a0907299cc1f0ff5e5b51dd9a55478ae63a409855cee'
             'SKIP'
@@ -58,7 +59,8 @@ sha256sums=('51f3f1684a896e797182a0907299cc1f0ff5e5b51dd9a55478ae63a409855cee'
             '13ae96cfeb799750fc1200ac8e414c70163881b2d95d9db859d7ad100e59a9cf'
             'c6c332c3cd44bdbb82923cdeb6b8c6bfc539ed42e439b11d82093d575c79bbc0'
             '431c196158f9a852fd382c79befbe6b45e3fca44f8612ff0e03f6cdb0867637b'
-            'adfa5c97033023dfa85bf5f0d71110cce90c55f0c5fb12c0b5c6eb1d64ac0875')
+            'adfa5c97033023dfa85bf5f0d71110cce90c55f0c5fb12c0b5c6eb1d64ac0875'
+            '8edf9b9b1a9c26cc4d6dfaf5f14c06b197a04c5bbb8459dd292c033aa2534d19')
 
 validpgpkeys=('ABAF11C65A2970B130ABE3C479BE3E4300411886'   # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E'   # Greg Kroah-Hartman
@@ -141,7 +143,7 @@ prepare() {
     scripts/config -d ACPI_PRMT
 
     # General architecture-dependent options
-    scripts/config -e LTO_CLANG_FULL -d LTO_NONE
+    scripts/config -e "LTO_CLANG_${_LTO_CLANG:-THIN}" -d LTO_NONE
 
     # Enable loadable module support
     if [ -d /usr/src/certs-local ]; then
@@ -185,8 +187,9 @@ _package() {
     pkgdesc="The $pkgdesc kernel and modules"
     depends=('coreutils' 'kmod' 'initramfs')
     optdepends=('wireless-regdb: to set the correct wireless channels of your country'
+                'uksmd: userspace KSM helper daemon'
                 'linux-firmware: firmware images needed for some devices')
-    provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE VHBA-MODULE KSMBD-MODULE)
+    provides=(KSMBD-MODULE VHBA-MODULE UKSMD-BUILTIN VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE)
     replaces=()
 
     cd $_src
