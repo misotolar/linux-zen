@@ -1,5 +1,5 @@
 _major=5.18
-_minor=3.zen1
+_minor=4.zen1
 
 pkgbase=linux-zen
 pkgname=("$pkgbase" "$pkgbase-headers")
@@ -37,15 +37,21 @@ source=("$_kernel/v5.x/$_src.tar.xz"
         '0105-XANMOD-Change-rcutree.kthread_prio-to-SCHED_RR-polic.patch'::"$_lucjan/xanmod-patches-sep/0005-XANMOD-Change-rcutree.kthread_prio-to-SCHED_RR-polic.patch"
         '0106-XANMOD-block-mq-deadline-Disable-front_merges-by-def.patch'::"$_lucjan/xanmod-patches-sep/0006-XANMOD-block-mq-deadline-Disable-front_merges-by-def.patch"
         '0107-XANMOD-block-mq-deadline-Increase-write-priority-to-.patch'::"$_lucjan/xanmod-patches-sep/0007-XANMOD-block-mq-deadline-Increase-write-priority-to-.patch"
-        '0108-LUCJAN-PRJC-for-5.18.patch'::"$_lucjan/prjc-patches-v6/0001-PRJC-for-5.18.patch"
-        '0109-LUCJAN-prjc-fixes.patch'::"$_lucjan/prjc-fixes-v4/0001-prjc-fixes.patch"
-        '0110-LUCJAN-zstd-dev-patches.patch'::"$_lucjan/zstd-dev-patches-v2/0001-zstd-dev-patches.patch")
+        '0108-LUCJAN-alt_core.c-Add-potentially-missing-idle-on_rq-assign.patch'::"$_lucjan/prjc-fixes-v4-sep/0004-alt_core.c-Add-potentially-missing-idle-on_rq-assign.patch"
+        '0109-LUCJAN-alt_core.c-Add-potentially-missing-assignment-of-p-o.patch'::"$_lucjan/prjc-fixes-v4-sep/0005-alt_core.c-Add-potentially-missing-assignment-of-p-o.patch"
+        '0110-LUCJAN-sched-alt-Sync-32ed980c3020-sched-Remove-unused-inli.patch'::"$_lucjan/prjc-fixes-v4-sep/0006-sched-alt-Sync-32ed980c3020-sched-Remove-unused-inli.patch"
+        '0111-LUCJAN-sched-alt-Sync-sched-sugov-Ignore-busy-filter-when-r.patch'::"$_lucjan/prjc-fixes-v4-sep/0007-sched-alt-Sync-sched-sugov-Ignore-busy-filter-when-r.patch"
+        '0112-LUCJAN-sched-alt-Sync-sched-uclamp-Fix-iowait-boost-escapin.patch'::"$_lucjan/prjc-fixes-v4-sep/0008-sched-alt-Sync-sched-uclamp-Fix-iowait-boost-escapin.patch"
+        '0113-LUCJAN-sched-alt-Add-missing-preempt_model_accessors.patch'::"$_lucjan/prjc-fixes-v4-sep/0009-sched-alt-Add-missing-preempt_model_accessors.patch"
+        '0114-LUCJAN-sched-alt-Sync-sched-Fix-the-check-of-nr_running-at-.patch'::"$_lucjan/prjc-fixes-v4-sep/0010-sched-alt-Sync-sched-Fix-the-check-of-nr_running-at-.patch"
+        '0115-LUCJAN-sched-alt-Sync-sched-Remove-the-limitation-of-WF_ON_.patch'::"$_lucjan/prjc-fixes-v4-sep/0011-sched-alt-Sync-sched-Remove-the-limitation-of-WF_ON_.patch"
+        '0116-LUCJAN-zstd-dev-patches.patch'::"$_lucjan/zstd-dev-patches-v2/0001-zstd-dev-patches.patch")
 
 sha256sums=('51f3f1684a896e797182a0907299cc1f0ff5e5b51dd9a55478ae63a409855cee'
             'SKIP'
-            '2411968eadecebdebebffc597ea134c9c2a2b8c813ac7f448264695b022c5cca'
+            '9f99a0bb89ba891a8668ca3708e699161a07770ecb206c8ce487d6a517b55b12'
             'SKIP'
-            '28dd57a4c54e3c69bf58e763c87e3a815fc9d37d6ae2376e1374fbf448077a89'
+            '52bc858f07dd2bd54bae6c930375ee5c7e9b2fd223c0cab64f6455fa5cd0c4ed'
             'd5ce94a811ef49161fb681dff5e48ae52e4dafbbf17270613fbbd1a3f87e3fee'
             'ee03df755ae52b04c40c979e9e04745f9c0c8ce34bcc5a3c652bf3029268ad27'
             '4d2ad28ed803d7b382f9e0ba6f449c1a0d8d0d8f1ecc31fde56f4556cefc802e'
@@ -56,8 +62,14 @@ sha256sums=('51f3f1684a896e797182a0907299cc1f0ff5e5b51dd9a55478ae63a409855cee'
             '9e7d8596ea55292ed7458d0bb891321eba9bd6c064abacff269cca97d5937dc5'
             '7a76668f0e7e5bb742aa8c807f5d5c5361aed3400f65df38f22ffbbf240ed802'
             '13ae96cfeb799750fc1200ac8e414c70163881b2d95d9db859d7ad100e59a9cf'
-            'c6c332c3cd44bdbb82923cdeb6b8c6bfc539ed42e439b11d82093d575c79bbc0'
-            'be4a501e292f4c5686bad10afd81442d335108a71bbc911ca470d8b4f93b1bf7'
+            'b12bba80790768d58fef8fb9af7748475512cf840a0d693cac281fd775f43fd4'
+            'aee6ed384eebf55209941f660f61aaa883ebca7434c99b417c188b1a1adbc958'
+            '2984768f6201fa2319cf0be28422d2d78173ac1b27ccfd0011733cf64552f871'
+            'a905ef0166f617deaee1428e3515ca840072f7d5faab0f9af8acf1ba60849803'
+            '816ad1df93b5a30729574ccff8e25f78428b574bdc19e130a35b78d79b4c060c'
+            '9668bde3ed60869370c854c023ca737b6f5965b2f4f145b575df289b91df2139'
+            '649f196d210eadbff686c53744e6e41c3ad3425021a20ecbff7b8a97a19add36'
+            '1296c7f76e8638f094820afecb3057b4119b04c85011e48860cf8e65907d9ce3'
             '07a725c1fb5211bba93f3afd1be273f07bbd9d015e2d747504a9fa2fdba03682')
 
 validpgpkeys=('ABAF11C65A2970B130ABE3C479BE3E4300411886'   # Linus Torvalds
