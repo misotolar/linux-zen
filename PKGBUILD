@@ -1,5 +1,5 @@
 _major=5.18
-_minor=7.zen1
+_minor=9.zen1
 
 pkgbase=linux-zen
 pkgname=("$pkgbase" "$pkgbase-headers")
@@ -38,11 +38,11 @@ source=("$_kernel/v5.x/$_src.tar.xz"
         '0106-XANMOD-block-mq-deadline-Disable-front_merges-by-def.patch'::"$_lucjan/xanmod-patches-sep/0006-XANMOD-block-mq-deadline-Disable-front_merges-by-def.patch"
         '0107-XANMOD-block-mq-deadline-Increase-write-priority-to-.patch'::"$_lucjan/xanmod-patches-sep/0007-XANMOD-block-mq-deadline-Increase-write-priority-to-.patch"
         '0108-LUCJAN-prjc-fixes.patch'::"$_lucjan/prjc-fixes-v7/0001-prjc-fixes.patch"
-        '0109-LUCJAN-zstd-dev-patches.patch'::"$_lucjan/zstd-dev-patches-v2/0001-zstd-dev-patches.patch")
+        '0109-LUCJAN-zstd-dev-patches.patch'::"$_lucjan/zstd-dev-patches-v3/0001-zstd-dev-patches.patch")
 
 sha256sums=('51f3f1684a896e797182a0907299cc1f0ff5e5b51dd9a55478ae63a409855cee'
             'SKIP'
-            '89f3dc79ab080129cd6263d2420e2c49b0ef450bc3b7cc5421380da550f4b364'
+            '37694ebf4b7240d8b2ff6a2a27d55293e9cccd8b1fa5ad139b706fa8449162cf'
             'SKIP'
             '01fc2a937a19dad37a6e1c0262de3fc45aeca23e53166342eb9148e4900e04c4'
             'd5ce94a811ef49161fb681dff5e48ae52e4dafbbf17270613fbbd1a3f87e3fee'
@@ -56,7 +56,7 @@ sha256sums=('51f3f1684a896e797182a0907299cc1f0ff5e5b51dd9a55478ae63a409855cee'
             '7a76668f0e7e5bb742aa8c807f5d5c5361aed3400f65df38f22ffbbf240ed802'
             '13ae96cfeb799750fc1200ac8e414c70163881b2d95d9db859d7ad100e59a9cf'
             'ded2306330198cd3d40fb11e48a2006dc4a485437996187e66390512fafbb3c4'
-            '07a725c1fb5211bba93f3afd1be273f07bbd9d015e2d747504a9fa2fdba03682')
+            'f0e1182f0b123ff8f0fe7ea8cbdf48de1e270f6cdc4d23000a1b0d77dbca88e8')
 
 validpgpkeys=('ABAF11C65A2970B130ABE3C479BE3E4300411886'   # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E'   # Greg Kroah-Hartman
