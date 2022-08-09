@@ -1,5 +1,5 @@
-_major=5.18
-_minor=16.zen1
+_major=5.19
+_minor=zen1
 
 pkgbase=linux-zen
 pkgname=("$pkgbase" "$pkgbase-headers")
@@ -30,33 +30,37 @@ source=("$_kernel/v5.x/$_src.tar.xz"
         '0001-x86-tools-fix-llvm-objdump-syntax.patch' # https://github.com/ClangBuiltLinux/linux/issues/1362
         '0002-ideapad-laptop-add-platform-support-for-Ideapad-3-15ADA05-81W1.patch'
         '0003-tsc-directsync-gross-hack.patch' # https://bugzilla.kernel.org/show_bug.cgi?id=202525
-        '0101-XANMOD-block-set-rq_affinity-to-force-full-multithre.patch'::"$_xanmod/xanmod/0005-XANMOD-block-set-rq_affinity-to-force-full-multithre.patch"
-        '0102-XANMOD-kconfig-add-500Hz-timer-interrupt-kernel-conf.patch'::"$_xanmod/xanmod/0006-XANMOD-kconfig-add-500Hz-timer-interrupt-kernel-conf.patch"
-        '0103-XANMOD-lib-kconfig.debug-disable-default-CONFIG_SYMB.patch'::"$_xanmod/xanmod/0012-XANMOD-lib-kconfig.debug-disable-default-CONFIG_SYMB.patch"
-        '0104-XANMOD-mac80211-ignore-AP-power-level-when-tx-power-type-is.patch'::"$_lucjan/xanmod-patches-sep/0004-mac80211-ignore-AP-power-level-when-tx-power-type-is.patch"
-        '0105-XANMOD-Change-rcutree.kthread_prio-to-SCHED_RR-polic.patch'::"$_lucjan/xanmod-patches-sep/0005-XANMOD-Change-rcutree.kthread_prio-to-SCHED_RR-polic.patch"
-        '0106-XANMOD-block-mq-deadline-Disable-front_merges-by-def.patch'::"$_lucjan/xanmod-patches-sep/0006-XANMOD-block-mq-deadline-Disable-front_merges-by-def.patch"
-        '0107-XANMOD-block-mq-deadline-Increase-write-priority-to-.patch'::"$_lucjan/xanmod-patches-sep/0007-XANMOD-block-mq-deadline-Increase-write-priority-to-.patch"
-        '0108-LUCJAN-prjc-fixes.patch'::"$_lucjan/prjc-fixes-v7/0001-prjc-fixes.patch"
-        '0109-LUCJAN-zstd-dev-patches.patch'::"$_lucjan/zstd-dev-patches-v3/0001-zstd-dev-patches.patch")
+        '0101-prjc_v5.19-r0.patch'::"https://gitlab.com/alfredchen/projectc/-/raw/master/5.19/prjc_v5.19-r0.patch"
+        '0102-ZEN-844a76c66e0819b8686d55d54d247ccb4fb53b70.patch'::"$_master/commit/844a76c66e0819b8686d55d54d247ccb4fb53b70.patch"
+        '0103-ZEN-6221892236cc48f6048df9653818f9bf0c74ef82.patch'::"$_master/commit/6221892236cc48f6048df9653818f9bf0c74ef82.patch"
+        '0104-XANMOD-Change-rcutree.kthread_prio-to-SCHED_RR-polic.patch'::"$_xanmod/xanmod/0002-XANMOD-Change-rcutree.kthread_prio-to-SCHED_RR-polic.patch"
+        '0105-XANMOD-block-mq-deadline-Disable-front_merges-by-def.patch'::"$_xanmod/xanmod/0003-XANMOD-block-mq-deadline-Disable-front_merges-by-def.patch"
+        '0106-XANMOD-block-mq-deadline-Increase-write-priority-to-.patch'::"$_xanmod/xanmod/0004-XANMOD-block-mq-deadline-Increase-write-priority-to-.patch"
+        '0107-XANMOD-block-set-rq_affinity-to-force-full-multithre.patch'::"$_xanmod/xanmod/0005-XANMOD-block-set-rq_affinity-to-force-full-multithre.patch"
+        '0108-XANMOD-kconfig-add-500Hz-timer-interrupt-kernel-conf.patch'::"$_xanmod/xanmod/0006-XANMOD-kconfig-add-500Hz-timer-interrupt-kernel-conf.patch"
+        '0109-XANMOD-lib-kconfig.debug-disable-default-CONFIG_SYMB.patch'::"$_xanmod/xanmod/0012-XANMOD-lib-kconfig.debug-disable-default-CONFIG_SYMB.patch"
+        '0110-XANMOD-mac80211-ignore-AP-power-level-when-tx-power-type-is.patch'::"$_xanmod/net/mac80221/0001-mac80211-ignore-AP-power-level-when-tx-power-type-is.patch"
+        '0111-LUCJAN-zstd-dev-patches.patch'::"$_lucjan/zstd-dev-patches/0001-zstd-dev-patches.patch")
 
-sha256sums=('51f3f1684a896e797182a0907299cc1f0ff5e5b51dd9a55478ae63a409855cee'
+sha256sums=('ff240c579b9ee1affc318917de07394fc1c3bb49dac25ec1287370c2e15005a8'
             'SKIP'
-            'e1a43dbc229ef9028c0d4a854ae2670fa7644d003f557430c0ccc7d3b07ece7c'
+            '56e13fc20ba8a35c493a20b153a8c9c1dd8e284cf5ea18faa615448743894adb'
             'SKIP'
-            'b2010be3dd45ca8e4f3484d113e4811d0222ba3209fce3dec60d88d2486c04f3'
+            '96be3db71bd792be4d97c472ad5bc883ff0b7cc8c7b2e46de305645e5bfe28fa'
             'd5ce94a811ef49161fb681dff5e48ae52e4dafbbf17270613fbbd1a3f87e3fee'
             'ee03df755ae52b04c40c979e9e04745f9c0c8ce34bcc5a3c652bf3029268ad27'
             '4d2ad28ed803d7b382f9e0ba6f449c1a0d8d0d8f1ecc31fde56f4556cefc802e'
-            '04777c1b39fe16a156a5058f06772d34d64b29702702f99c3aa72243a54aea16'
-            '0115e8938f26127ea05343406bc89d0d09a361f737e55b0765771564cd5e2aae'
-            '98b7324a240e43b0459f25575c94780cea0dff9c1fc5109fae408008641d940c'
-            'ee230cf6a8799f70ed136ca43829dfa392589253195a2f05504043b641b05c67'
-            '9e7d8596ea55292ed7458d0bb891321eba9bd6c064abacff269cca97d5937dc5'
-            '7a76668f0e7e5bb742aa8c807f5d5c5361aed3400f65df38f22ffbbf240ed802'
-            '13ae96cfeb799750fc1200ac8e414c70163881b2d95d9db859d7ad100e59a9cf'
-            'ded2306330198cd3d40fb11e48a2006dc4a485437996187e66390512fafbb3c4'
-            'f0e1182f0b123ff8f0fe7ea8cbdf48de1e270f6cdc4d23000a1b0d77dbca88e8')
+            '6592ae4cadf0cfddd63fa77416a07131a926d3426df351c41490f361fc56495b'
+            '800468e6d834771f670308d6e520f03cdcf3a327540c5f39eaf9642d326ec648'
+            'a0b5f63f68d0ee3527afded602dfb93a8be2823af1896252ae883febbc0b1060'
+            'f3961bc59e8f58a2221eddf15af8ef586c2856861643c9dd262966469d511149'
+            '0b8eb02d9ae6c4e118ce96f57f54d08374370ba5d94c7250a0e80475b3d0d023'
+            '5f5b13c0cb5e61a846397726e6996ae9aebe007f877fee6c037d49ff0a957acd'
+            '19fa5af7e7fad5a9f2435e3b75a877b72dc5f21964818738e859e3ac87511597'
+            '014c395c8f05f5ef5274afc70d75fd3e2ac941e1389eac7f33580f8cd3643842'
+            'd71d691a17ba0c6a92187951b39272cf862d24cddec680e05c6b79ffe7df6356'
+            '95cf8cdb90a177bc9087cf38aafaa27d077104731dc07c7ae22b954766721602'
+            '5f99a44ad4239827ad687a473bd7e5b0a345b28c90eddc84b9f71031a5f6a583')
 
 validpgpkeys=('ABAF11C65A2970B130ABE3C479BE3E4300411886'   # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E'   # Greg Kroah-Hartman
