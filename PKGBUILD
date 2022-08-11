@@ -1,12 +1,12 @@
 
 _major=5.19
-_minor=zen1
+_minor=1.zen1
 
 pkgbase=linux-zen
 pkgname=("$pkgbase" "$pkgbase-headers")
 pkgdesc='Linux ZEN'
 pkgver="$_major.$_minor"
-pkgrel=2
+pkgrel=1
 
 _src="linux-$_major"
 _zen="v${pkgver%.*}-${pkgver##*.}"
@@ -31,31 +31,23 @@ source=("$_kernel/v5.x/$_src.tar.xz"
         '0001-x86-tools-fix-llvm-objdump-syntax.patch' # https://github.com/ClangBuiltLinux/linux/issues/1362
         '0002-ideapad-laptop-add-platform-support-for-Ideapad-3-15ADA05-81W1.patch'
         '0003-tsc-directsync-gross-hack.patch' # https://bugzilla.kernel.org/show_bug.cgi?id=202525
-        '0101-prjc_v5.19-r0.patch'::"https://gitlab.com/alfredchen/projectc/-/raw/master/5.19/prjc_v5.19-r0.patch"
-        '0102-ZEN-844a76c66e0819b8686d55d54d247ccb4fb53b70.patch'::"$_master/commit/844a76c66e0819b8686d55d54d247ccb4fb53b70.patch"
-        '0103-ZEN-6221892236cc48f6048df9653818f9bf0c74ef82.patch'::"$_master/commit/6221892236cc48f6048df9653818f9bf0c74ef82.patch"
-        '0104-ZEN-892c7694b7ca9f195ee688116476651099c2be1b.patch'::"$_master/commit/892c7694b7ca9f195ee688116476651099c2be1b.patch"
-        '0105-XANMOD-Change-rcutree.kthread_prio-to-SCHED_RR-polic.patch'::"$_xanmod/xanmod/0002-XANMOD-Change-rcutree.kthread_prio-to-SCHED_RR-polic.patch"
-        '0106-XANMOD-block-mq-deadline-Disable-front_merges-by-def.patch'::"$_xanmod/xanmod/0003-XANMOD-block-mq-deadline-Disable-front_merges-by-def.patch"
-        '0107-XANMOD-block-mq-deadline-Increase-write-priority-to-.patch'::"$_xanmod/xanmod/0004-XANMOD-block-mq-deadline-Increase-write-priority-to-.patch"
-        '0108-XANMOD-block-set-rq_affinity-to-force-full-multithre.patch'::"$_xanmod/xanmod/0005-XANMOD-block-set-rq_affinity-to-force-full-multithre.patch"
-        '0109-XANMOD-kconfig-add-500Hz-timer-interrupt-kernel-conf.patch'::"$_xanmod/xanmod/0006-XANMOD-kconfig-add-500Hz-timer-interrupt-kernel-conf.patch"
-        '0110-XANMOD-lib-kconfig.debug-disable-default-CONFIG_SYMB.patch'::"$_xanmod/xanmod/0012-XANMOD-lib-kconfig.debug-disable-default-CONFIG_SYMB.patch"
-        '0111-XANMOD-mac80211-ignore-AP-power-level-when-tx-power-type-is.patch'::"$_xanmod/net/mac80221/0001-mac80211-ignore-AP-power-level-when-tx-power-type-is.patch"
-        '0112-LUCJAN-zstd-dev-patches.patch'::"$_lucjan/zstd-dev-patches/0001-zstd-dev-patches.patch")
+        '0101-XANMOD-Change-rcutree.kthread_prio-to-SCHED_RR-polic.patch'::"$_xanmod/xanmod/0002-XANMOD-Change-rcutree.kthread_prio-to-SCHED_RR-polic.patch"
+        '0102-XANMOD-block-mq-deadline-Disable-front_merges-by-def.patch'::"$_xanmod/xanmod/0003-XANMOD-block-mq-deadline-Disable-front_merges-by-def.patch"
+        '0103-XANMOD-block-mq-deadline-Increase-write-priority-to-.patch'::"$_xanmod/xanmod/0004-XANMOD-block-mq-deadline-Increase-write-priority-to-.patch"
+        '0104-XANMOD-block-set-rq_affinity-to-force-full-multithre.patch'::"$_xanmod/xanmod/0005-XANMOD-block-set-rq_affinity-to-force-full-multithre.patch"
+        '0105-XANMOD-kconfig-add-500Hz-timer-interrupt-kernel-conf.patch'::"$_xanmod/xanmod/0006-XANMOD-kconfig-add-500Hz-timer-interrupt-kernel-conf.patch"
+        '0106-XANMOD-lib-kconfig.debug-disable-default-CONFIG_SYMB.patch'::"$_xanmod/xanmod/0012-XANMOD-lib-kconfig.debug-disable-default-CONFIG_SYMB.patch"
+        '0107-XANMOD-mac80211-ignore-AP-power-level-when-tx-power-type-is.patch'::"$_xanmod/net/mac80221/0001-mac80211-ignore-AP-power-level-when-tx-power-type-is.patch"
+        '0108-LUCJAN-zstd-dev-patches.patch'::"$_lucjan/zstd-dev-patches/0001-zstd-dev-patches.patch")
 
 sha256sums=('ff240c579b9ee1affc318917de07394fc1c3bb49dac25ec1287370c2e15005a8'
             'SKIP'
-            '56e13fc20ba8a35c493a20b153a8c9c1dd8e284cf5ea18faa615448743894adb'
+            '64bac592d584513a62b1411cc6faf95fa808f2c7d8909a872c4610c0a70c27a9'
             'SKIP'
-            '96be3db71bd792be4d97c472ad5bc883ff0b7cc8c7b2e46de305645e5bfe28fa'
+            '28b4a6f7655079ff4a9cfe48763fae4c1e26be6956273d832062ceccddf23997'
             'd5ce94a811ef49161fb681dff5e48ae52e4dafbbf17270613fbbd1a3f87e3fee'
             'ee03df755ae52b04c40c979e9e04745f9c0c8ce34bcc5a3c652bf3029268ad27'
             '4d2ad28ed803d7b382f9e0ba6f449c1a0d8d0d8f1ecc31fde56f4556cefc802e'
-            '6592ae4cadf0cfddd63fa77416a07131a926d3426df351c41490f361fc56495b'
-            '800468e6d834771f670308d6e520f03cdcf3a327540c5f39eaf9642d326ec648'
-            'a0b5f63f68d0ee3527afded602dfb93a8be2823af1896252ae883febbc0b1060'
-            'd1dc979070259a99842d7c98673e51a7db82d3be06b831c4f7040b380241465a'
             'f3961bc59e8f58a2221eddf15af8ef586c2856861643c9dd262966469d511149'
             '0b8eb02d9ae6c4e118ce96f57f54d08374370ba5d94c7250a0e80475b3d0d023'
             '5f5b13c0cb5e61a846397726e6996ae9aebe007f877fee6c037d49ff0a957acd'
