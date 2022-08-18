@@ -1,6 +1,6 @@
 
 _major=5.19
-_minor=1.zen1
+_minor=2.zen1
 
 pkgbase=linux-zen
 pkgname=("$pkgbase" "$pkgbase-headers")
@@ -31,24 +31,42 @@ source=("$_kernel/v5.x/$_src.tar.xz"
         '0001-x86-tools-fix-llvm-objdump-syntax.patch' # https://github.com/ClangBuiltLinux/linux/issues/1362
         '0002-ideapad-laptop-add-platform-support-for-Ideapad-3-15ADA05-81W1.patch'
         '0003-tsc-directsync-gross-hack.patch' # https://bugzilla.kernel.org/show_bug.cgi?id=202525
-        '0101-XANMOD-Change-rcutree.kthread_prio-to-SCHED_RR-polic.patch'::"$_xanmod/xanmod/0002-XANMOD-Change-rcutree.kthread_prio-to-SCHED_RR-polic.patch"
-        '0102-XANMOD-block-mq-deadline-Disable-front_merges-by-def.patch'::"$_xanmod/xanmod/0003-XANMOD-block-mq-deadline-Disable-front_merges-by-def.patch"
-        '0103-XANMOD-block-mq-deadline-Increase-write-priority-to-.patch'::"$_xanmod/xanmod/0004-XANMOD-block-mq-deadline-Increase-write-priority-to-.patch"
-        '0104-XANMOD-block-set-rq_affinity-to-force-full-multithre.patch'::"$_xanmod/xanmod/0005-XANMOD-block-set-rq_affinity-to-force-full-multithre.patch"
-        '0105-XANMOD-kconfig-add-500Hz-timer-interrupt-kernel-conf.patch'::"$_xanmod/xanmod/0006-XANMOD-kconfig-add-500Hz-timer-interrupt-kernel-conf.patch"
-        '0106-XANMOD-lib-kconfig.debug-disable-default-CONFIG_SYMB.patch'::"$_xanmod/xanmod/0012-XANMOD-lib-kconfig.debug-disable-default-CONFIG_SYMB.patch"
-        '0107-XANMOD-mac80211-ignore-AP-power-level-when-tx-power-type-is.patch'::"$_xanmod/net/mac80221/0001-mac80211-ignore-AP-power-level-when-tx-power-type-is.patch"
-        '0108-LUCJAN-zstd-dev-patches.patch'::"$_lucjan/zstd-dev-patches/0001-zstd-dev-patches.patch")
+        '0101-ZEN-c8baa9403457cbb209fcd27ffacde75276f13c3e.patch'::"$_master/commit/c8baa9403457cbb209fcd27ffacde75276f13c3e.patch"
+        '0102-ZEN-0c5d9f33d1d80e5d6f37179c601f7cb1b6f6b730.patch'::"$_master/commit/0c5d9f33d1d80e5d6f37179c601f7cb1b6f6b730.patch"
+        '0103-ZEN-3d2321ece857fcf56f510f828412bdb7b06246f0.patch'::"$_master/commit/3d2321ece857fcf56f510f828412bdb7b06246f0.patch"
+        '0104-ZEN-7b60a634dc58cbf262ff95cde972af224b04bbfb.patch'::"$_master/commit/7b60a634dc58cbf262ff95cde972af224b04bbfb.patch"
+        '0105-ZEN-e5f7e4b4c920f9c4d27da5d6f852dd2b62fa7b0e.patch'::"$_master/commit/e5f7e4b4c920f9c4d27da5d6f852dd2b62fa7b0e.patch"
+        '0106-ZEN-169cc6e56d6a1ace370a3d40f6588ab4c0a96348.patch'::"$_master/commit/169cc6e56d6a1ace370a3d40f6588ab4c0a96348.patch"
+        '0107-ZEN-9a9552214eb040fbbb9185e6dc248cef5813aa9e.patch'::"$_master/commit/9a9552214eb040fbbb9185e6dc248cef5813aa9e.patch"
+        '0108-ZEN-5e8acc4cb0dc63e86c86717398519a6f0b1b3bcd.patch'::"$_master/commit/5e8acc4cb0dc63e86c86717398519a6f0b1b3bcd.patch"
+        '0109-ZEN-9d7f022688c409598c909543894697ae28af6aa3.patch'::"$_master/commit/9d7f022688c409598c909543894697ae28af6aa3.patch"
+        '0110-XANMOD-Change-rcutree.kthread_prio-to-SCHED_RR-polic.patch'::"https://github.com/xanmod/linux/commit/de786c7df0de3439513aece65b9a1fde6cecad19.patch"
+        '0111-XANMOD-block-mq-deadline-Disable-front_merges-by-def.patch'::"$_xanmod/xanmod/0003-XANMOD-block-mq-deadline-Disable-front_merges-by-def.patch"
+        '0112-XANMOD-block-mq-deadline-Increase-write-priority-to-.patch'::"$_xanmod/xanmod/0004-XANMOD-block-mq-deadline-Increase-write-priority-to-.patch"
+        '0113-XANMOD-block-set-rq_affinity-to-force-full-multithre.patch'::"$_xanmod/xanmod/0005-XANMOD-block-set-rq_affinity-to-force-full-multithre.patch"
+        '0124-XANMOD-kconfig-add-500Hz-timer-interrupt-kernel-conf.patch'::"$_xanmod/xanmod/0006-XANMOD-kconfig-add-500Hz-timer-interrupt-kernel-conf.patch"
+        '0125-XANMOD-lib-kconfig.debug-disable-default-CONFIG_SYMB.patch'::"$_xanmod/xanmod/0012-XANMOD-lib-kconfig.debug-disable-default-CONFIG_SYMB.patch"
+        '0126-XANMOD-mac80211-ignore-AP-power-level-when-tx-power-type-is.patch'::"$_xanmod/net/mac80221/0001-mac80211-ignore-AP-power-level-when-tx-power-type-is.patch"
+        '0127-LUCJAN-zstd-dev-patches.patch'::"$_lucjan/zstd-dev-patches/0001-zstd-dev-patches.patch")
 
 sha256sums=('ff240c579b9ee1affc318917de07394fc1c3bb49dac25ec1287370c2e15005a8'
             'SKIP'
-            '64bac592d584513a62b1411cc6faf95fa808f2c7d8909a872c4610c0a70c27a9'
+            'c69d33f2a9666014a11f6f3db067d927e8b6e0d05276a5ff51abdf399b585c7c'
             'SKIP'
-            '28b4a6f7655079ff4a9cfe48763fae4c1e26be6956273d832062ceccddf23997'
+            '4b6ac8f746749dddb9bdcff5c555d543e268900d3a0f270df91af158617dec30'
             'd5ce94a811ef49161fb681dff5e48ae52e4dafbbf17270613fbbd1a3f87e3fee'
             'ee03df755ae52b04c40c979e9e04745f9c0c8ce34bcc5a3c652bf3029268ad27'
             '4d2ad28ed803d7b382f9e0ba6f449c1a0d8d0d8f1ecc31fde56f4556cefc802e'
-            'f3961bc59e8f58a2221eddf15af8ef586c2856861643c9dd262966469d511149'
+            '623b4dfac1bcb8910b6a011c4971418ffb0e067aec0010a7b1d8540b0b52282e'
+            '0371e14f09385da05b097cf560e98c5fa04ced1bb3ec2ec99378baf292f0223f'
+            'c785941852f9a96f60d78fd0aed96f1154e2a6130c4f6b7336caf2d9069a80e4'
+            '7a5ee40ac5bc18e5efb95336deb99312ffee0a85ee26a27400341195cf1e3bbf'
+            '1ed479aaae3d2e1df32458186df519f8e8f64c851e3ae1dcf77f2df01b726e15'
+            'bf614aef93523a5828ee683fbacd7c921496426d6e080d83fc2307442e3e82d4'
+            'a29d28a9e04aabcfef7f4442934a4dba8de597315376fb41ca247b39bb42a925'
+            '3919a32cbf309b67608ea6aa87e2bb1455cdbd8043050e6bc606831f46a118ff'
+            'c50e8d2a8503f0fc864875b9145286394a801a22d42ab9b1ece00d657d2f72a4'
+            '118f84db306c610c2db22af547f0a7d95001c4378c0172807b1d294f39e3df07'
             '0b8eb02d9ae6c4e118ce96f57f54d08374370ba5d94c7250a0e80475b3d0d023'
             '5f5b13c0cb5e61a846397726e6996ae9aebe007f877fee6c037d49ff0a957acd'
             '19fa5af7e7fad5a9f2435e3b75a877b72dc5f21964818738e859e3ac87511597'
