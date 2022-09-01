@@ -1,6 +1,6 @@
 
 _major=5.19
-_minor=5.zen1
+_minor=6.zen1
 
 pkgbase=linux-zen
 pkgname=("$pkgbase" "$pkgbase-headers")
@@ -31,29 +31,29 @@ source=("$_kernel/v5.x/$_src.tar.xz"
         '0001-x86-tools-fix-llvm-objdump-syntax.patch' # https://github.com/ClangBuiltLinux/linux/issues/1362
         '0002-ideapad-laptop-add-platform-support-for-Ideapad-3-15ADA05-81W1.patch'
         '0003-tsc-directsync-gross-hack.patch' # https://bugzilla.kernel.org/show_bug.cgi?id=202525
-        '0101-XANMOD-Change-rcutree.kthread_prio-to-SCHED_RR-polic.patch'::"https://github.com/xanmod/linux/commit/de786c7df0de3439513aece65b9a1fde6cecad19.patch"
-        '0102-XANMOD-block-mq-deadline-Disable-front_merges-by-def.patch'::"$_xanmod/xanmod/0003-XANMOD-block-mq-deadline-Disable-front_merges-by-def.patch"
-        '0103-XANMOD-block-mq-deadline-Increase-write-priority-to-.patch'::"$_xanmod/xanmod/0004-XANMOD-block-mq-deadline-Increase-write-priority-to-.patch"
-        '0104-XANMOD-block-set-rq_affinity-to-force-full-multithre.patch'::"$_xanmod/xanmod/0005-XANMOD-block-set-rq_affinity-to-force-full-multithre.patch"
+        '0101-XANMOD-Change-rcutree.kthread_prio-to-SCHED_RR-polic.patch'::"$_lucjan/xanmod-patches-v2-sep/0001-XANMOD-Change-rcutree.kthread_prio-to-SCHED_RR-polic.patch"
+        '0102-XANMOD-block-mq-deadline-Disable-front_merges-by-def.patch'::"$_lucjan/xanmod-patches-v2-sep/0002-XANMOD-block-mq-deadline-Disable-front_merges-by-def.patch"
+        '0103-XANMOD-block-mq-deadline-Increase-write-priority-to-.patch'::"$_lucjan/xanmod-patches-v2-sep/0003-XANMOD-block-mq-deadline-Increase-write-priority-to-.patch"
+        '0104-XANMOD-block-set-rq_affinity-to-force-full-multithre.patch'::"$_lucjan/xanmod-patches-v2-sep/0004-XANMOD-block-set-rq_affinity-to-force-full-multithre.patch"
         '0105-XANMOD-kconfig-add-500Hz-timer-interrupt-kernel-conf.patch'::"$_xanmod/xanmod/0006-XANMOD-kconfig-add-500Hz-timer-interrupt-kernel-conf.patch"
-        '0106-XANMOD-lib-kconfig.debug-disable-default-CONFIG_SYMB.patch'::"$_xanmod/xanmod/0012-XANMOD-lib-kconfig.debug-disable-default-CONFIG_SYMB.patch"
+        '0106-XANMOD-lib-kconfig.debug-disable-default-CONFIG_SYMB.patch'::"$_lucjan/xanmod-patches-v2-sep/0010-XANMOD-lib-kconfig.debug-disable-default-CONFIG_SYMB.patch"
         '0107-XANMOD-mac80211-ignore-AP-power-level-when-tx-power-type-is.patch'::"$_xanmod/net/mac80221/0001-mac80211-ignore-AP-power-level-when-tx-power-type-is.patch"
         '0108-LUCJAN-zstd-dev-patches.patch'::"$_lucjan/zstd-dev-patches/0001-zstd-dev-patches.patch")
 
 sha256sums=('ff240c579b9ee1affc318917de07394fc1c3bb49dac25ec1287370c2e15005a8'
             'SKIP'
-            '0daa1e9d55ca86aa81267240e08e95a97b2761959efb30141482d02592d390a4'
+            'b25079b142e6729045e6847e57106536ea956b5ca988c01af411311f86f67269'
             'SKIP'
-            '9bae157bd1caf0c7339174c0bb046162251e82ac52bcb5aed570143c56d43c76'
+            '49c471ab3cf341c6333f08957c0c3cfccc38a7cef2c9ca1895888f4674b441ec'
             'd5ce94a811ef49161fb681dff5e48ae52e4dafbbf17270613fbbd1a3f87e3fee'
             'ee03df755ae52b04c40c979e9e04745f9c0c8ce34bcc5a3c652bf3029268ad27'
             '4d2ad28ed803d7b382f9e0ba6f449c1a0d8d0d8f1ecc31fde56f4556cefc802e'
-            '118f84db306c610c2db22af547f0a7d95001c4378c0172807b1d294f39e3df07'
-            '0b8eb02d9ae6c4e118ce96f57f54d08374370ba5d94c7250a0e80475b3d0d023'
-            '5f5b13c0cb5e61a846397726e6996ae9aebe007f877fee6c037d49ff0a957acd'
-            '19fa5af7e7fad5a9f2435e3b75a877b72dc5f21964818738e859e3ac87511597'
+            '228074fc398adeed7b6628003aebc103b25c3bee66d8070641328f48a6456034'
+            '6053463e71acecf43fbd682861b03e2307f63257eca9369adbda31253de82183'
+            'eb3ca15b9c331081c869312c67a8f740d130d4cb706cccb3727aebe8b99fd882'
+            'f87a7d1feec56f5fba5622abcce98654a1b472fe6ac01a0f7a880853b844d01e'
             '014c395c8f05f5ef5274afc70d75fd3e2ac941e1389eac7f33580f8cd3643842'
-            'd71d691a17ba0c6a92187951b39272cf862d24cddec680e05c6b79ffe7df6356'
+            'd44fc1277a39bc66b329a8d9f9278eb1133868e45535420eb6b6c94ed126b9d6'
             '95cf8cdb90a177bc9087cf38aafaa27d077104731dc07c7ae22b954766721602'
             '5f99a44ad4239827ad687a473bd7e5b0a345b28c90eddc84b9f71031a5f6a583')
 
