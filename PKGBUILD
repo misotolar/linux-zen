@@ -1,6 +1,6 @@
 
 _major=5.19
-_minor=7.zen2
+_minor=8.zen1
 
 pkgbase=linux-zen
 pkgname=("$pkgbase" "$pkgbase-headers")
@@ -35,14 +35,15 @@ source=("$_kernel/v5.x/$_src.tar.xz"
         '0102-XANMOD-block-mq-deadline-Disable-front_merges-by-def.patch'::"$_lucjan/xanmod-patches-v2-sep/0002-XANMOD-block-mq-deadline-Disable-front_merges-by-def.patch"
         '0103-XANMOD-block-mq-deadline-Increase-write-priority-to-.patch'::"$_lucjan/xanmod-patches-v2-sep/0003-XANMOD-block-mq-deadline-Increase-write-priority-to-.patch"
         '0104-XANMOD-block-set-rq_affinity-to-force-full-multithre.patch'::"$_lucjan/xanmod-patches-v2-sep/0004-XANMOD-block-set-rq_affinity-to-force-full-multithre.patch"
-        '0105-XANMOD-kconfig-add-500Hz-timer-interrupt-kernel-conf.patch'::"$_xanmod/xanmod/0006-XANMOD-kconfig-add-500Hz-timer-interrupt-kernel-conf.patch"
-        '0106-XANMOD-lib-kconfig.debug-disable-default-CONFIG_SYMB.patch'::"$_lucjan/xanmod-patches-v2-sep/0010-XANMOD-lib-kconfig.debug-disable-default-CONFIG_SYMB.patch"
+        '0105-XANMOD-lib-kconfig.debug-disable-default-CONFIG_SYMB.patch'::"$_lucjan/xanmod-patches-v2-sep/0010-XANMOD-lib-kconfig.debug-disable-default-CONFIG_SYMB.patch"
+        '0106-XANMOD-kconfig-add-500Hz-timer-interrupt-kernel-conf.patch'::"$_xanmod/xanmod/0006-XANMOD-kconfig-add-500Hz-timer-interrupt-kernel-conf.patch"
         '0107-XANMOD-mac80211-ignore-AP-power-level-when-tx-power-type-is.patch'::"$_xanmod/net/mac80221/0001-mac80211-ignore-AP-power-level-when-tx-power-type-is.patch"
-        '0108-LUCJAN-zstd-dev-patches.patch'::"$_lucjan/zstd-dev-patches/0001-zstd-dev-patches.patch")
+        '0108-LUCHAN-futex-5.19-Add-entry-point-for-FUTEX_WAIT_MULTIPLE-o.patch'::"$_lucjan/futex-patches/0001-futex-5.19-Add-entry-point-for-FUTEX_WAIT_MULTIPLE-o.patch"
+        '0109-LUCJAN-zstd-dev-patches.patch'::"$_lucjan/zstd-dev-patches-v3/0001-zstd-dev-patches.patch")
 
 sha256sums=('ff240c579b9ee1affc318917de07394fc1c3bb49dac25ec1287370c2e15005a8'
             'SKIP'
-            'e06ef485d2f92525b4bdbad5f0ff527f3cf4a266c27f0ee9961fba6fbbc3eaf2'
+            '4448972247cd94a7db4e3da5059f9a40470660434670e684ffef54903ff2601b'
             'SKIP'
             '49c471ab3cf341c6333f08957c0c3cfccc38a7cef2c9ca1895888f4674b441ec'
             'd5ce94a811ef49161fb681dff5e48ae52e4dafbbf17270613fbbd1a3f87e3fee'
@@ -52,10 +53,11 @@ sha256sums=('ff240c579b9ee1affc318917de07394fc1c3bb49dac25ec1287370c2e15005a8'
             '6053463e71acecf43fbd682861b03e2307f63257eca9369adbda31253de82183'
             'eb3ca15b9c331081c869312c67a8f740d130d4cb706cccb3727aebe8b99fd882'
             'f87a7d1feec56f5fba5622abcce98654a1b472fe6ac01a0f7a880853b844d01e'
-            '014c395c8f05f5ef5274afc70d75fd3e2ac941e1389eac7f33580f8cd3643842'
             'd44fc1277a39bc66b329a8d9f9278eb1133868e45535420eb6b6c94ed126b9d6'
+            '014c395c8f05f5ef5274afc70d75fd3e2ac941e1389eac7f33580f8cd3643842'
             '95cf8cdb90a177bc9087cf38aafaa27d077104731dc07c7ae22b954766721602'
-            '5f99a44ad4239827ad687a473bd7e5b0a345b28c90eddc84b9f71031a5f6a583')
+            '83382b013c3c32858036d24a774fd48e1a6d6d6983fc138b87da38492ccfd60f'
+            '6105e8468a49d6dcade2ad4a1d798fbdb19de6facee2c71a2c5f7a5873917fb3')
 
 validpgpkeys=('ABAF11C65A2970B130ABE3C479BE3E4300411886'   # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E'   # Greg Kroah-Hartman

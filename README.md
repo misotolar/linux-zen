@@ -14,9 +14,10 @@ Slightly optimized for Lenovo IdeaPad 3 15ADA05-81W1
 - XANMOD: block/mq-deadline: Disable front_merges by default
 - XANMOD: block/mq-deadline: Increase write priority to improve responsiveness
 - XANMOD: block: set rq_affinity to force full multithreading I/O requests
-- XANMOD: kconfig: add 500Hz timer interrupt kernel config option
 - XANMOD: lib/kconfig.debug: disable default SYMBOLIC_ERRNAME and DEBUG_BUGVERBOSE
+- XANMOD: kconfig: add 500Hz timer interrupt kernel config option
 - mac80211: ignore AP power level when tx power type is "fixed"
+- futex-5.19: Add entry point for FUTEX_WAIT_MULTIPLE (opcode 31)
 
 ```
 [linux-zen]
