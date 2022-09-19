@@ -1,6 +1,6 @@
 
 _major=5.19
-_minor=8.zen1
+_minor=9.zen1
 
 pkgbase=linux-zen
 pkgname=("$pkgbase" "$pkgbase-headers")
@@ -31,11 +31,11 @@ source=("$_kernel/v5.x/$_src.tar.xz"
         '0001-x86-tools-fix-llvm-objdump-syntax.patch' # https://github.com/ClangBuiltLinux/linux/issues/1362
         '0002-ideapad-laptop-add-platform-support-for-Ideapad-3-15ADA05-81W1.patch'
         '0003-tsc-directsync-gross-hack.patch' # https://bugzilla.kernel.org/show_bug.cgi?id=202525
-        '0101-XANMOD-Change-rcutree.kthread_prio-to-SCHED_RR-polic.patch'::"$_lucjan/xanmod-patches-v2-sep/0001-XANMOD-Change-rcutree.kthread_prio-to-SCHED_RR-polic.patch"
-        '0102-XANMOD-block-mq-deadline-Disable-front_merges-by-def.patch'::"$_lucjan/xanmod-patches-v2-sep/0002-XANMOD-block-mq-deadline-Disable-front_merges-by-def.patch"
-        '0103-XANMOD-block-mq-deadline-Increase-write-priority-to-.patch'::"$_lucjan/xanmod-patches-v2-sep/0003-XANMOD-block-mq-deadline-Increase-write-priority-to-.patch"
-        '0104-XANMOD-block-set-rq_affinity-to-force-full-multithre.patch'::"$_lucjan/xanmod-patches-v2-sep/0004-XANMOD-block-set-rq_affinity-to-force-full-multithre.patch"
-        '0105-XANMOD-lib-kconfig.debug-disable-default-CONFIG_SYMB.patch'::"$_lucjan/xanmod-patches-v2-sep/0010-XANMOD-lib-kconfig.debug-disable-default-CONFIG_SYMB.patch"
+        '0101-XANMOD-Change-rcutree.kthread_prio-to-SCHED_RR-polic.patch'::"$_lucjan/xanmod-patches-v3-sep/0001-XANMOD-Change-rcutree.kthread_prio-to-SCHED_RR-polic.patch"
+        '0102-XANMOD-block-mq-deadline-Disable-front_merges-by-def.patch'::"$_lucjan/xanmod-patches-v3-sep/0002-XANMOD-block-mq-deadline-Disable-front_merges-by-def.patch"
+        '0103-XANMOD-block-mq-deadline-Increase-write-priority-to-.patch'::"$_lucjan/xanmod-patches-v3-sep/0003-XANMOD-block-mq-deadline-Increase-write-priority-to-.patch"
+        '0104-XANMOD-block-set-rq_affinity-to-force-full-multithre.patch'::"$_lucjan/xanmod-patches-v3-sep/0004-XANMOD-block-set-rq_affinity-to-force-full-multithre.patch"
+        '0105-XANMOD-lib-kconfig.debug-disable-default-CONFIG_SYMB.patch'::"$_lucjan/xanmod-patches-v3-sep/0010-XANMOD-lib-kconfig.debug-disable-default-CONFIG_SYMB.patch"
         '0106-XANMOD-kconfig-add-500Hz-timer-interrupt-kernel-conf.patch'::"$_xanmod/xanmod/0006-XANMOD-kconfig-add-500Hz-timer-interrupt-kernel-conf.patch"
         '0107-XANMOD-mac80211-ignore-AP-power-level-when-tx-power-type-is.patch'::"$_xanmod/net/mac80221/0001-mac80211-ignore-AP-power-level-when-tx-power-type-is.patch"
         '0108-LUCHAN-futex-5.19-Add-entry-point-for-FUTEX_WAIT_MULTIPLE-o.patch'::"$_lucjan/futex-patches/0001-futex-5.19-Add-entry-point-for-FUTEX_WAIT_MULTIPLE-o.patch"
@@ -43,17 +43,17 @@ source=("$_kernel/v5.x/$_src.tar.xz"
 
 sha256sums=('ff240c579b9ee1affc318917de07394fc1c3bb49dac25ec1287370c2e15005a8'
             'SKIP'
-            '4448972247cd94a7db4e3da5059f9a40470660434670e684ffef54903ff2601b'
+            '8392578ec9cee83adf487a9074a76f163c70e36701a5c163da4c02187fe7def2'
             'SKIP'
             '49c471ab3cf341c6333f08957c0c3cfccc38a7cef2c9ca1895888f4674b441ec'
             'd5ce94a811ef49161fb681dff5e48ae52e4dafbbf17270613fbbd1a3f87e3fee'
-            'ee03df755ae52b04c40c979e9e04745f9c0c8ce34bcc5a3c652bf3029268ad27'
+            '44277bfdd594c01798b493fe59fabb03a12aa751e2f9bc47e2fa5fd129f7a5d2'
             '4d2ad28ed803d7b382f9e0ba6f449c1a0d8d0d8f1ecc31fde56f4556cefc802e'
-            '228074fc398adeed7b6628003aebc103b25c3bee66d8070641328f48a6456034'
-            '6053463e71acecf43fbd682861b03e2307f63257eca9369adbda31253de82183'
-            'eb3ca15b9c331081c869312c67a8f740d130d4cb706cccb3727aebe8b99fd882'
-            'f87a7d1feec56f5fba5622abcce98654a1b472fe6ac01a0f7a880853b844d01e'
-            'd44fc1277a39bc66b329a8d9f9278eb1133868e45535420eb6b6c94ed126b9d6'
+            '5adcf2f166c0e07fdc2a87acb5825a68dd99ac895af8f34cd8bd9dda0806a5cf'
+            '7ff169e9208cd09fafee981b8649157b0427a92ec419e4258acbd2997a2a515c'
+            '574ae8cc4b50094aa06487507a122b12418d56c42b903d8d99115266563eaaae'
+            '8a725f8a5c3f85bf91f12784eaaf5b59b4d7eedbd94d3bbdcee52bba64062220'
+            '877bcd8ddd639df8245de2769977b55a2791d4ec404ab4ab7eda6da6ccf52617'
             '014c395c8f05f5ef5274afc70d75fd3e2ac941e1389eac7f33580f8cd3643842'
             '95cf8cdb90a177bc9087cf38aafaa27d077104731dc07c7ae22b954766721602'
             '83382b013c3c32858036d24a774fd48e1a6d6d6983fc138b87da38492ccfd60f'
