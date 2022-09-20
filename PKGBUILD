@@ -1,6 +1,6 @@
 
 _major=5.19
-_minor=9.zen1
+_minor=10.zen1
 
 pkgbase=linux-zen
 pkgname=("$pkgbase" "$pkgbase-headers")
@@ -38,12 +38,12 @@ source=("$_kernel/v5.x/$_src.tar.xz"
         '0105-XANMOD-lib-kconfig.debug-disable-default-CONFIG_SYMB.patch'::"$_lucjan/xanmod-patches-v3-sep/0010-XANMOD-lib-kconfig.debug-disable-default-CONFIG_SYMB.patch"
         '0106-XANMOD-kconfig-add-500Hz-timer-interrupt-kernel-conf.patch'::"$_xanmod/xanmod/0006-XANMOD-kconfig-add-500Hz-timer-interrupt-kernel-conf.patch"
         '0107-XANMOD-mac80211-ignore-AP-power-level-when-tx-power-type-is.patch'::"$_xanmod/net/mac80221/0001-mac80211-ignore-AP-power-level-when-tx-power-type-is.patch"
-        '0108-LUCHAN-futex-5.19-Add-entry-point-for-FUTEX_WAIT_MULTIPLE-o.patch'::"$_lucjan/futex-patches/0001-futex-5.19-Add-entry-point-for-FUTEX_WAIT_MULTIPLE-o.patch"
+        '0108-LUCJAN-futex-5.19-Add-entry-point-for-FUTEX_WAIT_MULTIPLE-o.patch'::"$_lucjan/futex-patches/0001-futex-5.19-Add-entry-point-for-FUTEX_WAIT_MULTIPLE-o.patch"
         '0109-LUCJAN-zstd-dev-patches.patch'::"$_lucjan/zstd-dev-patches-v3/0001-zstd-dev-patches.patch")
 
 sha256sums=('ff240c579b9ee1affc318917de07394fc1c3bb49dac25ec1287370c2e15005a8'
             'SKIP'
-            '8392578ec9cee83adf487a9074a76f163c70e36701a5c163da4c02187fe7def2'
+            '87dc911b9eb21edac76d8c757a7973fcd1abc9b47c9edf2c2c5564babf8b2b0a'
             'SKIP'
             '49c471ab3cf341c6333f08957c0c3cfccc38a7cef2c9ca1895888f4674b441ec'
             'd5ce94a811ef49161fb681dff5e48ae52e4dafbbf17270613fbbd1a3f87e3fee'
