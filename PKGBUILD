@@ -1,6 +1,6 @@
 
 _major=5.19
-_minor=11.zen1
+_minor=12.zen1
 
 pkgbase=linux-zen
 pkgname=("$pkgbase" "$pkgbase-headers")
@@ -38,15 +38,14 @@ source=("$_kernel/v5.x/$_src.tar.xz"
         '0105-XANMOD-lib-kconfig.debug-disable-default-CONFIG_SYMB.patch'::"$_lucjan/xanmod-patches-v3-sep/0010-XANMOD-lib-kconfig.debug-disable-default-CONFIG_SYMB.patch"
         '0106-XANMOD-kconfig-add-500Hz-timer-interrupt-kernel-conf.patch'::"$_xanmod/xanmod/0006-XANMOD-kconfig-add-500Hz-timer-interrupt-kernel-conf.patch"
         '0107-XANMOD-mac80211-ignore-AP-power-level-when-tx-power-type-is.patch'::"$_xanmod/net/mac80221/0001-mac80211-ignore-AP-power-level-when-tx-power-type-is.patch"
-        '0108-LUCJAN-ACPI-processor-idle-Practically-limit-Dummy-wait-wor.patch'::"$_lucjan/fixes-miscellaneous-v23-sep/0037-ACPI-processor-idle-Practically-limit-Dummy-wait-wor.patch"
-        '0109-LUCJAN-futex-5.19-Add-entry-point-for-FUTEX_WAIT_MULTIPLE-o.patch'::"$_lucjan/futex-patches/0001-futex-5.19-Add-entry-point-for-FUTEX_WAIT_MULTIPLE-o.patch"
-        '0111-LUCJAN-zstd-dev-patches.patch'::"$_lucjan/zstd-dev-patches-v3/0001-zstd-dev-patches.patch")
+        '0108-LUCJAN-futex-5.19-Add-entry-point-for-FUTEX_WAIT_MULTIPLE-o.patch'::"$_lucjan/futex-patches/0001-futex-5.19-Add-entry-point-for-FUTEX_WAIT_MULTIPLE-o.patch"
+        '0109-LUCJAN-zstd-dev-patches.patch'::"$_lucjan/zstd-dev-patches-v3/0001-zstd-dev-patches.patch")
 
 sha256sums=('ff240c579b9ee1affc318917de07394fc1c3bb49dac25ec1287370c2e15005a8'
             'SKIP'
-            '1bbfa0467a7cfa4b90c20f61a4246398f921ee46ab90abff7eb18dc0e79f7b7e'
+            '196f4f480cbd686386f51e08e621e9974c91da43563099e4332403afad7c755b'
             'SKIP'
-            '18cbf2d533c20ccfe77e9165a5f2172a4146e8fb849a0a7a7b943cdbab569391'
+            '010477e852171601158dc00d10ff71b03f4541a583527cbf8f9ed9b3a4684357'
             'd5ce94a811ef49161fb681dff5e48ae52e4dafbbf17270613fbbd1a3f87e3fee'
             '44277bfdd594c01798b493fe59fabb03a12aa751e2f9bc47e2fa5fd129f7a5d2'
             '4d2ad28ed803d7b382f9e0ba6f449c1a0d8d0d8f1ecc31fde56f4556cefc802e'
@@ -57,7 +56,6 @@ sha256sums=('ff240c579b9ee1affc318917de07394fc1c3bb49dac25ec1287370c2e15005a8'
             '877bcd8ddd639df8245de2769977b55a2791d4ec404ab4ab7eda6da6ccf52617'
             '014c395c8f05f5ef5274afc70d75fd3e2ac941e1389eac7f33580f8cd3643842'
             '95cf8cdb90a177bc9087cf38aafaa27d077104731dc07c7ae22b954766721602'
-            '501c4298fe23826e17f1d3dc0fbe004f45ca4610379e3bab8e0b91bc01761418'
             '83382b013c3c32858036d24a774fd48e1a6d6d6983fc138b87da38492ccfd60f'
             '6105e8468a49d6dcade2ad4a1d798fbdb19de6facee2c71a2c5f7a5873917fb3')
 
