@@ -1,6 +1,6 @@
 
-_major=5.19
-_minor=13.zen1
+_major=6.0
+_minor=1.zen2
 
 pkgbase=linux-zen
 pkgname=("$pkgbase" "$pkgbase-headers")
@@ -23,8 +23,8 @@ license=('GPL2')
 makedepends=('bc' 'clang' 'cpio' 'git' 'kmod' 'libelf' 'llvm' 'lld' 'pahole' 'perl' 'tar' 'xmlto' 'xz')
 options=('!strip')
 
-source=("$_kernel/v5.x/$_src.tar.xz"
-        "$_kernel/v5.x/$_src.tar.sign"
+source=("$_kernel/v6.x/$_src.tar.xz"
+        "$_kernel/v6.x/$_src.tar.sign"
         "$_master/releases/download/$_zen/$_zen.patch.xz"
         "$_master/releases/download/$_zen/$_zen.patch.xz.sig"
         "https://github.com/archlinux/svntogit-packages/raw/master/linux-zen/trunk/config"
@@ -36,28 +36,32 @@ source=("$_kernel/v5.x/$_src.tar.xz"
         '0103-XANMOD-block-mq-deadline-Increase-write-priority-to-.patch'::"$_lucjan/xanmod-patches-v3-sep/0003-XANMOD-block-mq-deadline-Increase-write-priority-to-.patch"
         '0104-XANMOD-block-set-rq_affinity-to-force-full-multithre.patch'::"$_lucjan/xanmod-patches-v3-sep/0004-XANMOD-block-set-rq_affinity-to-force-full-multithre.patch"
         '0105-XANMOD-lib-kconfig.debug-disable-default-CONFIG_SYMB.patch'::"$_lucjan/xanmod-patches-v3-sep/0010-XANMOD-lib-kconfig.debug-disable-default-CONFIG_SYMB.patch"
-        '0106-XANMOD-kconfig-add-500Hz-timer-interrupt-kernel-conf.patch'::"$_xanmod/xanmod/0006-XANMOD-kconfig-add-500Hz-timer-interrupt-kernel-conf.patch"
-        '0107-XANMOD-mac80211-ignore-AP-power-level-when-tx-power-type-is.patch'::"$_xanmod/net/mac80221/0001-mac80211-ignore-AP-power-level-when-tx-power-type-is.patch"
-        '0108-LUCJAN-futex-5.19-Add-entry-point-for-FUTEX_WAIT_MULTIPLE-o.patch'::"$_lucjan/futex-patches/0001-futex-5.19-Add-entry-point-for-FUTEX_WAIT_MULTIPLE-o.patch"
-        '0109-LUCJAN-zstd-dev-patches.patch'::"$_lucjan/zstd-dev-patches-v3/0001-zstd-dev-patches.patch")
+        '0106-XANMOD-kconfig-add-500Hz-timer-interrupt-kernel-conf.patch'::"https://github.com/xanmod/linux/commit/babc130da078cc40e9478a6952b1cc9930ade00b.patch"
+        '0107-XANMOD-mac80211-ignore-AP-power-level-when-tx-power-type-is.patch'::"https://github.com/xanmod/linux/commit/c6d0bc235374d5581af4bb56b40f20496a42a651.patch"
+        '0108-LUCJAN-futex-6.0-Add-entry-point-for-FUTEX_WAIT_MULTIPLE-op.patch'::"$_lucjan/futex-cachyos-patches/0001-futex-6.0-Add-entry-point-for-FUTEX_WAIT_MULTIPLE-op.patch"
+        '0109-LUCJAN-x86-Avoid-relocation-information-in-final-vmlinux.patch'::"$_lucjan/vmlinuz-cachyos-patches/0001-x86-Avoid-relocation-information-in-final-vmlinux.patch"
+        '0110-LUCJAN-zstd-6.0-merge-changes-from-dev-tree.patch'::"$_lucjan/zstd-dev-patches/0001-zstd-6.0-merge-changes-from-dev-tree.patch"
+        '0111-LUCJAN-PRJC-CachyOS-for-6.0.patch'::"$_lucjan/prjc-cachyos-patches-v3/0001-PRJC-CachyOS-for-6.0.patch")
 
-sha256sums=('ff240c579b9ee1affc318917de07394fc1c3bb49dac25ec1287370c2e15005a8'
+sha256sums=('5c2443a5538de52688efb55c27ab0539c1f5eb58c0cfd16a2b9fbb08fd81788e'
             'SKIP'
-            'eb2914e20cdea9e0e63867e422417cec21cb5eb0005093ddde80f8e10deb7f7b'
+            'a93b033a4536a685720d3e985aecc0ec94dbe823f378d594719d7218b71e8d70'
             'SKIP'
-            '010477e852171601158dc00d10ff71b03f4541a583527cbf8f9ed9b3a4684357'
+            '4415388555aab8845e60f6b3996e3a75b8159d516b7b04a6adb8ade54de3ff9c'
             'd5ce94a811ef49161fb681dff5e48ae52e4dafbbf17270613fbbd1a3f87e3fee'
             '44277bfdd594c01798b493fe59fabb03a12aa751e2f9bc47e2fa5fd129f7a5d2'
             '4d2ad28ed803d7b382f9e0ba6f449c1a0d8d0d8f1ecc31fde56f4556cefc802e'
-            '5adcf2f166c0e07fdc2a87acb5825a68dd99ac895af8f34cd8bd9dda0806a5cf'
-            '7ff169e9208cd09fafee981b8649157b0427a92ec419e4258acbd2997a2a515c'
-            '574ae8cc4b50094aa06487507a122b12418d56c42b903d8d99115266563eaaae'
-            '8a725f8a5c3f85bf91f12784eaaf5b59b4d7eedbd94d3bbdcee52bba64062220'
-            '877bcd8ddd639df8245de2769977b55a2791d4ec404ab4ab7eda6da6ccf52617'
-            '014c395c8f05f5ef5274afc70d75fd3e2ac941e1389eac7f33580f8cd3643842'
-            '95cf8cdb90a177bc9087cf38aafaa27d077104731dc07c7ae22b954766721602'
-            '83382b013c3c32858036d24a774fd48e1a6d6d6983fc138b87da38492ccfd60f'
-            '6105e8468a49d6dcade2ad4a1d798fbdb19de6facee2c71a2c5f7a5873917fb3')
+            '4a485c1ddfdaec5f552dd9dd775316a0077c2f49f4c630d86bb60350e4a0e180'
+            '0e7cb6478ab0898bc42d479cfc47ad3d696a22f2385d2a03453bc476060862dd'
+            '2074deb0316923a83e39410d4321fec4cd2a74f4b90a9c5458be718f763d4705'
+            '772a79491a77a43c91f8a2b43b57e36826919598c6b93716810fff9b9e07707a'
+            'ccd48b2d439bd0ca09f9cea2beb4d4bec1e996e4c48115c8a21f6580ecd75742'
+            '79db8c5187b3bf422795f48899dd1170a56360506e81c6af4d840eb283429c47'
+            'f3eb844f7f0cc85d541491ca3bcb51c3e24d16a91c2a0ba589618eeed86ba822'
+            '14757a57364cd693c645c469da3d86b380705587ba71ef8bfda842cf49a4527c'
+            'cb4861772c99c6d5a7816b062ff061a05f01dec4a5de66b9c5ebb1434747e474'
+            '534aadd267865f30411b3b5058965c2e44419d4a6d46934cb48bebb833004fd1'
+            'b1f356db00877c164b253e2f25e5260d50052ffcdd7e962efc9b5017cdfcae8e')
 
 validpgpkeys=('ABAF11C65A2970B130ABE3C479BE3E4300411886'   # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E'   # Greg Kroah-Hartman
@@ -167,6 +171,7 @@ prepare() {
 
     # Kernel hacking
     scripts/config -d DEBUG_INFO
+    scripts/config -d DEBUG_INFO_BTF
     scripts/config -d SYMBOLIC_ERRNAME
     scripts/config -d BPF_KPROBE_OVERRIDE
     scripts/config -d FTRACE
@@ -177,7 +182,7 @@ prepare() {
 
 build() {
     cd $_src
-    $_makecmd -j$(nproc) all
+    $_makecmd -j $(($(nproc)+1)) all
 }
 
 _package() {
@@ -223,12 +228,6 @@ _package-headers() {
 
     # required when STACK_VALIDATION is enabled
     install -Dt "$builddir/tools/objtool" tools/objtool/objtool
-
-    # required when DEBUG_INFO_BTF_MODULES is enabled
-    mkdir -p "$builddir"/{fs/xfs,mm}
-
-    # add resolve_btfids
-    install -Dt "$builddir"/tools/bpf/resolve_btfids tools/bpf/resolve_btfids/resolve_btfids
 
     echo "Installing headers..."
     cp -t "$builddir" -a include
