@@ -1,6 +1,6 @@
 
 _major=6.0
-_minor=2.zen1
+_minor=3.zen2
 
 pkgbase=linux-zen
 pkgname=("$pkgbase" "$pkgbase-headers")
@@ -36,18 +36,18 @@ source=("$_kernel/v6.x/$_src.tar.xz"
         '0103-XANMOD-block-mq-deadline-Increase-write-priority-to-.patch'::"$_lucjan/xanmod-patches-v3-sep/0003-XANMOD-block-mq-deadline-Increase-write-priority-to-.patch"
         '0104-XANMOD-block-set-rq_affinity-to-force-full-multithre.patch'::"$_lucjan/xanmod-patches-v3-sep/0004-XANMOD-block-set-rq_affinity-to-force-full-multithre.patch"
         '0105-XANMOD-lib-kconfig.debug-disable-default-CONFIG_SYMB.patch'::"$_lucjan/xanmod-patches-v3-sep/0010-XANMOD-lib-kconfig.debug-disable-default-CONFIG_SYMB.patch"
-        '0106-XANMOD-kconfig-add-500Hz-timer-interrupt-kernel-conf.patch'::"https://github.com/xanmod/linux/commit/babc130da078cc40e9478a6952b1cc9930ade00b.patch"
-        '0107-XANMOD-mac80211-ignore-AP-power-level-when-tx-power-type-is.patch'::"https://github.com/xanmod/linux/commit/c6d0bc235374d5581af4bb56b40f20496a42a651.patch"
+        '0106-XANMOD-kconfig-add-500Hz-timer-interrupt-kernel-conf.patch'::"$_xanmod/xanmod/0008-XANMOD-kconfig-add-500Hz-timer-interrupt-kernel-conf.patch"
+        '0107-XANMOD-mac80211-ignore-AP-power-level-when-tx-power-type-is.patch'::"$_xanmod/net/mac80221/0001-mac80211-ignore-AP-power-level-when-tx-power-type-is.patch"
         '0108-LUCJAN-futex-6.0-Add-entry-point-for-FUTEX_WAIT_MULTIPLE-op.patch'::"$_lucjan/futex-cachyos-patches/0001-futex-6.0-Add-entry-point-for-FUTEX_WAIT_MULTIPLE-op.patch"
         '0109-LUCJAN-x86-Avoid-relocation-information-in-final-vmlinux.patch'::"$_lucjan/vmlinuz-cachyos-patches/0001-x86-Avoid-relocation-information-in-final-vmlinux.patch"
-        '0110-LUCJAN-zstd-6.0-merge-changes-from-dev-tree.patch'::"$_lucjan/zstd-dev-patches/0001-zstd-6.0-merge-changes-from-dev-tree.patch"
+        '0110-LUCJAN-zstd-6.0-merge-changes-from-dev-tree.patch'::"$_lucjan/zstd-dev-patches-v2/0001-zstd-6.0-merge-changes-from-dev-tree.patch"
         '0111-LUCJAN-PRJC-CachyOS-for-6.0.patch'::"$_lucjan/prjc-cachyos-patches-v3/0001-PRJC-CachyOS-for-6.0.patch")
 
 sha256sums=('5c2443a5538de52688efb55c27ab0539c1f5eb58c0cfd16a2b9fbb08fd81788e'
             'SKIP'
-            '2aaea956bf366fdeb1200ef6204a911a493bd0f40dd70f441e7beaa6660abc26'
+            'b0ccb1534b86750be791af53b92eb323189f1dd6d13c506915e0820c2a7ba720'
             'SKIP'
-            '4415388555aab8845e60f6b3996e3a75b8159d516b7b04a6adb8ade54de3ff9c'
+            '30fc2e55d0a4393bc8d8002901e4193a867243bc2e03043a426b7cea112834d6'
             'd5ce94a811ef49161fb681dff5e48ae52e4dafbbf17270613fbbd1a3f87e3fee'
             '44277bfdd594c01798b493fe59fabb03a12aa751e2f9bc47e2fa5fd129f7a5d2'
             '4d2ad28ed803d7b382f9e0ba6f449c1a0d8d0d8f1ecc31fde56f4556cefc802e'
@@ -56,11 +56,11 @@ sha256sums=('5c2443a5538de52688efb55c27ab0539c1f5eb58c0cfd16a2b9fbb08fd81788e'
             '2074deb0316923a83e39410d4321fec4cd2a74f4b90a9c5458be718f763d4705'
             '772a79491a77a43c91f8a2b43b57e36826919598c6b93716810fff9b9e07707a'
             'ccd48b2d439bd0ca09f9cea2beb4d4bec1e996e4c48115c8a21f6580ecd75742'
-            '79db8c5187b3bf422795f48899dd1170a56360506e81c6af4d840eb283429c47'
-            'f3eb844f7f0cc85d541491ca3bcb51c3e24d16a91c2a0ba589618eeed86ba822'
+            'f81228461a00b0b4975efb4186933bf903a5b2396f51dc2af883dd23a34928cd'
+            'ba7dc6945565c3efac3634af146872cbf7861efaa9168fceb3e639f29113fd1d'
             '14757a57364cd693c645c469da3d86b380705587ba71ef8bfda842cf49a4527c'
             'cb4861772c99c6d5a7816b062ff061a05f01dec4a5de66b9c5ebb1434747e474'
-            '534aadd267865f30411b3b5058965c2e44419d4a6d46934cb48bebb833004fd1'
+            '1fb69c803d68746590fe4a8c5cbfa485694da354b3eb3a5eccb8827e6ac3e372'
             'b1f356db00877c164b253e2f25e5260d50052ffcdd7e962efc9b5017cdfcae8e')
 
 validpgpkeys=('ABAF11C65A2970B130ABE3C479BE3E4300411886'   # Linus Torvalds
