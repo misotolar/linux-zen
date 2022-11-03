@@ -1,6 +1,6 @@
 
 _major=6.0
-_minor=6.zen1
+_minor=7.zen1
 
 pkgbase=linux-zen
 pkgname=("$pkgbase" "$pkgbase-headers")
@@ -40,12 +40,11 @@ source=("$_kernel/v6.x/$_src.tar.xz"
         '0107-XANMOD-mac80211-ignore-AP-power-level-when-tx-power-type-is.patch'::"$_xanmod/net/mac80221/0001-mac80211-ignore-AP-power-level-when-tx-power-type-is.patch"
         '0108-LUCJAN-futex-6.0-Add-entry-point-for-FUTEX_WAIT_MULTIPLE-op.patch'::"$_lucjan/futex-cachyos-patches/0001-futex-6.0-Add-entry-point-for-FUTEX_WAIT_MULTIPLE-op.patch"
         '0109-LUCJAN-x86-Avoid-relocation-information-in-final-vmlinux.patch'::"$_lucjan/vmlinuz-cachyos-patches/0001-x86-Avoid-relocation-information-in-final-vmlinux.patch"
-        '0110-LUCJAN-zstd-6.0-merge-changes-from-dev-tree.patch'::"$_lucjan/zstd-cachyos-patches-v3/0001-zstd-6.0-merge-changes-from-dev-tree.patch"
-        '0111-LUCJAN-PRJC-CachyOS-for-6.0.patch'::"$_lucjan/prjc-cachyos-patches-v3/0001-PRJC-CachyOS-for-6.0.patch")
+        '0110-LUCJAN-zstd-6.0-merge-changes-from-dev-tree.patch'::"$_lucjan/zstd-cachyos-patches-v3/0001-zstd-6.0-merge-changes-from-dev-tree.patch")
 
 sha256sums=('5c2443a5538de52688efb55c27ab0539c1f5eb58c0cfd16a2b9fbb08fd81788e'
             'SKIP'
-            '09047f7680854221788c41db07830daf6a3e7ccba10cb13b2c6e4748e5811c41'
+            '19ece74d82d46f6262dda7ee80a6ba7926329a257d3c498be899eb9221ba3692'
             'SKIP'
             '45e62e567f4e0aefa54a81c972eb63a5fccad52ede6fb7356eccf382717006f2'
             'd5ce94a811ef49161fb681dff5e48ae52e4dafbbf17270613fbbd1a3f87e3fee'
@@ -60,8 +59,7 @@ sha256sums=('5c2443a5538de52688efb55c27ab0539c1f5eb58c0cfd16a2b9fbb08fd81788e'
             'ba7dc6945565c3efac3634af146872cbf7861efaa9168fceb3e639f29113fd1d'
             '14757a57364cd693c645c469da3d86b380705587ba71ef8bfda842cf49a4527c'
             'cb4861772c99c6d5a7816b062ff061a05f01dec4a5de66b9c5ebb1434747e474'
-            '4f8e5ed26f8bce6889154780f388be798ad298cd0f0855cc06c09ea95c137154'
-            'b1f356db00877c164b253e2f25e5260d50052ffcdd7e962efc9b5017cdfcae8e')
+            '4f8e5ed26f8bce6889154780f388be798ad298cd0f0855cc06c09ea95c137154')
 
 validpgpkeys=('ABAF11C65A2970B130ABE3C479BE3E4300411886'   # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E'   # Greg Kroah-Hartman
