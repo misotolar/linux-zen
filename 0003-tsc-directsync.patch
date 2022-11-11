@@ -1,0 +1,264 @@
+diff --git a/Documentation/admin-guide/kernel-parameters.txt b/Documentation/admin-guide/kernel-parameters.txt
+index 41bd876b2..fe2b1fcdb 100644
+--- a/Documentation/admin-guide/kernel-parameters.txt
++++ b/Documentation/admin-guide/kernel-parameters.txt
+@@ -6326,6 +6326,8 @@
+ 			in situations with strict latency requirements (where
+ 			interruptions from clocksource watchdog are not
+ 			acceptable).
++			[x86] directsync: attempt to sync the tsc via direct
++			writes if MSR_IA32_TSC_ADJUST isn't available
+ 
+ 	tsc_early_khz=  [X86] Skip early TSC calibration and use the given
+ 			value instead. Useful when the early TSC frequency discovery
+diff --git a/arch/x86/include/asm/tsc.h b/arch/x86/include/asm/tsc.h
+index fbdc3d951..dc7090911 100644
+--- a/arch/x86/include/asm/tsc.h
++++ b/arch/x86/include/asm/tsc.h
+@@ -42,6 +42,7 @@ extern unsigned long native_calibrate_tsc(void);
+ extern unsigned long long native_sched_clock_from_tsc(u64 tsc);
+ 
+ extern int tsc_clocksource_reliable;
++extern int tsc_allow_direct_sync;
+ #ifdef CONFIG_X86_TSC
+ extern bool tsc_async_resets;
+ #else
+diff --git a/arch/x86/kernel/acpi/sleep.c b/arch/x86/kernel/acpi/sleep.c
+index 3b7f4cdbf..d8f7ec645 100644
+--- a/arch/x86/kernel/acpi/sleep.c
++++ b/arch/x86/kernel/acpi/sleep.c
+@@ -102,6 +102,15 @@ int x86_acpi_suspend_lowlevel(void)
+ 			header->pmode_misc_en_high))
+ 		header->pmode_behavior |=
+ 			(1 << WAKEUP_BEHAVIOR_RESTORE_MISC_ENABLE);
++
++	if ((boot_cpu_has(X86_FEATURE_TSC_ADJUST) ||
++	     tsc_allow_direct_sync) &&
++	    !rdmsr_safe(MSR_IA32_TSC,
++	                &header->pmode_tsc_low,
++	                &header->pmode_tsc_high))
++		header->pmode_behavior |=
++			(1 << WAKEUP_BEHAVIOR_RESTORE_TSC);
++
+ 	header->realmode_flags = acpi_realmode_flags;
+ 	header->real_magic = 0x12345678;
+ 
+diff --git a/arch/x86/kernel/smpboot.c b/arch/x86/kernel/smpboot.c
+index f24227bc3..4b3a03004 100644
+--- a/arch/x86/kernel/smpboot.c
++++ b/arch/x86/kernel/smpboot.c
+@@ -56,6 +56,7 @@
+ #include <linux/numa.h>
+ #include <linux/pgtable.h>
+ #include <linux/overflow.h>
++#include <linux/clocksource.h>
+ 
+ #include <asm/acpi.h>
+ #include <asm/desc.h>
+@@ -1444,6 +1445,7 @@ void arch_thaw_secondary_cpus_begin(void)
+ 
+ void arch_thaw_secondary_cpus_end(void)
+ {
++	clocksource_touch_watchdog();
+ 	mtrr_aps_init();
+ }
+ 
+@@ -1477,6 +1479,8 @@ void __init native_smp_cpus_done(unsigned int max_cpus)
+ {
+ 	pr_debug("Boot done\n");
+ 
++	clocksource_touch_watchdog();
++
+ 	calculate_max_logical_packages();
+ 
+ 	/* XXX for now assume numa-in-package and hybrid don't overlap */
+diff --git a/arch/x86/kernel/tsc.c b/arch/x86/kernel/tsc.c
+index cafacb2e5..c67716fd8 100644
+--- a/arch/x86/kernel/tsc.c
++++ b/arch/x86/kernel/tsc.c
+@@ -47,6 +47,7 @@ static unsigned int __initdata tsc_early_khz;
+ static DEFINE_STATIC_KEY_FALSE(__use_tsc);
+ 
+ int tsc_clocksource_reliable;
++int tsc_allow_direct_sync;
+ 
+ static u32 art_to_tsc_numerator;
+ static u32 art_to_tsc_denominator;
+@@ -303,6 +304,10 @@ static int __init tsc_setup(char *str)
+ 		mark_tsc_unstable("boot parameter");
+ 	if (!strcmp(str, "nowatchdog"))
+ 		no_tsc_watchdog = 1;
++	if (!strcmp(str, "directsync")) {
++		tsc_allow_direct_sync = 1;
++		no_tsc_watchdog = 1;
++	}
+ 	return 1;
+ }
+ 
+@@ -1569,6 +1574,9 @@ unsigned long calibrate_delay_is_known(void)
+ 	if (!constant_tsc || !mask)
+ 		return 0;
+ 
++	if (cpu != 0)
++		return cpu_data(0).loops_per_jiffy;
++
+ 	sibling = cpumask_any_but(mask, cpu);
+ 	if (sibling < nr_cpu_ids)
+ 		return cpu_data(sibling).loops_per_jiffy;
+diff --git a/arch/x86/kernel/tsc_sync.c b/arch/x86/kernel/tsc_sync.c
+index 9452dc966..9d7ab8766 100644
+--- a/arch/x86/kernel/tsc_sync.c
++++ b/arch/x86/kernel/tsc_sync.c
+@@ -32,6 +32,8 @@ struct tsc_adjust {
+ static DEFINE_PER_CPU(struct tsc_adjust, tsc_adjust);
+ static struct timer_list tsc_sync_check_timer;
+ 
++extern int tsc_allow_direct_sync;
++
+ /*
+  * TSC's on different sockets may be reset asynchronously.
+  * This may cause the TSC ADJUST value on socket 0 to be NOT 0.
+@@ -340,6 +342,8 @@ static cycles_t check_tsc_warp(unsigned int timeout)
+  */
+ static inline unsigned int loop_timeout(int cpu)
+ {
++	if (!boot_cpu_has(X86_FEATURE_TSC_ADJUST))
++		return 30;
+ 	return (cpumask_weight(topology_core_cpumask(cpu)) > 1) ? 2 : 20;
+ }
+ 
+@@ -360,13 +364,16 @@ void check_tsc_sync_source(int cpu)
+ 
+ 	/*
+ 	 * Set the maximum number of test runs to
+-	 *  1 if the CPU does not provide the TSC_ADJUST MSR
+-	 *  3 if the MSR is available, so the target can try to adjust
++	 *  5 if we can write TSC_ADJUST to compensate
++	 *  1000 if we are allowed to write to the TSC MSR to compensate
++	 *  1 if we cannot write MSRs to synchronize TSCs
+ 	 */
+-	if (!boot_cpu_has(X86_FEATURE_TSC_ADJUST))
+-		atomic_set(&test_runs, 1);
+-	else
++	if (boot_cpu_has(X86_FEATURE_TSC_ADJUST))
+ 		atomic_set(&test_runs, 3);
++	else if (tsc_allow_direct_sync)
++		atomic_set(&test_runs, 1000);
++	else
++		atomic_set(&test_runs, 1);
+ retry:
+ 	/*
+ 	 * Wait for the target to start or to skip the test:
+@@ -400,7 +407,7 @@ void check_tsc_sync_source(int cpu)
+ 		pr_debug("TSC synchronization [CPU#%d -> CPU#%d]: passed\n",
+ 			smp_processor_id(), cpu);
+ 
+-	} else if (atomic_dec_and_test(&test_runs) || random_warps) {
++	} else if (atomic_dec_and_test(&test_runs) || (random_warps && !tsc_allow_direct_sync)) {
+ 		/* Force it to 0 if random warps brought us here */
+ 		atomic_set(&test_runs, 0);
+ 
+@@ -434,6 +441,21 @@ void check_tsc_sync_source(int cpu)
+ 		goto retry;
+ }
+ 
++static inline cycles_t write_tsc_adjustment(s64 adjustment)
++{
++	cycles_t adjval, nextval;
++
++	rdmsrl(MSR_IA32_TSC, adjval);
++	adjval += adjustment;
++	wrmsrl(MSR_IA32_TSC, adjval);
++	rdmsrl(MSR_IA32_TSC, nextval);
++
++	/*
++	 * Estimated clock cycle overhead for wrmsr + rdmsr
++	 */
++	return nextval - adjval;
++}
++
+ /*
+  * Freshly booted CPUs call into this:
+  */
+@@ -441,7 +463,7 @@ void check_tsc_sync_target(void)
+ {
+ 	struct tsc_adjust *cur = this_cpu_ptr(&tsc_adjust);
+ 	unsigned int cpu = smp_processor_id();
+-	cycles_t cur_max_warp, gbl_max_warp;
++	cycles_t cur_max_warp, gbl_max_warp, est_overhead = 0;
+ 	int cpus = 2;
+ 
+ 	/* Also aborts if there is no TSC. */
+@@ -521,12 +543,18 @@ void check_tsc_sync_target(void)
+ 	 * value is used. In the worst case the adjustment needs to go
+ 	 * through a 3rd run for fine tuning.
+ 	 */
+-	cur->adjusted += cur_max_warp;
++	if (boot_cpu_has(X86_FEATURE_TSC_ADJUST)) {
++		cur->adjusted += cur_max_warp + est_overhead;
+ 
+-	pr_warn("TSC ADJUST compensate: CPU%u observed %lld warp. Adjust: %lld\n",
+-		cpu, cur_max_warp, cur->adjusted);
++		pr_warn("TSC ADJUST compensate: CPU%u observed %lld warp. Adjust: %lld\n",
++			cpu, cur_max_warp, cur->adjusted);
+ 
+-	wrmsrl(MSR_IA32_TSC_ADJUST, cur->adjusted);
++		wrmsrl(MSR_IA32_TSC_ADJUST, cur->adjusted);
++	} else {
++		pr_debug("TSC direct sync: CPU%u observed %lld warp. Overhead: %lld\n",
++			cpu, cur_max_warp, est_overhead);
++		est_overhead = write_tsc_adjustment(cur_max_warp + est_overhead);
++	}
+ 	goto retry;
+ 
+ }
+diff --git a/arch/x86/realmode/rm/wakeup.h b/arch/x86/realmode/rm/wakeup.h
+index 0e4fd08ae..c728d8563 100644
+--- a/arch/x86/realmode/rm/wakeup.h
++++ b/arch/x86/realmode/rm/wakeup.h
+@@ -23,6 +23,8 @@ struct wakeup_header {
+ 	u64 pmode_gdt;
+ 	u32 pmode_misc_en_low;	/* Protected mode MISC_ENABLE */
+ 	u32 pmode_misc_en_high;
++	u32 pmode_tsc_low;
++	u32 pmode_tsc_high;
+ 	u32 pmode_behavior;	/* Wakeup routine behavior flags */
+ 	u32 realmode_flags;
+ 	u32 real_magic;
+@@ -39,5 +41,6 @@ extern struct wakeup_header wakeup_header;
+ #define WAKEUP_BEHAVIOR_RESTORE_MISC_ENABLE     0
+ #define WAKEUP_BEHAVIOR_RESTORE_CR4		1
+ #define WAKEUP_BEHAVIOR_RESTORE_EFER		2
++#define WAKEUP_BEHAVIOR_RESTORE_TSC		3
+ 
+ #endif /* ARCH_X86_KERNEL_ACPI_RM_WAKEUP_H */
+diff --git a/arch/x86/realmode/rm/wakeup_asm.S b/arch/x86/realmode/rm/wakeup_asm.S
+index 02d0ba16a..0154ef895 100644
+--- a/arch/x86/realmode/rm/wakeup_asm.S
++++ b/arch/x86/realmode/rm/wakeup_asm.S
+@@ -27,6 +27,7 @@ SYM_DATA_START(wakeup_header)
+ 	pmode_efer:	.quad	0	/* Saved EFER */
+ 	pmode_gdt:	.quad	0
+ 	pmode_misc_en:	.quad	0	/* Saved MISC_ENABLE MSR */
++	pmode_tsc:	.quad	0	/* Saved TSC MSR */
+ 	pmode_behavior:	.long	0	/* Wakeup behavior flags */
+ 	realmode_flags:	.long	0
+ 	real_magic:	.long	0
+@@ -104,6 +105,17 @@ SYM_CODE_START(wakeup_start)
+ 	wrmsr
+ 1:
+ 
++	/* Restore TSC */
++	movl	pmode_behavior, %edi
++	btl	$WAKEUP_BEHAVIOR_RESTORE_TSC, %edi
++	jnc	1f
++
++	movl    pmode_tsc, %eax
++	movl    pmode_tsc + 4, %edx
++	movl    $MSR_IA32_TSC, %ecx
++	wrmsr
++1:
++
+ 	/* Do any other stuff... */
+ 
+ #ifndef CONFIG_64BIT

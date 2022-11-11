@@ -7,9 +7,9 @@ Slightly optimized for Lenovo IdeaPad 3 15ADA05-81W1
 - [PDS Process Scheduler](https://gitlab.com/alfredchen/projectc)
 - [Userspace assisted KSM](https://gitlab.com/post-factum/uksmd)
 - AMD Zen processor family
-- Kernel module signing if [arch-sign-modules](https://aur.archlinux.org/packages/arch-sign-modules) installed
+- Kernel module signing if [arch-sign-modules](https://aur.archlinux.org/packages/arch-sign-modules) available
 - platform/x86: ideapad-laptop: add support for Ideapad 3 15ADA05-81W1
-- [tsc: allow directly synchronizing TSC if TSC_ADJUST is absent](https://bugzilla.kernel.org/show_bug.cgi?id=202525)
+- [tsc: attempt to sync the tsc via direct writes](https://bugzilla.kernel.org/show_bug.cgi?id=202525)
 - XANMOD: Change rcutree.kthread_prio to SCHED_RR policy
 - XANMOD: block/mq-deadline: Disable front_merges by default
 - XANMOD: block/mq-deadline: Increase write priority to improve responsiveness

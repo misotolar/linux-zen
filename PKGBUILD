@@ -1,6 +1,6 @@
 
 _major=6.0
-_minor=7.zen1
+_minor=8.zen1
 
 pkgbase=linux-zen
 pkgname=("$pkgbase" "$pkgbase-headers")
@@ -30,7 +30,7 @@ source=("$_kernel/v6.x/$_src.tar.xz"
         "https://github.com/archlinux/svntogit-packages/raw/master/linux-zen/trunk/config"
         '0001-x86-tools-fix-llvm-objdump-syntax.patch' # https://github.com/ClangBuiltLinux/linux/issues/1362
         '0002-ideapad-laptop-add-platform-support-for-Ideapad-3-15ADA05-81W1.patch'
-        '0003-tsc-directsync-gross-hack.patch' # https://bugzilla.kernel.org/show_bug.cgi?id=202525
+        '0003-tsc-directsync.patch' # https://bugzilla.kernel.org/show_bug.cgi?id=202525
         '0101-XANMOD-Change-rcutree.kthread_prio-to-SCHED_RR-polic.patch'::"$_lucjan/xanmod-patches-v3-sep/0001-XANMOD-Change-rcutree.kthread_prio-to-SCHED_RR-polic.patch"
         '0102-XANMOD-block-mq-deadline-Disable-front_merges-by-def.patch'::"$_lucjan/xanmod-patches-v3-sep/0002-XANMOD-block-mq-deadline-Disable-front_merges-by-def.patch"
         '0103-XANMOD-block-mq-deadline-Increase-write-priority-to-.patch'::"$_lucjan/xanmod-patches-v3-sep/0003-XANMOD-block-mq-deadline-Increase-write-priority-to-.patch"
@@ -44,12 +44,12 @@ source=("$_kernel/v6.x/$_src.tar.xz"
 
 sha256sums=('5c2443a5538de52688efb55c27ab0539c1f5eb58c0cfd16a2b9fbb08fd81788e'
             'SKIP'
-            '19ece74d82d46f6262dda7ee80a6ba7926329a257d3c498be899eb9221ba3692'
+            'c1aad8f76931758e4cf58e7397393df634ac9bb9cc93e01ae19ce98b4a40b556'
             'SKIP'
             '45e62e567f4e0aefa54a81c972eb63a5fccad52ede6fb7356eccf382717006f2'
             'd5ce94a811ef49161fb681dff5e48ae52e4dafbbf17270613fbbd1a3f87e3fee'
             '44277bfdd594c01798b493fe59fabb03a12aa751e2f9bc47e2fa5fd129f7a5d2'
-            '4d2ad28ed803d7b382f9e0ba6f449c1a0d8d0d8f1ecc31fde56f4556cefc802e'
+            'a45bb3fbbf39739f08e8ce2388346ce8e27e22d0db6c22138bb8b81b93220026'
             '4a485c1ddfdaec5f552dd9dd775316a0077c2f49f4c630d86bb60350e4a0e180'
             '0e7cb6478ab0898bc42d479cfc47ad3d696a22f2385d2a03453bc476060862dd'
             '2074deb0316923a83e39410d4321fec4cd2a74f4b90a9c5458be718f763d4705'
