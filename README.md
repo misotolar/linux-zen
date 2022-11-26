@@ -18,6 +18,7 @@ Slightly optimized for Lenovo IdeaPad 3 15ADA05-81W1
 - XANMOD: kconfig: add 500Hz timer interrupt kernel config option
 - mac80211: ignore AP power level when tx power type is "fixed"
 - futex-5.19: Add entry point for FUTEX_WAIT_MULTIPLE (opcode 31)
+- winesync: Introduce the winesync driver and character device patchset
 - x86: Avoid relocation information in final vmlinux
 
 ```

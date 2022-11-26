@@ -1,6 +1,6 @@
 
 _major=6.0
-_minor=8.zen1
+_minor=10.zen2
 
 pkgbase=linux-zen
 pkgname=("$pkgbase" "$pkgbase-headers")
@@ -39,14 +39,15 @@ source=("$_kernel/v6.x/$_src.tar.xz"
         '0106-XANMOD-kconfig-add-500Hz-timer-interrupt-kernel-conf.patch'::"$_xanmod/xanmod/0008-XANMOD-kconfig-add-500Hz-timer-interrupt-kernel-conf.patch"
         '0107-XANMOD-mac80211-ignore-AP-power-level-when-tx-power-type-is.patch'::"$_xanmod/net/mac80221/0001-mac80211-ignore-AP-power-level-when-tx-power-type-is.patch"
         '0108-LUCJAN-futex-6.0-Add-entry-point-for-FUTEX_WAIT_MULTIPLE-op.patch'::"$_lucjan/futex-cachyos-patches/0001-futex-6.0-Add-entry-point-for-FUTEX_WAIT_MULTIPLE-op.patch"
-        '0109-LUCJAN-x86-Avoid-relocation-information-in-final-vmlinux.patch'::"$_lucjan/vmlinuz-cachyos-patches/0001-x86-Avoid-relocation-information-in-final-vmlinux.patch"
-        '0110-LUCJAN-zstd-6.0-merge-changes-from-dev-tree.patch'::"$_lucjan/zstd-cachyos-patches-v3/0001-zstd-6.0-merge-changes-from-dev-tree.patch")
+        '0109-LUCJAN-winesync-Introduce-the-winesync-driver-and-character.patch'::"$_lucjan/wine-sync-patches/0001-winesync-Introduce-the-winesync-driver-and-character.patch"
+        '0110-LUCJAN-x86-Avoid-relocation-information-in-final-vmlinux.patch'::"$_lucjan/vmlinuz-cachyos-patches/0001-x86-Avoid-relocation-information-in-final-vmlinux.patch"
+        '0111-LUCJAN-zstd-6.0-merge-changes-from-dev-tree.patch'::"$_lucjan/zstd-cachyos-patches-v3/0001-zstd-6.0-merge-changes-from-dev-tree.patch")
 
 sha256sums=('5c2443a5538de52688efb55c27ab0539c1f5eb58c0cfd16a2b9fbb08fd81788e'
             'SKIP'
-            'c1aad8f76931758e4cf58e7397393df634ac9bb9cc93e01ae19ce98b4a40b556'
+            '733108f2a96e04e77a91d56856aa26e9968cc30453d5624369cb2db1ae48500a'
             'SKIP'
-            '45e62e567f4e0aefa54a81c972eb63a5fccad52ede6fb7356eccf382717006f2'
+            'a6663ac338afb512051ddbe990293800fc2cb6ddc1b981c74053925ec715120d'
             'd5ce94a811ef49161fb681dff5e48ae52e4dafbbf17270613fbbd1a3f87e3fee'
             '44277bfdd594c01798b493fe59fabb03a12aa751e2f9bc47e2fa5fd129f7a5d2'
             'a45bb3fbbf39739f08e8ce2388346ce8e27e22d0db6c22138bb8b81b93220026'
@@ -58,6 +59,7 @@ sha256sums=('5c2443a5538de52688efb55c27ab0539c1f5eb58c0cfd16a2b9fbb08fd81788e'
             'f81228461a00b0b4975efb4186933bf903a5b2396f51dc2af883dd23a34928cd'
             'ba7dc6945565c3efac3634af146872cbf7861efaa9168fceb3e639f29113fd1d'
             '14757a57364cd693c645c469da3d86b380705587ba71ef8bfda842cf49a4527c'
+            '7c29d04c847bf3ae731e9643e9692b395d2c2c4b9cdc40f1c8546a231c5c4b7e'
             'cb4861772c99c6d5a7816b062ff061a05f01dec4a5de66b9c5ebb1434747e474'
             '4f8e5ed26f8bce6889154780f388be798ad298cd0f0855cc06c09ea95c137154')
 
@@ -269,7 +271,7 @@ _package-headers() {
     echo "Stripping build tools..."
     local file
     while read -rd '' file; do
-    case "$(file -bi "$file")" in
+    case "$(file -Sib "$file")" in
         application/x-sharedlib\;*)      # Libraries (.so)
             strip -v $STRIP_SHARED "$file" ;;
         application/x-archive\;*)        # Libraries (.a)
