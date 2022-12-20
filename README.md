@@ -10,14 +10,12 @@ Slightly optimized for Lenovo IdeaPad 3 15ADA05-81W1
 - Kernel module signing if [arch-sign-modules](https://aur.archlinux.org/packages/arch-sign-modules) available
 - platform/x86: ideapad-laptop: add support for Ideapad 3 15ADA05-81W1
 - [tsc: attempt to sync the tsc via direct writes](https://bugzilla.kernel.org/show_bug.cgi?id=202525)
-- XANMOD: Change rcutree.kthread_prio to SCHED_RR policy
 - XANMOD: block/mq-deadline: Disable front_merges by default
 - XANMOD: block/mq-deadline: Increase write priority to improve responsiveness
 - XANMOD: block: set rq_affinity to force full multithreading I/O requests
 - XANMOD: lib/kconfig.debug: disable default SYMBOLIC_ERRNAME and DEBUG_BUGVERBOSE
-- XANMOD: kconfig: add 500Hz timer interrupt kernel config option
 - mac80211: ignore AP power level when tx power type is "fixed"
-- futex-5.19: Add entry point for FUTEX_WAIT_MULTIPLE (opcode 31)
+- futex-6.1: Add entry point for FUTEX_WAIT_MULTIPLE (opcode 31)
 - winesync: Introduce the winesync driver and character device patchset
 - x86: Avoid relocation information in final vmlinux
 

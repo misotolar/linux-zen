@@ -1,6 +1,6 @@
 
-_major=6.0
-_minor=12.zen1
+_major=6.1
+_minor=zen1
 
 pkgbase=linux-zen
 pkgname=("$pkgbase" "$pkgbase-headers")
@@ -31,37 +31,35 @@ source=("$_kernel/v6.x/$_src.tar.xz"
         '0001-x86-tools-fix-llvm-objdump-syntax.patch' # https://github.com/ClangBuiltLinux/linux/issues/1362
         '0002-ideapad-laptop-add-platform-support-for-Ideapad-3-15ADA05-81W1.patch'
         '0003-tsc-directsync.patch' # https://bugzilla.kernel.org/show_bug.cgi?id=202525
-        '0101-XANMOD-Change-rcutree.kthread_prio-to-SCHED_RR-polic.patch'::"$_lucjan/xanmod-patches-v3-sep/0001-XANMOD-Change-rcutree.kthread_prio-to-SCHED_RR-polic.patch"
-        '0102-XANMOD-block-mq-deadline-Disable-front_merges-by-def.patch'::"$_lucjan/xanmod-patches-v3-sep/0002-XANMOD-block-mq-deadline-Disable-front_merges-by-def.patch"
-        '0103-XANMOD-block-mq-deadline-Increase-write-priority-to-.patch'::"$_lucjan/xanmod-patches-v3-sep/0003-XANMOD-block-mq-deadline-Increase-write-priority-to-.patch"
-        '0104-XANMOD-block-set-rq_affinity-to-force-full-multithre.patch'::"$_lucjan/xanmod-patches-v3-sep/0004-XANMOD-block-set-rq_affinity-to-force-full-multithre.patch"
-        '0105-XANMOD-lib-kconfig.debug-disable-default-CONFIG_SYMB.patch'::"$_lucjan/xanmod-patches-v3-sep/0010-XANMOD-lib-kconfig.debug-disable-default-CONFIG_SYMB.patch"
-        '0106-XANMOD-kconfig-add-500Hz-timer-interrupt-kernel-conf.patch'::"$_xanmod/xanmod/0008-XANMOD-kconfig-add-500Hz-timer-interrupt-kernel-conf.patch"
-        '0107-XANMOD-mac80211-ignore-AP-power-level-when-tx-power-type-is.patch'::"$_xanmod/net/mac80221/0001-mac80211-ignore-AP-power-level-when-tx-power-type-is.patch"
-        '0108-LUCJAN-futex-cachyos-patches.patch'::"$_lucjan/futex-cachyos-patches-v2/0001-futex-cachyos-patches.patch"
-        '0109-LUCJAN-winesync-Introduce-the-winesync-driver-and-character.patch'::"$_lucjan/wine-sync-patches/0001-winesync-Introduce-the-winesync-driver-and-character.patch"
-        '0110-LUCJAN-x86-Avoid-relocation-information-in-final-vmlinux.patch'::"$_lucjan/vmlinuz-cachyos-patches/0001-x86-Avoid-relocation-information-in-final-vmlinux.patch"
-        '0111-LUCJAN-zstd-6.0-merge-changes-from-dev-tree.patch'::"$_lucjan/zstd-cachyos-patches-v3/0001-zstd-6.0-merge-changes-from-dev-tree.patch")
+        '0101-LUCJAN-PRJC-CachyOS-for-6.1.patch'::"$_lucjan/prjc-cachyos-patches/0001-PRJC-CachyOS-for-6.1.patch"
+        '0102-XANMOD-block-mq-deadline-Disable-front_merges-by-def.patch'::"$_lucjan/xanmod-patches-sep/0001-XANMOD-block-mq-deadline-Disable-front_merges-by-def.patch"
+        '0103-XANMOD-block-mq-deadline-Increase-write-priority-to-.patch'::"$_lucjan/xanmod-patches-sep/0002-XANMOD-block-mq-deadline-Increase-write-priority-to-.patch"
+        '0104-XANMOD-block-set-rq_affinity-to-force-full-multithre.patch'::"$_lucjan/xanmod-patches-sep/0003-XANMOD-block-set-rq_affinity-to-force-full-multithre.patch"
+        '0105-XANMOD-lib-kconfig.debug-disable-default-CONFIG_SYMB.patch'::"$_lucjan/xanmod-patches-sep/0009-XANMOD-lib-kconfig.debug-disable-default-CONFIG_SYMB.patch"
+        '0106-XANMOD-mac80211-ignore-AP-power-level-when-tx-power-type-is.patch'::"$_xanmod/net/mac80221/0001-mac80211-ignore-AP-power-level-when-tx-power-type-is.patch"
+        '0107-LUCJAN-futex-patches.patch'::"$_lucjan/futex-patches-v2/0001-futex-patches.patch"
+        '0108-LUCJAN-winesync-Introduce-the-winesync-driver-and-character.patch'::"$_lucjan/wine-sync-patches/0001-winesync-Introduce-the-winesync-driver-and-character.patch"
+        '0109-LUCJAN-x86-Avoid-relocation-information-in-final-vmlinux.patch'::"$_lucjan/vmlinuz-cachyos-patches/0001-x86-Avoid-relocation-information-in-final-vmlinux.patch"
+        '0110-LUCJAN-zstd-6.1-merge-changes-from-dev-tree.patch'::"$_lucjan/zstd-cachyos-patches/0001-zstd-6.1-merge-changes-from-dev-tree.patch")
 
-sha256sums=('5c2443a5538de52688efb55c27ab0539c1f5eb58c0cfd16a2b9fbb08fd81788e'
+sha256sums=('2ca1f17051a430f6fed1196e4952717507171acfd97d96577212502703b25deb'
             'SKIP'
-            '28edaf752314ae31b77385df9342ad2aa4f40a45b14319fc35393d4b16ee096d'
+            '1fde98b6f6741ed610230e3bb102c702a9c58882b258d3fac00319511723fc5c'
             'SKIP'
-            '65d309cb000881bceb82179504dd21f39d00ea8b82a54ebe7e8d2f963a75080e'
+            'cc5e70dcc4c0cc475402635a819c81fbaaf78406f7eae32e2e368e851d82983d'
             'd5ce94a811ef49161fb681dff5e48ae52e4dafbbf17270613fbbd1a3f87e3fee'
             '44277bfdd594c01798b493fe59fabb03a12aa751e2f9bc47e2fa5fd129f7a5d2'
             'a45bb3fbbf39739f08e8ce2388346ce8e27e22d0db6c22138bb8b81b93220026'
-            '4a485c1ddfdaec5f552dd9dd775316a0077c2f49f4c630d86bb60350e4a0e180'
-            '0e7cb6478ab0898bc42d479cfc47ad3d696a22f2385d2a03453bc476060862dd'
-            '2074deb0316923a83e39410d4321fec4cd2a74f4b90a9c5458be718f763d4705'
-            '772a79491a77a43c91f8a2b43b57e36826919598c6b93716810fff9b9e07707a'
-            'ccd48b2d439bd0ca09f9cea2beb4d4bec1e996e4c48115c8a21f6580ecd75742'
-            'f81228461a00b0b4975efb4186933bf903a5b2396f51dc2af883dd23a34928cd'
-            'ba7dc6945565c3efac3634af146872cbf7861efaa9168fceb3e639f29113fd1d'
-            '752702237817b83fd8a555b49bf7add64019ed9b97d1ea98fe94a5fddfa8107d'
-            '7c29d04c847bf3ae731e9643e9692b395d2c2c4b9cdc40f1c8546a231c5c4b7e'
-            'cb4861772c99c6d5a7816b062ff061a05f01dec4a5de66b9c5ebb1434747e474'
-            '4f8e5ed26f8bce6889154780f388be798ad298cd0f0855cc06c09ea95c137154')
+            '85db2a6a615779a0f99294a374eb506dea54fb06fac5d68f16dfed808b67c449'
+            '818832d2249586f576572f79d6e4273ab011a177a6402df4adf34e495487d3bb'
+            'd626143b97d9fd897a42f1954fd752473ed45e34946be50cc63436a8cd355dac'
+            'e29825f0884d58afa9b29a2bca9c473e3f54683077c481a07869843864076b2f'
+            '7d1cb23b12b52a94692048526f076e20cedb8fed9f9b8a40a4e2995341d01c33'
+            '980385eb7b6eb998e794992cd414ee8972a02364d9a970449d19d3a037f13a24'
+            'd092a0c26ca0edc2f84658be0efb10ff2cce64dbc9d4166cc02157f9da13b560'
+            '658a592a47bbae03737d4e0060520db2ed05876258780118125510e290282cdf'
+            '5e6bdf4ff3650c1b35ecdde9cb8041f41023cd315e48410ff0f4c6a5acd5ce45'
+            'fd19a8e8daf014c1b4009f7f439487b7ef488225ce671dfcb8c3a78748fd1ed8')
 
 validpgpkeys=('ABAF11C65A2970B130ABE3C479BE3E4300411886'   # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E'   # Greg Kroah-Hartman
@@ -134,7 +132,6 @@ prepare() {
     # Processor type and features
     scripts/config --set-val NR_CPUS 16
     scripts/config -e MZEN -d GENERIC_CPU
-    scripts/config -e HZ_500 -d HZ_1000
     scripts/config -d HYPERVISOR_GUEST
     scripts/config -d MICROCODE_INTEL
     scripts/config -d MICROCODE_OLD_INTERFACE
@@ -157,12 +154,14 @@ prepare() {
     scripts/config -e TCP_CONG_BBR2 -e DEFAULT_BBR2
 
     # Device Drivers
+    scripts/config -m WINESYNC
     scripts/config -e RANDOM_TRUST_CPU
     scripts/config -d BPF_LIRC_MODE2
     scripts/config -d INTEL_IOMMU
     scripts/config -d WATCHDOG
     scripts/config -d ANDROID
     scripts/config -d ASHMEM
+    scripts/config -d RTW88
 
     # Security options
     scripts/config -d SECURITY_SELINUX
