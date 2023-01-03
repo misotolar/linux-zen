@@ -1,12 +1,12 @@
 
 _major=6.1
-_minor=zen1
+_minor=2.zen1
 
 pkgbase=linux-zen
 pkgname=("$pkgbase" "$pkgbase-headers")
 pkgdesc='Linux ZEN'
 pkgver="$_major.$_minor"
-pkgrel=1
+pkgrel=1.1
 
 _src="linux-$_major"
 _zen="v${pkgver%.*}-${pkgver##*.}"
@@ -31,35 +31,33 @@ source=("$_kernel/v6.x/$_src.tar.xz"
         '0001-x86-tools-fix-llvm-objdump-syntax.patch' # https://github.com/ClangBuiltLinux/linux/issues/1362
         '0002-ideapad-laptop-add-platform-support-for-Ideapad-3-15ADA05-81W1.patch'
         '0003-tsc-directsync.patch' # https://bugzilla.kernel.org/show_bug.cgi?id=202525
-        '0101-LUCJAN-PRJC-CachyOS-for-6.1.patch'::"$_lucjan/prjc-cachyos-patches/0001-PRJC-CachyOS-for-6.1.patch"
-        '0102-XANMOD-block-mq-deadline-Disable-front_merges-by-def.patch'::"$_lucjan/xanmod-patches-sep/0001-XANMOD-block-mq-deadline-Disable-front_merges-by-def.patch"
-        '0103-XANMOD-block-mq-deadline-Increase-write-priority-to-.patch'::"$_lucjan/xanmod-patches-sep/0002-XANMOD-block-mq-deadline-Increase-write-priority-to-.patch"
-        '0104-XANMOD-block-set-rq_affinity-to-force-full-multithre.patch'::"$_lucjan/xanmod-patches-sep/0003-XANMOD-block-set-rq_affinity-to-force-full-multithre.patch"
-        '0105-XANMOD-lib-kconfig.debug-disable-default-CONFIG_SYMB.patch'::"$_lucjan/xanmod-patches-sep/0009-XANMOD-lib-kconfig.debug-disable-default-CONFIG_SYMB.patch"
-        '0106-XANMOD-mac80211-ignore-AP-power-level-when-tx-power-type-is.patch'::"$_xanmod/net/mac80221/0001-mac80211-ignore-AP-power-level-when-tx-power-type-is.patch"
-        '0107-LUCJAN-futex-patches.patch'::"$_lucjan/futex-patches-v2/0001-futex-patches.patch"
-        '0108-LUCJAN-winesync-Introduce-the-winesync-driver-and-character.patch'::"$_lucjan/wine-sync-patches/0001-winesync-Introduce-the-winesync-driver-and-character.patch"
-        '0109-LUCJAN-x86-Avoid-relocation-information-in-final-vmlinux.patch'::"$_lucjan/vmlinuz-cachyos-patches/0001-x86-Avoid-relocation-information-in-final-vmlinux.patch"
-        '0110-LUCJAN-zstd-6.1-merge-changes-from-dev-tree.patch'::"$_lucjan/zstd-cachyos-patches/0001-zstd-6.1-merge-changes-from-dev-tree.patch")
+        '0101-XANMOD-block-mq-deadline-Disable-front_merges-by-def.patch'::"$_lucjan/xanmod-patches-sep/0001-XANMOD-block-mq-deadline-Disable-front_merges-by-def.patch"
+        '0102-XANMOD-block-mq-deadline-Increase-write-priority-to-.patch'::"$_lucjan/xanmod-patches-sep/0002-XANMOD-block-mq-deadline-Increase-write-priority-to-.patch"
+        '0103-XANMOD-block-set-rq_affinity-to-force-full-multithre.patch'::"$_lucjan/xanmod-patches-sep/0003-XANMOD-block-set-rq_affinity-to-force-full-multithre.patch"
+        '0104-XANMOD-lib-kconfig.debug-disable-default-CONFIG_SYMB.patch'::"$_lucjan/xanmod-patches-sep/0009-XANMOD-lib-kconfig.debug-disable-default-CONFIG_SYMB.patch"
+        '0105-XANMOD-mac80211-ignore-AP-power-level-when-tx-power-type-is.patch'::"$_xanmod/net/mac80221/0001-mac80211-ignore-AP-power-level-when-tx-power-type-is.patch"
+        '0106-LUCJAN-futex-patches.patch'::"$_lucjan/futex-patches-v3/0001-futex-patches.patch"
+        '0107-LUCJAN-winesync-Introduce-the-winesync-driver-and-character.patch'::"$_lucjan/wine-sync-patches/0001-winesync-Introduce-the-winesync-driver-and-character.patch"
+        '0108-LUCJAN-zstd-6.1-merge-changes-from-dev-tree.patch'::"$_lucjan/zstd-cachyos-patches/0001-zstd-6.1-merge-changes-from-dev-tree.patch"
+        '0109-LUCJAN-x86-Avoid-relocation-information-in-final-vmlinux.patch'::"$_lucjan/vmlinuz-cachyos-patches/0001-x86-Avoid-relocation-information-in-final-vmlinux.patch")
 
 sha256sums=('2ca1f17051a430f6fed1196e4952717507171acfd97d96577212502703b25deb'
             'SKIP'
-            '1fde98b6f6741ed610230e3bb102c702a9c58882b258d3fac00319511723fc5c'
+            'be3b75009cf155fac0432ad9748a068ae645cfa5d2f43cbfbef616ffe0176369'
             'SKIP'
             'cc5e70dcc4c0cc475402635a819c81fbaaf78406f7eae32e2e368e851d82983d'
             'd5ce94a811ef49161fb681dff5e48ae52e4dafbbf17270613fbbd1a3f87e3fee'
             '44277bfdd594c01798b493fe59fabb03a12aa751e2f9bc47e2fa5fd129f7a5d2'
             'a45bb3fbbf39739f08e8ce2388346ce8e27e22d0db6c22138bb8b81b93220026'
-            '85db2a6a615779a0f99294a374eb506dea54fb06fac5d68f16dfed808b67c449'
             '818832d2249586f576572f79d6e4273ab011a177a6402df4adf34e495487d3bb'
             'd626143b97d9fd897a42f1954fd752473ed45e34946be50cc63436a8cd355dac'
             'e29825f0884d58afa9b29a2bca9c473e3f54683077c481a07869843864076b2f'
             '7d1cb23b12b52a94692048526f076e20cedb8fed9f9b8a40a4e2995341d01c33'
             '980385eb7b6eb998e794992cd414ee8972a02364d9a970449d19d3a037f13a24'
-            'd092a0c26ca0edc2f84658be0efb10ff2cce64dbc9d4166cc02157f9da13b560'
+            '23f675fc76a156bd8446ec09956757721af0fc3f30d7bcfa7803ba5f4abe4a9c'
             '658a592a47bbae03737d4e0060520db2ed05876258780118125510e290282cdf'
-            '5e6bdf4ff3650c1b35ecdde9cb8041f41023cd315e48410ff0f4c6a5acd5ce45'
-            'fd19a8e8daf014c1b4009f7f439487b7ef488225ce671dfcb8c3a78748fd1ed8')
+            'fd19a8e8daf014c1b4009f7f439487b7ef488225ce671dfcb8c3a78748fd1ed8'
+            '5e6bdf4ff3650c1b35ecdde9cb8041f41023cd315e48410ff0f4c6a5acd5ce45')
 
 validpgpkeys=('ABAF11C65A2970B130ABE3C479BE3E4300411886'   # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E'   # Greg Kroah-Hartman
@@ -123,7 +121,7 @@ prepare() {
     scripts/config -d BPF_LSM
     scripts/config -d BPF_PRELOAD
     scripts/config -d MQ_IOSCHED_KYBER
-    scripts/config -e PSI_DEFAULT_DISABLED
+    scripts/config -d PSI
 
     # Device drivers
     scripts/config -e CONFIG_FW_LOADER_COMPRESS_XZ
@@ -181,7 +179,7 @@ prepare() {
 
 build() {
     cd $_src
-    $_makecmd -j $(($(nproc)+1)) all
+    $_makecmd -j$(nproc) all
 }
 
 _package() {
