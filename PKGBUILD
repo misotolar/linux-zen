@@ -1,6 +1,6 @@
 
 _major=6.1
-_minor=2.zen1
+_minor=3.zen1
 
 pkgbase=linux-zen
 pkgname=("$pkgbase" "$pkgbase-headers")
@@ -36,14 +36,14 @@ source=("$_kernel/v6.x/$_src.tar.xz"
         '0103-XANMOD-block-set-rq_affinity-to-force-full-multithre.patch'::"$_lucjan/xanmod-patches-sep/0003-XANMOD-block-set-rq_affinity-to-force-full-multithre.patch"
         '0104-XANMOD-lib-kconfig.debug-disable-default-CONFIG_SYMB.patch'::"$_lucjan/xanmod-patches-sep/0009-XANMOD-lib-kconfig.debug-disable-default-CONFIG_SYMB.patch"
         '0105-XANMOD-mac80211-ignore-AP-power-level-when-tx-power-type-is.patch'::"$_xanmod/net/mac80221/0001-mac80211-ignore-AP-power-level-when-tx-power-type-is.patch"
-        '0106-LUCJAN-futex-patches.patch'::"$_lucjan/futex-patches-v3/0001-futex-patches.patch"
-        '0107-LUCJAN-winesync-Introduce-the-winesync-driver-and-character.patch'::"$_lucjan/wine-sync-patches/0001-winesync-Introduce-the-winesync-driver-and-character.patch"
+        '0106-LUCJAN-winesync-Introduce-the-winesync-driver-and-character.patch'::"$_lucjan/wine-sync-patches/0001-winesync-Introduce-the-winesync-driver-and-character.patch"
+        '0107-LUCJAN-futex-6.1-Add-entry-point-for-FUTEX_WAIT_MULTIPLE-op.patch'::"$_lucjan/futex-patches-v3-sep/0001-futex-6.1-Add-entry-point-for-FUTEX_WAIT_MULTIPLE-op.patch"
         '0108-LUCJAN-zstd-6.1-merge-changes-from-dev-tree.patch'::"$_lucjan/zstd-cachyos-patches/0001-zstd-6.1-merge-changes-from-dev-tree.patch"
         '0109-LUCJAN-x86-Avoid-relocation-information-in-final-vmlinux.patch'::"$_lucjan/vmlinuz-cachyos-patches/0001-x86-Avoid-relocation-information-in-final-vmlinux.patch")
 
 sha256sums=('2ca1f17051a430f6fed1196e4952717507171acfd97d96577212502703b25deb'
             'SKIP'
-            'be3b75009cf155fac0432ad9748a068ae645cfa5d2f43cbfbef616ffe0176369'
+            '3c57e0d2034915017669146cba7baafa721c4f87e0e7ad2631505dbf8fbcdd41'
             'SKIP'
             'cc5e70dcc4c0cc475402635a819c81fbaaf78406f7eae32e2e368e851d82983d'
             'd5ce94a811ef49161fb681dff5e48ae52e4dafbbf17270613fbbd1a3f87e3fee'
@@ -54,8 +54,8 @@ sha256sums=('2ca1f17051a430f6fed1196e4952717507171acfd97d96577212502703b25deb'
             'e29825f0884d58afa9b29a2bca9c473e3f54683077c481a07869843864076b2f'
             '7d1cb23b12b52a94692048526f076e20cedb8fed9f9b8a40a4e2995341d01c33'
             '980385eb7b6eb998e794992cd414ee8972a02364d9a970449d19d3a037f13a24'
-            '23f675fc76a156bd8446ec09956757721af0fc3f30d7bcfa7803ba5f4abe4a9c'
             '658a592a47bbae03737d4e0060520db2ed05876258780118125510e290282cdf'
+            'dd6635ea4656220b0159786e8a78f166da6cae0dd8f2796bed42eedca8a6ec30'
             'fd19a8e8daf014c1b4009f7f439487b7ef488225ce671dfcb8c3a78748fd1ed8'
             '5e6bdf4ff3650c1b35ecdde9cb8041f41023cd315e48410ff0f4c6a5acd5ce45')
 
