@@ -17,6 +17,7 @@ Slightly optimized for Lenovo IdeaPad 3 15ADA05-81W1
 - mac80211: ignore AP power level when tx power type is "fixed"
 - winesync: Introduce the winesync driver and character device patchset
 - futex-6.1: Add entry point for FUTEX_WAIT_MULTIPLE (opcode 31)
+- ext4-6.1: merge changes from dev tree
 - zstd-6.1: merge changes from dev tree
 - x86: Avoid relocation information in final vmlinux
 

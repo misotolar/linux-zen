@@ -1,6 +1,6 @@
 
 _major=6.1
-_minor=4.zen2
+_minor=5.zen2
 
 pkgbase=linux-zen
 pkgname=("$pkgbase" "$pkgbase-headers")
@@ -12,12 +12,12 @@ _src="linux-$_major"
 _zen="v${pkgver%.*}-${pkgver##*.}"
 
 _kernel="https://cdn.kernel.org/pub/linux/kernel"
-_master="https://github.com/zen-kernel/zen-kernel"
+_source="https://github.com/zen-kernel/zen-kernel"
 _xanmod="https://raw.githubusercontent.com/xanmod/linux-patches/master/linux-$_major.y-xanmod"
 _lucjan="https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/$_major"
 
 arch=('x86_64')
-url="$_master/commits/$_zen"
+url="$_source/commits/$_zen"
 license=('GPL2')
 
 makedepends=('bc' 'clang' 'cpio' 'git' 'kmod' 'libelf' 'llvm' 'lld' 'pahole' 'perl' 'tar' 'xmlto' 'xz')
@@ -25,9 +25,9 @@ options=('!strip')
 
 source=("$_kernel/v6.x/$_src.tar.xz"
         "$_kernel/v6.x/$_src.tar.sign"
-        "$_master/releases/download/$_zen/$_zen.patch.xz"
-        "$_master/releases/download/$_zen/$_zen.patch.xz.sig"
-        "https://github.com/archlinux/svntogit-packages/raw/master/linux-zen/trunk/config"
+        "$_source/releases/download/$_zen/$_zen.patch.xz"
+        "$_source/releases/download/$_zen/$_zen.patch.xz.sig"
+        'https://github.com/archlinux/svntogit-packages/raw/master/linux-zen/trunk/config'
         '0001-x86-tools-fix-llvm-objdump-syntax.patch' # https://github.com/ClangBuiltLinux/linux/issues/1362
         '0002-ideapad-laptop-add-platform-support-for-Ideapad-3-15ADA05-81W1.patch'
         '0003-tsc-directsync.patch' # https://bugzilla.kernel.org/show_bug.cgi?id=202525
@@ -37,16 +37,14 @@ source=("$_kernel/v6.x/$_src.tar.xz"
         '0104-XANMOD-lib-kconfig.debug-disable-default-CONFIG_SYMB.patch'::"$_lucjan/xanmod-patches-sep/0009-XANMOD-lib-kconfig.debug-disable-default-CONFIG_SYMB.patch"
         '0105-XANMOD-mac80211-ignore-AP-power-level-when-tx-power-type-is.patch'::"$_xanmod/net/mac80221/0001-mac80211-ignore-AP-power-level-when-tx-power-type-is.patch"
         '0106-LUCJAN-winesync-Introduce-the-winesync-driver-and-character.patch'::"$_lucjan/wine-sync-patches/0001-winesync-Introduce-the-winesync-driver-and-character.patch"
-        '0107-LUCJAN-futex-6.1-Add-entry-point-for-FUTEX_WAIT_MULTIPLE-op.patch'::"$_lucjan/futex-patches-v3-sep/0001-futex-6.1-Add-entry-point-for-FUTEX_WAIT_MULTIPLE-op.patch"
-        '0108-LUCJAN-zstd-6.1-merge-changes-from-dev-tree.patch'::"$_lucjan/zstd-cachyos-patches/0001-zstd-6.1-merge-changes-from-dev-tree.patch"
-        '0109-LUCJAN-x86-Avoid-relocation-information-in-final-vmlinux.patch'::"$_lucjan/vmlinuz-cachyos-patches/0001-x86-Avoid-relocation-information-in-final-vmlinux.patch"
-        '0110-00b8ba9deec0235bbf4ed8bb883c1c1a261dbd54.patch'::"$_master/commit/00b8ba9deec0235bbf4ed8bb883c1c1a261dbd54.patch"
-        '0111-88f9d9d41148441ebd96324906c0f2b9000f45fc.patch'::"$_master/commit/88f9d9d41148441ebd96324906c0f2b9000f45fc.patch"
-        '0112-c9ffc1e9b70eb0980f75d86c821395136546617d.patch'::"$_master/commit/c9ffc1e9b70eb0980f75d86c821395136546617d.patch")
+        '0107-LUCJAN-futex-6.1-Add-entry-point-for-FUTEX_WAIT_MULTIPLE-op.patch'::"$_lucjan/futex-patches-v4/0001-futex-6.1-Add-entry-point-for-FUTEX_WAIT_MULTIPLE-op.patch"
+        '0108-LUCJAN-ext4-6.1-merge-changes-from-dev-tree.patch'::"$_lucjan/ext4-patches-v4/0001-ext4-6.1-merge-changes-from-dev-tree.patch"
+        '0109-LUCJAN-zstd-6.1-merge-changes-from-dev-tree.patch'::"$_lucjan/zstd-cachyos-patches/0001-zstd-6.1-merge-changes-from-dev-tree.patch"
+        '0110-LUCJAN-x86-Avoid-relocation-information-in-final-vmlinux.patch'::"$_lucjan/vmlinuz-cachyos-patches/0001-x86-Avoid-relocation-information-in-final-vmlinux.patch")
 
 sha256sums=('2ca1f17051a430f6fed1196e4952717507171acfd97d96577212502703b25deb'
             'SKIP'
-            'e097d1ed568af4a0c1730a59b96649e4db9785d85c696b8c46ad0bdb9ccde14a'
+            'a9e38e92a5ece3cedeee22384c277d06e74c4f7cae2942f0a3ac7661ee3a0c93'
             'SKIP'
             'cc5e70dcc4c0cc475402635a819c81fbaaf78406f7eae32e2e368e851d82983d'
             'd5ce94a811ef49161fb681dff5e48ae52e4dafbbf17270613fbbd1a3f87e3fee'
@@ -58,12 +56,10 @@ sha256sums=('2ca1f17051a430f6fed1196e4952717507171acfd97d96577212502703b25deb'
             '7d1cb23b12b52a94692048526f076e20cedb8fed9f9b8a40a4e2995341d01c33'
             '980385eb7b6eb998e794992cd414ee8972a02364d9a970449d19d3a037f13a24'
             '658a592a47bbae03737d4e0060520db2ed05876258780118125510e290282cdf'
-            'dd6635ea4656220b0159786e8a78f166da6cae0dd8f2796bed42eedca8a6ec30'
+            '30c7bc5d02b72cef2cc8a6a7bf047ee85419aea836450abac38fe44b3c4ef021'
+            '624fa85265dfa9a39f8ce4007037bbb5cdd80a2c96b998cb95eb13700075285b'
             'fd19a8e8daf014c1b4009f7f439487b7ef488225ce671dfcb8c3a78748fd1ed8'
-            '5e6bdf4ff3650c1b35ecdde9cb8041f41023cd315e48410ff0f4c6a5acd5ce45'
-            '34f5c80c99b99de21878822738e05a8d7f2f92f3d6737694007dacce11803408'
-            '21c81b060bb1ceb53fe9bacc829a22ba8d10278a5868528d1f8228c3e6c11d30'
-            '21e8d64c5b17aba51d98f5f6378e8026eda179d7f5d805fc4cec8f36d85caadc')
+            '5e6bdf4ff3650c1b35ecdde9cb8041f41023cd315e48410ff0f4c6a5acd5ce45')
 
 validpgpkeys=('ABAF11C65A2970B130ABE3C479BE3E4300411886'   # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E'   # Greg Kroah-Hartman
@@ -158,7 +154,6 @@ prepare() {
     scripts/config -e TCP_CONG_BBR2 -e DEFAULT_BBR2
 
     # Device Drivers
-    scripts/config -m WINESYNC
     scripts/config -e RANDOM_TRUST_CPU
     scripts/config -d BPF_LIRC_MODE2
     scripts/config -d INTEL_IOMMU
