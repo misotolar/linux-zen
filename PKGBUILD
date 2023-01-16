@@ -1,6 +1,6 @@
 
 _major=6.1
-_minor=5.zen2
+_minor=6.zen1
 
 pkgbase=linux-zen
 pkgname=("$pkgbase" "$pkgbase-headers")
@@ -39,14 +39,17 @@ source=("$_kernel/v6.x/$_src.tar.xz"
         '0106-LUCJAN-winesync-Introduce-the-winesync-driver-and-character.patch'::"$_lucjan/wine-sync-patches/0001-winesync-Introduce-the-winesync-driver-and-character.patch"
         '0107-LUCJAN-futex-6.1-Add-entry-point-for-FUTEX_WAIT_MULTIPLE-op.patch'::"$_lucjan/futex-patches-v4/0001-futex-6.1-Add-entry-point-for-FUTEX_WAIT_MULTIPLE-op.patch"
         '0108-LUCJAN-ext4-6.1-merge-changes-from-dev-tree.patch'::"$_lucjan/ext4-patches-v4/0001-ext4-6.1-merge-changes-from-dev-tree.patch"
-        '0109-LUCJAN-zstd-6.1-merge-changes-from-dev-tree.patch'::"$_lucjan/zstd-cachyos-patches/0001-zstd-6.1-merge-changes-from-dev-tree.patch"
-        '0110-LUCJAN-x86-Avoid-relocation-information-in-final-vmlinux.patch'::"$_lucjan/vmlinuz-cachyos-patches/0001-x86-Avoid-relocation-information-in-final-vmlinux.patch")
+        '0109-LUCJAN-zstd-6.1-merge-changes-from-dev-tree.patch'::"$_lucjan/zstd-cachyos-patches-v2/0001-zstd-6.1-merge-changes-from-dev-tree.patch"
+        '0110-LUCJAN-x86-Avoid-relocation-information-in-final-vmlinux.patch'::"$_lucjan/vmlinuz-cachyos-patches/0001-x86-Avoid-relocation-information-in-final-vmlinux.patch"
+        '0111-d9f543e131bdfdd8ea07724d77eed6a22e42bbc2.patch'::"$_source/commit/d9f543e131bdfdd8ea07724d77eed6a22e42bbc2.patch"
+        '0112-4296f3193d1b4374c09640504bf30e02ba02753d.patch'::"$_source/commit/4296f3193d1b4374c09640504bf30e02ba02753d.patch"
+        '0113-6ed91ba7f1d460920a16447a1d0f0a596be61b0c.patch'::"$_source/commit/6ed91ba7f1d460920a16447a1d0f0a596be61b0c.patch")
 
 sha256sums=('2ca1f17051a430f6fed1196e4952717507171acfd97d96577212502703b25deb'
             'SKIP'
-            'a9e38e92a5ece3cedeee22384c277d06e74c4f7cae2942f0a3ac7661ee3a0c93'
+            'fa17707cf50c0502fa197491b3d4c0fab2b570dca5dd650da2b5ce6f72888c94'
             'SKIP'
-            'cc5e70dcc4c0cc475402635a819c81fbaaf78406f7eae32e2e368e851d82983d'
+            '2ca6409bce85bd68cfd1bcffb9e4bf2da9be3abe656e4127dff90631a4a46d40'
             'd5ce94a811ef49161fb681dff5e48ae52e4dafbbf17270613fbbd1a3f87e3fee'
             '44277bfdd594c01798b493fe59fabb03a12aa751e2f9bc47e2fa5fd129f7a5d2'
             'a45bb3fbbf39739f08e8ce2388346ce8e27e22d0db6c22138bb8b81b93220026'
@@ -58,8 +61,11 @@ sha256sums=('2ca1f17051a430f6fed1196e4952717507171acfd97d96577212502703b25deb'
             '658a592a47bbae03737d4e0060520db2ed05876258780118125510e290282cdf'
             '30c7bc5d02b72cef2cc8a6a7bf047ee85419aea836450abac38fe44b3c4ef021'
             '624fa85265dfa9a39f8ce4007037bbb5cdd80a2c96b998cb95eb13700075285b'
-            'fd19a8e8daf014c1b4009f7f439487b7ef488225ce671dfcb8c3a78748fd1ed8'
-            '5e6bdf4ff3650c1b35ecdde9cb8041f41023cd315e48410ff0f4c6a5acd5ce45')
+            '0238102ee19941f8a3a811eaa95c0495ac458bf0383615ce62bcc97f4ec48079'
+            '5e6bdf4ff3650c1b35ecdde9cb8041f41023cd315e48410ff0f4c6a5acd5ce45'
+            '7be264cae4eaaeffb50ab473dd952ad70bc46a4b9e0e9f315d95cd9ee8fd007e'
+            '5cc6cbb3f7aaa745d02f7a5fb03327f0620753b92e6c47f31768ab2a6ef9cac7'
+            '3d292831740a2bef4f205ccb452ede0407e6b8f91e02bbe16b0b2a04bf04e2c5')
 
 validpgpkeys=('ABAF11C65A2970B130ABE3C479BE3E4300411886'   # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E'   # Greg Kroah-Hartman
