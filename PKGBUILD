@@ -6,7 +6,7 @@ pkgbase=linux-zen
 pkgname=("$pkgbase" "$pkgbase-headers")
 pkgdesc='Linux ZEN'
 pkgver="$_major.$_minor"
-pkgrel=1.1
+pkgrel=2.1
 
 _src="linux-$_major"
 _zen="v${pkgver%.*}-${pkgver##*.}"
