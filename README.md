@@ -1,25 +1,15 @@
 # Zen Kernel Arch Linux package
 [![Build Status](https://drone02.sotolar.net/api/badges/misotolar/linux-zen/status.svg)](https://drone02.sotolar.net/misotolar/linux-zen)
 
-Slightly optimized for Lenovo IdeaPad 3 15ADA05-81W1
+Improved Zen Kernel package with [additional patches](https://github.com/sirlucjan/kernel-patches/) and custom config:
 
-- Clang Thin LTO build
-- [PDS Process Scheduler](https://gitlab.com/alfredchen/projectc)
-- [Userspace assisted KSM](https://gitlab.com/post-factum/uksmd)
-- AMD Zen processor family
-- Kernel module signing if [arch-sign-modules](https://aur.archlinux.org/packages/arch-sign-modules) available
-- platform/x86: ideapad-laptop: add support for Ideapad 3 15ADA05-81W1
-- [tsc: attempt to sync the tsc via direct writes](https://bugzilla.kernel.org/show_bug.cgi?id=202525)
-- XANMOD: block/mq-deadline: Disable front_merges by default
-- XANMOD: block/mq-deadline: Increase write priority to improve responsiveness
-- XANMOD: block: set rq_affinity to force full multithreading I/O requests
-- XANMOD: lib/kconfig.debug: disable default SYMBOLIC_ERRNAME and DEBUG_BUGVERBOSE
-- mac80211: ignore AP power level when tx power type is "fixed"
-- winesync: Introduce the winesync driver and character device patchset
-- futex-6.1: Add entry point for FUTEX_WAIT_MULTIPLE (opcode 31)
-- ext4-6.1: merge changes from dev tree
-- zstd-6.1: merge changes from dev tree
-- x86: Avoid relocation information in final vmlinux
+- LLVM/LTO build
+- [TSC direct sync](https://lore.kernel.org/all/84f991e0-4d14-7ea9-7553-9f688df9cd49@collabora.com/T/#m156fc8ddb3f69691fefedb7bba49a280fe97938e) implementation
+- [PDS Process Scheduler](https://gitlab.com/alfredchen/projectc) enabled
+- DKMS kernel module signing with [Arch-SKM](https://aur.archlinux.org/packages/arch-sign-modules)
+- Linux Random Number Generator
+- Futex fixes and winesync
+- [Per-VMA lock](https://lore.kernel.org/lkml/20230109205336.3665937-1-surenb@google.com/T/#ma04517b963591298a9eb76d96d2c453256a4d9ab)
 
 ```
 [linux-zen]

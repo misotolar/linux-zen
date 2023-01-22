@@ -1,71 +1,66 @@
 
 _major=6.1
-_minor=6.zen1
+_minor=7.zen1
 
 pkgbase=linux-zen
 pkgname=("$pkgbase" "$pkgbase-headers")
-pkgdesc='Linux ZEN'
+pkgdesc='The Linux ZEN kernel and modules'
 pkgver="$_major.$_minor"
-pkgrel=2.1
+pkgrel=1.1
 
-_src="linux-$_major"
-_zen="v${pkgver%.*}-${pkgver##*.}"
+_srcdir="linux-$_major"
+_zenver="v${pkgver%.*}-${pkgver##*.}"
 
 _kernel="https://cdn.kernel.org/pub/linux/kernel"
 _source="https://github.com/zen-kernel/zen-kernel"
-_xanmod="https://raw.githubusercontent.com/xanmod/linux-patches/master/linux-$_major.y-xanmod"
 _lucjan="https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/$_major"
 
-arch=('x86_64')
-url="$_source/commits/$_zen"
+arch=('x86_64' 'x86_64_v3')
+url="$_source/commits/$_zenver"
 license=('GPL2')
 
 makedepends=('bc' 'clang' 'cpio' 'git' 'kmod' 'libelf' 'llvm' 'lld' 'pahole' 'perl' 'tar' 'xmlto' 'xz')
 options=('!strip')
 
-source=("$_kernel/v6.x/$_src.tar.xz"
-        "$_kernel/v6.x/$_src.tar.sign"
-        "$_source/releases/download/$_zen/$_zen.patch.xz"
-        "$_source/releases/download/$_zen/$_zen.patch.xz.sig"
+source=("$_kernel/v6.x/linux-$_major.tar.xz"
+        "$_kernel/v6.x/linux-$_major.tar.sign"
+        "$_source/releases/download/$_zenver/$_zenver.patch.xz"
+        "$_source/releases/download/$_zenver/$_zenver.patch.xz.sig"
         'https://github.com/archlinux/svntogit-packages/raw/master/linux-zen/trunk/config'
-        '0001-x86-tools-fix-llvm-objdump-syntax.patch' # https://github.com/ClangBuiltLinux/linux/issues/1362
-        '0002-ideapad-laptop-add-platform-support-for-Ideapad-3-15ADA05-81W1.patch'
-        '0003-tsc-directsync.patch' # https://bugzilla.kernel.org/show_bug.cgi?id=202525
-        '0101-XANMOD-block-mq-deadline-Disable-front_merges-by-def.patch'::"$_lucjan/xanmod-patches-sep/0001-XANMOD-block-mq-deadline-Disable-front_merges-by-def.patch"
-        '0102-XANMOD-block-mq-deadline-Increase-write-priority-to-.patch'::"$_lucjan/xanmod-patches-sep/0002-XANMOD-block-mq-deadline-Increase-write-priority-to-.patch"
-        '0103-XANMOD-block-set-rq_affinity-to-force-full-multithre.patch'::"$_lucjan/xanmod-patches-sep/0003-XANMOD-block-set-rq_affinity-to-force-full-multithre.patch"
-        '0104-XANMOD-lib-kconfig.debug-disable-default-CONFIG_SYMB.patch'::"$_lucjan/xanmod-patches-sep/0009-XANMOD-lib-kconfig.debug-disable-default-CONFIG_SYMB.patch"
-        '0105-XANMOD-mac80211-ignore-AP-power-level-when-tx-power-type-is.patch'::"$_xanmod/net/mac80221/0001-mac80211-ignore-AP-power-level-when-tx-power-type-is.patch"
-        '0106-LUCJAN-winesync-Introduce-the-winesync-driver-and-character.patch'::"$_lucjan/wine-sync-patches/0001-winesync-Introduce-the-winesync-driver-and-character.patch"
-        '0107-LUCJAN-futex-6.1-Add-entry-point-for-FUTEX_WAIT_MULTIPLE-op.patch'::"$_lucjan/futex-patches-v4/0001-futex-6.1-Add-entry-point-for-FUTEX_WAIT_MULTIPLE-op.patch"
-        '0108-LUCJAN-ext4-6.1-merge-changes-from-dev-tree.patch'::"$_lucjan/ext4-patches-v4/0001-ext4-6.1-merge-changes-from-dev-tree.patch"
-        '0109-LUCJAN-zstd-6.1-merge-changes-from-dev-tree.patch'::"$_lucjan/zstd-cachyos-patches-v2/0001-zstd-6.1-merge-changes-from-dev-tree.patch"
-        '0110-LUCJAN-x86-Avoid-relocation-information-in-final-vmlinux.patch'::"$_lucjan/vmlinuz-cachyos-patches/0001-x86-Avoid-relocation-information-in-final-vmlinux.patch"
-        '0111-d9f543e131bdfdd8ea07724d77eed6a22e42bbc2.patch'::"$_source/commit/d9f543e131bdfdd8ea07724d77eed6a22e42bbc2.patch"
-        '0112-4296f3193d1b4374c09640504bf30e02ba02753d.patch'::"$_source/commit/4296f3193d1b4374c09640504bf30e02ba02753d.patch"
-        '0113-6ed91ba7f1d460920a16447a1d0f0a596be61b0c.patch'::"$_source/commit/6ed91ba7f1d460920a16447a1d0f0a596be61b0c.patch")
+        'https://raw.githubusercontent.com/CachyOS/linux-cachyos/master/linux-cachyos/auto-cpu-optimization.sh'
+        '0001-kconfig-additional-timer-interrupt-kernel-config-opt.patch'
+        '0002-x86-implement-tsc-directsync-for-systems-without-IA3.patch'
+        '0003-x86-touch-clocksource-watchdog-after-syncing-TSCs.patch'
+        '0004-x86-save-restore-TSC-counter-value-during-sleep-wake.patch'
+        '0005-x86-only-restore-TSC-if-we-have-IA32_TSC_ADJUST-or-d.patch'
+        '0006-x86-don-t-check-for-random-warps-if-using-direct-syn.patch'
+        '0007-x86-disable-tsc-watchdog-if-using-direct-sync.patch'
+        '0101-LUCJAN-vma-6.1-per-VMA-locks-proposal.patch'::"$_lucjan/vma-maple-patches-v7/0001-vma-6.1-per-VMA-locks-proposal.patch"
+        '0102-LUCJAN-lrng-cachyos-patches.patch'::"$_lucjan/lrng-cachyos-patches-v9/0001-lrng-cachyos-patches.patch"
+        '0103-LUCJAN-winesync-Introduce-the-winesync-driver-and-character.patch'::"$_lucjan/wine-sync-futex-patches/0001-winesync-Introduce-the-winesync-driver-and-character.patch"
+        '0104-LUCJAN-ext4-6.1-merge-changes-from-dev-tree.patch'::"$_lucjan/ext4-patches-v4/0001-ext4-6.1-merge-changes-from-dev-tree.patch"
+        '0105-LUCJAN-zstd-6.1-merge-changes-from-dev-tree.patch'::"$_lucjan/zstd-cachyos-patches-v2/0001-zstd-6.1-merge-changes-from-dev-tree.patch"
+        '0106-LUCJAN-x86-Avoid-relocation-information-in-final-vmlinux.patch'::"$_lucjan/vmlinuz-cachyos-patches/0001-x86-Avoid-relocation-information-in-final-vmlinux.patch")
 
 sha256sums=('2ca1f17051a430f6fed1196e4952717507171acfd97d96577212502703b25deb'
             'SKIP'
-            'fa17707cf50c0502fa197491b3d4c0fab2b570dca5dd650da2b5ce6f72888c94'
+            '032d49cf2be4973987bba0701fc4ea230fbe533682a1ade919c2fca5c37b2b6e'
             'SKIP'
             '2ca6409bce85bd68cfd1bcffb9e4bf2da9be3abe656e4127dff90631a4a46d40'
-            'd5ce94a811ef49161fb681dff5e48ae52e4dafbbf17270613fbbd1a3f87e3fee'
-            '44277bfdd594c01798b493fe59fabb03a12aa751e2f9bc47e2fa5fd129f7a5d2'
-            'a45bb3fbbf39739f08e8ce2388346ce8e27e22d0db6c22138bb8b81b93220026'
-            '818832d2249586f576572f79d6e4273ab011a177a6402df4adf34e495487d3bb'
-            'd626143b97d9fd897a42f1954fd752473ed45e34946be50cc63436a8cd355dac'
-            'e29825f0884d58afa9b29a2bca9c473e3f54683077c481a07869843864076b2f'
-            '7d1cb23b12b52a94692048526f076e20cedb8fed9f9b8a40a4e2995341d01c33'
-            '980385eb7b6eb998e794992cd414ee8972a02364d9a970449d19d3a037f13a24'
-            '658a592a47bbae03737d4e0060520db2ed05876258780118125510e290282cdf'
-            '30c7bc5d02b72cef2cc8a6a7bf047ee85419aea836450abac38fe44b3c4ef021'
+            '41c34759ed248175e905c57a25e2b0ed09b11d054fe1a8783d37459f34984106'
+            'a99a0101fb71e748124cd1021f40766ba4d234110d52f9ca3585b0c6e36daf29'
+            '1b268f30b54b59fce5c3a73d7483684d1fd3f724cf283c02e84ac0644238be69'
+            'e92d5e89b0e1281e6d8da582801918b56e6ad5f0de315bdf38e575de32fe2116'
+            '70472f2ffc33a40796abe7eca9ba5c534fe2b6c035bad1dd13cb6bcd7acd58ab'
+            'f544db22d1ddd9dd482ba552309775671ffb3c712cd43a9fae6fc0152868cc94'
+            'd7e2500fe861c78e3087431f2964f4e79eb2cd3588aadff746f9a9e9b5913804'
+            '5b051f99657076bd2ae3118f151c8dc9485a9e9d57689c2adf4c96c90ef62da4'
+            '3dd7549cd969afde79aa6ee44b51bfeb2df9ab63981bf99f95f3395295f6299f'
+            'e2f199648dd0e7791988bf569d3053961624a61f84f3b2c9d5408cfd92621b3e'
+            '44eecd8cd5b46cd312f7b1cd0262645d130849990aef303f1d07fe2fd568f310'
             '624fa85265dfa9a39f8ce4007037bbb5cdd80a2c96b998cb95eb13700075285b'
             '0238102ee19941f8a3a811eaa95c0495ac458bf0383615ce62bcc97f4ec48079'
-            '5e6bdf4ff3650c1b35ecdde9cb8041f41023cd315e48410ff0f4c6a5acd5ce45'
-            '7be264cae4eaaeffb50ab473dd952ad70bc46a4b9e0e9f315d95cd9ee8fd007e'
-            '5cc6cbb3f7aaa745d02f7a5fb03327f0620753b92e6c47f31768ab2a6ef9cac7'
-            '3d292831740a2bef4f205ccb452ede0407e6b8f91e02bbe16b0b2a04bf04e2c5')
+            '5e6bdf4ff3650c1b35ecdde9cb8041f41023cd315e48410ff0f4c6a5acd5ce45')
 
 validpgpkeys=('ABAF11C65A2970B130ABE3C479BE3E4300411886'   # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E'   # Greg Kroah-Hartman
@@ -76,10 +71,11 @@ export KBUILD_BUILD_HOST="$(hostname 2>/dev/null || echo -n archlinux)"
 export KBUILD_BUILD_USER=$pkgbase
 export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
 
-_makecmd="make LLVM=1 LLVM_IAS=1"
+_makecmd="make CC=clang LD=ld.lld LLVM=1 LLVM_IAS=1"
 
 prepare() {
     
+    ### Arch-SKM
     if [ -d /usr/src/certs-local ]; then
         msg2 "Rebuilding local signing key..."
         cp -rf /usr/src/certs-local ../
@@ -91,7 +87,7 @@ prepare() {
         cd ../src
     fi
 
-    cd $_src
+    cd $_srcdir
 
     echo "Setting version..."
     scripts/setlocalversion --save-scmversion
@@ -101,8 +97,8 @@ prepare() {
         echo "-$KBUILD_BUILD_HOST" > localversion.20-pkgname
     fi
 
-    echo "Applying patch $_zen.patch..."
-    patch -Nsp1 < "../$_zen.patch"
+    echo "Applying patch $_zenver.patch..."
+    patch -Nsp1 < "../$_zenver.patch"
 
     local src
     for src in "${source[@]}"; do
@@ -121,71 +117,201 @@ prepare() {
         yes "" | $_makecmd LSMOD=$HOME/.config/modprobed.db localmodconfig >/dev/null
     fi
 
-    # General setup
+    ### Hostname
     scripts/config --set-str DEFAULT_HOSTNAME "$KBUILD_BUILD_HOST"
-    scripts/config --set-val RCU_BOOST_DELAY 331
-    scripts/config -e SCHED_ALT -e SCHED_PDS
-    scripts/config -d SCHED_BMQ
-    scripts/config -d BPF_LSM
-    scripts/config -d BPF_PRELOAD
-    scripts/config -d MQ_IOSCHED_KYBER
-    scripts/config -d PSI
 
-    # Device drivers
-    scripts/config -e CONFIG_FW_LOADER_COMPRESS_XZ
+    ### RCU priority
+    scripts/config --set-val RCU_BOOST_DELAY 331
+
+    ### CPU optimization
+    if [[ "archlinux" != "$KBUILD_BUILD_HOST" ]]; then
+        sh "${srcdir}"/auto-cpu-optimization.sh >/dev/null
+    fi
+
+    ### CPU scheduler
+    scripts/config -e SCHED_ALT \
+        -e SCHED_PDS \
+        -d SCHED_BMQ
+
+    ### LLVM level
+    scripts/config -e LTO \
+        -e LTO_CLANG \
+        -e ARCH_SUPPORTS_LTO_CLANG \
+        -e ARCH_SUPPORTS_LTO_CLANG_THIN \
+        -d LTO_NONE \
+        -e HAS_LTO_CLANG \
+        -e HAVE_GCC_PLUGINS \
+        -e "LTO_CLANG_${_LTO_CLANG:-THIN}"
+
+    ### Tick rate
+    scripts/config -d HZ_1000 \
+        -e "HZ_${_HZ:-1000}" \
+        --set-val HZ ${_HZ:-1000}
+
+    ### NUMA
+    scripts/config -d NUMA \
+        -d AMD_NUMA \
+        -d X86_64_ACPI_NUMA \
+        -d NODES_SPAN_OTHER_NODES \
+        -d NUMA_EMU \
+        -d NEED_MULTIPLE_NODES \
+        -d USE_PERCPU_NUMA_NODE_ID \
+        -d ACPI_NUMA \
+        -d ARCH_SUPPORTS_NUMA_BALANCING \
+        -d NODES_SHIFT \
+        -u NODES_SHIFT \
+        -d NEED_MULTIPLE_NODES
+
+    ### Maximum number of CPUs
+    scripts/config --set-val NR_CPUS $(nproc)
+
+    ### I/O schedulers
+    scripts/config -d MQ_IOSCHED_KYBER
+
+    ### Performance governor
+    scripts/config -d CPU_FREQ_DEFAULT_GOV_SCHEDUTIL \
+        -e CPU_FREQ_DEFAULT_GOV_PERFORMANCE
+
+    ### TCP congestion control
+    scripts/config -d DEFAULT_CUBIC \
+        -d TCP_CONG_BIC \
+        -d TCP_CONG_CUBIC \
+        -d TCP_CONG_WESTWOOD \
+        -d TCP_CONG_HTCP \
+        -d TCP_CONG_HSTCP \
+        -d TCP_CONG_HYBLA \
+        -d TCP_CONG_VEGAS \
+        -d TCP_CONG_NV \
+        -d TCP_CONG_SCALABLE \
+        -d TCP_CONG_LP \
+        -d TCP_CONG_VENO \
+        -d TCP_CONG_YEAH \
+        -d TCP_CONG_ILLINOIS \
+        -d TCP_CONG_DCTCP \
+        -d TCP_CONG_CDG \
+        -d TCP_CONG_BBR \
+        -e TCP_CONG_BBR2 \
+        -e DEFAULT_BBR2 \
+        --set-str DEFAULT_TCP_CONG bbr2
+
+    ### VMA
+    scripts/config -e PER_VMA_LOCK \
+        -d PER_VMA_LOCK_STATS
+
+    ### LRNG
+    scripts/config -d RANDOM_DEFAULT_IMPL \
+        -e LRNG \
+        -e LRNG_SHA256 \
+        -e LRNG_COMMON_DEV_IF \
+        -e LRNG_DRNG_ATOMIC \
+        -e LRNG_SYSCTL \
+        -e LRNG_RANDOM_IF \
+        -e LRNG_AIS2031_NTG1_SEEDING_STRATEGY \
+        -m LRNG_KCAPI_IF \
+        -m LRNG_HWRAND_IF \
+        -e LRNG_DEV_IF \
+        -e LRNG_RUNTIME_ES_CONFIG \
+        -e LRNG_IRQ_DFLT_TIMER_ES \
+        -d LRNG_SCHED_DFLT_TIMER_ES \
+        -e LRNG_TIMER_COMMON \
+        -d LRNG_COLLECTION_SIZE_256 \
+        -d LRNG_COLLECTION_SIZE_512 \
+        -e LRNG_COLLECTION_SIZE_1024 \
+        -d LRNG_COLLECTION_SIZE_2048 \
+        -d LRNG_COLLECTION_SIZE_4096 \
+        -d LRNG_COLLECTION_SIZE_8192 \
+        --set-val LRNG_COLLECTION_SIZE 1024 \
+        -e LRNG_HEALTH_TESTS \
+        --set-val LRNG_RCT_CUTOFF 31 \
+        --set-val LRNG_APT_CUTOFF 325 \
+        -e LRNG_IRQ \
+        -e LRNG_CONTINUOUS_COMPRESSION_ENABLED \
+        -d LRNG_CONTINUOUS_COMPRESSION_DISABLED \
+        -e LRNG_ENABLE_CONTINUOUS_COMPRESSION \
+        -e LRNG_SWITCHABLE_CONTINUOUS_COMPRESSION \
+        --set-val LRNG_IRQ_ENTROPY_RATE 256 \
+        -e LRNG_JENT \
+        --set-val LRNG_JENT_ENTROPY_RATE 16 \
+        -e LRNG_CPU \
+        --set-val LRNG_CPU_FULL_ENT_MULTIPLIER 1 \
+        --set-val LRNG_CPU_ENTROPY_RATE 8 \
+        -e LRNG_SCHED \
+        --set-val LRNG_SCHED_ENTROPY_RATE 4294967295 \
+        -e LRNG_DRNG_CHACHA20 \
+        -m LRNG_DRBG \
+        -m LRNG_DRNG_KCAPI \
+        -e LRNG_SWITCH \
+        -e LRNG_SWITCH_HASH \
+        -m LRNG_HASH_KCAPI \
+        -e LRNG_SWITCH_DRNG \
+        -m LRNG_SWITCH_DRBG \
+        -m LRNG_SWITCH_DRNG_KCAPI \
+        -e LRNG_DFLT_DRNG_CHACHA20 \
+        -d LRNG_DFLT_DRNG_DRBG \
+        -d LRNG_DFLT_DRNG_KCAPI \
+        -e LRNG_TESTING_MENU \
+        -d LRNG_RAW_HIRES_ENTROPY \
+        -d LRNG_RAW_JIFFIES_ENTROPY \
+        -d LRNG_RAW_IRQ_ENTROPY \
+        -d LRNG_RAW_RETIP_ENTROPY \
+        -d LRNG_RAW_REGS_ENTROPY \
+        -d LRNG_RAW_ARRAY \
+        -d LRNG_IRQ_PERF \
+        -d LRNG_RAW_SCHED_HIRES_ENTROPY \
+        -d LRNG_RAW_SCHED_PID_ENTROPY \
+        -d LRNG_RAW_SCHED_START_TIME_ENTROPY \
+        -d LRNG_RAW_SCHED_NVCSW_ENTROPY \
+        -d LRNG_SCHED_PERF \
+        -d LRNG_ACVT_HASH \
+        -d LRNG_RUNTIME_MAX_WO_RESEED_CONFIG \
+        -d LRNG_TEST_CPU_ES_COMPRESSION \
+        -e LRNG_SELFTEST \
+        -d LRNG_SELFTEST_PANIC \
+        -d LRNG_RUNTIME_FORCE_SEEDING_DISABLE
+
+    ### BPF subsystem
+    scripts/config -d BPF_LSM \
+        -d BPF_PRELOAD
+
+    ### Debug
+    scripts/config -d DEBUG_INFO \
+        -d DEBUG_INFO_BTF \
+        -d DEBUG_INFO_DWARF4 \
+        -d DEBUG_INFO_DWARF5 \
+        -d PAHOLE_HAS_SPLIT_BTF \
+        -d DEBUG_INFO_BTF_MODULES \
+        -d SLUB_DEBUG \
+        -d PM_DEBUG \
+        -d PM_ADVANCED_DEBUG \
+        -d PM_SLEEP_DEBUG \
+        -d ACPI_DEBUG \
+        -d SCHED_DEBUG \
+        -d LATENCYTOP \
+        -d DEBUG_PREEMPT
+
+    ### Wine Fastsync
+    scripts/config -e WINESYNC
+
+    ### Framebuffer
     scripts/config -e SYSFB_SIMPLEFB
 
-    # Processor type and features
-    scripts/config --set-val NR_CPUS 16
-    scripts/config -e MZEN -d GENERIC_CPU
-    scripts/config -d HYPERVISOR_GUEST
-    scripts/config -d MICROCODE_INTEL
-    scripts/config -d MICROCODE_OLD_INTERFACE
-    scripts/config -d NUMA
-
-    # Power management and ACPI options
+    ### Cleanup
     scripts/config -d ACPI_PRMT
+    scripts/config -d HYPERVISOR_GUEST
+    scripts/config -d RTW88
 
-    # General architecture-dependent options
-    scripts/config -e "LTO_CLANG_${_LTO_CLANG:-THIN}" -d LTO_NONE
-
-    # Enable loadable module support
+    ### Arch-SKM
     if [ -d /usr/src/certs-local ]; then
         scripts/config -e MODULE_SIG_FORCE
         scripts/config -d MODULE_ALLOW_MISSING_NAMESPACE_IMPORTS
     fi
-
-    # Networking support
-    scripts/config -d TCP_CONG_CUBIC -d DEFAULT_CUBIC
-    scripts/config -e TCP_CONG_BBR2 -e DEFAULT_BBR2
-
-    # Device Drivers
-    scripts/config -e RANDOM_TRUST_CPU
-    scripts/config -d BPF_LIRC_MODE2
-    scripts/config -d INTEL_IOMMU
-    scripts/config -d WATCHDOG
-    scripts/config -d ANDROID
-    scripts/config -d ASHMEM
-    scripts/config -d RTW88
-
-    # Security options
-    scripts/config -d SECURITY_SELINUX
-    scripts/config -d SECURITY_TOMOYO
-    scripts/config -d SECURITY_YAMA
-
-    # Kernel hacking
-    scripts/config -d DEBUG_INFO
-    scripts/config -d DEBUG_INFO_BTF
-    scripts/config -d SYMBOLIC_ERRNAME
-    scripts/config -d BPF_KPROBE_OVERRIDE
-    scripts/config -d FTRACE
 
     $_makecmd -s kernelrelease > version
     echo "Prepared $pkgbase version $(<version)"
 }
 
 build() {
-    cd $_src
+    cd $_srcdir
     $_makecmd -j$(nproc) all
 }
 
@@ -198,7 +324,7 @@ _package() {
     provides=(KSMBD-MODULE VHBA-MODULE UKSMD-BUILTIN VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE)
     replaces=()
 
-    cd $_src
+    cd $_srcdir
     local kernver="$(<version)"
     local modulesdir="$pkgdir/usr/lib/modules/$kernver"
 
@@ -221,7 +347,7 @@ _package-headers() {
     pkgdesc="Headers and scripts for building modules for the $pkgdesc kernel"
     depends=('pahole')
 
-    cd $_src
+    cd $_srcdir
     local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
 
     echo "Installing build files..."

@@ -1,0 +1,16 @@
+diff --git a/arch/x86/kernel/tsc.c b/arch/x86/kernel/tsc.c
+index 6345af65a..05f713389 100644
+--- a/arch/x86/kernel/tsc.c
++++ b/arch/x86/kernel/tsc.c
+@@ -304,8 +304,10 @@ static int __init tsc_setup(char *str)
+ 		mark_tsc_unstable("boot parameter");
+ 	if (!strcmp(str, "nowatchdog"))
+ 		no_tsc_watchdog = 1;
+-	if (!strcmp(str, "directsync"))
++	if (!strcmp(str, "directsync")) {
+ 		tsc_allow_direct_sync = 1;
++		no_tsc_watchdog = 1;
++	}
+ 	return 1;
+ }
+ 
