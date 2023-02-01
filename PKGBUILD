@@ -1,6 +1,6 @@
 
 _major=6.1
-_minor=8.zen1
+_minor=9.zen1
 
 pkgbase=linux-zen
 pkgname=("$pkgbase" "$pkgbase-headers")
@@ -35,19 +35,18 @@ source=("$_kernel/v6.x/linux-$_major.tar.xz"
         '0005-x86-only-restore-TSC-if-we-have-IA32_TSC_ADJUST-or-d.patch'
         '0006-x86-don-t-check-for-random-warps-if-using-direct-syn.patch'
         '0007-x86-disable-tsc-watchdog-if-using-direct-sync.patch'
-        '0101-LUCJAN-vma-6.1-per-VMA-locks-proposal.patch'::"$_lucjan/vma-maple-patches-v8/0001-vma-6.1-per-VMA-locks-proposal.patch"
-        '0102-LUCJAN-lrng-cachyos-patches.patch'::"$_lucjan/lrng-cachyos-patches-v9/0001-lrng-cachyos-patches.patch"
-        '0103-LUCJAN-winesync-Introduce-the-winesync-driver-and-character.patch'::"$_lucjan/wine-sync-futex-patches/0001-winesync-Introduce-the-winesync-driver-and-character.patch"
-        '0104-LUCJAN-kbuild-6.1-merge-changes-from-dev-tree.patch'::"$_lucjan/kbuild-patches-v2/0001-kbuild-6.1-merge-changes-from-dev-tree.patch"
-        '0105-LUCJAN-modules-6.1-merge-changes-from-dev-tree.patch'::"$_lucjan/modules-patches-v2/0001-modules-6.1-merge-changes-from-dev-tree.patch"
-        '0106-LUCJAN-ext4-6.1-merge-changes-from-dev-tree.patch'::"$_lucjan/ext4-patches-v4/0001-ext4-6.1-merge-changes-from-dev-tree.patch"
-        "0107-LUCJAN-ntfs3-6.1-merge-changes-from-dev-tree.patch"::"$_lucjan/ntfs3-cachyos-patches-v4/0001-ntfs3-6.1-merge-changes-from-dev-tree.patch"
-        '0108-LUCJAN-zstd-6.1-merge-changes-from-dev-tree.patch'::"$_lucjan/zstd-cachyos-patches-v2/0001-zstd-6.1-merge-changes-from-dev-tree.patch"
-        '0109-LUCJAN-x86-Avoid-relocation-information-in-final-vmlinux.patch'::"$_lucjan/vmlinuz-cachyos-patches/0001-x86-Avoid-relocation-information-in-final-vmlinux.patch")
+        '0101-LUCJAN-lrng-cachyos-patches.patch'::"$_lucjan/lrng-cachyos-patches-v9/0001-lrng-cachyos-patches.patch"
+        '0102-LUCJAN-winesync-Introduce-the-winesync-driver-and-character.patch'::"$_lucjan/wine-sync-futex-patches/0001-winesync-Introduce-the-winesync-driver-and-character.patch"
+        '0103-LUCJAN-kbuild-6.1-merge-changes-from-dev-tree.patch'::"$_lucjan/kbuild-patches-v2/0001-kbuild-6.1-merge-changes-from-dev-tree.patch"
+        '0104-LUCJAN-modules-6.1-merge-changes-from-dev-tree.patch'::"$_lucjan/modules-patches-v3/0001-modules-6.1-merge-changes-from-dev-tree.patch"
+        '0105-LUCJAN-ext4-6.1-merge-changes-from-dev-tree.patch'::"$_lucjan/ext4-patches-v4/0001-ext4-6.1-merge-changes-from-dev-tree.patch"
+        "0106-LUCJAN-ntfs3-6.1-merge-changes-from-dev-tree.patch"::"$_lucjan/ntfs3-cachyos-patches-v4/0001-ntfs3-6.1-merge-changes-from-dev-tree.patch"
+        '0107LUCJAN-zstd-6.1-merge-changes-from-dev-tree.patch'::"$_lucjan/zstd-cachyos-patches-v2/0001-zstd-6.1-merge-changes-from-dev-tree.patch"
+        '0108-LUCJAN-x86-Avoid-relocation-information-in-final-vmlinux.patch'::"$_lucjan/vmlinuz-cachyos-patches/0001-x86-Avoid-relocation-information-in-final-vmlinux.patch")
 
 sha256sums=('2ca1f17051a430f6fed1196e4952717507171acfd97d96577212502703b25deb'
             'SKIP'
-            'efbeeb07e76d2bc10c48f7c2a476ef1936d2b07cdd0f05e9f782f475b861a04d'
+            'df75f007d612480827f8df970a8cb2daf72dafedbca5db9966cd5aafce3b9566'
             'SKIP'
             '0825c7be08c8d06dc92b7808454fe81258e0ccbd84c9e61684348b29ed5ebb60'
             '41c34759ed248175e905c57a25e2b0ed09b11d054fe1a8783d37459f34984106'
@@ -58,11 +57,10 @@ sha256sums=('2ca1f17051a430f6fed1196e4952717507171acfd97d96577212502703b25deb'
             'f544db22d1ddd9dd482ba552309775671ffb3c712cd43a9fae6fc0152868cc94'
             'd7e2500fe861c78e3087431f2964f4e79eb2cd3588aadff746f9a9e9b5913804'
             '5b051f99657076bd2ae3118f151c8dc9485a9e9d57689c2adf4c96c90ef62da4'
-            '8e63dca0d6f589f8fe14fd1acae888a20db01917bb2d6da4892527dc80d6d2fb'
             'e2f199648dd0e7791988bf569d3053961624a61f84f3b2c9d5408cfd92621b3e'
             '44eecd8cd5b46cd312f7b1cd0262645d130849990aef303f1d07fe2fd568f310'
             'd7aceb927ab35c26bc528f5a4502ebf75f81b93e4ef480e3bacfa31d13e60f75'
-            'd7fd8152352ecd711cb3c3775fbb1668650531f165093b62844f133010a4c1b2'
+            'ac8f9c8d23c22a124d4e3762492db2797751d13558280435d47e99192a3ef9d2'
             '624fa85265dfa9a39f8ce4007037bbb5cdd80a2c96b998cb95eb13700075285b'
             '6af47e25f765e94a955c0597c5e5ced441d273e9fb874e92b99f153e61fab3af'
             '0238102ee19941f8a3a811eaa95c0495ac458bf0383615ce62bcc97f4ec48079'

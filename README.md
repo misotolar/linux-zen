@@ -9,7 +9,7 @@ Improved Zen Kernel package with [additional patches](https://github.com/sirlucj
 - DKMS kernel module signing with [Arch-SKM](https://aur.archlinux.org/packages/arch-sign-modules)
 - Linux Random Number Generator
 - Futex fixes and winesync
-- [Per-VMA lock](https://lore.kernel.org/lkml/20230109205336.3665937-1-surenb@google.com/T/#ma04517b963591298a9eb76d96d2c453256a4d9ab)
+- ~~[Per-VMA lock](https://lore.kernel.org/lkml/20230109205336.3665937-1-surenb@google.com/T/#ma04517b963591298a9eb76d96d2c453256a4d9ab)~~
 
 ```
 [linux-zen]
