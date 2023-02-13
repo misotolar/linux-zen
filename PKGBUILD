@@ -1,6 +1,6 @@
 
 _major=6.1
-_minor=10.zen1
+_minor=11.zen1
 
 pkgbase=linux-zen
 pkgname=("$pkgbase" "$pkgbase-headers")
@@ -40,13 +40,13 @@ source=("$_kernel/v6.x/linux-$_major.tar.xz"
         '0103-LUCJAN-kbuild-6.1-merge-changes-from-dev-tree.patch'::"$_lucjan/kbuild-patches-v2/0001-kbuild-6.1-merge-changes-from-dev-tree.patch"
         '0104-LUCJAN-modules-6.1-merge-changes-from-dev-tree.patch'::"$_lucjan/modules-patches-v3/0001-modules-6.1-merge-changes-from-dev-tree.patch"
         '0105-LUCJAN-ext4-6.1-merge-changes-from-dev-tree.patch'::"$_lucjan/ext4-patches-v4/0001-ext4-6.1-merge-changes-from-dev-tree.patch"
-        "0106-LUCJAN-ntfs3-6.1-merge-changes-from-dev-tree.patch"::"$_lucjan/ntfs3-cachyos-patches-v4/0001-ntfs3-6.1-merge-changes-from-dev-tree.patch"
+        "0106-LUCJAN-ntfs3-6.1-merge-changes-from-dev-tree.patch"::"$_lucjan/ntfs3-cachyos-patches-v5/0001-ntfs3-6.1-merge-changes-from-dev-tree.patch"
         '0107LUCJAN-zstd-6.1-merge-changes-from-dev-tree.patch'::"$_lucjan/zstd-cachyos-patches-v2/0001-zstd-6.1-merge-changes-from-dev-tree.patch"
         '0108-LUCJAN-x86-Avoid-relocation-information-in-final-vmlinux.patch'::"$_lucjan/vmlinuz-cachyos-patches/0001-x86-Avoid-relocation-information-in-final-vmlinux.patch")
 
 sha256sums=('2ca1f17051a430f6fed1196e4952717507171acfd97d96577212502703b25deb'
             'SKIP'
-            '4369c357bfff66c6379556a0aec756471d81f617060ae3125dfd80e7249a6040'
+            '258e9491e02da15c23e125e89ad9b7fc7621eb447d30a1079024355ddb36bc5a'
             'SKIP'
             '0825c7be08c8d06dc92b7808454fe81258e0ccbd84c9e61684348b29ed5ebb60'
             '41c34759ed248175e905c57a25e2b0ed09b11d054fe1a8783d37459f34984106'
@@ -62,7 +62,7 @@ sha256sums=('2ca1f17051a430f6fed1196e4952717507171acfd97d96577212502703b25deb'
             'd7aceb927ab35c26bc528f5a4502ebf75f81b93e4ef480e3bacfa31d13e60f75'
             'ac8f9c8d23c22a124d4e3762492db2797751d13558280435d47e99192a3ef9d2'
             '624fa85265dfa9a39f8ce4007037bbb5cdd80a2c96b998cb95eb13700075285b'
-            '6af47e25f765e94a955c0597c5e5ced441d273e9fb874e92b99f153e61fab3af'
+            '4e6362efef0b1b03084dcd4f14eee3974aa9fcf4acdc614de0a612edfb63744f'
             '0238102ee19941f8a3a811eaa95c0495ac458bf0383615ce62bcc97f4ec48079'
             '5e6bdf4ff3650c1b35ecdde9cb8041f41023cd315e48410ff0f4c6a5acd5ce45')
 
