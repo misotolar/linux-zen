@@ -1,6 +1,6 @@
 
-_major=6.1
-_minor=12.zen1
+_major=6.2
+_minor=1.zen1
 
 pkgbase=linux-zen
 pkgname=("$pkgbase" "$pkgbase-headers")
@@ -35,36 +35,34 @@ source=("$_kernel/v6.x/linux-$_major.tar.xz"
         '0005-x86-only-restore-TSC-if-we-have-IA32_TSC_ADJUST-or-d.patch'
         '0006-x86-don-t-check-for-random-warps-if-using-direct-syn.patch'
         '0007-x86-disable-tsc-watchdog-if-using-direct-sync.patch'
-        '0101-LUCJAN-lrng-cachyos-patches.patch'::"$_lucjan/lrng-cachyos-patches-v9/0001-lrng-cachyos-patches.patch"
-        '0102-LUCJAN-winesync-Introduce-the-winesync-driver-and-character.patch'::"$_lucjan/wine-sync-futex-patches/0001-winesync-Introduce-the-winesync-driver-and-character.patch"
-        '0103-LUCJAN-kbuild-6.1-merge-changes-from-dev-tree.patch'::"$_lucjan/kbuild-patches-v2/0001-kbuild-6.1-merge-changes-from-dev-tree.patch"
-        '0104-LUCJAN-modules-6.1-merge-changes-from-dev-tree.patch'::"$_lucjan/modules-patches-v3/0001-modules-6.1-merge-changes-from-dev-tree.patch"
-        '0105-LUCJAN-ext4-6.1-merge-changes-from-dev-tree.patch'::"$_lucjan/ext4-patches-v4/0001-ext4-6.1-merge-changes-from-dev-tree.patch"
-        "0106-LUCJAN-ntfs3-6.1-merge-changes-from-dev-tree.patch"::"$_lucjan/ntfs3-cachyos-patches-v5/0001-ntfs3-6.1-merge-changes-from-dev-tree.patch"
-        '0107LUCJAN-zstd-6.1-merge-changes-from-dev-tree.patch'::"$_lucjan/zstd-cachyos-patches-v3/0001-zstd-6.1-merge-changes-from-dev-tree.patch"
-        '0108-LUCJAN-x86-Avoid-relocation-information-in-final-vmlinux.patch'::"$_lucjan/vmlinuz-cachyos-patches/0001-x86-Avoid-relocation-information-in-final-vmlinux.patch")
+        '0008-x86-Avoid-relocation-information-in-final-vmlinux.patch'
+        '0101-LUCJAN-PRJC-CachyOS-for-6.2.patch'::"$_lucjan/prjc-cachyos-patches-v4/0001-PRJC-CachyOS-for-6.2.patch"
+        '0102-LUCJAN-lrng-6.2-introduce-Linux-Random-Number-Generator.patch'::"$_lucjan/lrng-cachyos-patches-v3/0001-lrng-6.2-introduce-Linux-Random-Number-Generator.patch"
+        '0103-LUCJAN-futex-6.2-Add-entry-point-for-FUTEX_WAIT_MULTIPLE-op.patch'::"$_lucjan/futex-patches/0001-futex-6.2-Add-entry-point-for-FUTEX_WAIT_MULTIPLE-op.patch"
+        '0104-LUCJAN-objtool-6.2-merge-changes-from-dev-tree.patch'::"$_lucjan/objtool-patches/0001-objtool-6.2-merge-changes-from-dev-tree.patch"
+        '0105-LUCJAN-ext4-6.2-merge-changes-from-dev-tree.patch'::"$_lucjan/ext4-patches/0001-ext4-6.2-merge-changes-from-dev-tree.patch"
+        '0106-LUCJAN-zstd-6.2-merge-changes-from-dev-tree.patch'::"$_lucjan/zstd-cachyos-patches/0001-zstd-6.2-merge-changes-from-dev-tree.patch")
 
-sha256sums=('2ca1f17051a430f6fed1196e4952717507171acfd97d96577212502703b25deb'
+sha256sums=('74862fa8ab40edae85bb3385c0b71fe103288bce518526d63197800b3cbdecb1'
             'SKIP'
-            'd04f9078af45a2ca022b1fccd68aa456e5e87cdfee3ca02dd01a4d83b1d805fd'
+            'c194b129fe2d4f835152c4c8c79f5a7cc15ba63a57d9d0f0baabe9c88d24b49f'
             'SKIP'
-            '2c739d22fbe86b005bc42fa387b72aefbe3fc35d13872b64e4f83bbb90b7935f'
+            '94b7a2e487ae994be1d8ca1512acd211c5d89b5cbbf71dce70d4b9073ccb100b'
             '41c34759ed248175e905c57a25e2b0ed09b11d054fe1a8783d37459f34984106'
             'a99a0101fb71e748124cd1021f40766ba4d234110d52f9ca3585b0c6e36daf29'
             '1b268f30b54b59fce5c3a73d7483684d1fd3f724cf283c02e84ac0644238be69'
-            'e92d5e89b0e1281e6d8da582801918b56e6ad5f0de315bdf38e575de32fe2116'
+            '5dc36dbc3161da7e3c8e20e4fe72df4de5004d5449ff7d530f4515e96081725f'
             '70472f2ffc33a40796abe7eca9ba5c534fe2b6c035bad1dd13cb6bcd7acd58ab'
             'f544db22d1ddd9dd482ba552309775671ffb3c712cd43a9fae6fc0152868cc94'
             'd7e2500fe861c78e3087431f2964f4e79eb2cd3588aadff746f9a9e9b5913804'
             '5b051f99657076bd2ae3118f151c8dc9485a9e9d57689c2adf4c96c90ef62da4'
-            'e2f199648dd0e7791988bf569d3053961624a61f84f3b2c9d5408cfd92621b3e'
-            '44eecd8cd5b46cd312f7b1cd0262645d130849990aef303f1d07fe2fd568f310'
-            'd7aceb927ab35c26bc528f5a4502ebf75f81b93e4ef480e3bacfa31d13e60f75'
-            'ac8f9c8d23c22a124d4e3762492db2797751d13558280435d47e99192a3ef9d2'
-            '624fa85265dfa9a39f8ce4007037bbb5cdd80a2c96b998cb95eb13700075285b'
-            '4e6362efef0b1b03084dcd4f14eee3974aa9fcf4acdc614de0a612edfb63744f'
-            '92a42811dd6b43ff5d5f602e748e78e0149d27819efb19554b887a3e9985ceda'
-            '5e6bdf4ff3650c1b35ecdde9cb8041f41023cd315e48410ff0f4c6a5acd5ce45')
+            'e8dd037119d4468d066fd73ce10e107d47a628977333bbecf149597cab912690'
+            '0c0d9e530dbe3eedc3dccb013a50475c8e737fe2d8c046488b54f8a28157283c'
+            'eb41fe8a33fc6a20490e63e4e19f3c5536f59023d3c74cc55e9df36b5e59814c'
+            'ad40509b171b952d66aa46fc8c49ff93fed1fd8225c3d1e51e90b508a40ef94b'
+            '0ccd70c73d80ea7c4bbbd73451e40564d14244b9aeb3ed0b60dd9d61ab03e5b2'
+            'f3fe8a75f338ce70f685e93bb1270bc7f129385c4792cc2e264209ddbf6f2339'
+            '3952351831c0228163de531151771f5fe4b4263294888137f32905669d470233')
 
 validpgpkeys=('ABAF11C65A2970B130ABE3C479BE3E4300411886'   # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E'   # Greg Kroah-Hartman
