@@ -6,7 +6,7 @@ pkgbase=linux-zen
 pkgname=("$pkgbase" "$pkgbase-headers")
 pkgdesc='The Linux ZEN kernel and modules'
 pkgver="$_major.$_minor"
-pkgrel=1.1
+pkgrel=2.1
 
 _srcdir="linux-$_major"
 _zenver="v${pkgver%.*}-${pkgver##*.}"
@@ -36,12 +36,21 @@ source=("$_kernel/v6.x/linux-$_major.tar.xz"
         '0006-x86-don-t-check-for-random-warps-if-using-direct-syn.patch'
         '0007-x86-disable-tsc-watchdog-if-using-direct-sync.patch'
         '0008-x86-Avoid-relocation-information-in-final-vmlinux.patch'
-        '0101-LUCJAN-PRJC-CachyOS-for-6.2.patch'::"$_lucjan/prjc-cachyos-patches-v4/0001-PRJC-CachyOS-for-6.2.patch"
-        '0102-LUCJAN-lrng-6.2-introduce-Linux-Random-Number-Generator.patch'::"$_lucjan/lrng-cachyos-patches-v3/0001-lrng-6.2-introduce-Linux-Random-Number-Generator.patch"
-        '0103-LUCJAN-futex-6.2-Add-entry-point-for-FUTEX_WAIT_MULTIPLE-op.patch'::"$_lucjan/futex-patches/0001-futex-6.2-Add-entry-point-for-FUTEX_WAIT_MULTIPLE-op.patch"
-        '0104-LUCJAN-objtool-6.2-merge-changes-from-dev-tree.patch'::"$_lucjan/objtool-patches/0001-objtool-6.2-merge-changes-from-dev-tree.patch"
-        '0105-LUCJAN-ext4-6.2-merge-changes-from-dev-tree.patch'::"$_lucjan/ext4-patches/0001-ext4-6.2-merge-changes-from-dev-tree.patch"
-        '0106-LUCJAN-zstd-6.2-merge-changes-from-dev-tree.patch'::"$_lucjan/zstd-cachyos-patches/0001-zstd-6.2-merge-changes-from-dev-tree.patch")
+        '0101-prjc_v6.2-r0.patch'::"https://gitlab.com/alfredchen/projectc/-/raw/master/6.2/prjc_v6.2-r0.patch"
+        '0102-469bea778e4f4c7b11bd657c3a21153535b4154a.patch'::"$_source/commit/469bea778e4f4c7b11bd657c3a21153535b4154a.patch"
+        '0103-585c08a3db821f72882cd2af8658167ca3d17e98.patch'::"$_source/commit/585c08a3db821f72882cd2af8658167ca3d17e98.patch"
+        '0104-e98f5cbd43a526fff340a344c3ab6c807afcb69a.patch'::"$_source/commit/e98f5cbd43a526fff340a344c3ab6c807afcb69a.patch"
+        '0105-be3c51962d362ed8f907b028f3a301eef11c837a.patch'::"$_source/commit/be3c51962d362ed8f907b028f3a301eef11c837a.patch"
+        '0106-a806eefe6617fed9624e9b86fa026b1eb2d17a5f.patch'::"$_source/commit/a806eefe6617fed9624e9b86fa026b1eb2d17a5f.patch"
+        '0107-1e93703580e5a1ec8d62ac7c464c0aae3674aecf.patch'::"$_source/commit/1e93703580e5a1ec8d62ac7c464c0aae3674aecf.patch"
+        '0108-c4e593a00082fed316b67ae20c6b2234ca5c9a67.patch'::"$_source/commit/c4e593a00082fed316b67ae20c6b2234ca5c9a67.patch"
+        '0109-2a811c44752ac1409f134484912a4664726c399b.patch'::"$_source/commit/2a811c44752ac1409f134484912a4664726c399b.patch"
+        '0110-LUCJAN-lrng-6.2-introduce-Linux-Random-Number-Generator.patch'::"$_lucjan/lrng-cachyos-patches-v3/0001-lrng-6.2-introduce-Linux-Random-Number-Generator.patch"
+        '0111-LUCJAN-futex-6.2-Add-entry-point-for-FUTEX_WAIT_MULTIPLE-op.patch'::"$_lucjan/futex-patches/0001-futex-6.2-Add-entry-point-for-FUTEX_WAIT_MULTIPLE-op.patch"
+        '0112-LUCJAN-ext4-6.2-merge-changes-from-dev-tree.patch'::"$_lucjan/ext4-patches/0001-ext4-6.2-merge-changes-from-dev-tree.patch"
+        '0113-LUCJAN-zstd-6.2-merge-changes-from-dev-tree.patch'::"$_lucjan/zstd-cachyos-patches/0001-zstd-6.2-merge-changes-from-dev-tree.patch"
+        '0114-LUCJAN-objtool-6.2-merge-changes-from-dev-tree.patch'::"$_lucjan/objtool-patches/0001-objtool-6.2-merge-changes-from-dev-tree.patch"
+        '0115-LUCJAN-fixes-6.2-update-tpm-disable-hwrng-for-fTPM-on-some-.patch'::"$_lucjan/arch-patches-v4-sep/0010-fixes-6.2-update-tpm-disable-hwrng-for-fTPM-on-some-.patch")
 
 sha256sums=('74862fa8ab40edae85bb3385c0b71fe103288bce518526d63197800b3cbdecb1'
             'SKIP'
@@ -57,12 +66,21 @@ sha256sums=('74862fa8ab40edae85bb3385c0b71fe103288bce518526d63197800b3cbdecb1'
             'd7e2500fe861c78e3087431f2964f4e79eb2cd3588aadff746f9a9e9b5913804'
             '5b051f99657076bd2ae3118f151c8dc9485a9e9d57689c2adf4c96c90ef62da4'
             'e8dd037119d4468d066fd73ce10e107d47a628977333bbecf149597cab912690'
-            '0c0d9e530dbe3eedc3dccb013a50475c8e737fe2d8c046488b54f8a28157283c'
+            '21468cbcdd9d4de2e009b17a4c6b3d6ac389347b8b22b973c12d435c7e446fd5'
+            '6775c01bedbe6bece851a60a82f73acb3897aca367cb8ecfeebbd052657b29a1'
+            '3866621724acd7a30a8f1c1d4b11383ab637eccff687e411aefafaac13b2e893'
+            'f7f969901576f4d47b4762ebbcec366795d7e412cf2d6fcc89bbf3ee866b0605'
+            '424e62b28dc22859dfcd590b7466ea4f5d93061b285f7a0179e60cadc1528b4d'
+            '0d4c17924a5a090493d280721a1950731d749cded57538357f871ba016d992dd'
+            '5f47b85f0c286660cc44c5928e40f2eb4d70c93a59446e8d76d33bbdb796a4a1'
+            'dd872aa1d34e2710f7619f16217fe58cc3c8d1e48f2bb68edf5004db8ab11a22'
+            '823243a290d1f5a20ac463fb01c43e5895867c144b6aa065a6261fec9cb9a457'
             'eb41fe8a33fc6a20490e63e4e19f3c5536f59023d3c74cc55e9df36b5e59814c'
             'ad40509b171b952d66aa46fc8c49ff93fed1fd8225c3d1e51e90b508a40ef94b'
-            '0ccd70c73d80ea7c4bbbd73451e40564d14244b9aeb3ed0b60dd9d61ab03e5b2'
             'f3fe8a75f338ce70f685e93bb1270bc7f129385c4792cc2e264209ddbf6f2339'
-            '3952351831c0228163de531151771f5fe4b4263294888137f32905669d470233')
+            '3952351831c0228163de531151771f5fe4b4263294888137f32905669d470233'
+            '0ccd70c73d80ea7c4bbbd73451e40564d14244b9aeb3ed0b60dd9d61ab03e5b2'
+            'e3573e0d366ffce0227d05a4baa4fab658aefcb08f0a3305509f62cbd6bdf31d')
 
 validpgpkeys=('ABAF11C65A2970B130ABE3C479BE3E4300411886'   # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E'   # Greg Kroah-Hartman
@@ -150,6 +168,9 @@ prepare() {
         -e "HZ_${_HZ:-1000}" \
         --set-val HZ ${_HZ:-1000}
 
+    ### PSI
+    scripts/config -d PSI
+
     ### NUMA
     scripts/config -d NUMA \
         -d AMD_NUMA \
@@ -165,7 +186,9 @@ prepare() {
         -d NEED_MULTIPLE_NODES
 
     ### Maximum number of CPUs
-    scripts/config --set-val NR_CPUS $(nproc)
+    if [[ "archlinux" != "$KBUILD_BUILD_HOST" ]]; then
+        scripts/config --set-val NR_CPUS $(($(nproc)*2))
+    fi
 
     ### I/O schedulers
     scripts/config -d MQ_IOSCHED_KYBER
