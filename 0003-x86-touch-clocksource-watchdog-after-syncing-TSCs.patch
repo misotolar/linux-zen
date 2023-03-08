@@ -1,15 +1,15 @@
 diff --git a/arch/x86/kernel/smpboot.c b/arch/x86/kernel/smpboot.c
-index 55cad7271..f31922437 100644
+index 55cad7271..32dee3ce3 100644
 --- a/arch/x86/kernel/smpboot.c
 +++ b/arch/x86/kernel/smpboot.c
-@@ -57,6 +57,7 @@
+@@ -56,6 +56,7 @@
+ #include <linux/numa.h>
  #include <linux/pgtable.h>
  #include <linux/overflow.h>
- #include <linux/stackprotector.h>
 +#include <linux/clocksource.h>
+ #include <linux/stackprotector.h>
  
  #include <asm/acpi.h>
- #include <asm/cacheinfo.h>
 @@ -1444,6 +1445,7 @@ void arch_thaw_secondary_cpus_begin(void)
  
  void arch_thaw_secondary_cpus_end(void)

@@ -1,6 +1,6 @@
 
 _major=6.2
-_minor=2.zen1
+_minor=2.zen2
 
 pkgbase=linux-zen
 pkgname=("$pkgbase" "$pkgbase-headers")
@@ -39,42 +39,44 @@ source=("$_kernel/v6.x/linux-$_major.tar.xz"
         '0006-x86-don-t-check-for-random-warps-if-using-direct-syn.patch'
         '0007-x86-disable-tsc-watchdog-if-using-direct-sync.patch'
         '0008-x86-Avoid-relocation-information-in-final-vmlinux.patch'
-        '0101-LUCJAN-XANMOD-block-mq-deadline-Disable-front_merges-by-def.patch'::"$_lucjan/xanmod-patches-sep/0001-XANMOD-block-mq-deadline-Disable-front_merges-by-def.patch"
-        '0102-LUCJAN-XANMOD-block-mq-deadline-Increase-write-priority-to-.patch'::"$_lucjan/xanmod-patches-sep/0002-XANMOD-block-mq-deadline-Increase-write-priority-to-.patch"
-        '0103-LUCJAN-XANMOD-block-set-rq_affinity-to-force-full-multithre.patch'::"$_lucjan/xanmod-patches-sep/0003-XANMOD-block-set-rq_affinity-to-force-full-multithre.patch"
-        '0104-LUCJAN-lrng-6.2-introduce-Linux-Random-Number-Generator.patch'::"$_lucjan/lrng-cachyos-patches-v4/0001-lrng-6.2-introduce-Linux-Random-Number-Generator.patch"
-        '0105-LUCJAN-ext4-6.2-merge-changes-from-dev-tree.patch'::"$_lucjan/ext4-patches/0001-ext4-6.2-merge-changes-from-dev-tree.patch"
-        '0106-LUCJAN-ksmbd-6.2-merge-changes-from-dev-tree.patch'::"$_lucjan/ksmbd-patches/0001-ksmbd-6.2-merge-changes-from-dev-tree.patch"
-        '0107-LUCJAN-zstd-6.2-merge-changes-from-dev-tree.patch'::"$_lucjan/zstd-cachyos-patches-v2/0001-zstd-6.2-merge-changes-from-dev-tree.patch"
-        '0108-LUCJAN-objtool-6.2-merge-changes-from-dev-tree.patch'::"$_lucjan/objtool-patches/0001-objtool-6.2-merge-changes-from-dev-tree.patch"
-        '0109-LUCJAN-fixes-6.2-update-tpm-disable-hwrng-for-fTPM-on-some-.patch'::"$_lucjan/arch-patches-v4-sep/0010-fixes-6.2-update-tpm-disable-hwrng-for-fTPM-on-some-.patch"
-        '0110-CACHY-Introduce-per-VMA-lock.patch'::"$_cachy/misc/0001-Introduce-per-VMA-lock.patch"
-        '0111-TKG-v6.2-fsync1_via_futex_waitv.patch'::"$_tkg/0007-v6.2-fsync1_via_futex_waitv.patch"
-        '0112-TKG-v6.2-winesync.patch'::"$_tkg/0007-v6.2-winesync.patch")
+        '0101-LUCJAN-smpboot-patches.patch'::"$_lucjan/smpboot-patches-v10/0001-smpboot-patches.patch"
+        '0102-LUCJAN-block-mq-deadline-Disable-front_merges-by-def.patch'::"$_lucjan/xanmod-patches-sep/0001-XANMOD-block-mq-deadline-Disable-front_merges-by-def.patch"
+        '0103-LUCJAN-block-mq-deadline-Increase-write-priority-to-.patch'::"$_lucjan/xanmod-patches-sep/0002-XANMOD-block-mq-deadline-Increase-write-priority-to-.patch"
+        '0104-LUCJAN-block-set-rq_affinity-to-force-full-multithre.patch'::"$_lucjan/xanmod-patches-sep/0003-XANMOD-block-set-rq_affinity-to-force-full-multithre.patch"
+        '0105-LUCJAN-lrng-6.2-introduce-Linux-Random-Number-Generator.patch'::"$_lucjan/lrng-cachyos-patches-v5/0001-lrng-6.2-introduce-Linux-Random-Number-Generator.patch"
+        '0106-LUCJAN-ext4-6.2-merge-changes-from-dev-tree.patch'::"$_lucjan/ext4-patches/0001-ext4-6.2-merge-changes-from-dev-tree.patch"
+        '0107-LUCJAN-ksmbd-6.2-merge-changes-from-dev-tree.patch'::"$_lucjan/ksmbd-patches/0001-ksmbd-6.2-merge-changes-from-dev-tree.patch"
+        '0108-LUCJAN-zstd-6.2-merge-changes-from-dev-tree.patch'::"$_lucjan/zstd-cachyos-patches-v2/0001-zstd-6.2-merge-changes-from-dev-tree.patch"
+        '0109-LUCJAN-objtool-6.2-merge-changes-from-dev-tree.patch'::"$_lucjan/objtool-patches/0001-objtool-6.2-merge-changes-from-dev-tree.patch"
+        '0110-LUCJAN-fixes-6.2-update-tpm-disable-hwrng-for-fTPM-on-some-.patch'::"$_lucjan/arch-patches-v5-sep/0010-fixes-6.2-update-tpm-disable-hwrng-for-fTPM-on-some-.patch"
+        '0111-CACHY-Introduce-per-VMA-lock.patch'::"$_cachy/misc/0001-Introduce-per-VMA-lock.patch"
+        '0112-TKG-v6.2-fsync1_via_futex_waitv.patch'::"$_tkg/0007-v6.2-fsync1_via_futex_waitv.patch"
+        '0113-TKG-v6.2-winesync.patch'::"$_tkg/0007-v6.2-winesync.patch")
 
 sha256sums=('74862fa8ab40edae85bb3385c0b71fe103288bce518526d63197800b3cbdecb1'
             'SKIP'
-            'dd9afda02ce202c5793b65c12152124cbb496843bbec69332aa8600be721ab9c'
+            '45c86c0d5f837ae3be8460cb4d00448a71cc66d121164a7d7cc370ac24f3277b'
             'SKIP'
-            '94b7a2e487ae994be1d8ca1512acd211c5d89b5cbbf71dce70d4b9073ccb100b'
+            '82e242fec6b5b04f7c6af76b768bea23f19ead726e01cb2c46d07c640e1b1066'
             '41c34759ed248175e905c57a25e2b0ed09b11d054fe1a8783d37459f34984106'
             'a99a0101fb71e748124cd1021f40766ba4d234110d52f9ca3585b0c6e36daf29'
             '1b268f30b54b59fce5c3a73d7483684d1fd3f724cf283c02e84ac0644238be69'
-            '5dc36dbc3161da7e3c8e20e4fe72df4de5004d5449ff7d530f4515e96081725f'
+            'd65bd6c210896610b54abfad15b86756382d3a1eb48835b6a2e16ea5ea541863'
             '70472f2ffc33a40796abe7eca9ba5c534fe2b6c035bad1dd13cb6bcd7acd58ab'
             'f544db22d1ddd9dd482ba552309775671ffb3c712cd43a9fae6fc0152868cc94'
             'd7e2500fe861c78e3087431f2964f4e79eb2cd3588aadff746f9a9e9b5913804'
             '5b051f99657076bd2ae3118f151c8dc9485a9e9d57689c2adf4c96c90ef62da4'
             'e8dd037119d4468d066fd73ce10e107d47a628977333bbecf149597cab912690'
+            '26addf106a227b7dae19c02057a807291e1aec2cb83e067d9c55aa1560b2a074'
             '8a808cec471ae0b6c1166e076d0f61e018597dc55e701e9a6c9c5ba6cbf59148'
             '5e80e6990fd97ace860bcaaef7b6e01f0887f89065d2184e686561fc3d9aee73'
             'd8cd4a519d35cc6f0189255d8e6e012194b8c61c481627bb061365760314de3c'
-            '7028f606a5697f7d5b736c7cebb60962bc89a101d78a56e9506117b631056839'
+            '948e52555364758029f2779f9bf836e47a239a41b84675948ee0bcbc3085205f'
             'f3fe8a75f338ce70f685e93bb1270bc7f129385c4792cc2e264209ddbf6f2339'
             '7d1a25e8a2ca0526967990a12f2ff6edfca790edbb7d32850c225fb34b3fdb9a'
             '8a48497e4756fbeba6c56d4a4f1c1a935fdb0f9d2b91afc3c3230651d22fa198'
             '0ccd70c73d80ea7c4bbbd73451e40564d14244b9aeb3ed0b60dd9d61ab03e5b2'
-            'e3573e0d366ffce0227d05a4baa4fab658aefcb08f0a3305509f62cbd6bdf31d'
+            '33bb5d2bd818b4fe47407a6ec14c9ba4ce222ceb3d7818c7388c893a550d81e3'
             '4d8bed7737b48f120edeaf4b8061b97d1a18c6bc8dc0687ad2a02dec5a7d6a32'
             '9df628fd530950e37d31da854cb314d536f33c83935adf5c47e71266a55f7004'
             'e7be7647d54e3237bcf930da90580355e3e81b72df6e51ea8564ace9bf3ee232')
