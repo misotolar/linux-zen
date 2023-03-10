@@ -1,6 +1,6 @@
 
 _major=6.2
-_minor=2.zen2
+_minor=3.zen1
 
 pkgbase=linux-zen
 pkgname=("$pkgbase" "$pkgbase-headers")
@@ -44,18 +44,18 @@ source=("$_kernel/v6.x/linux-$_major.tar.xz"
         '0103-LUCJAN-block-mq-deadline-Increase-write-priority-to-.patch'::"$_lucjan/xanmod-patches-sep/0002-XANMOD-block-mq-deadline-Increase-write-priority-to-.patch"
         '0104-LUCJAN-block-set-rq_affinity-to-force-full-multithre.patch'::"$_lucjan/xanmod-patches-sep/0003-XANMOD-block-set-rq_affinity-to-force-full-multithre.patch"
         '0105-LUCJAN-lrng-6.2-introduce-Linux-Random-Number-Generator.patch'::"$_lucjan/lrng-cachyos-patches-v5/0001-lrng-6.2-introduce-Linux-Random-Number-Generator.patch"
-        '0106-LUCJAN-ext4-6.2-merge-changes-from-dev-tree.patch'::"$_lucjan/ext4-patches/0001-ext4-6.2-merge-changes-from-dev-tree.patch"
-        '0107-LUCJAN-ksmbd-6.2-merge-changes-from-dev-tree.patch'::"$_lucjan/ksmbd-patches/0001-ksmbd-6.2-merge-changes-from-dev-tree.patch"
+        '0106-LUCJAN-ext4-6.2-merge-changes-from-dev-tree.patch'::"$_lucjan/ext4-patches-v3/0001-ext4-6.2-merge-changes-from-dev-tree.patch"
+        '0107-LUCJAN-ksmbd-6.2-merge-changes-from-dev-tree.patch'::"$_lucjan/ksmbd-patches-v2/0001-ksmbd-6.2-merge-changes-from-dev-tree.patch"
         '0108-LUCJAN-zstd-6.2-merge-changes-from-dev-tree.patch'::"$_lucjan/zstd-cachyos-patches-v2/0001-zstd-6.2-merge-changes-from-dev-tree.patch"
         '0109-LUCJAN-objtool-6.2-merge-changes-from-dev-tree.patch'::"$_lucjan/objtool-patches/0001-objtool-6.2-merge-changes-from-dev-tree.patch"
-        '0110-LUCJAN-fixes-6.2-update-tpm-disable-hwrng-for-fTPM-on-some-.patch'::"$_lucjan/arch-patches-v5-sep/0010-fixes-6.2-update-tpm-disable-hwrng-for-fTPM-on-some-.patch"
+        '0110-LUCJAN-fixes-6.2-update-tpm-disable-hwrng-for-fTPM-on-some-.patch'::"$_lucjan/arch-patches-v7-sep/0006-fixes-6.2-update-tpm-disable-hwrng-for-fTPM-on-some-.patch"
         '0111-CACHY-Introduce-per-VMA-lock.patch'::"$_cachy/misc/0001-Introduce-per-VMA-lock.patch"
         '0112-TKG-v6.2-fsync1_via_futex_waitv.patch'::"$_tkg/0007-v6.2-fsync1_via_futex_waitv.patch"
         '0113-TKG-v6.2-winesync.patch'::"$_tkg/0007-v6.2-winesync.patch")
 
 sha256sums=('74862fa8ab40edae85bb3385c0b71fe103288bce518526d63197800b3cbdecb1'
             'SKIP'
-            '45c86c0d5f837ae3be8460cb4d00448a71cc66d121164a7d7cc370ac24f3277b'
+            'eff658ffe759340ce06f19a109f7a949038085f74f0dbc9feab6653e9f990e0c'
             'SKIP'
             '82e242fec6b5b04f7c6af76b768bea23f19ead726e01cb2c46d07c640e1b1066'
             '41c34759ed248175e905c57a25e2b0ed09b11d054fe1a8783d37459f34984106'
@@ -72,11 +72,11 @@ sha256sums=('74862fa8ab40edae85bb3385c0b71fe103288bce518526d63197800b3cbdecb1'
             '5e80e6990fd97ace860bcaaef7b6e01f0887f89065d2184e686561fc3d9aee73'
             'd8cd4a519d35cc6f0189255d8e6e012194b8c61c481627bb061365760314de3c'
             '948e52555364758029f2779f9bf836e47a239a41b84675948ee0bcbc3085205f'
-            'f3fe8a75f338ce70f685e93bb1270bc7f129385c4792cc2e264209ddbf6f2339'
-            '7d1a25e8a2ca0526967990a12f2ff6edfca790edbb7d32850c225fb34b3fdb9a'
+            'a622cbb3abc46fbde409e8d169c157cadc6eb898ccf6393b0d0427bc841c4d61'
+            '3985516659c0566cca73f822b08b50efcba32b9c07581026e821be79f4b64e91'
             '8a48497e4756fbeba6c56d4a4f1c1a935fdb0f9d2b91afc3c3230651d22fa198'
             '0ccd70c73d80ea7c4bbbd73451e40564d14244b9aeb3ed0b60dd9d61ab03e5b2'
-            '33bb5d2bd818b4fe47407a6ec14c9ba4ce222ceb3d7818c7388c893a550d81e3'
+            'bfa6e4917276a71588a386cd1b18c047c4df35b6972bb2f06c1db9b1261b491d'
             '4d8bed7737b48f120edeaf4b8061b97d1a18c6bc8dc0687ad2a02dec5a7d6a32'
             '9df628fd530950e37d31da854cb314d536f33c83935adf5c47e71266a55f7004'
             'e7be7647d54e3237bcf930da90580355e3e81b72df6e51ea8564ace9bf3ee232')
