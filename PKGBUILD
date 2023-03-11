@@ -1,6 +1,6 @@
 
 _major=6.2
-_minor=3.zen1
+_minor=5.zen1
 
 pkgbase=linux-zen
 pkgname=("$pkgbase" "$pkgbase-headers")
@@ -39,25 +39,24 @@ source=("$_kernel/v6.x/linux-$_major.tar.xz"
         '0006-x86-don-t-check-for-random-warps-if-using-direct-syn.patch'
         '0007-x86-disable-tsc-watchdog-if-using-direct-sync.patch'
         '0008-x86-Avoid-relocation-information-in-final-vmlinux.patch'
-        '0101-LUCJAN-smpboot-patches.patch'::"$_lucjan/smpboot-patches-v10/0001-smpboot-patches.patch"
+        '0101-LUCJAN-smpboot-patches.patch'::"$_lucjan/smpboot-patches-v14/0001-smpboot-patches.patch"
         '0102-LUCJAN-block-mq-deadline-Disable-front_merges-by-def.patch'::"$_lucjan/xanmod-patches-sep/0001-XANMOD-block-mq-deadline-Disable-front_merges-by-def.patch"
         '0103-LUCJAN-block-mq-deadline-Increase-write-priority-to-.patch'::"$_lucjan/xanmod-patches-sep/0002-XANMOD-block-mq-deadline-Increase-write-priority-to-.patch"
         '0104-LUCJAN-block-set-rq_affinity-to-force-full-multithre.patch'::"$_lucjan/xanmod-patches-sep/0003-XANMOD-block-set-rq_affinity-to-force-full-multithre.patch"
         '0105-LUCJAN-lrng-6.2-introduce-Linux-Random-Number-Generator.patch'::"$_lucjan/lrng-cachyos-patches-v5/0001-lrng-6.2-introduce-Linux-Random-Number-Generator.patch"
-        '0106-LUCJAN-ext4-6.2-merge-changes-from-dev-tree.patch'::"$_lucjan/ext4-patches-v3/0001-ext4-6.2-merge-changes-from-dev-tree.patch"
+        '0106-LUCJAN-ext4-6.2-merge-changes-from-dev-tree.patch'::"$_lucjan/ext4-patches-v4/0001-ext4-6.2-merge-changes-from-dev-tree.patch"
         '0107-LUCJAN-ksmbd-6.2-merge-changes-from-dev-tree.patch'::"$_lucjan/ksmbd-patches-v2/0001-ksmbd-6.2-merge-changes-from-dev-tree.patch"
         '0108-LUCJAN-zstd-6.2-merge-changes-from-dev-tree.patch'::"$_lucjan/zstd-cachyos-patches-v2/0001-zstd-6.2-merge-changes-from-dev-tree.patch"
-        '0109-LUCJAN-objtool-6.2-merge-changes-from-dev-tree.patch'::"$_lucjan/objtool-patches/0001-objtool-6.2-merge-changes-from-dev-tree.patch"
-        '0110-LUCJAN-fixes-6.2-update-tpm-disable-hwrng-for-fTPM-on-some-.patch'::"$_lucjan/arch-patches-v7-sep/0006-fixes-6.2-update-tpm-disable-hwrng-for-fTPM-on-some-.patch"
-        '0111-CACHY-Introduce-per-VMA-lock.patch'::"$_cachy/misc/0001-Introduce-per-VMA-lock.patch"
-        '0112-TKG-v6.2-fsync1_via_futex_waitv.patch'::"$_tkg/0007-v6.2-fsync1_via_futex_waitv.patch"
-        '0113-TKG-v6.2-winesync.patch'::"$_tkg/0007-v6.2-winesync.patch")
+        '0109-LUCJAN-fixes-6.2-update-tpm-disable-hwrng-for-fTPM-on-some-.patch'::"$_lucjan/arch-patches-v7-sep/0006-fixes-6.2-update-tpm-disable-hwrng-for-fTPM-on-some-.patch"
+        '0110-CACHY-Introduce-per-VMA-lock.patch'::"$_cachy/misc/0001-Introduce-per-VMA-lock.patch"
+        '0111-TKG-v6.2-fsync1_via_futex_waitv.patch'::"$_tkg/0007-v6.2-fsync1_via_futex_waitv.patch"
+        '0112-TKG-v6.2-winesync.patch'::"$_tkg/0007-v6.2-winesync.patch")
 
 sha256sums=('74862fa8ab40edae85bb3385c0b71fe103288bce518526d63197800b3cbdecb1'
             'SKIP'
-            'eff658ffe759340ce06f19a109f7a949038085f74f0dbc9feab6653e9f990e0c'
+            '668c2c7dc19a9afd0ef51a8275accfdb8f024ec56ae1c0c4fc40d77ce8776bb2'
             'SKIP'
-            '82e242fec6b5b04f7c6af76b768bea23f19ead726e01cb2c46d07c640e1b1066'
+            'b495edb5ef554835be7e9f0520a539137ede7f6f34162e666edb89276b229dab'
             '41c34759ed248175e905c57a25e2b0ed09b11d054fe1a8783d37459f34984106'
             'a99a0101fb71e748124cd1021f40766ba4d234110d52f9ca3585b0c6e36daf29'
             '1b268f30b54b59fce5c3a73d7483684d1fd3f724cf283c02e84ac0644238be69'
@@ -67,15 +66,14 @@ sha256sums=('74862fa8ab40edae85bb3385c0b71fe103288bce518526d63197800b3cbdecb1'
             'd7e2500fe861c78e3087431f2964f4e79eb2cd3588aadff746f9a9e9b5913804'
             '5b051f99657076bd2ae3118f151c8dc9485a9e9d57689c2adf4c96c90ef62da4'
             'e8dd037119d4468d066fd73ce10e107d47a628977333bbecf149597cab912690'
-            '26addf106a227b7dae19c02057a807291e1aec2cb83e067d9c55aa1560b2a074'
+            '452849c35428f741c22b037d4ec9dd8c701f9565eacb5d17d40bf705e48159bd'
             '8a808cec471ae0b6c1166e076d0f61e018597dc55e701e9a6c9c5ba6cbf59148'
             '5e80e6990fd97ace860bcaaef7b6e01f0887f89065d2184e686561fc3d9aee73'
             'd8cd4a519d35cc6f0189255d8e6e012194b8c61c481627bb061365760314de3c'
             '948e52555364758029f2779f9bf836e47a239a41b84675948ee0bcbc3085205f'
-            'a622cbb3abc46fbde409e8d169c157cadc6eb898ccf6393b0d0427bc841c4d61'
+            '6e93b74e01ecced55b873068977cee1ab096d5bc77246b09d537f9306131e28c'
             '3985516659c0566cca73f822b08b50efcba32b9c07581026e821be79f4b64e91'
             '8a48497e4756fbeba6c56d4a4f1c1a935fdb0f9d2b91afc3c3230651d22fa198'
-            '0ccd70c73d80ea7c4bbbd73451e40564d14244b9aeb3ed0b60dd9d61ab03e5b2'
             'bfa6e4917276a71588a386cd1b18c047c4df35b6972bb2f06c1db9b1261b491d'
             '4d8bed7737b48f120edeaf4b8061b97d1a18c6bc8dc0687ad2a02dec5a7d6a32'
             '9df628fd530950e37d31da854cb314d536f33c83935adf5c47e71266a55f7004'
