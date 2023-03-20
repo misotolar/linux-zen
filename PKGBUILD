@@ -1,6 +1,6 @@
 
 _major=6.2
-_minor=6.zen1
+_minor=7.zen1
 
 pkgbase=linux-zen
 pkgname=("$pkgbase" "$pkgbase-headers")
@@ -39,30 +39,24 @@ source=("$_kernel/v6.x/linux-$_major.tar.xz"
         '0006-x86-don-t-check-for-random-warps-if-using-direct-syn.patch'
         '0007-x86-disable-tsc-watchdog-if-using-direct-sync.patch'
         '0008-x86-Avoid-relocation-information-in-final-vmlinux.patch'
-        '0101-LUCJAN-smpboot-patches.patch'::"$_lucjan/smpboot-patches-v15/0001-smpboot-patches.patch"
+        '0009-Revert-objtool-Fix-memory-leak-in-create_static_call_sectio.patch'
+        '0101-LUCJAN-smpboot-patches.patch'::"$_lucjan/smpboot-patches-v16/0001-smpboot-patches.patch"
         '0102-LUCJAN-block-mq-deadline-Disable-front_merges-by-def.patch'::"$_lucjan/xanmod-patches-sep/0001-XANMOD-block-mq-deadline-Disable-front_merges-by-def.patch"
         '0103-LUCJAN-block-mq-deadline-Increase-write-priority-to-.patch'::"$_lucjan/xanmod-patches-sep/0002-XANMOD-block-mq-deadline-Increase-write-priority-to-.patch"
         '0104-LUCJAN-block-set-rq_affinity-to-force-full-multithre.patch'::"$_lucjan/xanmod-patches-sep/0003-XANMOD-block-set-rq_affinity-to-force-full-multithre.patch"
-        '0105-LUCJAN-lrng-6.2-introduce-Linux-Random-Number-Generator.patch'::"$_lucjan/lrng-cachyos-patches-v5/0001-lrng-6.2-introduce-Linux-Random-Number-Generator.patch"
-        '0106-LUCJAN-ext4-6.2-merge-changes-from-dev-tree.patch'::"$_lucjan/ext4-patches-v4/0001-ext4-6.2-merge-changes-from-dev-tree.patch"
+        '0105-LUCJAN-lrng-6.2-introduce-Linux-Random-Number-Generator.patch'::"$_lucjan/lrng-cachyos-patches-v6/0001-lrng-6.2-introduce-Linux-Random-Number-Generator.patch"
+        '0106-LUCJAN-ext4-6.2-merge-changes-from-dev-tree.patch'::"$_lucjan/ext4-patches-v6/0001-ext4-6.2-merge-changes-from-dev-tree.patch"
         '0107-LUCJAN-ksmbd-6.2-merge-changes-from-dev-tree.patch'::"$_lucjan/ksmbd-patches-v2/0001-ksmbd-6.2-merge-changes-from-dev-tree.patch"
         '0108-LUCJAN-zstd-6.2-merge-changes-from-dev-tree.patch'::"$_lucjan/zstd-cachyos-patches-v2/0001-zstd-6.2-merge-changes-from-dev-tree.patch"
-        '0109-LUCJAN-objtool-Check-that-module-init-exit-function-is-an-i.patch'::"$_lucjan/objtool-patches-sep/0002-objtool-Check-that-module-init-exit-function-is-an-i.patch"
-        '0110-LUCJAN-objtool-Install-libsubcmd-in-build.patch'::"$_lucjan/objtool-patches-sep/0003-objtool-Install-libsubcmd-in-build.patch"
-        '0111-LUCJAN-objtool-Properly-support-make-V-1.patch'::"$_lucjan/objtool-patches-sep/0004-objtool-Properly-support-make-V-1.patch"
-        '0112-LUCJAN-objtool-Fix-HOSTCC-flag-usage.patch'::"$_lucjan/objtool-patches-sep/0005-objtool-Fix-HOSTCC-flag-usage.patch"
-        '0113-LUCJAN-objtool-Make-struct-entries-static-and-const.patch'::"$_lucjan/objtool-patches-sep/0006-objtool-Make-struct-entries-static-and-const.patch"
-        '0114-LUCJAN-objtool-Make-struct-check_options-static.patch'::"$_lucjan/objtool-patches-sep/0007-objtool-Make-struct-check_options-static.patch"
-        '0115-LUCJAN-objtool-Allocate-multiple-structures-with-calloc.patch'::"$_lucjan/objtool-patches-sep/0008-objtool-Allocate-multiple-structures-with-calloc.patch"
-        '0116-LUCJAN-objtool-Optimize-layout-of-struct-symbol.patch'::"$_lucjan/objtool-patches-sep/0009-objtool-Optimize-layout-of-struct-symbol.patch"
-        '0117-LUCJAN-objtool-Optimize-layout-of-struct-special_alt.patch'::"$_lucjan/objtool-patches-sep/0010-objtool-Optimize-layout-of-struct-special_alt.patch"
-        '0118-CACHY-Introduce-per-VMA-lock.patch'::"$_cachy/misc/0001-Introduce-per-VMA-lock.patch"
-        '0119-TKG-v6.2-fsync1_via_futex_waitv.patch'::"$_tkg/0007-v6.2-fsync1_via_futex_waitv.patch"
-        '0120-TKG-v6.2-winesync.patch'::"$_tkg/0007-v6.2-winesync.patch")
+        '0109-LUCJAN-clang-6.2-add-miscellaneous-fixes-for-clang.patch'::"$_lucjan/clang-patches-v2/0001-clang-6.2-add-miscellaneous-fixes-for-clang.patch"
+        '0110-LUCJAN-objtool-6.2-merge-changes-from-dev-tree.patch'::"$_lucjan/objtool-patches/0001-objtool-6.2-merge-changes-from-dev-tree.patch"
+        '0111-CACHY-Introduce-per-VMA-lock.patch'::"$_cachy/misc/0001-Introduce-per-VMA-lock.patch"
+        '0112-TKG-v6.2-fsync1_via_futex_waitv.patch'::"$_tkg/0007-v6.2-fsync1_via_futex_waitv.patch"
+        '0113-TKG-v6.2-winesync.patch'::"$_tkg/0007-v6.2-winesync.patch")
 
 sha256sums=('74862fa8ab40edae85bb3385c0b71fe103288bce518526d63197800b3cbdecb1'
             'SKIP'
-            '2ab442c9a5340078c27d5a552f956e40f17c1cdd9a89c1e79eac6b0adf874e1f'
+            'c4ce586cd2685b458aa8c41003f64d974af7a1024899e2480153238e10fbd00c'
             'SKIP'
             'b495edb5ef554835be7e9f0520a539137ede7f6f34162e666edb89276b229dab'
             '41c34759ed248175e905c57a25e2b0ed09b11d054fe1a8783d37459f34984106'
@@ -74,23 +68,17 @@ sha256sums=('74862fa8ab40edae85bb3385c0b71fe103288bce518526d63197800b3cbdecb1'
             'd7e2500fe861c78e3087431f2964f4e79eb2cd3588aadff746f9a9e9b5913804'
             '5b051f99657076bd2ae3118f151c8dc9485a9e9d57689c2adf4c96c90ef62da4'
             'e8dd037119d4468d066fd73ce10e107d47a628977333bbecf149597cab912690'
-            'c578a588c553235837052ea928a9f9ec377238729da0ccdaa38f5e4766e6afe7'
+            '1a193d5e90de927dbfedc748255ceca976c2f14bc83be4161a03048f7743240a'
+            'ea9bd91f2b11a5102ccb957b640c3d109d650c803a2c627513b2fdf346573f49'
             '8a808cec471ae0b6c1166e076d0f61e018597dc55e701e9a6c9c5ba6cbf59148'
             '5e80e6990fd97ace860bcaaef7b6e01f0887f89065d2184e686561fc3d9aee73'
             'd8cd4a519d35cc6f0189255d8e6e012194b8c61c481627bb061365760314de3c'
-            '948e52555364758029f2779f9bf836e47a239a41b84675948ee0bcbc3085205f'
-            '6e93b74e01ecced55b873068977cee1ab096d5bc77246b09d537f9306131e28c'
+            '9fa39a093813b2d48c0fa0b96925c5d4d3c2502c5f6efae35d3dd1bd9c2e03b9'
+            '1ae5f283a14cb66d61b735fd8172550db58ca8ab779cdd3de1c176d27274e531'
             '3985516659c0566cca73f822b08b50efcba32b9c07581026e821be79f4b64e91'
             '8a48497e4756fbeba6c56d4a4f1c1a935fdb0f9d2b91afc3c3230651d22fa198'
-            '8dafe5f44a093c4d6f2865d41aa5e3f47c40f4b3f05111de8db4da9bee023725'
-            '01a8739e24b9835791d26a7a8f17ad47b762ec50a70e6edc2617b1e7fa1c6e6b'
-            '40f9ac106f912f2ca771aaedd6e36bc4a5ed425f864c2d270b996d62ecac9dcd'
-            '493c19a83bf5d0551f8788e7295e6e8c65137425a45c02f977dbb78d160e0ba6'
-            'e7eb4f0c22fb9b81c9d1112a213bec082a3939a5173a5919af79c5c748202ddc'
-            'c126540c78eefdd9b1dd15da92d0ab92fc6a3c210c7adc7a32d0070b0dac2c22'
-            '716542bbe226563fe0f9002dfe9311ec135141e672bfe83bdbe410ea4b36f2aa'
-            'da1f4f1db20c0e8bea36be34b74efd3c0c07b5294f8a18d37a0868da1c9dc8f7'
-            '27c32f9e1ba2b1da45e5f56f50b16fe465506479af9e5245ccb9e103e99f863a'
+            '5a5807eeba92722fed4fbc50ee1e2e08e04f70142952ab098f89e36ff2a674b2'
+            '0ccd70c73d80ea7c4bbbd73451e40564d14244b9aeb3ed0b60dd9d61ab03e5b2'
             '4d8bed7737b48f120edeaf4b8061b97d1a18c6bc8dc0687ad2a02dec5a7d6a32'
             '9df628fd530950e37d31da854cb314d536f33c83935adf5c47e71266a55f7004'
             'e7be7647d54e3237bcf930da90580355e3e81b72df6e51ea8564ace9bf3ee232')
