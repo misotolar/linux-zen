@@ -1,6 +1,6 @@
 
 _major=6.2
-_minor=7.zen1
+_minor=8.zen1
 
 pkgbase=linux-zen
 pkgname=("$pkgbase" "$pkgbase-headers")
@@ -40,25 +40,25 @@ source=("$_kernel/v6.x/linux-$_major.tar.xz"
         '0007-x86-disable-tsc-watchdog-if-using-direct-sync.patch'
         '0008-x86-Avoid-relocation-information-in-final-vmlinux.patch'
         '0009-Revert-objtool-Fix-memory-leak-in-create_static_call_sectio.patch'
-        '0101-LUCJAN-smpboot-patches.patch'::"$_lucjan/smpboot-patches-v16/0001-smpboot-patches.patch"
+        '0101-LUCJAN-smpboot-patches.patch'::"$_lucjan/smpboot-patches-v17/0001-smpboot-patches.patch"
         '0102-LUCJAN-block-mq-deadline-Disable-front_merges-by-def.patch'::"$_lucjan/xanmod-patches-sep/0001-XANMOD-block-mq-deadline-Disable-front_merges-by-def.patch"
         '0103-LUCJAN-block-mq-deadline-Increase-write-priority-to-.patch'::"$_lucjan/xanmod-patches-sep/0002-XANMOD-block-mq-deadline-Increase-write-priority-to-.patch"
         '0104-LUCJAN-block-set-rq_affinity-to-force-full-multithre.patch'::"$_lucjan/xanmod-patches-sep/0003-XANMOD-block-set-rq_affinity-to-force-full-multithre.patch"
         '0105-LUCJAN-lrng-6.2-introduce-Linux-Random-Number-Generator.patch'::"$_lucjan/lrng-cachyos-patches-v6/0001-lrng-6.2-introduce-Linux-Random-Number-Generator.patch"
-        '0106-LUCJAN-ext4-6.2-merge-changes-from-dev-tree.patch'::"$_lucjan/ext4-patches-v6/0001-ext4-6.2-merge-changes-from-dev-tree.patch"
+        '0106-LUCJAN-ext4-6.2-merge-changes-from-dev-tree.patch'::"$_lucjan/ext4-patches-v7/0001-ext4-6.2-merge-changes-from-dev-tree.patch"
         '0107-LUCJAN-ksmbd-6.2-merge-changes-from-dev-tree.patch'::"$_lucjan/ksmbd-patches-v2/0001-ksmbd-6.2-merge-changes-from-dev-tree.patch"
-        '0108-LUCJAN-zstd-6.2-merge-changes-from-dev-tree.patch'::"$_lucjan/zstd-cachyos-patches-v2/0001-zstd-6.2-merge-changes-from-dev-tree.patch"
+        '0108-LUCJAN-zstd-6.2-merge-changes-from-dev-tree.patch'::"$_lucjan/zstd-cachyos-patches-v3/0001-zstd-6.2-merge-changes-from-dev-tree.patch"
         '0109-LUCJAN-clang-6.2-add-miscellaneous-fixes-for-clang.patch'::"$_lucjan/clang-patches-v2/0001-clang-6.2-add-miscellaneous-fixes-for-clang.patch"
         '0110-LUCJAN-objtool-6.2-merge-changes-from-dev-tree.patch'::"$_lucjan/objtool-patches/0001-objtool-6.2-merge-changes-from-dev-tree.patch"
         '0111-CACHY-Introduce-per-VMA-lock.patch'::"$_cachy/misc/0001-Introduce-per-VMA-lock.patch"
-        '0112-TKG-v6.2-fsync1_via_futex_waitv.patch'::"$_tkg/0007-v6.2-fsync1_via_futex_waitv.patch"
+        '0112-TKG-v6.2-fsync_legacy_via_futex_waitv.patch'::"$_tkg/0007-v6.2-fsync_legacy_via_futex_waitv.patch"
         '0113-TKG-v6.2-winesync.patch'::"$_tkg/0007-v6.2-winesync.patch")
 
 sha256sums=('74862fa8ab40edae85bb3385c0b71fe103288bce518526d63197800b3cbdecb1'
             'SKIP'
-            'c4ce586cd2685b458aa8c41003f64d974af7a1024899e2480153238e10fbd00c'
+            'a042b96bb590adbf8a68c452c5b749e78de2d85247c65b3da3840e3f990ac4a2'
             'SKIP'
-            'b495edb5ef554835be7e9f0520a539137ede7f6f34162e666edb89276b229dab'
+            '1849351b506a1110c5325eaac7e9c0c697baf6c885cf4bbadb6117b6f09186c7'
             '41c34759ed248175e905c57a25e2b0ed09b11d054fe1a8783d37459f34984106'
             'a99a0101fb71e748124cd1021f40766ba4d234110d52f9ca3585b0c6e36daf29'
             '1b268f30b54b59fce5c3a73d7483684d1fd3f724cf283c02e84ac0644238be69'
@@ -69,14 +69,14 @@ sha256sums=('74862fa8ab40edae85bb3385c0b71fe103288bce518526d63197800b3cbdecb1'
             '5b051f99657076bd2ae3118f151c8dc9485a9e9d57689c2adf4c96c90ef62da4'
             'e8dd037119d4468d066fd73ce10e107d47a628977333bbecf149597cab912690'
             '1a193d5e90de927dbfedc748255ceca976c2f14bc83be4161a03048f7743240a'
-            'ea9bd91f2b11a5102ccb957b640c3d109d650c803a2c627513b2fdf346573f49'
+            '650d0a7e0dc5160310097f29bac3e7cde26907d5d6206f4562be324b5172d952'
             '8a808cec471ae0b6c1166e076d0f61e018597dc55e701e9a6c9c5ba6cbf59148'
             '5e80e6990fd97ace860bcaaef7b6e01f0887f89065d2184e686561fc3d9aee73'
             'd8cd4a519d35cc6f0189255d8e6e012194b8c61c481627bb061365760314de3c'
             '9fa39a093813b2d48c0fa0b96925c5d4d3c2502c5f6efae35d3dd1bd9c2e03b9'
-            '1ae5f283a14cb66d61b735fd8172550db58ca8ab779cdd3de1c176d27274e531'
+            '130bb93463deddc8ecab1189104395166a2a0860a744fc5d890ee8d00a5d7068'
             '3985516659c0566cca73f822b08b50efcba32b9c07581026e821be79f4b64e91'
-            '8a48497e4756fbeba6c56d4a4f1c1a935fdb0f9d2b91afc3c3230651d22fa198'
+            '4aea7195f82587e407c186ab0f40e7234d5ecce6decfaca40bd175b2dc271ede'
             '5a5807eeba92722fed4fbc50ee1e2e08e04f70142952ab098f89e36ff2a674b2'
             '0ccd70c73d80ea7c4bbbd73451e40564d14244b9aeb3ed0b60dd9d61ab03e5b2'
             '4d8bed7737b48f120edeaf4b8061b97d1a18c6bc8dc0687ad2a02dec5a7d6a32'
