@@ -1,6 +1,6 @@
 
 _major=6.2
-_minor=8.zen1
+_minor=9.zen1
 
 pkgbase=linux-zen
 pkgname=("$pkgbase" "$pkgbase-headers")
@@ -40,7 +40,7 @@ source=("$_kernel/v6.x/linux-$_major.tar.xz"
         '0007-x86-disable-tsc-watchdog-if-using-direct-sync.patch'
         '0008-x86-Avoid-relocation-information-in-final-vmlinux.patch'
         '0009-Revert-objtool-Fix-memory-leak-in-create_static_call_sectio.patch'
-        '0101-LUCJAN-smpboot-patches.patch'::"$_lucjan/smpboot-patches-v17/0001-smpboot-patches.patch"
+        '0101-LUCJAN-smpboot-patches.patch'::"$_lucjan/smpboot-patches-v18/0001-smpboot-patches.patch"
         '0102-LUCJAN-block-mq-deadline-Disable-front_merges-by-def.patch'::"$_lucjan/xanmod-patches-sep/0001-XANMOD-block-mq-deadline-Disable-front_merges-by-def.patch"
         '0103-LUCJAN-block-mq-deadline-Increase-write-priority-to-.patch'::"$_lucjan/xanmod-patches-sep/0002-XANMOD-block-mq-deadline-Increase-write-priority-to-.patch"
         '0104-LUCJAN-block-set-rq_affinity-to-force-full-multithre.patch'::"$_lucjan/xanmod-patches-sep/0003-XANMOD-block-set-rq_affinity-to-force-full-multithre.patch"
@@ -56,7 +56,7 @@ source=("$_kernel/v6.x/linux-$_major.tar.xz"
 
 sha256sums=('74862fa8ab40edae85bb3385c0b71fe103288bce518526d63197800b3cbdecb1'
             'SKIP'
-            'a042b96bb590adbf8a68c452c5b749e78de2d85247c65b3da3840e3f990ac4a2'
+            'f4920f6a017bfba7053a97fa25d8a2e724fce8b7b5ecb709f7eb240b346e9421'
             'SKIP'
             '1849351b506a1110c5325eaac7e9c0c697baf6c885cf4bbadb6117b6f09186c7'
             '41c34759ed248175e905c57a25e2b0ed09b11d054fe1a8783d37459f34984106'
@@ -69,7 +69,7 @@ sha256sums=('74862fa8ab40edae85bb3385c0b71fe103288bce518526d63197800b3cbdecb1'
             '5b051f99657076bd2ae3118f151c8dc9485a9e9d57689c2adf4c96c90ef62da4'
             'e8dd037119d4468d066fd73ce10e107d47a628977333bbecf149597cab912690'
             '1a193d5e90de927dbfedc748255ceca976c2f14bc83be4161a03048f7743240a'
-            '650d0a7e0dc5160310097f29bac3e7cde26907d5d6206f4562be324b5172d952'
+            '20b00e8ad8b7d74737ca119de808025ad2b196f9bd7c5bdad30d9e98e6f27f04'
             '8a808cec471ae0b6c1166e076d0f61e018597dc55e701e9a6c9c5ba6cbf59148'
             '5e80e6990fd97ace860bcaaef7b6e01f0887f89065d2184e686561fc3d9aee73'
             'd8cd4a519d35cc6f0189255d8e6e012194b8c61c481627bb061365760314de3c'
@@ -95,7 +95,7 @@ export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EP
 _makecmd="make CC=clang LD=ld.lld LLVM=1 LLVM_IAS=1"
 
 prepare() {
-    
+
     ### Arch-SKM
     if [ -d /usr/src/certs-local ]; then
         msg2 "Rebuilding local signing key..."
