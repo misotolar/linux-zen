@@ -1,6 +1,6 @@
 
 _major=6.2
-_minor=9.zen1
+_minor=11.zen1
 
 pkgbase=linux-zen
 pkgname=("$pkgbase" "$pkgbase-headers")
@@ -15,7 +15,6 @@ _kernel="https://cdn.kernel.org/pub/linux/kernel"
 _source="https://github.com/zen-kernel/zen-kernel"
 
 _lucjan="https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/$_major"
-_cachy="https://raw.githubusercontent.com/CachyOS/kernel-patches/master/$_major"
 _tkg="https://raw.githubusercontent.com/Frogging-Family/linux-tkg/master/linux-tkg-patches/$_major"
 
 arch=('x86_64' 'x86_64_v3')
@@ -45,18 +44,16 @@ source=("$_kernel/v6.x/linux-$_major.tar.xz"
         '0103-LUCJAN-block-mq-deadline-Increase-write-priority-to-.patch'::"$_lucjan/xanmod-patches-sep/0002-XANMOD-block-mq-deadline-Increase-write-priority-to-.patch"
         '0104-LUCJAN-block-set-rq_affinity-to-force-full-multithre.patch'::"$_lucjan/xanmod-patches-sep/0003-XANMOD-block-set-rq_affinity-to-force-full-multithre.patch"
         '0105-LUCJAN-lrng-6.2-introduce-Linux-Random-Number-Generator.patch'::"$_lucjan/lrng-cachyos-patches-v6/0001-lrng-6.2-introduce-Linux-Random-Number-Generator.patch"
-        '0106-LUCJAN-ext4-6.2-merge-changes-from-dev-tree.patch'::"$_lucjan/ext4-patches-v7/0001-ext4-6.2-merge-changes-from-dev-tree.patch"
-        '0107-LUCJAN-ksmbd-6.2-merge-changes-from-dev-tree.patch'::"$_lucjan/ksmbd-patches-v2/0001-ksmbd-6.2-merge-changes-from-dev-tree.patch"
-        '0108-LUCJAN-zstd-6.2-merge-changes-from-dev-tree.patch'::"$_lucjan/zstd-cachyos-patches-v3/0001-zstd-6.2-merge-changes-from-dev-tree.patch"
-        '0109-LUCJAN-clang-6.2-add-miscellaneous-fixes-for-clang.patch'::"$_lucjan/clang-patches-v2/0001-clang-6.2-add-miscellaneous-fixes-for-clang.patch"
-        '0110-LUCJAN-objtool-6.2-merge-changes-from-dev-tree.patch'::"$_lucjan/objtool-patches/0001-objtool-6.2-merge-changes-from-dev-tree.patch"
-        '0111-CACHY-Introduce-per-VMA-lock.patch'::"$_cachy/misc/0001-Introduce-per-VMA-lock.patch"
-        '0112-TKG-v6.2-fsync_legacy_via_futex_waitv.patch'::"$_tkg/0007-v6.2-fsync_legacy_via_futex_waitv.patch"
-        '0113-TKG-v6.2-winesync.patch'::"$_tkg/0007-v6.2-winesync.patch")
+        '0106-LUCJAN-futex-6.2-Add-entry-point-for-FUTEX_WAIT_MULTIPLE-op.patch'::"$_lucjan/futex-patches/0001-futex-6.2-Add-entry-point-for-FUTEX_WAIT_MULTIPLE-op.patch"
+        '0107-LUCJAN-ext4-6.2-merge-changes-from-dev-tree.patch'::"$_lucjan/ext4-patches-v7/0001-ext4-6.2-merge-changes-from-dev-tree.patch"
+        '0108-LUCJAN-ksmbd-6.2-merge-changes-from-dev-tree.patch'::"$_lucjan/ksmbd-patches-v2/0001-ksmbd-6.2-merge-changes-from-dev-tree.patch"
+        '0109-LUCJAN-zstd-6.2-merge-changes-from-dev-tree.patch'::"$_lucjan/zstd-cachyos-patches-v5/0001-zstd-6.2-merge-changes-from-dev-tree.patch"
+        '0110-LUCJAN-clang-6.2-add-miscellaneous-fixes-for-clang.patch'::"$_lucjan/clang-patches-v2/0001-clang-6.2-add-miscellaneous-fixes-for-clang.patch"
+        '0111-LUCJAN-objtool-6.2-merge-changes-from-dev-tree.patch'::"$_lucjan/objtool-patches/0001-objtool-6.2-merge-changes-from-dev-tree.patch")
 
 sha256sums=('74862fa8ab40edae85bb3385c0b71fe103288bce518526d63197800b3cbdecb1'
             'SKIP'
-            'f4920f6a017bfba7053a97fa25d8a2e724fce8b7b5ecb709f7eb240b346e9421'
+            'e531425a570571e61f99e60d9402ce77cba065681587277be83285221dd0a018'
             'SKIP'
             '1849351b506a1110c5325eaac7e9c0c697baf6c885cf4bbadb6117b6f09186c7'
             '41c34759ed248175e905c57a25e2b0ed09b11d054fe1a8783d37459f34984106'
@@ -74,14 +71,12 @@ sha256sums=('74862fa8ab40edae85bb3385c0b71fe103288bce518526d63197800b3cbdecb1'
             '5e80e6990fd97ace860bcaaef7b6e01f0887f89065d2184e686561fc3d9aee73'
             'd8cd4a519d35cc6f0189255d8e6e012194b8c61c481627bb061365760314de3c'
             '9fa39a093813b2d48c0fa0b96925c5d4d3c2502c5f6efae35d3dd1bd9c2e03b9'
+            'ad40509b171b952d66aa46fc8c49ff93fed1fd8225c3d1e51e90b508a40ef94b'
             '130bb93463deddc8ecab1189104395166a2a0860a744fc5d890ee8d00a5d7068'
             '3985516659c0566cca73f822b08b50efcba32b9c07581026e821be79f4b64e91'
-            '4aea7195f82587e407c186ab0f40e7234d5ecce6decfaca40bd175b2dc271ede'
+            'fe551b5559da92597abfd8a81fbd0b4a927160a9a093f5f99094fb48817ff9f5'
             '5a5807eeba92722fed4fbc50ee1e2e08e04f70142952ab098f89e36ff2a674b2'
-            '0ccd70c73d80ea7c4bbbd73451e40564d14244b9aeb3ed0b60dd9d61ab03e5b2'
-            '4d8bed7737b48f120edeaf4b8061b97d1a18c6bc8dc0687ad2a02dec5a7d6a32'
-            '9df628fd530950e37d31da854cb314d536f33c83935adf5c47e71266a55f7004'
-            'e7be7647d54e3237bcf930da90580355e3e81b72df6e51ea8564ace9bf3ee232')
+            '0ccd70c73d80ea7c4bbbd73451e40564d14244b9aeb3ed0b60dd9d61ab03e5b2')
 
 validpgpkeys=('ABAF11C65A2970B130ABE3C479BE3E4300411886'   # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E'   # Greg Kroah-Hartman
@@ -220,10 +215,6 @@ prepare() {
         -e DEFAULT_BBR2 \
         --set-str DEFAULT_TCP_CONG bbr2
 
-    ### VMA
-    scripts/config -e PER_VMA_LOCK \
-        -d PER_VMA_LOCK_STATS
-
     ### LRNG
     scripts/config -d RANDOM_DEFAULT_IMPL \
         -e LRNG \
@@ -314,9 +305,6 @@ prepare() {
         -d SCHED_DEBUG \
         -d LATENCYTOP \
         -d DEBUG_PREEMPT
-
-    ### Wine Fastsync
-    scripts/config -e WINESYNC
 
     ### Framebuffer
     scripts/config -e SYSFB_SIMPLEFB
