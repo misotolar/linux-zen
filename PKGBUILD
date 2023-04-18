@@ -6,7 +6,7 @@ pkgbase=linux-zen
 pkgname=("$pkgbase" "$pkgbase-headers")
 pkgdesc='The Linux ZEN kernel and modules'
 pkgver="$_major.$_minor"
-pkgrel=1.1
+pkgrel=3.1
 
 _srcdir="linux-$_major"
 _zenver="v${pkgver%.*}-${pkgver##*.}"
@@ -39,17 +39,20 @@ source=("$_kernel/v6.x/linux-$_major.tar.xz"
         '0007-x86-disable-tsc-watchdog-if-using-direct-sync.patch'
         '0008-x86-Avoid-relocation-information-in-final-vmlinux.patch'
         '0009-Revert-objtool-Fix-memory-leak-in-create_static_call_sectio.patch'
-        '0101-LUCJAN-smpboot-patches.patch'::"$_lucjan/smpboot-patches-v18/0001-smpboot-patches.patch"
-        '0102-LUCJAN-block-mq-deadline-Disable-front_merges-by-def.patch'::"$_lucjan/xanmod-patches-sep/0001-XANMOD-block-mq-deadline-Disable-front_merges-by-def.patch"
-        '0103-LUCJAN-block-mq-deadline-Increase-write-priority-to-.patch'::"$_lucjan/xanmod-patches-sep/0002-XANMOD-block-mq-deadline-Increase-write-priority-to-.patch"
-        '0104-LUCJAN-block-set-rq_affinity-to-force-full-multithre.patch'::"$_lucjan/xanmod-patches-sep/0003-XANMOD-block-set-rq_affinity-to-force-full-multithre.patch"
-        '0105-LUCJAN-lrng-6.2-introduce-Linux-Random-Number-Generator.patch'::"$_lucjan/lrng-cachyos-patches-v6/0001-lrng-6.2-introduce-Linux-Random-Number-Generator.patch"
-        '0106-LUCJAN-futex-6.2-Add-entry-point-for-FUTEX_WAIT_MULTIPLE-op.patch'::"$_lucjan/futex-patches/0001-futex-6.2-Add-entry-point-for-FUTEX_WAIT_MULTIPLE-op.patch"
-        '0107-LUCJAN-ext4-6.2-merge-changes-from-dev-tree.patch'::"$_lucjan/ext4-patches-v7/0001-ext4-6.2-merge-changes-from-dev-tree.patch"
-        '0108-LUCJAN-ksmbd-6.2-merge-changes-from-dev-tree.patch'::"$_lucjan/ksmbd-patches-v2/0001-ksmbd-6.2-merge-changes-from-dev-tree.patch"
-        '0109-LUCJAN-zstd-6.2-merge-changes-from-dev-tree.patch'::"$_lucjan/zstd-cachyos-patches-v5/0001-zstd-6.2-merge-changes-from-dev-tree.patch"
-        '0110-LUCJAN-clang-6.2-add-miscellaneous-fixes-for-clang.patch'::"$_lucjan/clang-patches-v2/0001-clang-6.2-add-miscellaneous-fixes-for-clang.patch"
-        '0111-LUCJAN-objtool-6.2-merge-changes-from-dev-tree.patch'::"$_lucjan/objtool-patches/0001-objtool-6.2-merge-changes-from-dev-tree.patch")
+        '0101-ZEN-ae99641ab3476856f44e78abd5b9475639739ba9.patch'::"$_source/commit/ae99641ab3476856f44e78abd5b9475639739ba9.patch"
+        '0102-ZEN-e1fa9ea876458eade5717e6e00b375bff8d86c98.patch'::"$_source/commit/e1fa9ea876458eade5717e6e00b375bff8d86c98.patch"
+        '0103-LUCJAN-smpboot-patches.patch'::"$_lucjan/smpboot-patches-v18/0001-smpboot-patches.patch"
+        '0104-LUCJAN-block-mq-deadline-Disable-front_merges-by-def.patch'::"$_lucjan/xanmod-patches-sep/0001-XANMOD-block-mq-deadline-Disable-front_merges-by-def.patch"
+        '0105-LUCJAN-block-mq-deadline-Increase-write-priority-to-.patch'::"$_lucjan/xanmod-patches-sep/0002-XANMOD-block-mq-deadline-Increase-write-priority-to-.patch"
+        '0106-LUCJAN-block-set-rq_affinity-to-force-full-multithre.patch'::"$_lucjan/xanmod-patches-sep/0003-XANMOD-block-set-rq_affinity-to-force-full-multithre.patch"
+        '0107-LUCJAN-Add-a-sysctl-to-skip-tcp-collapse-processing-when-th.patch'::"$_lucjan/cachyos-net-patches/0001-Add-a-sysctl-to-skip-tcp-collapse-processing-when-th.patch"
+        '0108-LUCJAN-lrng-6.2-introduce-Linux-Random-Number-Generator.patch'::"$_lucjan/lrng-cachyos-patches-v6/0001-lrng-6.2-introduce-Linux-Random-Number-Generator.patch"
+        '0109-LUCJAN-futex-6.2-Add-entry-point-for-FUTEX_WAIT_MULTIPLE-op.patch'::"$_lucjan/futex-patches/0001-futex-6.2-Add-entry-point-for-FUTEX_WAIT_MULTIPLE-op.patch"
+        '0110-LUCJAN-ext4-6.2-merge-changes-from-dev-tree.patch'::"$_lucjan/ext4-patches-v7/0001-ext4-6.2-merge-changes-from-dev-tree.patch"
+        '0111-LUCJAN-ksmbd-6.2-merge-changes-from-dev-tree.patch'::"$_lucjan/ksmbd-patches-v2/0001-ksmbd-6.2-merge-changes-from-dev-tree.patch"
+        '0112-LUCJAN-zstd-6.2-merge-changes-from-dev-tree.patch'::"$_lucjan/zstd-cachyos-patches-v5/0001-zstd-6.2-merge-changes-from-dev-tree.patch"
+        '0113-LUCJAN-clang-6.2-add-miscellaneous-fixes-for-clang.patch'::"$_lucjan/clang-patches-v2/0001-clang-6.2-add-miscellaneous-fixes-for-clang.patch"
+        '0114-LUCJAN-objtool-6.2-merge-changes-from-dev-tree.patch'::"$_lucjan/objtool-patches/0001-objtool-6.2-merge-changes-from-dev-tree.patch")
 
 sha256sums=('74862fa8ab40edae85bb3385c0b71fe103288bce518526d63197800b3cbdecb1'
             'SKIP'
@@ -66,10 +69,13 @@ sha256sums=('74862fa8ab40edae85bb3385c0b71fe103288bce518526d63197800b3cbdecb1'
             '5b051f99657076bd2ae3118f151c8dc9485a9e9d57689c2adf4c96c90ef62da4'
             'e8dd037119d4468d066fd73ce10e107d47a628977333bbecf149597cab912690'
             '1a193d5e90de927dbfedc748255ceca976c2f14bc83be4161a03048f7743240a'
+            '8899fe8c5e5e442f9d062b30a64bde7203487e66d734519ef184a848b4a343c3'
+            '4b40ec66e40d9496c1ed43c63a1cc1ace05421793bdb019a56dcc9c5713e3d4a'
             '20b00e8ad8b7d74737ca119de808025ad2b196f9bd7c5bdad30d9e98e6f27f04'
             '8a808cec471ae0b6c1166e076d0f61e018597dc55e701e9a6c9c5ba6cbf59148'
             '5e80e6990fd97ace860bcaaef7b6e01f0887f89065d2184e686561fc3d9aee73'
             'd8cd4a519d35cc6f0189255d8e6e012194b8c61c481627bb061365760314de3c'
+            '09a629fea8afc05a1fffa80887f9da8579a198643bdb91a1f447c54f82c03b91'
             '9fa39a093813b2d48c0fa0b96925c5d4d3c2502c5f6efae35d3dd1bd9c2e03b9'
             'ad40509b171b952d66aa46fc8c49ff93fed1fd8225c3d1e51e90b508a40ef94b'
             '130bb93463deddc8ecab1189104395166a2a0860a744fc5d890ee8d00a5d7068'
