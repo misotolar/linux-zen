@@ -1,12 +1,12 @@
 
-_major=6.2
-_minor=13.zen1
+_major=6.3
+_minor=1.zen1
 
 pkgbase=linux-zen
 pkgname=("$pkgbase" "$pkgbase-headers")
 pkgdesc='The Linux ZEN kernel and modules'
 pkgver="$_major.$_minor"
-pkgrel=1.1
+pkgrel=1
 
 _srcdir="linux-$_major"
 _zenver="v${pkgver%.*}-${pkgver##*.}"
@@ -21,7 +21,7 @@ arch=('x86_64' 'x86_64_v3')
 url="$_source/commits/$_zenver"
 license=('GPL2')
 
-makedepends=('bc' 'clang' 'cpio' 'git' 'kmod' 'libelf' 'llvm' 'lld' 'pahole' 'perl' 'tar' 'xmlto' 'xz')
+makedepends=('bc' 'clang' 'cpio' 'gettext' 'git' 'kmod' 'libelf' 'llvm' 'lld' 'pahole' 'perl' 'python' 'tar' 'xz')
 options=('!strip')
 
 source=("$_kernel/v6.x/linux-$_major.tar.xz"
@@ -38,47 +38,41 @@ source=("$_kernel/v6.x/linux-$_major.tar.xz"
         '0006-x86-don-t-check-for-random-warps-if-using-direct-syn.patch'
         '0007-x86-disable-tsc-watchdog-if-using-direct-sync.patch'
         '0008-x86-Avoid-relocation-information-in-final-vmlinux.patch'
-        '0009-Revert-objtool-Fix-memory-leak-in-create_static_call_sectio.patch'
-        '0101-LUCJAN-smpboot-patches.patch'::"$_lucjan/smpboot-patches-v18/0001-smpboot-patches.patch"
-        '0102-LUCJAN-block-mq-deadline-Disable-front_merges-by-def.patch'::"$_lucjan/xanmod-patches-sep/0001-XANMOD-block-mq-deadline-Disable-front_merges-by-def.patch"
-        '0103-LUCJAN-block-mq-deadline-Increase-write-priority-to-.patch'::"$_lucjan/xanmod-patches-sep/0002-XANMOD-block-mq-deadline-Increase-write-priority-to-.patch"
-        '0104-LUCJAN-block-set-rq_affinity-to-force-full-multithre.patch'::"$_lucjan/xanmod-patches-sep/0003-XANMOD-block-set-rq_affinity-to-force-full-multithre.patch"
-        '0105-LUCJAN-Add-a-sysctl-to-skip-tcp-collapse-processing-when-th.patch'::"$_lucjan/cachyos-net-patches/0001-Add-a-sysctl-to-skip-tcp-collapse-processing-when-th.patch"
-        '0106-LUCJAN-lrng-6.2-introduce-Linux-Random-Number-Generator.patch'::"$_lucjan/lrng-cachyos-patches-v6/0001-lrng-6.2-introduce-Linux-Random-Number-Generator.patch"
-        '0107-LUCJAN-futex-6.2-Add-entry-point-for-FUTEX_WAIT_MULTIPLE-op.patch'::"$_lucjan/futex-patches/0001-futex-6.2-Add-entry-point-for-FUTEX_WAIT_MULTIPLE-op.patch"
-        '0108-LUCJAN-ext4-6.2-merge-changes-from-dev-tree.patch'::"$_lucjan/ext4-patches-v7/0001-ext4-6.2-merge-changes-from-dev-tree.patch"
-        '0109-LUCJAN-ksmbd-6.2-merge-changes-from-dev-tree.patch'::"$_lucjan/ksmbd-patches-v2/0001-ksmbd-6.2-merge-changes-from-dev-tree.patch"
-        '0110-LUCJAN-zstd-6.2-merge-changes-from-dev-tree.patch'::"$_lucjan/zstd-cachyos-patches-v5/0001-zstd-6.2-merge-changes-from-dev-tree.patch"
-        '0111-LUCJAN-clang-6.2-add-miscellaneous-fixes-for-clang.patch'::"$_lucjan/clang-patches-v2/0001-clang-6.2-add-miscellaneous-fixes-for-clang.patch"
-        '0112-LUCJAN-objtool-6.2-merge-changes-from-dev-tree.patch'::"$_lucjan/objtool-patches/0001-objtool-6.2-merge-changes-from-dev-tree.patch")
+        '0009-Revert-ZEN-Add-graysky-s-more-uarches.patch'
+        '0101-LUCJAN-cpu-cachyos-patches.patch'::"$_lucjan/cpu-cachyos-patches-v2/0001-cpu-cachyos-patches.patch"
+        '0102-LUCJAN-block-mq-deadline-Increase-write-priority-to-.patch'::"$_lucjan/xanmod-patches-v2-sep/0003-XANMOD-block-mq-deadline-Increase-write-priority-to-.patch"
+        '0103-LUCJAN-block-mq-deadline-Disable-front_merges-by-def.patch'::"$_lucjan/xanmod-patches-v2-sep/0004-XANMOD-block-mq-deadline-Disable-front_merges-by-def.patch"
+        '0104-LUCJAN-block-set-rq_affinity-to-force-full-multithre.patch'::"$_lucjan/xanmod-patches-v2-sep/0005-XANMOD-block-set-rq_affinity-to-force-full-multithre.patch"
+        '0105-LUCJAN-lrng-6.3-introduce-Linux-Random-Number-Generator.patch'::"$_lucjan/lrng-cachyos-patches/0001-lrng-6.3-introduce-Linux-Random-Number-Generator.patch"
+        '0106-LUCJAN-futex-6.3-Add-entry-point-for-FUTEX_WAIT_MULTIPLE-op.patch'::"$_lucjan/futex-patches/0001-futex-6.3-Add-entry-point-for-FUTEX_WAIT_MULTIPLE-op.patch"
+        '0107-LUCJAN-ext4-6.3-merge-changes-from-dev-tree.patch'::"$_lucjan/ext4-patches-v2/0001-ext4-6.3-merge-changes-from-dev-tree.patch"
+        '0108-LUCJAN-zstd-6.3-merge-changes-from-dev-tree.patch'::"$_lucjan/zstd-cachyos-patches/0001-zstd-6.3-merge-changes-from-dev-tree.patch"
+        '0109-LUCJAN-clang-6.3-add-miscellaneous-fixes-for-clang.patch'::"$_lucjan/clang-patches/0001-clang-6.3-add-miscellaneous-fixes-for-clang.patch")
 
-sha256sums=('74862fa8ab40edae85bb3385c0b71fe103288bce518526d63197800b3cbdecb1'
+sha256sums=('ba3491f5ed6bd270a370c440434e3d69085fcdd528922fa01e73d7657db73b1e'
             'SKIP'
-            '5afecd00597f465848e5e2fd96025de47f8b09f0f75432632661daadecf3f5cf'
+            '0bf539219acafa4eed7fc3c92035f1e2f95e7e7faf239374c06ae05981792ef3'
             'SKIP'
-            '2a8a574db19f5b1885df7ce5975c9a1be7a42ce893fc6d5130b5c6bfc87c0f7a'
+            '0bc9e02b66d43c0c9f32206504377d6e60c010747215a776b47daf97dac99483'
             '41c34759ed248175e905c57a25e2b0ed09b11d054fe1a8783d37459f34984106'
             'a99a0101fb71e748124cd1021f40766ba4d234110d52f9ca3585b0c6e36daf29'
-            '1b268f30b54b59fce5c3a73d7483684d1fd3f724cf283c02e84ac0644238be69'
+            '54f77dca3802a9e1036d20cacbc3356823f038b63b6792225a51cc4b8630fa34'
             'd65bd6c210896610b54abfad15b86756382d3a1eb48835b6a2e16ea5ea541863'
             '70472f2ffc33a40796abe7eca9ba5c534fe2b6c035bad1dd13cb6bcd7acd58ab'
             'f544db22d1ddd9dd482ba552309775671ffb3c712cd43a9fae6fc0152868cc94'
             'd7e2500fe861c78e3087431f2964f4e79eb2cd3588aadff746f9a9e9b5913804'
-            '5b051f99657076bd2ae3118f151c8dc9485a9e9d57689c2adf4c96c90ef62da4'
+            '3f51da3f1ed5a0d115e69047ef9fd1cfb36adf48d0e6d812fbf449b61db5d373'
             'e8dd037119d4468d066fd73ce10e107d47a628977333bbecf149597cab912690'
-            '1a193d5e90de927dbfedc748255ceca976c2f14bc83be4161a03048f7743240a'
-            '20b00e8ad8b7d74737ca119de808025ad2b196f9bd7c5bdad30d9e98e6f27f04'
-            '8a808cec471ae0b6c1166e076d0f61e018597dc55e701e9a6c9c5ba6cbf59148'
-            '5e80e6990fd97ace860bcaaef7b6e01f0887f89065d2184e686561fc3d9aee73'
-            'd8cd4a519d35cc6f0189255d8e6e012194b8c61c481627bb061365760314de3c'
-            '09a629fea8afc05a1fffa80887f9da8579a198643bdb91a1f447c54f82c03b91'
-            '9fa39a093813b2d48c0fa0b96925c5d4d3c2502c5f6efae35d3dd1bd9c2e03b9'
-            'ad40509b171b952d66aa46fc8c49ff93fed1fd8225c3d1e51e90b508a40ef94b'
-            '130bb93463deddc8ecab1189104395166a2a0860a744fc5d890ee8d00a5d7068'
-            '3985516659c0566cca73f822b08b50efcba32b9c07581026e821be79f4b64e91'
-            'fe551b5559da92597abfd8a81fbd0b4a927160a9a093f5f99094fb48817ff9f5'
-            '5a5807eeba92722fed4fbc50ee1e2e08e04f70142952ab098f89e36ff2a674b2'
-            '0ccd70c73d80ea7c4bbbd73451e40564d14244b9aeb3ed0b60dd9d61ab03e5b2')
+            'b501582a2c5402fa5d6a3a84962d0b6d807f3a13b2338ddbaff008e2bc1e1b0e'
+            '4ecc858dd647f82255504c7e86f5a40690a1964fca7ee150b361a67890c8f180'
+            'af73e70396b9752b476bab0762d0a3c78369d78f522284bbd05cce6dae77ee74'
+            '8a3eef02f44c7c887d23a61275cd55542b8aa6802021f71e8d0b1d753c501559'
+            '562fe86f9aca31bae96384d73c439830ce4be3f2f19f06689dd532a7cadc2a96'
+            '4fe53e7db394ad31e21e91f5bc8014b6b0c9fcbbf85b04addc627fd05fab042a'
+            'c744c7977c1d651fd83e88ef74d0fdec6c20af1fe6aaf7cfecc78d414ac7bc1c'
+            '20c1150970fcc802d920184e9d073a3043a4143abccd36c8f53636a5e338bbca'
+            '19a04d22d291bbc4c2fc3263e943eaa8f2f29c5d85825f3d584bd948350895f6'
+            '4b96f1148e161ff19f4e84894cffb66943ba4bddb62d35710b83e2215e1fc25e')
 
 validpgpkeys=('ABAF11C65A2970B130ABE3C479BE3E4300411886'   # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E'   # Greg Kroah-Hartman
@@ -89,7 +83,10 @@ export KBUILD_BUILD_HOST="$(hostname 2>/dev/null || echo -n archlinux)"
 export KBUILD_BUILD_USER=$pkgbase
 export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
 
-_makecmd="make CC=clang LD=ld.lld LLVM=1 LLVM_IAS=1"
+_make() {
+  test -s version
+  make CC=clang LD=ld.lld LLVM=1 LLVM_IAS=1 KERNELRELEASE="$(<version)" "$@"
+}
 
 prepare() {
 
@@ -106,15 +103,6 @@ prepare() {
     fi
 
     cd $_srcdir
-
-    echo "Setting version..."
-    scripts/setlocalversion --save-scmversion
-    echo "-$pkgrel" > localversion.10-pkgrel
-    echo "${pkgbase#linux}" > localversion.20-pkgname
-    if [[ "archlinux" != "$KBUILD_BUILD_HOST" ]]; then
-        echo "-$KBUILD_BUILD_HOST" > localversion.20-pkgname
-    fi
-
     echo "Applying patch $_zenver.patch..."
     patch -Nsp1 < "../$_zenver.patch"
 
@@ -127,12 +115,23 @@ prepare() {
         patch -Nsp1 < "../$src"
     done
 
+    echo "Setting version..."
+    echo "-$pkgrel" > localversion.10-pkgrel
+    echo "${pkgbase#linux}" > localversion.20-pkgname
+    if [[ "archlinux" != "$KBUILD_BUILD_HOST" ]]; then
+        echo "-$KBUILD_BUILD_HOST" > localversion.20-pkgname
+    fi
+
+    make defconfig >/dev/null
+    make -s kernelrelease > version
+    make mrproper >/dev/null
+
     echo "Setting config..."
     cp ../config .config
 
-    $_makecmd olddefconfig
+    _make olddefconfig
     if [ -f "$HOME/.config/modprobed.db" ]; then
-        yes "" | $_makecmd LSMOD=$HOME/.config/modprobed.db localmodconfig >/dev/null
+        yes "" | _make LSMOD=$HOME/.config/modprobed.db localmodconfig >/dev/null
     fi
 
     ### Hostname
@@ -175,13 +174,14 @@ prepare() {
         -d X86_64_ACPI_NUMA \
         -d NODES_SPAN_OTHER_NODES \
         -d NUMA_EMU \
-        -d NEED_MULTIPLE_NODES \
         -d USE_PERCPU_NUMA_NODE_ID \
         -d ACPI_NUMA \
         -d ARCH_SUPPORTS_NUMA_BALANCING \
         -d NODES_SHIFT \
         -u NODES_SHIFT \
-        -d NEED_MULTIPLE_NODES
+        -d NEED_MULTIPLE_NODES \
+        -d NUMA_BALANCING \
+        -d NUMA_BALANCING_DEFAULT_ENABLED
 
     ### Maximum number of CPUs
     if [[ "archlinux" != "$KBUILD_BUILD_HOST" ]]; then
@@ -288,18 +288,8 @@ prepare() {
         -d LRNG_SELFTEST_PANIC \
         -d LRNG_RUNTIME_FORCE_SEEDING_DISABLE
 
-    ### BPF subsystem
-    scripts/config -d BPF_LSM \
-        -d BPF_PRELOAD
-
     ### Debug
-    scripts/config -d DEBUG_INFO \
-        -d DEBUG_INFO_BTF \
-        -d DEBUG_INFO_DWARF4 \
-        -d DEBUG_INFO_DWARF5 \
-        -d PAHOLE_HAS_SPLIT_BTF \
-        -d DEBUG_INFO_BTF_MODULES \
-        -d SLUB_DEBUG \
+    scripts/config -d SLUB_DEBUG \
         -d PM_DEBUG \
         -d PM_ADVANCED_DEBUG \
         -d PM_SLEEP_DEBUG \
@@ -322,13 +312,12 @@ prepare() {
         scripts/config -d MODULE_ALLOW_MISSING_NAMESPACE_IMPORTS
     fi
 
-    $_makecmd -s kernelrelease > version
     echo "Prepared $pkgbase version $(<version)"
 }
 
 build() {
     cd $_srcdir
-    $_makecmd -j$(nproc) all
+    _make -j$(nproc) all
 }
 
 _package() {
@@ -341,19 +330,18 @@ _package() {
     replaces=()
 
     cd $_srcdir
-    local kernver="$(<version)"
-    local modulesdir="$pkgdir/usr/lib/modules/$kernver"
+    local modulesdir="$pkgdir/usr/lib/modules/$(<version)"
 
     echo "Installing boot image..."
     # systemd expects to find the kernel here to allow hibernation
     # https://github.com/systemd/systemd/commit/edda44605f06a41fb86b7ab8128dcf99161d2344
-    install -Dm644 "$($_makecmd -s image_name)" "$modulesdir/vmlinuz"
+    install -Dm644 "$(_make -s image_name)" "$modulesdir/vmlinuz"
 
     # Used by mkinitcpio to name the kernel
     echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
     echo "Installing modules..."
-    $_makecmd INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 modules_install
+    _make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 modules_install
 
     # remove build and source links
     rm "$modulesdir"/{source,build}
@@ -374,6 +362,11 @@ _package-headers() {
 
     # required when STACK_VALIDATION is enabled
     install -Dt "$builddir/tools/objtool" tools/objtool/objtool
+
+    # required when DEBUG_INFO_BTF_MODULES is enabled
+    if [ -f tools/bpf/resolve_btfids/resolve_btfids ]; then
+        install -Dt "$builddir/tools/bpf/resolve_btfids" tools/bpf/resolve_btfids/resolve_btfids
+    fi
 
     echo "Installing headers..."
     cp -t "$builddir" -a include
