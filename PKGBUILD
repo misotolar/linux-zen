@@ -1,6 +1,6 @@
 
 _major=6.3
-_minor=1.zen1
+_minor=1.zen2
 
 pkgbase=linux-zen
 pkgname=("$pkgbase" "$pkgbase-headers")
@@ -17,7 +17,7 @@ _source="https://github.com/zen-kernel/zen-kernel"
 _lucjan="https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/$_major"
 _tkg="https://raw.githubusercontent.com/Frogging-Family/linux-tkg/master/linux-tkg-patches/$_major"
 
-arch=('x86_64' 'x86_64_v3')
+arch=('x86_64')
 url="$_source/commits/$_zenver"
 license=('GPL2')
 
@@ -30,6 +30,8 @@ source=("$_kernel/v6.x/linux-$_major.tar.xz"
         "$_source/releases/download/$_zenver/$_zenver.patch.xz.sig"
         'https://github.com/archlinux/svntogit-packages/raw/master/linux-zen/trunk/config'
         'https://raw.githubusercontent.com/CachyOS/linux-cachyos/master/linux-cachyos/auto-cpu-optimization.sh'
+        'config-default.sh'
+        'config-trinity.sh'
         '0001-kconfig-additional-timer-interrupt-kernel-config-opt.patch'
         '0002-x86-implement-tsc-directsync-for-systems-without-IA3.patch'
         '0003-x86-touch-clocksource-watchdog-after-syncing-TSCs.patch'
@@ -51,10 +53,12 @@ source=("$_kernel/v6.x/linux-$_major.tar.xz"
 
 sha256sums=('ba3491f5ed6bd270a370c440434e3d69085fcdd528922fa01e73d7657db73b1e'
             'SKIP'
-            '0bf539219acafa4eed7fc3c92035f1e2f95e7e7faf239374c06ae05981792ef3'
+            '31e19d1c9f09f904450794145af9103e134bbda1f5b40642963ee294e5c27a77'
             'SKIP'
             '0bc9e02b66d43c0c9f32206504377d6e60c010747215a776b47daf97dac99483'
             '41c34759ed248175e905c57a25e2b0ed09b11d054fe1a8783d37459f34984106'
+            '9e6652484bc7f345f636e15e68cb38f6f6de2cc6eecd0c708817185e668f4131'
+            '46ebbe5ccb277b0f5d85059826b4498cd9db33f10f6a700254f942a4fc69077e'
             'a99a0101fb71e748124cd1021f40766ba4d234110d52f9ca3585b0c6e36daf29'
             '54f77dca3802a9e1036d20cacbc3356823f038b63b6792225a51cc4b8630fa34'
             'd65bd6c210896610b54abfad15b86756382d3a1eb48835b6a2e16ea5ea541863'
@@ -134,182 +138,19 @@ prepare() {
         yes "" | _make LSMOD=$HOME/.config/modprobed.db localmodconfig >/dev/null
     fi
 
-    ### Hostname
-    scripts/config --set-str DEFAULT_HOSTNAME "$KBUILD_BUILD_HOST"
-
-    ### RCU priority
-    scripts/config --set-val RCU_BOOST_DELAY 331
+    ### Firmware
 
     ### CPU optimization
     if [[ "archlinux" != "$KBUILD_BUILD_HOST" ]]; then
-        sh "${srcdir}"/auto-cpu-optimization.sh >/dev/null
+        sh $srcdir/auto-cpu-optimization.sh >/dev/null
     fi
 
-    ### CPU scheduler
-    scripts/config -e SCHED_ALT \
-        -e SCHED_PDS \
-        -d SCHED_BMQ
-
-    ### LLVM level
-    scripts/config -e LTO \
-        -e LTO_CLANG \
-        -e ARCH_SUPPORTS_LTO_CLANG \
-        -e ARCH_SUPPORTS_LTO_CLANG_THIN \
-        -d LTO_NONE \
-        -e HAS_LTO_CLANG \
-        -e HAVE_GCC_PLUGINS \
-        -e "LTO_CLANG_${_LTO_CLANG:-THIN}"
-
-    ### Tick rate
-    scripts/config -d HZ_1000 \
-        -e "HZ_${_HZ:-1000}" \
-        --set-val HZ ${_HZ:-1000}
-
-    ### PSI
-    scripts/config -d PSI
-
-    ### NUMA
-    scripts/config -d NUMA \
-        -d AMD_NUMA \
-        -d X86_64_ACPI_NUMA \
-        -d NODES_SPAN_OTHER_NODES \
-        -d NUMA_EMU \
-        -d USE_PERCPU_NUMA_NODE_ID \
-        -d ACPI_NUMA \
-        -d ARCH_SUPPORTS_NUMA_BALANCING \
-        -d NODES_SHIFT \
-        -u NODES_SHIFT \
-        -d NEED_MULTIPLE_NODES \
-        -d NUMA_BALANCING \
-        -d NUMA_BALANCING_DEFAULT_ENABLED
-
-    ### Maximum number of CPUs
-    if [[ "archlinux" != "$KBUILD_BUILD_HOST" ]]; then
-        scripts/config --set-val NR_CPUS $(($(nproc)*2))
-    fi
-
-    ### I/O schedulers
-    scripts/config -d MQ_IOSCHED_KYBER
-
-    ### Performance governor
-    scripts/config -d CPU_FREQ_DEFAULT_GOV_SCHEDUTIL \
-        -e CPU_FREQ_DEFAULT_GOV_PERFORMANCE
-
-    ### TCP congestion control
-    scripts/config -d DEFAULT_CUBIC \
-        -d TCP_CONG_BIC \
-        -d TCP_CONG_CUBIC \
-        -d TCP_CONG_WESTWOOD \
-        -d TCP_CONG_HTCP \
-        -d TCP_CONG_HSTCP \
-        -d TCP_CONG_HYBLA \
-        -d TCP_CONG_VEGAS \
-        -d TCP_CONG_NV \
-        -d TCP_CONG_SCALABLE \
-        -d TCP_CONG_LP \
-        -d TCP_CONG_VENO \
-        -d TCP_CONG_YEAH \
-        -d TCP_CONG_ILLINOIS \
-        -d TCP_CONG_DCTCP \
-        -d TCP_CONG_CDG \
-        -d TCP_CONG_BBR \
-        -e TCP_CONG_BBR2 \
-        -e DEFAULT_BBR2 \
-        --set-str DEFAULT_TCP_CONG bbr2
-
-    ### LRNG
-    scripts/config -d RANDOM_DEFAULT_IMPL \
-        -e LRNG \
-        -e LRNG_SHA256 \
-        -e LRNG_COMMON_DEV_IF \
-        -e LRNG_DRNG_ATOMIC \
-        -e LRNG_SYSCTL \
-        -e LRNG_RANDOM_IF \
-        -e LRNG_AIS2031_NTG1_SEEDING_STRATEGY \
-        -m LRNG_KCAPI_IF \
-        -m LRNG_HWRAND_IF \
-        -e LRNG_DEV_IF \
-        -e LRNG_RUNTIME_ES_CONFIG \
-        -e LRNG_IRQ_DFLT_TIMER_ES \
-        -d LRNG_SCHED_DFLT_TIMER_ES \
-        -e LRNG_TIMER_COMMON \
-        -d LRNG_COLLECTION_SIZE_256 \
-        -d LRNG_COLLECTION_SIZE_512 \
-        -e LRNG_COLLECTION_SIZE_1024 \
-        -d LRNG_COLLECTION_SIZE_2048 \
-        -d LRNG_COLLECTION_SIZE_4096 \
-        -d LRNG_COLLECTION_SIZE_8192 \
-        --set-val LRNG_COLLECTION_SIZE 1024 \
-        -e LRNG_HEALTH_TESTS \
-        --set-val LRNG_RCT_CUTOFF 31 \
-        --set-val LRNG_APT_CUTOFF 325 \
-        -e LRNG_IRQ \
-        -e LRNG_CONTINUOUS_COMPRESSION_ENABLED \
-        -d LRNG_CONTINUOUS_COMPRESSION_DISABLED \
-        -e LRNG_ENABLE_CONTINUOUS_COMPRESSION \
-        -e LRNG_SWITCHABLE_CONTINUOUS_COMPRESSION \
-        --set-val LRNG_IRQ_ENTROPY_RATE 256 \
-        -e LRNG_JENT \
-        --set-val LRNG_JENT_ENTROPY_RATE 16 \
-        -e LRNG_CPU \
-        --set-val LRNG_CPU_FULL_ENT_MULTIPLIER 1 \
-        --set-val LRNG_CPU_ENTROPY_RATE 8 \
-        -e LRNG_SCHED \
-        --set-val LRNG_SCHED_ENTROPY_RATE 4294967295 \
-        -e LRNG_DRNG_CHACHA20 \
-        -m LRNG_DRBG \
-        -m LRNG_DRNG_KCAPI \
-        -e LRNG_SWITCH \
-        -e LRNG_SWITCH_HASH \
-        -m LRNG_HASH_KCAPI \
-        -e LRNG_SWITCH_DRNG \
-        -m LRNG_SWITCH_DRBG \
-        -m LRNG_SWITCH_DRNG_KCAPI \
-        -e LRNG_DFLT_DRNG_CHACHA20 \
-        -d LRNG_DFLT_DRNG_DRBG \
-        -d LRNG_DFLT_DRNG_KCAPI \
-        -e LRNG_TESTING_MENU \
-        -d LRNG_RAW_HIRES_ENTROPY \
-        -d LRNG_RAW_JIFFIES_ENTROPY \
-        -d LRNG_RAW_IRQ_ENTROPY \
-        -d LRNG_RAW_RETIP_ENTROPY \
-        -d LRNG_RAW_REGS_ENTROPY \
-        -d LRNG_RAW_ARRAY \
-        -d LRNG_IRQ_PERF \
-        -d LRNG_RAW_SCHED_HIRES_ENTROPY \
-        -d LRNG_RAW_SCHED_PID_ENTROPY \
-        -d LRNG_RAW_SCHED_START_TIME_ENTROPY \
-        -d LRNG_RAW_SCHED_NVCSW_ENTROPY \
-        -d LRNG_SCHED_PERF \
-        -d LRNG_ACVT_HASH \
-        -d LRNG_RUNTIME_MAX_WO_RESEED_CONFIG \
-        -d LRNG_TEST_CPU_ES_COMPRESSION \
-        -e LRNG_SELFTEST \
-        -d LRNG_SELFTEST_PANIC \
-        -d LRNG_RUNTIME_FORCE_SEEDING_DISABLE
-
-    ### Debug
-    scripts/config -d SLUB_DEBUG \
-        -d PM_DEBUG \
-        -d PM_ADVANCED_DEBUG \
-        -d PM_SLEEP_DEBUG \
-        -d ACPI_DEBUG \
-        -d SCHED_DEBUG \
-        -d LATENCYTOP \
-        -d DEBUG_PREEMPT
-
-    ### Framebuffer
-    scripts/config -e SYSFB_SIMPLEFB
-
-    ### Cleanup
-    scripts/config -d ACPI_PRMT
-    scripts/config -d HYPERVISOR_GUEST
-    scripts/config -d RTW88
-
-    ### Arch-SKM
-    if [ -d /usr/src/certs-local ]; then
-        scripts/config -e MODULE_SIG_FORCE
-        scripts/config -d MODULE_ALLOW_MISSING_NAMESPACE_IMPORTS
+    ### Default configuration
+    sh $srcdir/config-default.sh >/dev/null
+    
+    ### Build host configuration
+    if [ -f "$srcdir/config-$KBUILD_BUILD_HOST.sh" ]; then
+        sh $srcdir/config-$KBUILD_BUILD_HOST.sh
     fi
 
     echo "Prepared $pkgbase version $(<version)"
