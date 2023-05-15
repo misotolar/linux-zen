@@ -1,6 +1,6 @@
 
 _major=6.3
-_minor=1.zen2
+_minor=2.zen1
 
 pkgbase=linux-zen
 pkgname=("$pkgbase" "$pkgbase-headers")
@@ -45,20 +45,20 @@ source=("$_kernel/v6.x/linux-$_major.tar.xz"
         '0102-LUCJAN-block-mq-deadline-Increase-write-priority-to-.patch'::"$_lucjan/xanmod-patches-v2-sep/0003-XANMOD-block-mq-deadline-Increase-write-priority-to-.patch"
         '0103-LUCJAN-block-mq-deadline-Disable-front_merges-by-def.patch'::"$_lucjan/xanmod-patches-v2-sep/0004-XANMOD-block-mq-deadline-Disable-front_merges-by-def.patch"
         '0104-LUCJAN-block-set-rq_affinity-to-force-full-multithre.patch'::"$_lucjan/xanmod-patches-v2-sep/0005-XANMOD-block-set-rq_affinity-to-force-full-multithre.patch"
-        '0105-LUCJAN-lrng-6.3-introduce-Linux-Random-Number-Generator.patch'::"$_lucjan/lrng-cachyos-patches/0001-lrng-6.3-introduce-Linux-Random-Number-Generator.patch"
-        '0106-LUCJAN-futex-6.3-Add-entry-point-for-FUTEX_WAIT_MULTIPLE-op.patch'::"$_lucjan/futex-patches/0001-futex-6.3-Add-entry-point-for-FUTEX_WAIT_MULTIPLE-op.patch"
-        '0107-LUCJAN-ext4-6.3-merge-changes-from-dev-tree.patch'::"$_lucjan/ext4-patches-v2/0001-ext4-6.3-merge-changes-from-dev-tree.patch"
-        '0108-LUCJAN-zstd-6.3-merge-changes-from-dev-tree.patch'::"$_lucjan/zstd-cachyos-patches/0001-zstd-6.3-merge-changes-from-dev-tree.patch"
-        '0109-LUCJAN-clang-6.3-add-miscellaneous-fixes-for-clang.patch'::"$_lucjan/clang-patches/0001-clang-6.3-add-miscellaneous-fixes-for-clang.patch")
+        '0105-LUCJAN-clang-6.3-add-miscellaneous-fixes-for-clang.patch'::"$_lucjan/clang-patches/0001-clang-6.3-add-miscellaneous-fixes-for-clang.patch"
+        '0106-LUCJAN-lrng-6.3-introduce-Linux-Random-Number-Generator.patch'::"$_lucjan/lrng-cachyos-patches/0001-lrng-6.3-introduce-Linux-Random-Number-Generator.patch"
+        '0107-LUCJAN-futex-6.3-Add-entry-point-for-FUTEX_WAIT_MULTIPLE-op.patch'::"$_lucjan/futex-patches/0001-futex-6.3-Add-entry-point-for-FUTEX_WAIT_MULTIPLE-op.patch"
+        '0108-LUCJAN-ext4-6.3-merge-changes-from-dev-tree.patch'::"$_lucjan/ext4-patches-v3/0001-ext4-6.3-merge-changes-from-dev-tree.patch"
+        '0109-LUCJAN-zstd-6.3-import-v1.5.5.patch'::"$_lucjan/zstd-cachyos-patches-v2/0001-zstd-6.3-import-v1.5.5.patch")
 
 sha256sums=('ba3491f5ed6bd270a370c440434e3d69085fcdd528922fa01e73d7657db73b1e'
             'SKIP'
-            '31e19d1c9f09f904450794145af9103e134bbda1f5b40642963ee294e5c27a77'
+            '7d66a9f08d3bcfbfdb2f6e0b183aa131a74d4ae5c48d003355d1589cbd046090'
             'SKIP'
             '0bc9e02b66d43c0c9f32206504377d6e60c010747215a776b47daf97dac99483'
             '41c34759ed248175e905c57a25e2b0ed09b11d054fe1a8783d37459f34984106'
             '9e6652484bc7f345f636e15e68cb38f6f6de2cc6eecd0c708817185e668f4131'
-            '46ebbe5ccb277b0f5d85059826b4498cd9db33f10f6a700254f942a4fc69077e'
+            '4f81ebccf95e5f40a4c1fd5fc4e2ecfd426c216fff053c5362ce29a38169ba6c'
             'a99a0101fb71e748124cd1021f40766ba4d234110d52f9ca3585b0c6e36daf29'
             '54f77dca3802a9e1036d20cacbc3356823f038b63b6792225a51cc4b8630fa34'
             'd65bd6c210896610b54abfad15b86756382d3a1eb48835b6a2e16ea5ea541863'
@@ -72,11 +72,11 @@ sha256sums=('ba3491f5ed6bd270a370c440434e3d69085fcdd528922fa01e73d7657db73b1e'
             'af73e70396b9752b476bab0762d0a3c78369d78f522284bbd05cce6dae77ee74'
             '8a3eef02f44c7c887d23a61275cd55542b8aa6802021f71e8d0b1d753c501559'
             '562fe86f9aca31bae96384d73c439830ce4be3f2f19f06689dd532a7cadc2a96'
+            '4b96f1148e161ff19f4e84894cffb66943ba4bddb62d35710b83e2215e1fc25e'
             '4fe53e7db394ad31e21e91f5bc8014b6b0c9fcbbf85b04addc627fd05fab042a'
             'c744c7977c1d651fd83e88ef74d0fdec6c20af1fe6aaf7cfecc78d414ac7bc1c'
-            '20c1150970fcc802d920184e9d073a3043a4143abccd36c8f53636a5e338bbca'
-            '19a04d22d291bbc4c2fc3263e943eaa8f2f29c5d85825f3d584bd948350895f6'
-            '4b96f1148e161ff19f4e84894cffb66943ba4bddb62d35710b83e2215e1fc25e')
+            '197022c867cefb542ed202ee701599718e35e440cc1cf7846ff7eb313ae9da54'
+            '69962682502f19632769346d7e43dc0f049e7fbb310c7084629880267e63e407')
 
 validpgpkeys=('ABAF11C65A2970B130ABE3C479BE3E4300411886'   # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E'   # Greg Kroah-Hartman
@@ -138,8 +138,6 @@ prepare() {
         yes "" | _make LSMOD=$HOME/.config/modprobed.db localmodconfig >/dev/null
     fi
 
-    ### Firmware
-
     ### CPU optimization
     if [[ "archlinux" != "$KBUILD_BUILD_HOST" ]]; then
         sh $srcdir/auto-cpu-optimization.sh >/dev/null
@@ -147,7 +145,7 @@ prepare() {
 
     ### Default configuration
     sh $srcdir/config-default.sh >/dev/null
-    
+
     ### Build host configuration
     if [ -f "$srcdir/config-$KBUILD_BUILD_HOST.sh" ]; then
         sh $srcdir/config-$KBUILD_BUILD_HOST.sh
@@ -158,7 +156,7 @@ prepare() {
 
 build() {
     cd $_srcdir
-    _make -j$(nproc) all
+    _make -j$((`nproc`+1)) all
 }
 
 _package() {
