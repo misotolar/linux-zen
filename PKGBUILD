@@ -1,6 +1,6 @@
 
 _major=6.3
-_minor=2.zen1
+_minor=3.zen1
 
 pkgbase=linux-zen
 pkgname=("$pkgbase" "$pkgbase-headers")
@@ -28,7 +28,7 @@ source=("$_kernel/v6.x/linux-$_major.tar.xz"
         "$_kernel/v6.x/linux-$_major.tar.sign"
         "$_source/releases/download/$_zenver/$_zenver.patch.xz"
         "$_source/releases/download/$_zenver/$_zenver.patch.xz.sig"
-        'https://github.com/archlinux/svntogit-packages/raw/master/linux-zen/trunk/config'
+        'https://gitlab.archlinux.org/archlinux/packaging/packages/linux-zen/-/raw/main/config'
         'https://raw.githubusercontent.com/CachyOS/linux-cachyos/master/linux-cachyos/auto-cpu-optimization.sh'
         'config-default.sh'
         'config-trinity.sh'
@@ -41,24 +41,25 @@ source=("$_kernel/v6.x/linux-$_major.tar.xz"
         '0007-x86-disable-tsc-watchdog-if-using-direct-sync.patch'
         '0008-x86-Avoid-relocation-information-in-final-vmlinux.patch'
         '0009-Revert-ZEN-Add-graysky-s-more-uarches.patch'
-        '0101-LUCJAN-cpu-cachyos-patches.patch'::"$_lucjan/cpu-cachyos-patches-v2/0001-cpu-cachyos-patches.patch"
+        '0101-LUCJAN-cpu-cachyos-patches.patch'::"$_lucjan/cpu-cachyos-patches-v3/0001-cpu-cachyos-patches.patch"
         '0102-LUCJAN-block-mq-deadline-Increase-write-priority-to-.patch'::"$_lucjan/xanmod-patches-v2-sep/0003-XANMOD-block-mq-deadline-Increase-write-priority-to-.patch"
         '0103-LUCJAN-block-mq-deadline-Disable-front_merges-by-def.patch'::"$_lucjan/xanmod-patches-v2-sep/0004-XANMOD-block-mq-deadline-Disable-front_merges-by-def.patch"
         '0104-LUCJAN-block-set-rq_affinity-to-force-full-multithre.patch'::"$_lucjan/xanmod-patches-v2-sep/0005-XANMOD-block-set-rq_affinity-to-force-full-multithre.patch"
         '0105-LUCJAN-clang-6.3-add-miscellaneous-fixes-for-clang.patch'::"$_lucjan/clang-patches/0001-clang-6.3-add-miscellaneous-fixes-for-clang.patch"
         '0106-LUCJAN-lrng-6.3-introduce-Linux-Random-Number-Generator.patch'::"$_lucjan/lrng-cachyos-patches/0001-lrng-6.3-introduce-Linux-Random-Number-Generator.patch"
         '0107-LUCJAN-futex-6.3-Add-entry-point-for-FUTEX_WAIT_MULTIPLE-op.patch'::"$_lucjan/futex-patches/0001-futex-6.3-Add-entry-point-for-FUTEX_WAIT_MULTIPLE-op.patch"
-        '0108-LUCJAN-ext4-6.3-merge-changes-from-dev-tree.patch'::"$_lucjan/ext4-patches-v3/0001-ext4-6.3-merge-changes-from-dev-tree.patch"
-        '0109-LUCJAN-zstd-6.3-import-v1.5.5.patch'::"$_lucjan/zstd-cachyos-patches-v2/0001-zstd-6.3-import-v1.5.5.patch")
+        '0108-LUCJAN-ext4-6.3-merge-changes-from-dev-tree.patch'::"$_lucjan/ext4-patches-v4/0001-ext4-6.3-merge-changes-from-dev-tree.patch"
+        '0109-LUCJAN-zram-6.3-merge-changes-from-dev-tree.patch'::"$_lucjan/zram-cachyos-patches-v2/0001-zram-6.3-merge-changes-from-dev-tree.patch"
+        '0110-LUCJAN-zstd-6.3-import-v1.5.5.patch'::"$_lucjan/zstd-cachyos-patches-v2/0001-zstd-6.3-import-v1.5.5.patch")
 
 sha256sums=('ba3491f5ed6bd270a370c440434e3d69085fcdd528922fa01e73d7657db73b1e'
             'SKIP'
-            '7d66a9f08d3bcfbfdb2f6e0b183aa131a74d4ae5c48d003355d1589cbd046090'
+            '018a51cccc5732dd2a96ba87b032cf11ffb9835b0e5dd9e8d6cfe7b58442feff'
             'SKIP'
-            '0bc9e02b66d43c0c9f32206504377d6e60c010747215a776b47daf97dac99483'
+            'f4e8a2c9ef76b6c22638eb677d761d9b99645f9554525bea873b32e3107e86a2'
             '41c34759ed248175e905c57a25e2b0ed09b11d054fe1a8783d37459f34984106'
-            '9e6652484bc7f345f636e15e68cb38f6f6de2cc6eecd0c708817185e668f4131'
-            '4f81ebccf95e5f40a4c1fd5fc4e2ecfd426c216fff053c5362ce29a38169ba6c'
+            '33437acac5cc15fdf1a4f10b0704ec51a08c472d5b5c0234187b59bb04578c36'
+            '93d8ed2d12194510f91a92afd3d6a99e0a11240f60fbcfa589e860a06eb989ac'
             'a99a0101fb71e748124cd1021f40766ba4d234110d52f9ca3585b0c6e36daf29'
             '54f77dca3802a9e1036d20cacbc3356823f038b63b6792225a51cc4b8630fa34'
             'd65bd6c210896610b54abfad15b86756382d3a1eb48835b6a2e16ea5ea541863'
@@ -68,14 +69,15 @@ sha256sums=('ba3491f5ed6bd270a370c440434e3d69085fcdd528922fa01e73d7657db73b1e'
             '3f51da3f1ed5a0d115e69047ef9fd1cfb36adf48d0e6d812fbf449b61db5d373'
             'e8dd037119d4468d066fd73ce10e107d47a628977333bbecf149597cab912690'
             'b501582a2c5402fa5d6a3a84962d0b6d807f3a13b2338ddbaff008e2bc1e1b0e'
-            '4ecc858dd647f82255504c7e86f5a40690a1964fca7ee150b361a67890c8f180'
+            '3431e4125f884d2cf322796fa141fd28f7162b81864146ad49b5573f053aa96d'
             'af73e70396b9752b476bab0762d0a3c78369d78f522284bbd05cce6dae77ee74'
             '8a3eef02f44c7c887d23a61275cd55542b8aa6802021f71e8d0b1d753c501559'
             '562fe86f9aca31bae96384d73c439830ce4be3f2f19f06689dd532a7cadc2a96'
             '4b96f1148e161ff19f4e84894cffb66943ba4bddb62d35710b83e2215e1fc25e'
             '4fe53e7db394ad31e21e91f5bc8014b6b0c9fcbbf85b04addc627fd05fab042a'
             'c744c7977c1d651fd83e88ef74d0fdec6c20af1fe6aaf7cfecc78d414ac7bc1c'
-            '197022c867cefb542ed202ee701599718e35e440cc1cf7846ff7eb313ae9da54'
+            'c4c6deafa6eee0bb5cfd863449dcc96371779667f1523f365bea636115c307f8'
+            'e32efe60b8fade280ac9a53768c1a9fad46abb41af07edf28f9757d536ef0089'
             '69962682502f19632769346d7e43dc0f049e7fbb310c7084629880267e63e407')
 
 validpgpkeys=('ABAF11C65A2970B130ABE3C479BE3E4300411886'   # Linus Torvalds
@@ -156,7 +158,7 @@ prepare() {
 
 build() {
     cd $_srcdir
-    _make -j$((`nproc`+1)) all
+    _make -j$(nproc) all
 }
 
 _package() {

@@ -3,20 +3,20 @@
 EXTRA_FIRMWARE_DIR="$(mktemp -d)";
 EXTRA_FIRMWARE_STR=""
 EXTRA_FIRMWARE=(
-    amdgpu/picasso_asd.bin
-    amdgpu/picasso_ce.bin
     amdgpu/picasso_gpu_info.bin
+    amdgpu/picasso_asd.bin
+    amdgpu/picasso_ta.bin
+    amdgpu/picasso_pfp.bin
     amdgpu/picasso_me.bin
+    amdgpu/picasso_ce.bin
+    amdgpu/picasso_rlc.bin
     amdgpu/picasso_mec.bin
     amdgpu/picasso_mec2.bin
-    amdgpu/picasso_pfp.bin
-    amdgpu/picasso_rlc.bin
     amdgpu/picasso_sdma.bin
-    amdgpu/picasso_ta.bin
     amdgpu/picasso_vcn.bin
     amdgpu/raven_dmcu.bin
-    intel/ibt-18-16-1.sfi
-    iwlwifi-9260-th-b0-jf-b0-46.ucode
+    intel/ibt-20-1-3.sfi
+    iwlwifi-cc-a0-74.ucode
     regulatory.db.p7s
     regulatory.db
 )
@@ -69,8 +69,7 @@ scripts/config \
     -e VFAT_FS \
     -e FUSE_FS \
     -e NLS_ISO8859_1 \
-    -e NLS_UTF8 \
-    -d DM_INIT
+    -e NLS_UTF8
 
 # Network
 scripts/config \
@@ -97,6 +96,7 @@ scripts/config \
 
 # Crypto
 scripts/config \
+    -e CRYPTO_LZ4 \
     -e CRYPTO_DEV_CCP_DD \
     -e CRYPTO_AES_NI_INTEL \
     -e CRYPTO_USER \
@@ -142,9 +142,12 @@ scripts/config \
 
 # Misc
 scripts/config \
+    -e ZRAM \
     -e I2C_PIIX4 \
     -e INTEL_RAPL \
     -e PERF_EVENTS_INTEL_RAPL \
     -e SENSORS_K10TEMP \
     -e USB_XHCI_PCI_RENESAS \
-    -e X86_ACPI_CPUFREQ
+    -e X86_ACPI_CPUFREQ \
+    -d DM_INIT
+

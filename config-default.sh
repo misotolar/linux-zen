@@ -161,8 +161,23 @@ scripts/config \
     -d LRNG_SELFTEST_PANIC \
     -d LRNG_RUNTIME_FORCE_SEEDING_DISABLE
 
+### BPF
+scripts/config \
+    -d BPF_LSM \
+    -d BPF_PRELOAD \
+    -d BPF_STREAM_PARSER \
+    -d BPF_KPROBE_OVERRIDE \
+    -d BPF_LIRC_MODE2 \
+    -d LWTUNNEL_BPF \
+    -d HID_BPF
+
 ### Debug
 scripts/config \
+    -d DEBUG_INFO_BTF \
+    -d DEBUG_INFO_DWARF4 \
+    -d DEBUG_INFO_DWARF5 \
+    -d PAHOLE_HAS_SPLIT_BTF \
+    -d DEBUG_INFO_BTF_MODULES \
     -d SLUB_DEBUG \
     -d PM_DEBUG \
     -d PM_ADVANCED_DEBUG \
