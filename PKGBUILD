@@ -1,6 +1,6 @@
 
 _major=6.3
-_minor=3.zen1
+_minor=4.zen2
 
 pkgbase=linux-zen
 pkgname=("$pkgbase" "$pkgbase-headers")
@@ -48,15 +48,15 @@ source=("$_kernel/v6.x/linux-$_major.tar.xz"
         '0105-LUCJAN-clang-6.3-add-miscellaneous-fixes-for-clang.patch'::"$_lucjan/clang-patches/0001-clang-6.3-add-miscellaneous-fixes-for-clang.patch"
         '0106-LUCJAN-lrng-6.3-introduce-Linux-Random-Number-Generator.patch'::"$_lucjan/lrng-cachyos-patches/0001-lrng-6.3-introduce-Linux-Random-Number-Generator.patch"
         '0107-LUCJAN-futex-6.3-Add-entry-point-for-FUTEX_WAIT_MULTIPLE-op.patch'::"$_lucjan/futex-patches/0001-futex-6.3-Add-entry-point-for-FUTEX_WAIT_MULTIPLE-op.patch"
-        '0108-LUCJAN-ext4-6.3-merge-changes-from-dev-tree.patch'::"$_lucjan/ext4-patches-v4/0001-ext4-6.3-merge-changes-from-dev-tree.patch"
+        '0108-LUCJAN-ext4-6.3-merge-changes-from-dev-tree.patch'::"$_lucjan/ext4-patches-v6/0001-ext4-6.3-merge-changes-from-dev-tree.patch"
         '0109-LUCJAN-zram-6.3-merge-changes-from-dev-tree.patch'::"$_lucjan/zram-cachyos-patches-v2/0001-zram-6.3-merge-changes-from-dev-tree.patch"
         '0110-LUCJAN-zstd-6.3-import-v1.5.5.patch'::"$_lucjan/zstd-cachyos-patches-v2/0001-zstd-6.3-import-v1.5.5.patch")
 
 sha256sums=('ba3491f5ed6bd270a370c440434e3d69085fcdd528922fa01e73d7657db73b1e'
             'SKIP'
-            '018a51cccc5732dd2a96ba87b032cf11ffb9835b0e5dd9e8d6cfe7b58442feff'
+            '970252f51f5eee5e027dff9c74deb92fd2ca37b49930967231424ed8e3c9edcf'
             'SKIP'
-            'f4e8a2c9ef76b6c22638eb677d761d9b99645f9554525bea873b32e3107e86a2'
+            '76556128245766c0b9009113bba3a4d0035df7e0e9af9df74a585e80ebbd0ed5'
             '41c34759ed248175e905c57a25e2b0ed09b11d054fe1a8783d37459f34984106'
             '33437acac5cc15fdf1a4f10b0704ec51a08c472d5b5c0234187b59bb04578c36'
             '93d8ed2d12194510f91a92afd3d6a99e0a11240f60fbcfa589e860a06eb989ac'
@@ -76,7 +76,7 @@ sha256sums=('ba3491f5ed6bd270a370c440434e3d69085fcdd528922fa01e73d7657db73b1e'
             '4b96f1148e161ff19f4e84894cffb66943ba4bddb62d35710b83e2215e1fc25e'
             '4fe53e7db394ad31e21e91f5bc8014b6b0c9fcbbf85b04addc627fd05fab042a'
             'c744c7977c1d651fd83e88ef74d0fdec6c20af1fe6aaf7cfecc78d414ac7bc1c'
-            'c4c6deafa6eee0bb5cfd863449dcc96371779667f1523f365bea636115c307f8'
+            '19d3af445fd45945f60784afa942f09525b748224a935f9e502eb9deb790d31d'
             'e32efe60b8fade280ac9a53768c1a9fad46abb41af07edf28f9757d536ef0089'
             '69962682502f19632769346d7e43dc0f049e7fbb310c7084629880267e63e407')
 
