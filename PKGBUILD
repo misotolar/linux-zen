@@ -1,6 +1,6 @@
 
 _major=6.3
-_minor=5.zen1
+_minor=5.zen2
 
 pkgbase=linux-zen
 pkgname=("$pkgbase" "$pkgbase-headers")
@@ -13,9 +13,7 @@ _zenver="v${pkgver%.*}-${pkgver##*.}"
 
 _kernel="https://cdn.kernel.org/pub/linux/kernel"
 _source="https://github.com/zen-kernel/zen-kernel"
-
 _lucjan="https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/$_major"
-_tkg="https://raw.githubusercontent.com/Frogging-Family/linux-tkg/master/linux-tkg-patches/$_major"
 
 arch=('x86_64')
 url="$_source/commits/$_zenver"
@@ -30,8 +28,7 @@ source=("$_kernel/v6.x/linux-$_major.tar.xz"
         "$_source/releases/download/$_zenver/$_zenver.patch.xz.sig"
         'https://gitlab.archlinux.org/archlinux/packaging/packages/linux-zen/-/raw/main/config'
         'https://raw.githubusercontent.com/CachyOS/linux-cachyos/master/linux-cachyos/auto-cpu-optimization.sh'
-        'config-default.sh'
-        'config-trinity.sh'
+        'config.sh' 'config.trinity.sh'
         '0001-kconfig-additional-timer-interrupt-kernel-config-opt.patch'
         '0002-x86-implement-tsc-directsync-for-systems-without-IA3.patch'
         '0003-x86-touch-clocksource-watchdog-after-syncing-TSCs.patch'
@@ -39,24 +36,24 @@ source=("$_kernel/v6.x/linux-$_major.tar.xz"
         '0005-x86-only-restore-TSC-if-we-have-IA32_TSC_ADJUST-or-d.patch'
         '0006-x86-don-t-check-for-random-warps-if-using-direct-syn.patch'
         '0007-x86-disable-tsc-watchdog-if-using-direct-sync.patch'
-        '0008-x86-Avoid-relocation-information-in-final-vmlinux.patch'
-        '0009-Revert-ZEN-Add-graysky-s-more-uarches.patch'
+        '0008-Revert-ZEN-Add-graysky-s-more-uarches.patch'
         '0101-LUCJAN-cpu-cachyos-patches.patch'::"$_lucjan/cpu-cachyos-patches-v3/0001-cpu-cachyos-patches.patch"
         '0102-LUCJAN-block-mq-deadline-Increase-write-priority-to-.patch'::"$_lucjan/xanmod-patches-v2-sep/0003-XANMOD-block-mq-deadline-Increase-write-priority-to-.patch"
         '0103-LUCJAN-block-mq-deadline-Disable-front_merges-by-def.patch'::"$_lucjan/xanmod-patches-v2-sep/0004-XANMOD-block-mq-deadline-Disable-front_merges-by-def.patch"
         '0104-LUCJAN-block-set-rq_affinity-to-force-full-multithre.patch'::"$_lucjan/xanmod-patches-v2-sep/0005-XANMOD-block-set-rq_affinity-to-force-full-multithre.patch"
-        '0105-LUCJAN-clang-6.3-add-miscellaneous-fixes-for-clang.patch'::"$_lucjan/clang-patches/0001-clang-6.3-add-miscellaneous-fixes-for-clang.patch"
-        '0106-LUCJAN-lrng-6.3-introduce-Linux-Random-Number-Generator.patch'::"$_lucjan/lrng-cachyos-patches/0001-lrng-6.3-introduce-Linux-Random-Number-Generator.patch"
-        '0107-LUCJAN-futex-6.3-Add-entry-point-for-FUTEX_WAIT_MULTIPLE-op.patch'::"$_lucjan/futex-patches/0001-futex-6.3-Add-entry-point-for-FUTEX_WAIT_MULTIPLE-op.patch"
-        '0108-LUCJAN-ext4-6.3-merge-changes-from-dev-tree.patch'::"$_lucjan/ext4-patches-v6/0001-ext4-6.3-merge-changes-from-dev-tree.patch"
-        '0109-LUCJAN-zram-6.3-merge-changes-from-dev-tree.patch'::"$_lucjan/zram-cachyos-patches-v2/0001-zram-6.3-merge-changes-from-dev-tree.patch"
-        '0110-LUCJAN-zstd-6.3-import-v1.5.5.patch'::"$_lucjan/zstd-cachyos-patches-v2/0001-zstd-6.3-import-v1.5.5.patch")
+        '0105-LUCJAN-x86-Avoid-relocation-information-in-final-vmlinux.patch'::"$_lucjan/x86-cachyos-patches/0001-x86-Avoid-relocation-information-in-final-vmlinux.patch"
+        '0106-LUCJAN-clang-6.3-add-miscellaneous-fixes-for-clang.patch'::"$_lucjan/clang-patches/0001-clang-6.3-add-miscellaneous-fixes-for-clang.patch"
+        '0107-LUCJAN-lrng-6.3-introduce-Linux-Random-Number-Generator.patch'::"$_lucjan/lrng-cachyos-patches/0001-lrng-6.3-introduce-Linux-Random-Number-Generator.patch"
+        '0108-LUCJAN-futex-6.3-Add-entry-point-for-FUTEX_WAIT_MULTIPLE-op.patch'::"$_lucjan/futex-patches/0001-futex-6.3-Add-entry-point-for-FUTEX_WAIT_MULTIPLE-op.patch"
+        '0109-LUCJAN-ext4-6.3-merge-changes-from-dev-tree.patch'::"$_lucjan/ext4-patches-v6/0001-ext4-6.3-merge-changes-from-dev-tree.patch"
+        '0110-LUCJAN-zram-6.3-merge-changes-from-dev-tree.patch'::"$_lucjan/zram-cachyos-patches-v2/0001-zram-6.3-merge-changes-from-dev-tree.patch"
+        '0111-LUCJAN-zstd-6.3-import-v1.5.5.patch'::"$_lucjan/zstd-cachyos-patches-v2/0001-zstd-6.3-import-v1.5.5.patch")
 
 sha256sums=('ba3491f5ed6bd270a370c440434e3d69085fcdd528922fa01e73d7657db73b1e'
             'SKIP'
-            '09af02db1f4fcc34a36cc6d12ea1facf3bee752828a90b03e27de335f65102f8'
+            'e23d1a27ac8c1b52f8785d41a2340b3062e463a45135d8ad7d5efceddaff5775'
             'SKIP'
-            '76556128245766c0b9009113bba3a4d0035df7e0e9af9df74a585e80ebbd0ed5'
+            'da484a1368826365966dd7273b55c347292616c6f535c1962822fe90e8b22338'
             '41c34759ed248175e905c57a25e2b0ed09b11d054fe1a8783d37459f34984106'
             '33437acac5cc15fdf1a4f10b0704ec51a08c472d5b5c0234187b59bb04578c36'
             '93d8ed2d12194510f91a92afd3d6a99e0a11240f60fbcfa589e860a06eb989ac'
@@ -67,12 +64,12 @@ sha256sums=('ba3491f5ed6bd270a370c440434e3d69085fcdd528922fa01e73d7657db73b1e'
             'f544db22d1ddd9dd482ba552309775671ffb3c712cd43a9fae6fc0152868cc94'
             'd7e2500fe861c78e3087431f2964f4e79eb2cd3588aadff746f9a9e9b5913804'
             '3f51da3f1ed5a0d115e69047ef9fd1cfb36adf48d0e6d812fbf449b61db5d373'
-            'e8dd037119d4468d066fd73ce10e107d47a628977333bbecf149597cab912690'
             'b501582a2c5402fa5d6a3a84962d0b6d807f3a13b2338ddbaff008e2bc1e1b0e'
             '3431e4125f884d2cf322796fa141fd28f7162b81864146ad49b5573f053aa96d'
             'af73e70396b9752b476bab0762d0a3c78369d78f522284bbd05cce6dae77ee74'
             '8a3eef02f44c7c887d23a61275cd55542b8aa6802021f71e8d0b1d753c501559'
             '562fe86f9aca31bae96384d73c439830ce4be3f2f19f06689dd532a7cadc2a96'
+            '9fbb3c2579654ef638b96421b104d1d39d189a3f72248219085fc8ee287c7786'
             '4b96f1148e161ff19f4e84894cffb66943ba4bddb62d35710b83e2215e1fc25e'
             '4fe53e7db394ad31e21e91f5bc8014b6b0c9fcbbf85b04addc627fd05fab042a'
             'c744c7977c1d651fd83e88ef74d0fdec6c20af1fe6aaf7cfecc78d414ac7bc1c'
@@ -88,10 +85,16 @@ validpgpkeys=('ABAF11C65A2970B130ABE3C479BE3E4300411886'   # Linus Torvalds
 export KBUILD_BUILD_HOST="$(hostname 2>/dev/null || echo -n archlinux)"
 export KBUILD_BUILD_USER=$pkgbase
 export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
+export KBUILD_BUILD_FLAGS=(
+    CC=clang
+    LD=ld.lld
+    LLVM=1
+    LLVM_IAS=1
+)
 
 _make() {
   test -s version
-  make CC=clang LD=ld.lld LLVM=1 LLVM_IAS=1 KERNELRELEASE="$(<version)" "$@"
+  make KERNELRELEASE="$(<version)" ${KBUILD_BUILD_FLAGS[*]} "$@"
 }
 
 prepare() {
@@ -128,9 +131,9 @@ prepare() {
         echo "-$KBUILD_BUILD_HOST" > localversion.20-pkgname
     fi
 
-    make defconfig >/dev/null
-    make -s kernelrelease > version
-    make mrproper >/dev/null
+    make ${KBUILD_BUILD_FLAGS[*]} defconfig
+    make ${KBUILD_BUILD_FLAGS[*]} -s kernelrelease > version
+    make ${KBUILD_BUILD_FLAGS[*]} mrproper
 
     echo "Setting config..."
     cp ../config .config
@@ -146,11 +149,11 @@ prepare() {
     fi
 
     ### Default configuration
-    sh $srcdir/config-default.sh >/dev/null
+    sh $srcdir/config.sh >/dev/null
 
     ### Build host configuration
-    if [ -f "$srcdir/config-$KBUILD_BUILD_HOST.sh" ]; then
-        sh $srcdir/config-$KBUILD_BUILD_HOST.sh
+    if [ -f "$srcdir/config.$KBUILD_BUILD_HOST.sh" ]; then
+        sh $srcdir/config.$KBUILD_BUILD_HOST.sh
     fi
 
     echo "Prepared $pkgbase version $(<version)"
@@ -278,13 +281,6 @@ _package-headers() {
 
         # Certificates
         ${certs_local_src}/install-certs.py $certs_local_dst
-
-        # DKMS tools
-        dkms_src="$certs_local_src/dkms"
-        dkms_dst="${pkgdir}/etc/dkms"
-        mkdir -p $dkms_dst
-
-        rsync -a $dkms_src/{kernel-sign.conf,kernel-sign.sh} $dkms_dst/
     fi
 }
 
