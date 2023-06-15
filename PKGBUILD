@@ -1,6 +1,6 @@
 
 _major=6.3
-_minor=7.zen1
+_minor=8.zen1
 
 pkgbase=linux-zen
 pkgname=("$pkgbase" "$pkgbase-headers")
@@ -42,7 +42,7 @@ source=("$_kernel/v6.x/linux-$_major.tar.xz"
         '0103-LUCJAN-block-mq-deadline-Disable-front_merges-by-def.patch'::"$_lucjan/xanmod-patches-v2-sep/0004-XANMOD-block-mq-deadline-Disable-front_merges-by-def.patch"
         '0104-LUCJAN-block-set-rq_affinity-to-force-full-multithre.patch'::"$_lucjan/xanmod-patches-v2-sep/0005-XANMOD-block-set-rq_affinity-to-force-full-multithre.patch"
         '0105-LUCJAN-x86-Avoid-relocation-information-in-final-vmlinux.patch'::"$_lucjan/x86-cachyos-patches/0001-x86-Avoid-relocation-information-in-final-vmlinux.patch"
-        '0106-LUCJAN-clang-6.3-add-miscellaneous-fixes-for-clang.patch'::"$_lucjan/clang-patches/0001-clang-6.3-add-miscellaneous-fixes-for-clang.patch"
+        '0106-LUCJAN-clang-6.3-add-miscellaneous-fixes-for-clang.patch'::"$_lucjan/clang-patches-v2/0001-clang-6.3-add-miscellaneous-fixes-for-clang.patch"
         '0107-LUCJAN-lrng-6.3-introduce-Linux-Random-Number-Generator.patch'::"$_lucjan/lrng-cachyos-patches/0001-lrng-6.3-introduce-Linux-Random-Number-Generator.patch"
         '0108-LUCJAN-futex-6.3-Add-entry-point-for-FUTEX_WAIT_MULTIPLE-op.patch'::"$_lucjan/futex-patches/0001-futex-6.3-Add-entry-point-for-FUTEX_WAIT_MULTIPLE-op.patch"
         '0109-LUCJAN-ext4-6.3-merge-changes-from-dev-tree.patch'::"$_lucjan/ext4-patches-v6/0001-ext4-6.3-merge-changes-from-dev-tree.patch"
@@ -51,9 +51,9 @@ source=("$_kernel/v6.x/linux-$_major.tar.xz"
 
 sha256sums=('ba3491f5ed6bd270a370c440434e3d69085fcdd528922fa01e73d7657db73b1e'
             'SKIP'
-            '31488fa2683893b61b87e163239e2fb13196a0401cfc0e5a47413c715d9d491a'
+            'bf7a69a915a24fc6902731e7c9b99ab3bda00995260630cc37fcde54f1f19e21'
             'SKIP'
-            'da484a1368826365966dd7273b55c347292616c6f535c1962822fe90e8b22338'
+            'aa20c3339ed83d53bea8548399b6cba339d7b21e161249d9c8276909c29aef79'
             '41c34759ed248175e905c57a25e2b0ed09b11d054fe1a8783d37459f34984106'
             '33437acac5cc15fdf1a4f10b0704ec51a08c472d5b5c0234187b59bb04578c36'
             '93d8ed2d12194510f91a92afd3d6a99e0a11240f60fbcfa589e860a06eb989ac'
@@ -70,7 +70,7 @@ sha256sums=('ba3491f5ed6bd270a370c440434e3d69085fcdd528922fa01e73d7657db73b1e'
             '8a3eef02f44c7c887d23a61275cd55542b8aa6802021f71e8d0b1d753c501559'
             '562fe86f9aca31bae96384d73c439830ce4be3f2f19f06689dd532a7cadc2a96'
             '9fbb3c2579654ef638b96421b104d1d39d189a3f72248219085fc8ee287c7786'
-            '4b96f1148e161ff19f4e84894cffb66943ba4bddb62d35710b83e2215e1fc25e'
+            '334516be8ff76fb8d8f2f567aadd005bc5acf91e3166b44c2288894e9e976ce5'
             '4fe53e7db394ad31e21e91f5bc8014b6b0c9fcbbf85b04addc627fd05fab042a'
             'c744c7977c1d651fd83e88ef74d0fdec6c20af1fe6aaf7cfecc78d414ac7bc1c'
             '19d3af445fd45945f60784afa942f09525b748224a935f9e502eb9deb790d31d'
